@@ -1,0 +1,185 @@
+[gd_scene load_steps=23 format=3 uid="uid://qgyjfq88teq8"]
+
+[ext_resource type="Script" path="res://00_SCENE/Board_control_object_test/Movable_obj.gd" id="1_ja2bm"]
+[ext_resource type="Script" path="res://13_TOOLS_UI/Clock_montre/Selection_ini.gd" id="2_bycpu"]
+[ext_resource type="Script" path="res://10_BOARD/On_over_node.tres.gd" id="2_ke4da"]
+[ext_resource type="Script" path="res://00_SCENE/Board_control_object_test/On_click_object.gd" id="2_rje64"]
+[ext_resource type="Script" path="res://10_BOARD/Open_order.gd" id="3_xptb8"]
+[ext_resource type="Script" path="res://10_BOARD/Letter_is_moving.gd" id="4_o0rje"]
+[ext_resource type="Script" path="res://10_BOARD/Element.gd" id="5_1ltaj"]
+[ext_resource type="Material" uid="uid://yjoyk6fvrm6q" path="res://10_BOARD/00_BOOK/00_SHADER/No_light_surface_mat.tres" id="5_kvfps"]
+[ext_resource type="Shader" uid="uid://8ll6evus625p" path="res://10_BOARD/00_BOOK/00_SHADER/Gradient_surface.tres" id="5_t8aod"]
+
+[sub_resource type="GDScript" id="GDScript_v52rt"]
+script/source = "extends Node
+
+
+@export var _active : MeshInstance3D
+
+
+func _ready():
+	_active.visible = true
+"
+
+[sub_resource type="GDScript" id="GDScript_4uwx0"]
+script/source = "extends Node
+
+@onready var note = $\"../Text_render/text\"
+
+
+func _set_note(_text : String, _from: String):
+	note.text = _text
+
+"
+
+[sub_resource type="QuadMesh" id="QuadMesh_4umhe"]
+resource_local_to_scene = true
+
+[sub_resource type="Gradient" id="Gradient_hh7gt"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_cttjd"]
+gradient = SubResource("Gradient_hh7gt")
+fill_from = Vector2(1, 0)
+fill_to = Vector2(1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jubt2"]
+render_priority = 0
+shader = ExtResource("5_t8aod")
+shader_parameter/Color = Color(0.639216, 0.6, 0.545098, 1)
+shader_parameter/Dither_Opacity = 0.765
+shader_parameter/Gradient_light = SubResource("GradientTexture2D_cttjd")
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_2qibs"]
+
+[sub_resource type="Gradient" id="Gradient_2umqi"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_apshu"]
+gradient = SubResource("Gradient_2umqi")
+fill_from = Vector2(0.517094, 0)
+fill_to = Vector2(1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hqrm5"]
+render_priority = 0
+shader = ExtResource("5_t8aod")
+shader_parameter/Color = Color(0.690196, 0.396078, 0.247059, 1)
+shader_parameter/Dither_Opacity = 1.0
+shader_parameter/Gradient_light = SubResource("GradientTexture2D_apshu")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_lq3n1"]
+viewport_path = NodePath("Text_render")
+
+[sub_resource type="GDScript" id="GDScript_ikx4k"]
+script/source = "extends Node
+
+signal On_View
+
+"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bangl"]
+size = Vector3(0.720489, 0.0164453, 0.465195)
+
+[node name="Order_letter_prefab" type="Node3D" node_paths=PackedStringArray("collider", "limit_zone", "move_root", "rotation_root", "On_Move", "element_setter")]
+script = ExtResource("1_ja2bm")
+collider = NodePath("Letter_area/col_area")
+limit_zone = NodePath("Limir_zone")
+move_root = NodePath(".")
+rotation_root = NodePath(".")
+On_Move = NodePath("Letter_area/On_Move")
+r_rotation_degrees = 25.0
+element_setter = NodePath("Letter_area/Element")
+
+[node name="Active" type="Node" parent="." node_paths=PackedStringArray("_active")]
+script = SubResource("GDScript_v52rt")
+_active = NodePath("../photo_light")
+
+[node name="Selection_ini" type="Node" parent="." node_paths=PackedStringArray("root", "Movable", "On_Over")]
+script = ExtResource("2_bycpu")
+root = NodePath("..")
+Movable = NodePath("..")
+On_Over = NodePath("../Letter_area/On_Over")
+
+[node name="Note" type="Node" parent="."]
+script = SubResource("GDScript_4uwx0")
+
+[node name="Open_order" type="Node" parent="." node_paths=PackedStringArray("On_View")]
+script = ExtResource("3_xptb8")
+On_View = NodePath("../Letter_area/On_View")
+
+[node name="Letter_is_moving" type="Node" parent="." node_paths=PackedStringArray("On_Move")]
+script = ExtResource("4_o0rje")
+On_Move = NodePath("../Letter_area/On_Move")
+
+[node name="photo" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.139344, 0, 0, 0, -3.91714e-09, 0.0628367, 0, -0.0896138, -2.74668e-09, 0.000713088, 0.00467268, 0)
+layers = 2
+mesh = SubResource("QuadMesh_4umhe")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("ShaderMaterial_jubt2")
+
+[node name="photo_light" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.139344, 0, 0, 0, -3.91714e-09, 0.0628367, 0, -0.0896138, -2.74668e-09, 0.000713088, 0.00467268, 0)
+visible = false
+layers = 65536
+mesh = SubResource("QuadMesh_4umhe")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("5_kvfps")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.0337845, 0, 0, 0, 0.000683853, 0, 0, 0, 0.0337845, 0.033855, 0.00539615, -0.0374006)
+layers = 2
+mesh = SubResource("CylinderMesh_2qibs")
+skeleton = NodePath("../photo")
+surface_material_override/0 = SubResource("ShaderMaterial_hqrm5")
+
+[node name="Render_text" type="Sprite3D" parent="."]
+transform = Transform3D(0.0204747, 0, 0, 0, -8.94978e-10, 0.0204747, 0, -0.0204747, -8.94978e-10, 0.000713088, 0.00591066, 0)
+layers = 2
+modulate = Color(0.403922, 0.388235, 0.34902, 1)
+texture = SubResource("ViewportTexture_lq3n1")
+
+[node name="Text_render" type="SubViewport" parent="."]
+transparent_bg = true
+size = Vector2i(600, 400)
+
+[node name="text" type="Label" parent="Text_render"]
+custom_minimum_size = Vector2(600, 400)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 80
+text = "ORDER"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Letter_area" type="Area3D" parent="."]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.00272226, 0)
+
+[node name="Element" type="Node" parent="Letter_area"]
+script = ExtResource("5_1ltaj")
+
+[node name="On_Move" type="Node" parent="Letter_area"]
+script = ExtResource("2_rje64")
+
+[node name="On_Over" type="Node" parent="Letter_area"]
+script = ExtResource("2_ke4da")
+
+[node name="On_View" type="Node" parent="Letter_area"]
+script = SubResource("GDScript_ikx4k")
+
+[node name="col_area" type="CollisionShape3D" parent="Letter_area"]
+transform = Transform3D(0.131916, 0, 0, 0, 0.131916, 0, 0, 0, 0.131916, 0.000295904, 0.000739463, -0.000325061)
+shape = SubResource("BoxShape3D_bangl")
+
+[node name="Limir_zone" type="Area3D" parent="."]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.00272226, 0)
+collision_layer = 4
+collision_mask = 4
+
+[node name="Limit" type="Node" parent="Limir_zone"]
+
+[node name="col_limit" type="CollisionShape3D" parent="Limir_zone"]
+transform = Transform3D(0.131916, 0, 0, 0, 0.131916, 0, 0, 0, 0.131916, 0.000295904, 0.000739463, -0.000325061)
+shape = SubResource("BoxShape3D_bangl")

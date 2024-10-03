@@ -1,0 +1,316 @@
+[gd_scene load_steps=24 format=3 uid="uid://bwmu5iwushsl5"]
+
+[ext_resource type="Script" path="res://13_TOOLS_UI/Fade_flash_effect.gd" id="1_1dj2k"]
+[ext_resource type="Script" path="res://13_TOOLS_UI/INSTANCE_NOTE.gd" id="1_fcb2u"]
+[ext_resource type="Resource" uid="uid://duqn0ehtc8aao" path="res://12_INVENTORY/Words_note/FindSeagull_orders.tres" id="2_58sax"]
+[ext_resource type="Resource" uid="uid://61umivwjjcjs" path="res://12_INVENTORY/Words_note/Birds_goLighthouse_note.tres" id="2_77vs0"]
+[ext_resource type="Resource" uid="uid://bvadwmoawvfs0" path="res://12_INVENTORY/Words_note/Meet_Ela_note.tres" id="3_unfol"]
+[ext_resource type="Texture2D" uid="uid://dto78na6ad5o2" path="res://00_SYSTEMS/KeyOrPad/Key_inputs.png" id="4_c4v0f"]
+[ext_resource type="Material" uid="uid://bxikm4g1nkywk" path="res://06_UI/Disolved_simple_texture.tres" id="4_opffw"]
+[ext_resource type="Resource" uid="uid://nb378vtwr23i" path="res://12_INVENTORY/Words_note/Find_The_Apicula_note.tres" id="4_whlox"]
+[ext_resource type="Texture2D" uid="uid://4bq2l5jjm4r2" path="res://00_SYSTEMS/KeyOrPad/Pad_inputs.png" id="5_jufic"]
+[ext_resource type="Script" path="res://13_TOOLS_UI/BACK_LETTERS.gd" id="7_uck14"]
+[ext_resource type="Script" path="res://13_TOOLS_UI/Main_scene_UI.gd" id="14_isnv0"]
+[ext_resource type="Shader" uid="uid://v7wu4reqmbs2" path="res://05_SHADER/Post_process/Noise_vs_effect.tres" id="15_jcxt0"]
+[ext_resource type="PackedScene" uid="uid://cbgkay5155yn3" path="res://13_TOOLS_UI/Top_bar/Money_bar.tscn" id="15_jqiih"]
+[ext_resource type="Shader" uid="uid://owtikj2jm5h5" path="res://13_TOOLS_UI/PhotoFlash_effect.tres" id="15_kco3d"]
+[ext_resource type="Texture2D" uid="uid://d31xi5f7tan5w" path="res://05_SHADER/Full_screen/Dither_pattners/Blue_noise/HDR_LA_7.png" id="16_8a3k4"]
+[ext_resource type="PackedScene" uid="uid://cdmxq026pdbp7" path="res://09_SHOP/Shop_Ui_scene.tscn" id="16_bicox"]
+[ext_resource type="PackedScene" uid="uid://b4ju0ntcydix8" path="res://13_TOOLS_UI/2D_MAP/2d_map.tscn" id="17_c8quy"]
+[ext_resource type="PackedScene" uid="uid://clc3sbquuu1us" path="res://13_TOOLS_UI/Clock_montre/Clock_ui_prefab.tscn" id="31_4ftpd"]
+
+[sub_resource type="GDScript" id="GDScript_ebu32"]
+script/source = "extends Node
+
+
+@onready var front_element = $\"../Front_element\"
+const PHOTO_UI_PREFAB = preload(\"res://12_INVENTORY/Photo/Photo_ui_prefab.tscn\")
+
+
+
+func _ready():
+	_global_datas._give_photo.connect(_take_photo)
+	
+func _take_photo(photo_data : PhotoData):
+	
+	var photo_instance = PHOTO_UI_PREFAB.instantiate()
+	photo_instance._set_photo(photo_data.image)
+	front_element.add_child(photo_instance)
+	_global_datas._show_object_legend.emit(true,photo_data.legend)
+	
+func check_photo_exist(photo_Data):
+	
+	for photo in _global_datas.photo_archives:
+		if photo == photo_Data:
+			return true 	
+
+
+"
+
+[sub_resource type="GDScript" id="GDScript_cnn2b"]
+script/source = "extends Node
+
+
+@onready var description_text = $\"../../Description_Text\"
+
+var t 
+var _is_typing : bool = false
+
+var ls_index : int = 0 
+@onready var timer = $Timer
+
+var _previous_legend : String
+func _ready():
+
+	_global_datas._show_object_legend.connect(_update_text)
+
+func _update_text(condition : bool, _legend: String):
+	
+	if !condition:
+		description_text.visible = false
+		return
+	
+	description_text.visible = condition
+	description_text.text = _legend
+	
+	var text_count = _legend.length()
+	
+	if _previous_legend == _legend:
+		return
+	_previous_legend = _legend
+	
+	type_text(text_count)
+
+func type_text(count : int):
+	
+	#timer.start()
+	
+	description_text.visible_ratio = 0.0
+	var speed = 0.01 * count
+	_is_typing = true
+	
+	
+	var node = get_tree()
+	if !node:
+		return
+	if t:
+		t.kill()
+	t = create_tween()
+	
+	t .tween_method(change_ration,0.0,1.0,speed)
+	await create_tween().tween_interval(speed).finished
+
+	_is_typing = false
+	
+func change_ration(value : float):
+	description_text.visible_ratio = value
+	
+
+
+
+func _on_timer_timeout():
+	_global_datas._show_object_legend.emit(false,null)
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_l4k3m"]
+shader = ExtResource("15_kco3d")
+shader_parameter/Opacity = 0.0
+
+[sub_resource type="GDScript" id="GDScript_1c22g"]
+script/source = "extends Node
+
+@onready var pad_img = $\"../pad_img\"
+@onready var key_img = $\"../key_img\"
+
+@onready var material_pad : Material = pad_img.get_material()
+@onready var material_key : Material = key_img.get_material()
+
+var t
+var actual_condition = false
+func _ready():
+	_global_datas.using_pad.connect(show_whats_used)
+	
+	
+func show_whats_used(condition : bool):
+	
+	if actual_condition == condition:
+		return 
+	actual_condition = condition
+		
+	pad_img.visible = condition
+	key_img.visible = !condition
+	
+	if t:
+		t.kill()
+	t = create_tween()
+	
+	if condition:
+		t .tween_method(set_shader_value,1.0,0.0,1.0)
+	else:
+		t .tween_method(set_shader_value_key,1.0,0.0,1.0)	
+
+func set_shader_value(value):
+	
+	material_pad.set_shader_parameter(\"Opacity\",value)
+
+func set_shader_value_key(value):
+	
+	material_key.set_shader_parameter(\"Opacity\",value)
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b1qbk"]
+shader = ExtResource("15_jcxt0")
+shader_parameter/FloatParameter = 3.0
+shader_parameter/Noise_opacity = 0.95
+shader_parameter/Noise_texture = ExtResource("16_8a3k4")
+
+[node name="07_SCREEN_UI" type="Node"]
+
+[node name="INSTANCE_PICTURES" type="Node" parent="."]
+script = SubResource("GDScript_ebu32")
+
+[node name="Flash_effect" type="Node" parent="INSTANCE_PICTURES"]
+script = ExtResource("1_1dj2k")
+
+[node name="INSTANCE_NOTE" type="Node" parent="."]
+script = ExtResource("1_fcb2u")
+all_N_note = Array[Resource("res://12_INVENTORY/Words_note/Note_data.gd")]([ExtResource("2_58sax"), ExtResource("2_77vs0"), ExtResource("3_unfol"), ExtResource("4_whlox")])
+
+[node name="BACK_LETTERS" type="Node" parent="."]
+script = ExtResource("7_uck14")
+
+[node name="Description" type="Node2D" parent="."]
+position = Vector2(989, 752)
+
+[node name="Update_description" type="Node" parent="Description"]
+script = SubResource("GDScript_cnn2b")
+
+[node name="Timer" type="Timer" parent="Description/Update_description"]
+wait_time = 2.5
+one_shot = true
+
+[node name="PHOTO_FLASH" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_l4k3m")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.721569, 0.580392, 0.407843, 1)
+
+[node name="Description_Text" type="Label" parent="."]
+visible = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -300.0
+offset_top = -117.0
+offset_right = 300.0
+offset_bottom = -17.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.721569, 0.580392, 0.407843, 1)
+theme_override_colors/font_outline_color = Color(0.0235294, 0.117647, 0.12549, 1)
+theme_override_constants/outline_size = 60
+theme_override_font_sizes/font_size = 30
+text = "Lorem ipsum "
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Inputs_used" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -128.0
+offset_right = 128.0
+grow_vertical = 0
+mouse_filter = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Show_Use_inputs" type="Node" parent="Inputs_used"]
+script = SubResource("GDScript_1c22g")
+
+[node name="pad_img" type="TextureRect" parent="Inputs_used"]
+visible = false
+material = ExtResource("4_opffw")
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_jufic")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="key_img" type="TextureRect" parent="Inputs_used"]
+visible = false
+material = ExtResource("4_opffw")
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_c4v0f")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Main_Scene_U" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Main_scene_UI" type="Node" parent="Main_Scene_U"]
+script = ExtResource("14_isnv0")
+
+[node name="Money_bar" parent="Main_Scene_U" instance=ExtResource("15_jqiih")]
+visible = false
+layout_mode = 1
+
+[node name="2D_Map" parent="." instance=ExtResource("17_c8quy")]
+visible = false
+
+[node name="Noise_shader" type="ColorRect" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_b1qbk")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Clock" parent="." instance=ExtResource("31_4ftpd")]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 550.0
+offset_top = 640.0
+offset_right = 550.0
+offset_bottom = 640.0
+grow_horizontal = 2
+scale = Vector2(0.556778, 0.556778)
+
+[node name="Shop" parent="." instance=ExtResource("16_bicox")]
+
+[node name="Front_element" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+metadata/_edit_use_anchors_ = true
+
+[connection signal="timeout" from="Description/Update_description/Timer" to="Description/Update_description" method="_on_timer_timeout"]

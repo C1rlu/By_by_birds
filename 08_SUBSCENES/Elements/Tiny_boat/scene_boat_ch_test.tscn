@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://b4hspc8dsyv14"]
+
+[ext_resource type="PackedScene" uid="uid://det5b6bxm4u8h" path="res://08_SUBSCENES/Elements/Tiny_boat/BoatMan_ScannerView.blend" id="1_qy5yk"]
+[ext_resource type="Material" uid="uid://c4fuaxiqyxou" path="res://05_SHADER/Board/Board_scanner_mat_ground.tres" id="2_8nmcn"]
+
+[node name="Scene_boat_ch_test" type="Node3D"]
+transform = Transform3D(0.013, 0, 0, 0, 0.013, 0, 0, 0, 0.013, 0, 0, 0)
+
+[node name="BoatMan_ScannerView" parent="." instance=ExtResource("1_qy5yk")]
+
+[node name="Ground" parent="BoatMan_ScannerView" index="0"]
+transform = Transform3D(0.526316, 0, 0, 0, 0.526316, 0, 0, 0, 0.526316, 0, 0, 0)
+layers = 128
+surface_material_override/0 = ExtResource("2_8nmcn")
+
+[editable path="BoatMan_ScannerView"]

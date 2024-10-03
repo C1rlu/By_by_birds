@@ -1,0 +1,781 @@
+[gd_scene load_steps=56 format=3 uid="uid://bbp1ccoa6te1g"]
+
+[ext_resource type="Script" path="res://11_SPEAKER/Open_Dialogue.gd" id="1_6gph5"]
+[ext_resource type="Script" path="res://11_SPEAKER/00_NPC/Npc_loader.gd" id="2_gecf5"]
+[ext_resource type="Script" path="res://addons/ez_dialogue/ez_dialogue_node.gd" id="2_iqwu8"]
+[ext_resource type="Script" path="res://11_SPEAKER/Dialogue/Dialogue_asset/Ini_dialogue.gd" id="2_pxao7"]
+[ext_resource type="Script" path="res://11_SPEAKER/Dialogue_typing.gd" id="4_uwbqv"]
+[ext_resource type="Script" path="res://13_TOOLS_UI/set_Resolution_viewports.gd" id="6_m0hl7"]
+[ext_resource type="Script" path="res://11_SPEAKER/Cam_Focus.gd" id="7_yfrxb"]
+[ext_resource type="Shader" uid="uid://i5hkaugkylpm" path="res://05_SHADER/Full_screen/Speaker_dither_convas.tres" id="9_8gj0l"]
+[ext_resource type="Script" path="res://11_SPEAKER/Dialogue/Dialogue_asset/Dialogue_box.gd" id="9_n4i7c"]
+[ext_resource type="Script" path="res://11_SPEAKER/End_Typing_Button.tres.gd" id="10_o8x3k"]
+[ext_resource type="PackedScene" uid="uid://kfeia6x8pslm" path="res://11_SPEAKER/00_NPC/guy_02_prefab.tscn" id="11_60j22"]
+[ext_resource type="Script" path="res://11_SPEAKER/Deliver_button.gd" id="13_ewnx3"]
+[ext_resource type="PackedScene" uid="uid://d2b7ysl6sho71" path="res://11_SPEAKER/00_NPC/Model/Mr_birds_prefab.tscn" id="13_f7b57"]
+[ext_resource type="PackedScene" uid="uid://bhp5srocc6bwr" path="res://11_SPEAKER/00_NPC/Otis_Npc_prefabs.tscn" id="13_une54"]
+
+[sub_resource type="GDScript" id="GDScript_ktgfg"]
+script/source = "extends Node
+
+@onready var timer = $Timer
+
+func _ready():
+	_global_datas._open_dialogue.connect(_start_update)
+	_global_datas._close_dialogue.connect(_stop_update)
+
+func _start_update():
+	timer.start()
+	
+func _stop_update():
+	timer.stop()
+	
+		
+func _updateFace():
+	var rng = RandomNumberGenerator.new()
+	var number = rng.randf_range(0.0, 1.0)
+	RenderingServer.global_shader_parameter_set(\"random_faceAmount\",number)
+	
+	#var z = rng.randf_range(-1, 1)
+	#var x = rng.randf_range(-1,1)
+	#var y = rng.randf_range(-1, 1)
+#
+	#$\"../00_NPC_CREATOR/Models/Loader\".rotation_degrees.x = y
+	#$\"../00_NPC_CREATOR/Models/Loader\".rotation_degrees.y = x
+	#$\"../00_NPC_CREATOR/Models/Loader\".rotation_degrees.z = z
+	
+	
+	
+func _on_timer_timeout():
+	_updateFace()
+	timer.start()
+	
+"
+
+[sub_resource type="GDScript" id="GDScript_mltnc"]
+script/source = "extends Node
+
+@onready var backdrop = $Backdrop
+@onready var material : Material = backdrop .get_material()
+
+var actual_value : float
+var t
+
+func _ready():
+	_global_datas.Open_ui_dark_backdrop.connect(check_condition)
+
+
+
+func check_condition(condition : bool):
+	
+	if condition:
+		_fade_in()
+	else:
+		_fade_out()
+	
+func _fade_in():
+
+	
+	if t:
+		t.kill()
+	t = create_tween()
+	
+	t .tween_method(set_shader_value,actual_value,0.75,1.0)
+
+func _fade_out():
+	
+	if t:
+		t.kill()
+	t = create_tween()
+	
+	t .tween_method(set_shader_value,actual_value,0.0,1.0)
+
+
+func set_shader_value(value):
+	material.set_shader_parameter(\"Opacity\",value)
+	actual_value = value
+"
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_ub315"]
+parameter_name = "Opacity"
+hint = 1
+default_value_enabled = true
+default_value = 0.5
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_ctk8d"]
+source = 5
+
+[sub_resource type="VisualShaderNodeUVFunc" id="VisualShaderNodeUVFunc_ny3rm"]
+default_input_values = [1, Vector2(1, 0.5), 2, Vector2(0, 0)]
+function = 1
+
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_odtx5"]
+default_input_values = [0, 0.0, 1, 0.001]
+operator = 2
+
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_7qtri"]
+default_input_values = [0, 0.0, 1, 0.1]
+operator = 2
+
+[sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_44a8h"]
+parameter_name = "BlueNoise"
+qualifier = 1
+texture_repeat = 1
+
+[sub_resource type="VisualShaderNodeStep" id="VisualShaderNodeStep_agbt2"]
+
+[sub_resource type="VisualShaderNodeFloatConstant" id="VisualShaderNodeFloatConstant_k0i4p"]
+constant = 5.0
+
+[sub_resource type="VisualShaderNodeUVFunc" id="VisualShaderNodeUVFunc_7enqm"]
+function = 1
+
+[sub_resource type="VisualShaderNodeFloatConstant" id="VisualShaderNodeFloatConstant_xj2cx"]
+constant = 0.4
+
+[sub_resource type="VisualShaderNodeExpression" id="VisualShaderNodeExpression_58pge"]
+size = Vector2(724.789, 654.559)
+expression = "const float DITHER_THRESHOLDS[16] ={
+		1.0 / 17.0, 9.0 / 17.0, 3.0 / 17.0, 11.0 / 17.0,
+		13.0 / 17.0, 5.0 / 17.0, 15.0 / 17.0, 7.0 / 17.0,
+		4.0 / 17.0, 12.0 / 17.0, 2.0 / 17.0, 10.0 / 17.0,
+		16.0 / 17.0, 8.0 / 17.0, 14.0 / 17.0, 6.0 / 17.0
+	};
+	
+vec2 uv = FRAGCOORD.xy * Size;
+int index = (int(uv.x) % 4) * 4 + int(uv.y) % 4;
+Dither_Node = In - DITHER_THRESHOLDS[index];"
+
+[sub_resource type="VisualShaderNodeStep" id="VisualShaderNodeStep_x8bp4"]
+
+[sub_resource type="VisualShader" id="VisualShader_cqqjt"]
+code = "shader_type canvas_item;
+render_mode blend_mix;
+
+uniform float Opacity : hint_range(0, 1) = 0.5;
+
+
+
+void fragment() {
+// FloatParameter:10
+	float n_out10p0 = Opacity;
+
+
+// Output:0
+	COLOR.a = n_out10p0;
+
+
+}
+"
+graph_offset = Vector2(-754.351, -101.611)
+mode = 1
+flags/light_only = false
+nodes/fragment/2/node = SubResource("VisualShaderNodeFloatConstant_xj2cx")
+nodes/fragment/2/position = Vector2(-1600, 600)
+nodes/fragment/4/node = SubResource("VisualShaderNodeExpression_58pge")
+nodes/fragment/4/position = Vector2(-1300, 500)
+nodes/fragment/4/size = Vector2(724.789, 654.559)
+nodes/fragment/4/input_ports = "0,0,In;1,0,Size;"
+nodes/fragment/4/output_ports = "0,0,Dither_Node;"
+nodes/fragment/4/expression = "const float DITHER_THRESHOLDS[16] ={
+		1.0 / 17.0, 9.0 / 17.0, 3.0 / 17.0, 11.0 / 17.0,
+		13.0 / 17.0, 5.0 / 17.0, 15.0 / 17.0, 7.0 / 17.0,
+		4.0 / 17.0, 12.0 / 17.0, 2.0 / 17.0, 10.0 / 17.0,
+		16.0 / 17.0, 8.0 / 17.0, 14.0 / 17.0, 6.0 / 17.0
+	};
+	
+vec2 uv = FRAGCOORD.xy * Size;
+int index = (int(uv.x) % 4) * 4 + int(uv.y) % 4;
+Dither_Node = In - DITHER_THRESHOLDS[index];"
+nodes/fragment/5/node = SubResource("VisualShaderNodeStep_x8bp4")
+nodes/fragment/5/position = Vector2(-180, 240)
+nodes/fragment/10/node = SubResource("VisualShaderNodeFloatParameter_ub315")
+nodes/fragment/10/position = Vector2(-1702.41, -326)
+nodes/fragment/11/node = SubResource("VisualShaderNodeTexture_ctk8d")
+nodes/fragment/11/position = Vector2(-1102.41, -986)
+nodes/fragment/12/node = SubResource("VisualShaderNodeUVFunc_ny3rm")
+nodes/fragment/12/position = Vector2(-2022.41, -986)
+nodes/fragment/13/node = SubResource("VisualShaderNodeFloatOp_odtx5")
+nodes/fragment/13/position = Vector2(-1982.41, -626)
+nodes/fragment/14/node = SubResource("VisualShaderNodeFloatOp_7qtri")
+nodes/fragment/14/position = Vector2(-1922.41, -426)
+nodes/fragment/15/node = SubResource("VisualShaderNodeTexture2DParameter_44a8h")
+nodes/fragment/15/position = Vector2(-1462.41, -706)
+nodes/fragment/16/node = SubResource("VisualShaderNodeStep_agbt2")
+nodes/fragment/16/position = Vector2(-222.408, -186)
+nodes/fragment/17/node = SubResource("VisualShaderNodeFloatConstant_k0i4p")
+nodes/fragment/17/position = Vector2(-2022.41, -766)
+nodes/fragment/18/node = SubResource("VisualShaderNodeUVFunc_7enqm")
+nodes/fragment/18/position = Vector2(-1702.41, -866)
+nodes/fragment/connections = PackedInt32Array(2, 0, 4, 1, 4, 0, 5, 1, 13, 0, 14, 0, 12, 0, 18, 0, 14, 0, 18, 2, 18, 0, 11, 0, 15, 0, 11, 2, 11, 0, 16, 0, 17, 0, 18, 1, 10, 0, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7np4u"]
+shader = SubResource("VisualShader_cqqjt")
+shader_parameter/Opacity = 0.5
+
+[sub_resource type="GDScript" id="GDScript_6qc5w"]
+script/source = "extends Node
+
+@onready var cam_npcs = $\"../Npc_convas/CH_RENDER/Render_speacker\"
+@onready var circle_backdrop = $\"../Npc_convas/CH_RENDER/Circle_backdrop\"
+@onready var _material : Material = cam_npcs.get_material()
+@onready var _material_circle : Material = circle_backdrop.get_material()
+
+@onready var timer = $Timer
+
+@export var active_npc_entrance : bool = false
+@onready var render_speacker = $\"../Npc_convas/CH_RENDER/Render_speacker\"
+
+func _ready():
+	if !active_npc_entrance:
+		return
+	_global_datas._open_dialogue.connect(_start)
+
+func _start():
+	timer.start()
+	_material.set_shader_parameter(\"Opacity\",2.0)
+	_global_datas._hide_dialogue_box.emit()
+	
+func _process(delta):
+	
+	if timer.is_stopped():
+		return	
+	
+	var lerp_time = lerp(1.0,2.0,(timer.time_left / timer.wait_time ))
+	_material.set_shader_parameter(\"Opacity\",lerp_time)
+	var lerp_time_circle = lerp(1.0,0.0,(timer.time_left / timer.wait_time ))
+	_material_circle.set_shader_parameter(\"Opacity\",lerp_time_circle)
+	
+	
+func _on_timer_timeout():
+	
+	if _global_datas.Npc_Dialogue != null:
+		_global_datas._start_dialogue_box.emit()
+		_global_datas._show_dialogue_box.emit()		
+"
+
+[sub_resource type="VisualShader" id="VisualShader_6uu1l"]
+code = "shader_type canvas_item;
+render_mode blend_mix;
+
+
+
+"
+graph_offset = Vector2(-291, 7)
+mode = 1
+flags/light_only = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6s3bf"]
+shader = SubResource("VisualShader_6uu1l")
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_eqwof"]
+parameter_name = "Opacity"
+hint = 1
+default_value_enabled = true
+default_value = 1.0
+
+[sub_resource type="VisualShaderNodeStep" id="VisualShaderNodeStep_04s65"]
+
+[sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_5ri30"]
+parameter_name = "Backdrop_color"
+
+[sub_resource type="Gradient" id="Gradient_t72in"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_tyr0r"]
+gradient = SubResource("Gradient_t72in")
+fill_from = Vector2(1, 1)
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_gnvk0"]
+texture = SubResource("GradientTexture2D_tyr0r")
+
+[sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_5lymo"]
+parameter_name = "Backdrop_color2"
+
+[sub_resource type="VisualShaderNodeMix" id="VisualShaderNodeMix_lpt25"]
+default_input_values = [0, Vector3(0, 0, 0), 1, Vector3(1, 1, 1), 2, Vector3(0.5, 0.5, 0.5)]
+op_type = 3
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_kjlml"]
+parameter_name = "Dither_size"
+qualifier = 1
+
+[sub_resource type="VisualShaderNodeStep" id="VisualShaderNodeStep_yukju"]
+
+[sub_resource type="VisualShaderNodeExpression" id="VisualShaderNodeExpression_u63sb"]
+size = Vector2(580, 220)
+expression = "float luminance = 0.299 * color.x + 0.587 * color.y + 0.114 * color.z;
+grey_value = luminance;"
+
+[sub_resource type="VisualShaderNodeMix" id="VisualShaderNodeMix_p4a8h"]
+default_input_values = [0, Vector3(0, 0, 0), 1, Vector3(1, 1, 1), 2, Vector3(0.5, 0.5, 0.5)]
+op_type = 3
+
+[sub_resource type="VisualShaderNodeBooleanParameter" id="VisualShaderNodeBooleanParameter_7xq23"]
+parameter_name = "isGray"
+qualifier = 1
+
+[sub_resource type="VisualShaderNodeExpression" id="VisualShaderNodeExpression_hd7wn"]
+size = Vector2(724.789, 654.559)
+expression = "const float DITHER_THRESHOLDS[16] ={
+		1.0 / 17.0, 9.0 / 17.0, 3.0 / 17.0, 11.0 / 17.0,
+		13.0 / 17.0, 5.0 / 17.0, 15.0 / 17.0, 7.0 / 17.0,
+		4.0 / 17.0, 12.0 / 17.0, 2.0 / 17.0, 10.0 / 17.0,
+		16.0 / 17.0, 8.0 / 17.0, 14.0 / 17.0, 6.0 / 17.0
+	};
+	
+vec2 uv = FRAGCOORD.xy * Size;
+int index = (int(uv.x) % 4) * 4 + int(uv.y) % 4;
+Dither_Node = In - DITHER_THRESHOLDS[index];"
+
+[sub_resource type="VisualShader" id="VisualShader_jx62j"]
+code = "shader_type canvas_item;
+render_mode blend_mix;
+
+uniform vec4 Backdrop_color : source_color;
+global uniform bool isGray;
+uniform sampler2D tex_frg_13;
+uniform float Opacity : hint_range(0, 1) = 1;
+global uniform float Dither_size;
+
+
+
+void fragment() {
+// ColorParameter:12
+	vec4 n_out12p0 = Backdrop_color;
+
+
+	float n_out18p0;
+// Expression:18
+	n_out18p0 = 0.0;
+	{
+		float luminance = 0.299 * vec3(n_out12p0.xyz).x + 0.587 * vec3(n_out12p0.xyz).y + 0.114 * vec3(n_out12p0.xyz).z;
+		n_out18p0 = luminance;
+	}
+
+
+// BooleanParameter:21
+	bool n_out21p0 = isGray;
+
+
+// Mix:19
+	vec3 n_out19p0 = mix(vec3(n_out12p0.xyz), vec3(n_out18p0), vec3(n_out21p0 ? 1.0 : 0.0));
+
+
+// Texture2D:13
+	vec4 n_out13p0 = texture(tex_frg_13, UV);
+
+
+// FloatParameter:10
+	float n_out10p0 = Opacity;
+
+
+// FloatParameter:16
+	float n_out16p0 = Dither_size;
+
+
+	float n_out9p0;
+// Expression:9
+	n_out9p0 = 0.0;
+	{
+		const float DITHER_THRESHOLDS[16] ={
+				1.0 / 17.0, 9.0 / 17.0, 3.0 / 17.0, 11.0 / 17.0,
+				13.0 / 17.0, 5.0 / 17.0, 15.0 / 17.0, 7.0 / 17.0,
+				4.0 / 17.0, 12.0 / 17.0, 2.0 / 17.0, 10.0 / 17.0,
+				16.0 / 17.0, 8.0 / 17.0, 14.0 / 17.0, 6.0 / 17.0
+			};
+			
+		vec2 uv = FRAGCOORD.xy * n_out16p0;
+		int index = (int(uv.x) % 4) * 4 + int(uv.y) % 4;
+		n_out9p0 = n_out10p0 - DITHER_THRESHOLDS[index];
+	}
+
+
+// Step:17
+	float n_out17p0 = step(n_out13p0.x, n_out9p0);
+
+
+// Output:0
+	COLOR.rgb = n_out19p0;
+	COLOR.a = n_out17p0;
+
+
+}
+"
+graph_offset = Vector2(702.711, -234.06)
+mode = 1
+flags/light_only = false
+nodes/fragment/0/position = Vector2(1720, 160)
+nodes/fragment/9/node = SubResource("VisualShaderNodeExpression_hd7wn")
+nodes/fragment/9/position = Vector2(420, 720)
+nodes/fragment/9/size = Vector2(724.789, 654.559)
+nodes/fragment/9/input_ports = "0,0,In;1,0,Size;"
+nodes/fragment/9/output_ports = "0,0,Dither_Node;"
+nodes/fragment/9/expression = "const float DITHER_THRESHOLDS[16] ={
+		1.0 / 17.0, 9.0 / 17.0, 3.0 / 17.0, 11.0 / 17.0,
+		13.0 / 17.0, 5.0 / 17.0, 15.0 / 17.0, 7.0 / 17.0,
+		4.0 / 17.0, 12.0 / 17.0, 2.0 / 17.0, 10.0 / 17.0,
+		16.0 / 17.0, 8.0 / 17.0, 14.0 / 17.0, 6.0 / 17.0
+	};
+	
+vec2 uv = FRAGCOORD.xy * Size;
+int index = (int(uv.x) % 4) * 4 + int(uv.y) % 4;
+Dither_Node = In - DITHER_THRESHOLDS[index];"
+nodes/fragment/10/node = SubResource("VisualShaderNodeFloatParameter_eqwof")
+nodes/fragment/10/position = Vector2(-380, 740)
+nodes/fragment/11/node = SubResource("VisualShaderNodeStep_04s65")
+nodes/fragment/11/position = Vector2(723.12, 352.651)
+nodes/fragment/12/node = SubResource("VisualShaderNodeColorParameter_5ri30")
+nodes/fragment/12/position = Vector2(640, -380)
+nodes/fragment/13/node = SubResource("VisualShaderNodeTexture_gnvk0")
+nodes/fragment/13/position = Vector2(160, 100)
+nodes/fragment/14/node = SubResource("VisualShaderNodeColorParameter_5lymo")
+nodes/fragment/14/position = Vector2(300, -200)
+nodes/fragment/15/node = SubResource("VisualShaderNodeMix_lpt25")
+nodes/fragment/15/position = Vector2(980, -100)
+nodes/fragment/16/node = SubResource("VisualShaderNodeFloatParameter_kjlml")
+nodes/fragment/16/position = Vector2(38.8687, 1178.49)
+nodes/fragment/17/node = SubResource("VisualShaderNodeStep_yukju")
+nodes/fragment/17/position = Vector2(847.281, 109.421)
+nodes/fragment/18/node = SubResource("VisualShaderNodeExpression_u63sb")
+nodes/fragment/18/position = Vector2(1280, -500)
+nodes/fragment/18/size = Vector2(580, 220)
+nodes/fragment/18/input_ports = "0,4,color;"
+nodes/fragment/18/output_ports = "0,0,grey_value;"
+nodes/fragment/18/expression = "float luminance = 0.299 * color.x + 0.587 * color.y + 0.114 * color.z;
+grey_value = luminance;"
+nodes/fragment/19/node = SubResource("VisualShaderNodeMix_p4a8h")
+nodes/fragment/19/position = Vector2(1940, -340)
+nodes/fragment/21/node = SubResource("VisualShaderNodeBooleanParameter_7xq23")
+nodes/fragment/21/position = Vector2(1440, -100)
+nodes/fragment/connections = PackedInt32Array(10, 0, 9, 0, 9, 0, 11, 1, 14, 0, 15, 1, 16, 0, 9, 1, 13, 0, 17, 0, 9, 0, 17, 1, 17, 0, 15, 2, 17, 0, 0, 1, 18, 0, 19, 1, 12, 0, 18, 0, 12, 0, 19, 0, 19, 0, 0, 0, 21, 0, 19, 2)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1ca5o"]
+shader = SubResource("VisualShader_jx62j")
+shader_parameter/Backdrop_color = Color(0.721569, 0.580392, 0.407843, 1)
+shader_parameter/Opacity = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0ancs"]
+shader = SubResource("VisualShader_jx62j")
+shader_parameter/Backdrop_color = Color(0.243137, 0.494118, 0.423529, 1)
+shader_parameter/Opacity = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7ie5m"]
+shader = ExtResource("9_8gj0l")
+shader_parameter/Photo_exist = true
+shader_parameter/Opacity = 1.0
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_ah4ff"]
+viewport_path = NodePath("00_NPC_CREATOR/Npc_convas/SubViewport")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0b4rc"]
+bg_color = Color(0.588235, 0.494118, 0.376471, 1)
+corner_radius_top_left = 35
+corner_radius_top_right = 35
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wjdu5"]
+bg_color = Color(0.768627, 0.619608, 0.439216, 1)
+corner_radius_top_left = 35
+corner_radius_top_right = 35
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ho6ut"]
+bg_color = Color(0.768627, 0.619608, 0.439216, 1)
+corner_radius_top_left = 35
+corner_radius_top_right = 35
+
+[node name="05_SPEAKER" type="Node"]
+script = ExtResource("1_6gph5")
+
+[node name="Dialogue" type="Node" parent="."]
+script = ExtResource("2_pxao7")
+
+[node name="EzDialogue" type="Node" parent="Dialogue"]
+script = ExtResource("2_iqwu8")
+
+[node name="Dialogue_typing" type="Node" parent="Dialogue"]
+script = ExtResource("4_uwbqv")
+
+[node name="Npc_loader" type="Node" parent="." node_paths=PackedStringArray("loader_node")]
+script = ExtResource("2_gecf5")
+loader_node = NodePath("../00_NPC_CREATOR/Npc_convas/SubViewport/Loader")
+
+[node name="set_Resolution" type="Node" parent="." node_paths=PackedStringArray("viewports")]
+script = ExtResource("6_m0hl7")
+viewports = [NodePath("../00_NPC_CREATOR/Npc_convas/SubViewport")]
+
+[node name="Random_FaceChanger" type="Node" parent="."]
+script = SubResource("GDScript_ktgfg")
+
+[node name="Timer" type="Timer" parent="Random_FaceChanger"]
+one_shot = true
+
+[node name="Open_backdrop" type="Node" parent="."]
+script = SubResource("GDScript_mltnc")
+
+[node name="Backdrop" type="ColorRect" parent="Open_backdrop"]
+material = SubResource("ShaderMaterial_7np4u")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_top = -1.0
+offset_right = -4.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.0156863, 0.0705882, 0.0823529, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="00_NPC_CREATOR" type="Node" parent="."]
+
+[node name="Fade_in" type="Node" parent="00_NPC_CREATOR"]
+script = SubResource("GDScript_6qc5w")
+active_npc_entrance = true
+
+[node name="Timer" type="Timer" parent="00_NPC_CREATOR/Fade_in"]
+wait_time = 0.5
+one_shot = true
+
+[node name="Npc_convas" type="Control" parent="00_NPC_CREATOR"]
+texture_filter = 1
+texture_repeat = 2
+material = SubResource("ShaderMaterial_6s3bf")
+use_parent_material = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Cam_Focus" type="Node" parent="00_NPC_CREATOR/Npc_convas"]
+script = ExtResource("7_yfrxb")
+
+[node name="SubViewport" type="SubViewport" parent="00_NPC_CREATOR/Npc_convas"]
+own_world_3d = true
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1920, 1080)
+
+[node name="Camera3D" type="Camera3D" parent="00_NPC_CREATOR/Npc_convas/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.55, 15.45)
+cull_mask = 1
+current = true
+fov = 55.0
+
+[node name="Loader" type="Node3D" parent="00_NPC_CREATOR/Npc_convas/SubViewport"]
+
+[node name="Guy_02" parent="00_NPC_CREATOR/Npc_convas/SubViewport/Loader" instance=ExtResource("11_60j22")]
+
+[node name="Mr_Birds" parent="00_NPC_CREATOR/Npc_convas/SubViewport/Loader" instance=ExtResource("13_f7b57")]
+visible = false
+
+[node name="Otis_Npc_prefabs" parent="00_NPC_CREATOR/Npc_convas/SubViewport/Loader" instance=ExtResource("13_une54")]
+visible = false
+
+[node name="CH_RENDER" type="Control" parent="00_NPC_CREATOR/Npc_convas"]
+custom_minimum_size = Vector2(500, 720)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 114.0
+offset_top = -360.0
+offset_right = 614.0
+offset_bottom = 360.0
+grow_vertical = 2
+
+[node name="Circle_backdrop2" type="ColorRect" parent="00_NPC_CREATOR/Npc_convas/CH_RENDER"]
+material = SubResource("ShaderMaterial_1ca5o")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 500.0
+offset_right = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Circle_backdrop3" type="ColorRect" parent="00_NPC_CREATOR/Npc_convas/CH_RENDER"]
+material = SubResource("ShaderMaterial_1ca5o")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -6.0
+offset_right = -500.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Circle_backdrop" type="ColorRect" parent="00_NPC_CREATOR/Npc_convas/CH_RENDER"]
+material = SubResource("ShaderMaterial_0ancs")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Render_speacker" type="TextureRect" parent="00_NPC_CREATOR/Npc_convas/CH_RENDER"]
+material = SubResource("ShaderMaterial_7ie5m")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -710.0
+offset_top = -180.0
+offset_right = 710.0
+offset_bottom = 180.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("ViewportTexture_ah4ff")
+expand_mode = 1
+
+[node name="Dialogue_box" type="Control" parent="00_NPC_CREATOR/Npc_convas"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -624.0
+offset_top = 96.0
+offset_right = -124.0
+offset_bottom = 296.0
+grow_horizontal = 0
+script = ExtResource("9_n4i7c")
+
+[node name="Dialogue_name" type="Label" parent="00_NPC_CREATOR/Npc_convas/Dialogue_box"]
+layout_direction = 1
+layout_mode = 1
+offset_right = 109.0
+offset_bottom = 42.0
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.764706, 0.752941, 0.584314, 1)
+theme_override_font_sizes/font_size = 30
+text = "Mr Bird"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="00_NPC_CREATOR/Npc_convas/Dialogue_box/Dialogue_name"]
+visible = false
+layout_direction = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.0625, 0.140625, 0.140625, 1)
+
+[node name="Dialogue_name_show" type="Label" parent="00_NPC_CREATOR/Npc_convas/Dialogue_box/Dialogue_name/ColorRect"]
+layout_direction = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -75.0
+offset_top = -22.5
+offset_right = 75.0
+offset_bottom = 22.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.764706, 0.752941, 0.584314, 1)
+theme_override_font_sizes/font_size = 31
+text = "Mr Bird"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Dialogue_text" type="Label" parent="00_NPC_CREATOR/Npc_convas/Dialogue_box"]
+custom_minimum_size = Vector2(198.065, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -259.0
+offset_top = -31.5
+offset_right = 191.0
+offset_bottom = 31.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.682353, 0.92549, 0.847059, 1)
+theme_override_font_sizes/font_size = 26
+text = "Lorem ipsum lorali aticula"
+autowrap_mode = 3
+
+[node name="dots" type="Label" parent="00_NPC_CREATOR/Npc_convas/Dialogue_box/Dialogue_text"]
+layout_direction = 1
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = 0.499969
+offset_right = 248.0
+offset_bottom = 28.5
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.317647, 0.615686, 0.529412, 1)
+theme_override_font_sizes/font_size = 20
+text = "............................................."
+vertical_alignment = 1
+autowrap_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="00_NPC_CREATOR/Npc_convas/Dialogue_box/Dialogue_text"]
+layout_direction = 1
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = 81.5
+offset_right = 155.0
+offset_bottom = 231.5
+grow_vertical = 0
+mouse_filter = 2
+theme_override_constants/separation = 10
+
+[node name="Deliver_button" type="Button" parent="00_NPC_CREATOR/Npc_convas"]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 203.0
+offset_top = -85.0
+offset_right = 425.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.909804, 0.807843, 0.690196, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_0b4rc")
+theme_override_styles/hover = SubResource("StyleBoxFlat_wjdu5")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ho6ut")
+text = "DELIVER "
+script = ExtResource("13_ewnx3")
+
+[node name="End_typing_button" type="TextureButton" parent="00_NPC_CREATOR/Npc_convas"]
+layout_direction = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+disabled = true
+action_mode = 0
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("10_o8x3k")
+
+[connection signal="custom_signal_received" from="Dialogue/EzDialogue" to="Dialogue" method="_on_ez_dialogue_custom_signal_received"]
+[connection signal="dialogue_generated" from="Dialogue/EzDialogue" to="Dialogue" method="_on_ez_dialogue_dialogue_generated"]
+[connection signal="end_of_dialogue_reached" from="Dialogue/EzDialogue" to="Dialogue" method="_on_ez_dialogue_end_of_dialogue_reached"]
+[connection signal="text_type_done" from="Dialogue/Dialogue_typing" to="00_NPC_CREATOR/Npc_convas/Dialogue_box" method="_on_dialogue_typing_text_type_done"]
+[connection signal="timeout" from="Random_FaceChanger/Timer" to="Random_FaceChanger" method="_on_timer_timeout"]
+[connection signal="timeout" from="00_NPC_CREATOR/Fade_in/Timer" to="00_NPC_CREATOR/Fade_in" method="_on_timer_timeout"]
+[connection signal="end_typing" from="00_NPC_CREATOR/Npc_convas/End_typing_button" to="Dialogue/Dialogue_typing" method="_on_end_typing_button_end_typing"]
+[connection signal="pressed" from="00_NPC_CREATOR/Npc_convas/End_typing_button" to="00_NPC_CREATOR/Npc_convas/End_typing_button" method="_on_pressed"]

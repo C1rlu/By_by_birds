@@ -1,0 +1,507 @@
+[gd_scene load_steps=53 format=3 uid="uid://cein0q2eirkay"]
+
+[ext_resource type="Script" path="res://13_TOOLS_UI/set_Resolution_viewports.gd" id="1_g3pi7"]
+[ext_resource type="Script" path="res://10_BOARD/Board_CamTarget.gd" id="1_janbq"]
+[ext_resource type="Script" path="res://10_BOARD/Active_3D_BoardScene.gd" id="1_n6a4y"]
+[ext_resource type="Resource" uid="uid://5fjsfr4toudr" path="res://08_SUBSCENES/Tools/Main_tool/Open_Board.tres" id="1_qgjbu"]
+[ext_resource type="Script" path="res://10_BOARD/Input_switch.gd" id="2_00g5f"]
+[ext_resource type="PackedScene" uid="uid://dr73p5vs0sixe" path="res://10_BOARD/board_scene.tscn" id="2_6c571"]
+[ext_resource type="Script" path="res://10_BOARD/Sending_bird_responce.gd" id="4_4v7vd"]
+[ext_resource type="Script" path="res://10_BOARD/Check_Object.gd" id="4_bxaq1"]
+[ext_resource type="Script" path="res://10_BOARD/Instantiate_element.gd" id="5_dn45r"]
+[ext_resource type="Script" path="res://10_BOARD/Cam_focus.gd" id="6_7tgl6"]
+[ext_resource type="Resource" uid="uid://cmp0pwiuhoh2j" path="res://15_GAME_RESSOURCE/04_Element/Clock_element.tres" id="6_h5ap1"]
+[ext_resource type="Script" path="res://10_BOARD/Drop_Element_State.gd" id="7_io232"]
+[ext_resource type="Resource" uid="uid://cim2mu11bktke" path="res://15_GAME_RESSOURCE/04_Element/Cube_04_element.tres" id="7_sglhn"]
+[ext_resource type="Resource" uid="uid://drbtl8kjyf8n1" path="res://15_GAME_RESSOURCE/04_Element/Cube_05_element.tres" id="8_sgf7i"]
+[ext_resource type="Script" path="res://10_BOARD/Set_focus_data.gd" id="9_2ajy3"]
+[ext_resource type="Script" path="res://10_BOARD/Zoom_state.gd" id="9_8at4f"]
+[ext_resource type="Resource" uid="uid://ci4gnshy63pep" path="res://15_GAME_RESSOURCE/04_Element/Cube_06_element.tres" id="9_rs7n7"]
+[ext_resource type="Resource" uid="uid://dbi5eh1hx08eb" path="res://15_GAME_RESSOURCE/04_Element/Cube_07_element.tres" id="10_q6p6j"]
+[ext_resource type="Script" path="res://10_BOARD/Board_OBJ_Manager.gd" id="14_johxk"]
+[ext_resource type="Script" path="res://10_BOARD/intance_element_board.gd" id="15_520c2"]
+[ext_resource type="Script" path="res://10_BOARD/Deliver_manager.gd" id="15_mq07p"]
+[ext_resource type="Script" path="res://00_SCENE/Board_control_object_test/Clic_raycast.gd" id="23_osxq7"]
+[ext_resource type="Resource" uid="uid://cd5pseveq582t" path="res://15_GAME_RESSOURCE/03_BoardCam_state/Main_focus_data.tres" id="24_pisk2"]
+[ext_resource type="Script" path="res://00_SCENE/Board_control_object_test/Movable_manager.gd" id="24_tox7b"]
+[ext_resource type="Resource" uid="uid://cyu7mo6v7aaij" path="res://15_GAME_RESSOURCE/03_BoardCam_state/Board_focus_data.tres" id="27_vvxtf"]
+[ext_resource type="Resource" uid="uid://cjwmwf4frvq3c" path="res://15_GAME_RESSOURCE/03_BoardCam_state/BoardZoom_focus_data.tres" id="28_njdgu"]
+[ext_resource type="PackedScene" uid="uid://h2wepwtms1pe" path="res://10_BOARD/02_BOARD_FOCUS_OBJECT/BOARD_FOCUS_OBJECT.tscn" id="29_7uqnr"]
+[ext_resource type="Resource" uid="uid://dlqqpo5rncbhs" path="res://15_GAME_RESSOURCE/03_BoardCam_state/Board_Element_focus_data.tres" id="35_wjkn0"]
+[ext_resource type="Script" path="res://10_BOARD/Camera_xray.gd" id="39_3fd2t"]
+[ext_resource type="Script" path="res://10_BOARD/Pad_target.gd" id="41_lixei"]
+[ext_resource type="Shader" uid="uid://7nanp4dqf4uc" path="res://05_SHADER/Full_screen/04_board_light.tres" id="41_prh4x"]
+
+[sub_resource type="GDScript" id="GDScript_w13ry"]
+script/source = "extends Node
+
+@export var Board_tool : tool_data
+@export var debug_board = true
+
+
+
+func _ready():
+	_global_datas.Player_In_Inventory = debug_board
+	_global_datas.open_inventory.connect(open_inventory)
+	Board_tool.tool_active_signal.connect(open_inventory)
+
+func open_inventory(condition : bool):
+	if !condition:
+		_global_datas.current_scene_state = game_state.scene_state._Main
+		_global_datas._clear_back_call.emit()
+		_global_datas._show_object_legend.emit(false,\"null\")
+		
+	else:
+		_global_datas._add_back_call.emit(back_call)
+		_global_datas.current_scene_state = game_state.scene_state._Boardscene
+		_global_datas._show_object_legend.emit(false,\"null\")
+		_global_datas._check_boat_zone.emit()
+		
+		
+		
+func back_call():
+	_global_datas.Player_In_Inventory = false
+	_global_datas.open_inventory.emit(false)
+	_global_datas._clear_back_call.emit()
+	_global_datas._in_delivery_mode.emit(false)	
+"
+
+[sub_resource type="GDScript" id="GDScript_1a2yk"]
+script/source = "extends Node
+
+@onready var timer = $Timer
+
+func _ready():
+	_global_datas._backFrom_subscene.connect(_open_backfrom_subscene)
+	timer.timeout.connect(open_inventory)
+func _input(event):
+	
+	if _subscene_datas.player_in_subscene:
+		return	
+		
+	if _global_datas.Player_InMenu:
+		return
+	
+	if _global_datas.Player_InDialogue:
+		return
+		
+	if _global_datas.Player_InSubScene:
+		return
+	
+	if event.is_action_pressed(\"Open_Inventory\"):
+		_global_datas.Player_In_Inventory = ! _global_datas.Player_In_Inventory
+		_global_datas.open_inventory.emit(_global_datas.Player_In_Inventory)	
+		if !_global_datas.Player_In_Inventory:
+			_global_datas._in_delivery_mode.emit(false)	
+func _open_backfrom_subscene():
+	
+
+	if check_if_element():
+		timer.start()
+		_global_datas.Player_InMenu = true
+		print(\"OPEN BOARD YOU NEED TO PLACE ELEMENT\")
+func open_inventory():
+	_global_datas.Player_InMenu = false
+	_global_datas.open_inventory.emit(true)
+	_global_datas.Player_In_Inventory = true
+	
+func check_if_element()-> bool :
+	 
+	for e in _global_datas.element_collected:
+		if !e.Object_on_Board:
+			return true	
+	return false
+"
+
+[sub_resource type="GDScript" id="GDScript_52477"]
+script/source = "extends Node
+
+@onready var board_ui = $\"../3D_SCENE/RENDER\"
+@onready var material : Material = board_ui.get_material()
+
+var fade_in
+var fade_value: float
+func _ready():
+	_global_datas.open_inventory.connect(open_inventory)
+	material.set_shader_parameter(\"Opacity\",0.0)
+	
+func open_inventory(condition : bool):
+		
+	if condition:
+
+		_global_datas.show_3D_BoardScene.emit(true)
+		if fade_in:
+			fade_in.kill()
+		
+		fade_in = create_tween()
+		fade_in.tween_method(set_shader_value,0.0,1.0,0.5)
+		fade_in.connect(\"finished\",end_fadeIn)
+	else:
+		_global_datas.show_3D_MainScene.emit(true)
+		
+		if fade_in:
+			fade_in.kill()
+		
+		fade_in = create_tween()
+		fade_in.tween_method(set_shader_value,fade_value,0.0,0.5)
+		fade_in.connect(\"finished\",_disable_viewport)
+		
+
+func _disable_viewport():
+	_global_datas.show_3D_BoardScene.emit(false)
+func end_fadeIn():
+	_global_datas.show_3D_MainScene.emit(false)	
+
+func set_shader_value(value):
+	material.set_shader_parameter(\"Opacity\",value)
+	fade_value = value
+"
+
+[sub_resource type="Shader" id="Shader_8ugrd"]
+code = "
+shader_type canvas_item;
+render_mode unshaded;
+
+uniform float amount = 0.8;
+uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear_mipmap;
+void fragment( )
+{
+	float neighbor = amount * -1.0;
+	float center = amount * 4.0 + 1.0;
+
+	COLOR = vec4(
+		(
+			texture( SCREEN_TEXTURE, SCREEN_UV + SCREEN_PIXEL_SIZE * vec2( -1.0, 0.0 ) ).rgb * neighbor
+		+	texture( SCREEN_TEXTURE, SCREEN_UV + SCREEN_PIXEL_SIZE * vec2( 0.0, -1.0 ) ).rgb * neighbor
+		+	texture( SCREEN_TEXTURE, SCREEN_UV ).rgb * center
+		+	texture( SCREEN_TEXTURE, SCREEN_UV + SCREEN_PIXEL_SIZE * vec2( 1.0, 0.0 ) ).rgb * neighbor
+		+	texture( SCREEN_TEXTURE, SCREEN_UV + SCREEN_PIXEL_SIZE * vec2( 0.0, 1.0 ) ).rgb * neighbor
+		)
+	,	1.0
+	);
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6spwj"]
+shader = SubResource("Shader_8ugrd")
+shader_parameter/amount = 1.0
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_xijcx"]
+viewport_path = NodePath("3D_SCENE/SubViewport_light")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_gdqdh"]
+viewport_path = NodePath("3D_SCENE/SubViewport")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ktpkr"]
+resource_local_to_scene = true
+shader = ExtResource("41_prh4x")
+shader_parameter/Opacity = 1.0
+shader_parameter/Albedo_viewport = SubResource("ViewportTexture_gdqdh")
+shader_parameter/Albedo_light = SubResource("ViewportTexture_xijcx")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_56tra"]
+viewport_path = NodePath("3D_SCENE/SubViewport")
+
+[sub_resource type="VisualShaderNodeExpression" id="VisualShaderNodeExpression_yrkdd"]
+size = Vector2(513.781, 284.487)
+expression = "vec2 n_uv = UV -0.5;
+float d = length(n_uv);
+float c = smoothstep(r,r + feather,d);
+color = vec4(vec3(c),1.0);"
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_fxvjj"]
+input_name = "uv"
+
+[sub_resource type="VisualShaderNodeFloatConstant" id="VisualShaderNodeFloatConstant_xdogs"]
+constant = 0.5
+
+[sub_resource type="VisualShaderNodeFloatConstant" id="VisualShaderNodeFloatConstant_wb6mp"]
+
+[sub_resource type="VisualShaderNodeFloatFunc" id="VisualShaderNodeFloatFunc_evu1d"]
+function = 31
+
+[sub_resource type="VisualShaderNodeFloatConstant" id="VisualShaderNodeFloatConstant_5pf1n"]
+constant = 0.1
+
+[sub_resource type="VisualShader" id="VisualShader_elssd"]
+code = "shader_type canvas_item;
+render_mode blend_mix;
+
+
+
+
+void fragment() {
+// Input:3
+	vec2 n_out3p0 = UV;
+
+
+// FloatConstant:4
+	float n_out4p0 = 0.500000;
+
+
+// FloatConstant:5
+	float n_out5p0 = 0.000000;
+
+
+	vec4 n_out2p0;
+// Expression:2
+	n_out2p0 = vec4(0.0, 0.0, 0.0, 0.0);
+	{
+		vec2 n_uv = n_out3p0 -0.5;
+		float d = length(n_uv);
+		float c = smoothstep(n_out4p0,n_out4p0 + n_out5p0,d);
+		n_out2p0 = vec4(vec3(c),1.0);
+	}
+
+
+// FloatFunc:6
+	float n_out6p0 = 1.0 - n_out2p0.x;
+
+
+// Output:0
+	COLOR.a = n_out6p0;
+
+
+}
+"
+graph_offset = Vector2(-507.845, 108.253)
+mode = 1
+flags/light_only = false
+nodes/fragment/0/position = Vector2(820, 140)
+nodes/fragment/2/node = SubResource("VisualShaderNodeExpression_yrkdd")
+nodes/fragment/2/position = Vector2(-82.4779, 287.841)
+nodes/fragment/2/size = Vector2(513.781, 284.487)
+nodes/fragment/2/input_ports = "0,3,UV;1,0,r;2,0,feather;"
+nodes/fragment/2/output_ports = "0,5,color;"
+nodes/fragment/2/expression = "vec2 n_uv = UV -0.5;
+float d = length(n_uv);
+float c = smoothstep(r,r + feather,d);
+color = vec4(vec3(c),1.0);"
+nodes/fragment/3/node = SubResource("VisualShaderNodeInput_fxvjj")
+nodes/fragment/3/position = Vector2(-482.478, 227.841)
+nodes/fragment/4/node = SubResource("VisualShaderNodeFloatConstant_xdogs")
+nodes/fragment/4/position = Vector2(-362.478, 387.841)
+nodes/fragment/5/node = SubResource("VisualShaderNodeFloatConstant_wb6mp")
+nodes/fragment/5/position = Vector2(-282.478, 487.841)
+nodes/fragment/6/node = SubResource("VisualShaderNodeFloatFunc_evu1d")
+nodes/fragment/6/position = Vector2(654.179, 36.3039)
+nodes/fragment/7/node = SubResource("VisualShaderNodeFloatConstant_5pf1n")
+nodes/fragment/7/position = Vector2(57.5221, -12.1591)
+nodes/fragment/connections = PackedInt32Array(3, 0, 2, 0, 4, 0, 2, 1, 5, 0, 2, 2, 2, 0, 6, 0, 6, 0, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_blt4p"]
+shader = SubResource("VisualShader_elssd")
+
+[sub_resource type="SphereMesh" id="SphereMesh_ycnm1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ifca2"]
+shading_mode = 0
+
+[sub_resource type="PrismMesh" id="PrismMesh_2j3nk"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yjabd"]
+shading_mode = 0
+albedo_color = Color(1, 0.219608, 0.219608, 1)
+
+[node name="04_BOARD" type="Node"]
+script = SubResource("GDScript_w13ry")
+Board_tool = ExtResource("1_qgjbu")
+debug_board = false
+metadata/_edit_horizontal_guides_ = [-58.0]
+
+[node name="Active_3D_scene" type="Node" parent="." node_paths=PackedStringArray("viewports")]
+script = ExtResource("1_n6a4y")
+viewports = [NodePath("../3D_SCENE/SubViewport")]
+
+[node name="Open_Inventory" type="Node" parent="."]
+script = SubResource("GDScript_1a2yk")
+
+[node name="set_Resolution" type="Node" parent="Open_Inventory" node_paths=PackedStringArray("viewports")]
+script = ExtResource("1_g3pi7")
+viewports = [NodePath("../../3D_SCENE/SubViewport")]
+
+[node name="Timer" type="Timer" parent="Open_Inventory"]
+one_shot = true
+
+[node name="SendingManager" type="Node" parent="."]
+
+[node name="Check_Object" type="Node" parent="SendingManager"]
+script = ExtResource("4_bxaq1")
+
+[node name="Sending_bird_responce" type="Node" parent="SendingManager"]
+script = ExtResource("4_4v7vd")
+
+[node name="Element_Manager" type="Node" parent="."]
+script = ExtResource("14_johxk")
+Proto_element = Array[Resource("res://15_GAME_RESSOURCE/04_Element/Element_Data/object_data.gd")]([ExtResource("6_h5ap1"), ExtResource("7_sglhn"), ExtResource("8_sgf7i"), ExtResource("9_rs7n7"), ExtResource("10_q6p6j")])
+
+[node name="Drop_Element_State" type="Node" parent="Element_Manager"]
+script = ExtResource("7_io232")
+camera_focus = ExtResource("27_vvxtf")
+
+[node name="Instantiate_element_broke" type="Node" parent="Element_Manager" node_paths=PackedStringArray("Drop_Element_State")]
+script = ExtResource("5_dn45r")
+Drop_Element_State = NodePath("../Drop_Element_State")
+
+[node name="intance_element_board" type="Node" parent="Element_Manager/Instantiate_element_broke"]
+script = ExtResource("15_520c2")
+
+[node name="Deliver_manager" type="Node" parent="." node_paths=PackedStringArray("Instantiate_element")]
+script = ExtResource("15_mq07p")
+Instantiate_element = NodePath("../Element_Manager/Instantiate_element_broke/intance_element_board")
+
+[node name="Input_switch" type="Node" parent="."]
+script = ExtResource("2_00g5f")
+
+[node name="Fade" type="Node" parent="."]
+script = SubResource("GDScript_52477")
+
+[node name="Cam_focus" type="Node" parent="." node_paths=PackedStringArray("all_Cam", "focus_target")]
+script = ExtResource("6_7tgl6")
+_focus_board = ExtResource("27_vvxtf")
+all_Cam = [NodePath("../3D_SCENE/SubViewport/Camera3D_Main"), NodePath("../3D_SCENE/Camera_xray"), NodePath("../3D_SCENE/SubViewport_light/Camera3D_Main")]
+focus_target = NodePath("../3D_SCENE/CamTarget")
+
+[node name="Zoom_state" type="Node" parent="Cam_focus"]
+script = ExtResource("9_8at4f")
+main_state = ExtResource("24_pisk2")
+board_state = ExtResource("27_vvxtf")
+board_zoom_state = ExtResource("28_njdgu")
+
+[node name="Clic_raycast" type="Node" parent="." node_paths=PackedStringArray("Camera", "pad_target")]
+script = ExtResource("23_osxq7")
+Camera = NodePath("../3D_SCENE/Camera_xray")
+pad_target = NodePath("../3D_SCENE/Pad_target")
+
+[node name="Movable_manager" type="Node" parent="Clic_raycast"]
+script = ExtResource("24_tox7b")
+
+[node name="3D_SCENE" type="Node3D" parent="."]
+
+[node name="Camera_state" type="Node3D" parent="3D_SCENE"]
+
+[node name="Camera_OnElement_focus" type="Camera3D" parent="3D_SCENE/Camera_state"]
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 0.2, 0.55)
+visible = false
+cull_mask = 2
+current = true
+fov = 40.0
+script = ExtResource("9_2ajy3")
+focus_data = ExtResource("35_wjkn0")
+
+[node name="Camera_OnBoard_zoom" type="Camera3D" parent="3D_SCENE/Camera_state"]
+transform = Transform3D(1, 0, 0, 0, 0.34202, 0.939693, 0, -0.939693, 0.34202, 0, 0.172, 0.187)
+visible = false
+cull_mask = 2
+fov = 40.0
+script = ExtResource("9_2ajy3")
+focus_data = ExtResource("28_njdgu")
+
+[node name="Camera_OnBoard" type="Camera3D" parent="3D_SCENE/Camera_state"]
+transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 0.48, 0.393)
+visible = false
+cull_mask = 2
+fov = 40.0
+script = ExtResource("9_2ajy3")
+focus_data = ExtResource("27_vvxtf")
+
+[node name="Camera_OnMain" type="Camera3D" parent="3D_SCENE/Camera_state"]
+transform = Transform3D(0.994881, 0.0700724, -0.072816, 0, 0.720551, 0.693402, 0.101056, -0.689852, 0.716862, -0.08, 0.945, 1.035)
+visible = false
+cull_mask = 2
+fov = 40.0
+script = ExtResource("9_2ajy3")
+focus_data = ExtResource("24_pisk2")
+
+[node name="Camera_xray" type="Camera3D" parent="3D_SCENE"]
+transform = Transform3D(0.994881, 0.0700724, -0.072816, 0, 0.720551, 0.693402, 0.101056, -0.689852, 0.716862, -0.08, 0.945, 1.035)
+cull_mask = 0
+fov = 40.0
+far = 4.25
+script = ExtResource("39_3fd2t")
+
+[node name="SubViewport" type="SubViewport" parent="3D_SCENE"]
+scaling_3d_scale = 0.9
+size = Vector2i(1920, 1080)
+
+[node name="SHARP_test" type="ColorRect" parent="3D_SCENE/SubViewport"]
+material = SubResource("ShaderMaterial_6spwj")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Camera3D_Main" type="Camera3D" parent="3D_SCENE/SubViewport"]
+transform = Transform3D(0.994881, 0.0700724, -0.072816, 0, 0.720551, 0.693402, 0.101056, -0.689852, 0.716862, -0.08, 0.945, 1.035)
+cull_mask = 2
+current = true
+fov = 40.0
+far = 10.0
+
+[node name="SubViewport_light" type="SubViewport" parent="3D_SCENE"]
+transparent_bg = true
+canvas_item_default_texture_filter = 0
+size = Vector2i(1920, 1080)
+
+[node name="Camera3D_Main" type="Camera3D" parent="3D_SCENE/SubViewport_light"]
+transform = Transform3D(0.994881, 0.0700724, -0.072816, 0, 0.720551, 0.693402, 0.101056, -0.689852, 0.716862, -0.08, 0.945, 1.035)
+cull_mask = 65536
+current = true
+fov = 40.0
+far = 10.0
+
+[node name="RENDER" type="TextureRect" parent="3D_SCENE"]
+material = SubResource("ShaderMaterial_ktpkr")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("ViewportTexture_56tra")
+expand_mode = 3
+
+[node name="Pad_target" type="ColorRect" parent="3D_SCENE"]
+visible = false
+material = SubResource("ShaderMaterial_blt4p")
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -7.5
+offset_top = -7.5
+offset_right = 7.5
+offset_bottom = 7.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.8, 0.8)
+mouse_filter = 2
+color = Color(0.721569, 0.635294, 0.439216, 1)
+script = ExtResource("41_lixei")
+
+[node name="Board_scene" parent="3D_SCENE" instance=ExtResource("2_6c571")]
+
+[node name="CamTarget" type="Node3D" parent="3D_SCENE"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.125)
+script = ExtResource("1_janbq")
+min_x = -1.0
+max_x = 1.0
+min_z = -0.8
+max_z = 0.5
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="3D_SCENE/CamTarget"]
+transform = Transform3D(0.0354637, 0, 0, 0, 0.0354637, 0, 0, 0, 0.0354637, 0, 0, 0)
+visible = false
+layers = 2
+mesh = SubResource("SphereMesh_ycnm1")
+surface_material_override/0 = SubResource("StandardMaterial3D_ifca2")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="3D_SCENE/CamTarget"]
+transform = Transform3D(0.0176783, 0, 0, 0, -7.72744e-10, 0.0176783, 0, -0.0176783, -7.72744e-10, 0, 0.017216, 0)
+visible = false
+layers = 2
+mesh = SubResource("PrismMesh_2j3nk")
+surface_material_override/0 = SubResource("StandardMaterial3D_yjabd")
+
+[node name="BoardFocus_3D" parent="." instance=ExtResource("29_7uqnr")]
+visible = false

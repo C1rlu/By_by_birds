@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://dbu2q4lhlk8w5"]
+
+[ext_resource type="Shader" uid="uid://b8diek1y2u36x" path="res://05_SHADER/Full_screen/Subscene_screen/subscene_MainRender_sh.tres" id="1_mh27f"]
+
+[resource]
+resource_local_to_scene = true
+shader = ExtResource("1_mh27f")
+shader_parameter/Opacity = 0.0

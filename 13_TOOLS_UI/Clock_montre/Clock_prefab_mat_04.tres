@@ -1,0 +1,169 @@
+[gd_resource type="ShaderMaterial" load_steps=14 format=3 uid="uid://cfi5jyq3utqd4"]
+
+[ext_resource type="Shader" uid="uid://db5bcfw5o30ce" path="res://13_TOOLS_UI/Clock_montre/Clock_prefab_01.tres" id="1_pbkuu"]
+
+[sub_resource type="VisualShaderNodeStep" id="VisualShaderNodeStep_dhq8t"]
+
+[sub_resource type="VisualShaderNodeBooleanParameter" id="VisualShaderNodeBooleanParameter_j2onx"]
+parameter_name = "on_over"
+default_value_enabled = true
+
+[sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_x185c"]
+parameter_name = "Over_color"
+
+[sub_resource type="VisualShaderNodeFresnel" id="VisualShaderNodeFresnel_bg2ef"]
+default_input_values = [2, false, 3, 2.24]
+
+[sub_resource type="VisualShaderNodeSwitch" id="VisualShaderNodeSwitch_4ud3s"]
+default_input_values = [0, false, 1, true, 2, false]
+op_type = 6
+
+[sub_resource type="VisualShaderNodeExpression" id="VisualShaderNodeExpression_sjies"]
+size = Vector2(724.789, 654.559)
+expression = "const float DITHER_THRESHOLDS[16] ={
+		1.0 / 17.0, 9.0 / 17.0, 3.0 / 17.0, 11.0 / 17.0,
+		13.0 / 17.0, 5.0 / 17.0, 15.0 / 17.0, 7.0 / 17.0,
+		4.0 / 17.0, 12.0 / 17.0, 2.0 / 17.0, 10.0 / 17.0,
+		16.0 / 17.0, 8.0 / 17.0, 14.0 / 17.0, 6.0 / 17.0
+	};
+	
+vec2 uv = FRAGCOORD.xy * Size;
+int index = (int(uv.x) % 4) * 4 + int(uv.y) % 4;
+Dither_Node = In - DITHER_THRESHOLDS[index];"
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_0e3f7"]
+parameter_name = "Dither_size"
+qualifier = 1
+
+[sub_resource type="VisualShaderNodeFloatConstant" id="VisualShaderNodeFloatConstant_knske"]
+constant = 1.0
+
+[sub_resource type="VisualShader" id="VisualShader_nqe4c"]
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx, unshaded, shadows_disabled, ambient_light_disabled, fog_disabled;
+
+uniform vec4 Over_color : source_color;
+uniform bool on_over = false;
+global uniform float Dither_size;
+
+
+
+void fragment() {
+// ColorParameter:3
+	vec4 n_out3p0 = Over_color;
+
+
+// BooleanParameter:2
+	bool n_out2p0 = on_over;
+
+
+// FloatConstant:9
+	float n_out9p0 = 1.000000;
+
+
+// FloatParameter:8
+	float n_out8p0 = Dither_size;
+
+
+	float n_out6p0;
+// Expression:6
+	n_out6p0 = 0.0;
+	{
+		const float DITHER_THRESHOLDS[16] ={
+				1.0 / 17.0, 9.0 / 17.0, 3.0 / 17.0, 11.0 / 17.0,
+				13.0 / 17.0, 5.0 / 17.0, 15.0 / 17.0, 7.0 / 17.0,
+				4.0 / 17.0, 12.0 / 17.0, 2.0 / 17.0, 10.0 / 17.0,
+				16.0 / 17.0, 8.0 / 17.0, 14.0 / 17.0, 6.0 / 17.0
+			};
+			
+		vec2 uv = FRAGCOORD.xy * n_out8p0;
+		int index = (int(uv.x) % 4) * 4 + int(uv.y) % 4;
+		n_out6p0 = n_out9p0 - DITHER_THRESHOLDS[index];
+	}
+
+
+// Fresnel:4
+	float n_in4p3 = 2.24000;
+	float n_out4p0 = pow(1.0 - clamp(dot(NORMAL, VIEW), 0.0, 1.0), n_in4p3);
+
+
+// Step:10
+	float n_out10p0 = step(n_out6p0, n_out4p0);
+
+
+	bool n_out5p0;
+// Switch:5
+	bool n_in5p2 = false;
+	if (n_out2p0) {
+		n_out5p0 = n_out10p0 > 0.0 ? true : false;
+	} else {
+		n_out5p0 = n_in5p2;
+	}
+
+
+// Output:0
+	ALBEDO = vec3(n_out3p0.xyz);
+	ALPHA = (n_out5p0 ? 1.0 : 0.0);
+
+
+}
+"
+graph_offset = Vector2(-637.423, -75.254)
+flags/unshaded = true
+flags/shadows_disabled = true
+flags/ambient_light_disabled = true
+flags/fog_disabled = true
+nodes/fragment/2/node = SubResource("VisualShaderNodeBooleanParameter_j2onx")
+nodes/fragment/2/position = Vector2(-660, 240)
+nodes/fragment/3/node = SubResource("VisualShaderNodeColorParameter_x185c")
+nodes/fragment/3/position = Vector2(-140, 80)
+nodes/fragment/4/node = SubResource("VisualShaderNodeFresnel_bg2ef")
+nodes/fragment/4/position = Vector2(-980, 440)
+nodes/fragment/5/node = SubResource("VisualShaderNodeSwitch_4ud3s")
+nodes/fragment/5/position = Vector2(-160, 260)
+nodes/fragment/6/node = SubResource("VisualShaderNodeExpression_sjies")
+nodes/fragment/6/position = Vector2(-640, 880)
+nodes/fragment/6/size = Vector2(724.789, 654.559)
+nodes/fragment/6/input_ports = "0,0,In;1,0,Size;"
+nodes/fragment/6/output_ports = "0,0,Dither_Node;"
+nodes/fragment/6/expression = "const float DITHER_THRESHOLDS[16] ={
+		1.0 / 17.0, 9.0 / 17.0, 3.0 / 17.0, 11.0 / 17.0,
+		13.0 / 17.0, 5.0 / 17.0, 15.0 / 17.0, 7.0 / 17.0,
+		4.0 / 17.0, 12.0 / 17.0, 2.0 / 17.0, 10.0 / 17.0,
+		16.0 / 17.0, 8.0 / 17.0, 14.0 / 17.0, 6.0 / 17.0
+	};
+	
+vec2 uv = FRAGCOORD.xy * Size;
+int index = (int(uv.x) % 4) * 4 + int(uv.y) % 4;
+Dither_Node = In - DITHER_THRESHOLDS[index];"
+nodes/fragment/8/node = SubResource("VisualShaderNodeFloatParameter_0e3f7")
+nodes/fragment/8/position = Vector2(-1360, 1040)
+nodes/fragment/9/node = SubResource("VisualShaderNodeFloatConstant_knske")
+nodes/fragment/9/position = Vector2(-1000, 780)
+nodes/fragment/10/node = SubResource("VisualShaderNodeStep_dhq8t")
+nodes/fragment/10/position = Vector2(-280, 620)
+nodes/fragment/connections = PackedInt32Array(3, 0, 0, 0, 2, 0, 5, 0, 8, 0, 6, 1, 9, 0, 6, 0, 4, 0, 10, 1, 6, 0, 10, 0, 10, 0, 5, 1, 5, 0, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y2cba"]
+render_priority = 0
+shader = SubResource("VisualShader_nqe4c")
+shader_parameter/Over_color = Color(0.960784, 0.819608, 0.541176, 1)
+shader_parameter/on_over = false
+
+[sub_resource type="Gradient" id="Gradient_324uw"]
+offsets = PackedFloat32Array(0, 0.615556, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_bbkqx"]
+gradient = SubResource("Gradient_324uw")
+fill_from = Vector2(0.551282, 1)
+fill_to = Vector2(0.555556, 0)
+
+[resource]
+resource_local_to_scene = true
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_y2cba")
+shader = ExtResource("1_pbkuu")
+shader_parameter/Main_color = Color(0.0588235, 0.141176, 0.145098, 1)
+shader_parameter/Main_color_02 = Color(0.444546, 0.342102, 0.216623, 1)
+shader_parameter/Gradiant = SubResource("GradientTexture2D_bbkqx")

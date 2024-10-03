@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="info_data" load_steps=2 format=3 uid="uid://17rhne0x2mwf"]
+
+[ext_resource type="Script" path="res://15_GAME_RESSOURCE/01_info_data/Book_info_data.gd" id="1_adv5k"]
+
+[resource]
+script = ExtResource("1_adv5k")
+info_node_name = "scanner"
+is_discovered = false

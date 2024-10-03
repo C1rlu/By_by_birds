@@ -1,0 +1,24 @@
+[gd_scene load_steps=6 format=3 uid="uid://chipng023vh22"]
+
+[ext_resource type="PackedScene" uid="uid://duffwm80yuqso" path="res://08_SUBSCENES/Elements/Ice/Ice_msh_01.blend" id="1_qh0n2"]
+[ext_resource type="Shader" uid="uid://btl0hgwwfslhj" path="res://08_SUBSCENES/Elements/Magnetable_test/00_SHADER/Debris_scanner_sh.tres" id="2_41vfx"]
+[ext_resource type="Shader" uid="uid://be88gec6clk8u" path="res://05_SHADER/Subscene_materials/Subscene_sh.tres" id="3_r3ykd"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7abhv"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("2_41vfx")
+shader_parameter/Color = Color(0.788235, 0.588235, 0.345098, 1)
+shader_parameter/Opacity = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dbhyg"]
+resource_local_to_scene = true
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_7abhv")
+shader = ExtResource("3_r3ykd")
+
+[node name="Ice_msh_02" instance=ExtResource("1_qh0n2")]
+
+[node name="Ice_msh_01" parent="." index="0"]
+layers = 4
+surface_material_override/0 = SubResource("ShaderMaterial_dbhyg")

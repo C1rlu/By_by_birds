@@ -1,13 +1,13 @@
 extends Node
 
-var smooth_speed = 3.0
+@export var smooth_speed = 3.0
 var offset: Vector3
 var sub_scene_offset: Vector3
 var dialogue_offset: Vector3
 var active_target : Vector3
 var menu_scene_offset: Vector3
 
-
+@export var _manuel_offset : Vector3
 @export var _all_cam_array : Array[Camera3D]
 
 
@@ -18,7 +18,7 @@ func _ready():
 	menu_scene_offset = Vector3(0.0,-2.5,0.0)
 	
 	var playerPosition = _global_datas.player_position
-	offset = _all_cam_array[0].transform.origin - playerPosition
+	offset = _all_cam_array[0].transform.origin - playerPosition + _manuel_offset
 	active_target = offset
 
 	

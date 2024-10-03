@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://13_TOOLS_UI/Back_Letters/BackResult_Letter.gd" id="1_3dpy5"]
 [ext_resource type="Texture2D" uid="uid://cpnkof28l8bd6" path="res://13_TOOLS_UI/Board_button/Letters_buttons_02.png" id="2_rxyxa"]
-[ext_resource type="Shader" uid="uid://bbxdwa2b412rx" path="res://13_TOOLS_UI/Letter/Start_note_OnOver_sh.tres" id="2_w6i6c"]
-[ext_resource type="Shader" uid="uid://c38pab15ywxmh" path="res://13_TOOLS_UI/Letter/Start_note_sh.tres" id="3_oe0rj"]
+[ext_resource type="Shader" uid="uid://bbxdwa2b412rx" path="res://13_TOOLS_UI/Back_Letters/Start_note_OnOver_sh.tres" id="2_w6i6c"]
+[ext_resource type="Shader" uid="uid://c38pab15ywxmh" path="res://13_TOOLS_UI/Back_Letters/Start_note_sh.tres" id="3_oe0rj"]
 [ext_resource type="Shader" uid="uid://bhctfh42jxjgh" path="res://13_TOOLS_UI/Photo/Photo_ui_prefab_fadeIn.tres" id="4_w136v"]
 [ext_resource type="Texture2D" uid="uid://dkqa1xnttnmoq" path="res://13_TOOLS_UI/Photo/IMG/Maurice_photo.png" id="5_i8yi7"]
 

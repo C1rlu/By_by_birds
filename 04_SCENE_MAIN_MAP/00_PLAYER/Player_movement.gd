@@ -9,8 +9,14 @@ var using_pad : bool
 
 var _lock_speed : bool = false
 
+
+@export var _active : bool = false
+
 func _ready():
 	
+	if !_active:
+		return
+		
 	_global_datas.using_pad.connect(_using_pad)
 	speed = move_speed
 
@@ -26,7 +32,8 @@ func lock_speed(condition : bool):
 				
 func _input(event):
 	
-	
+	if !_active:
+		return
 	if event.is_action_pressed("Speed_boat"):
 		if !_lock_speed:
 			speed = move_speed * 2	
@@ -39,12 +46,8 @@ func _input(event):
 	
 func _physics_process(_delta):
 	
-	if _global_datas.Player_In_Inventory:
+	if !_active:
 		return
-	
-	if _global_datas.Player_InSubScene:
-		return
-	
 		
 	var translation = get_global_transform().origin
 	_global_datas.player_position = translation

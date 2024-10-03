@@ -34,15 +34,10 @@ func _input(event):
 	
 	if _global_datas.Player_InDialogue:
 		return
-	if _global_datas.Player_InSubScene:
-		return	
-		
+
 	if _global_datas.Player_InMenu:
 		return	
-	if _global_datas.delevery_birds_amout == 0:
-		
-		return 
-			
+	
 	if delevery_ui_node.visible:
 		if event.is_action_pressed("Click"):
 			_global_datas._in_delivery_mode.emit(true)	

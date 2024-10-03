@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://bp78h2ifb8rb4"]
 
-[ext_resource type="Shader" uid="uid://cu2uipuy138c6" path="res://05_SHADER/All_Materials/Main_sceneTest_dither_sh.tres" id="1_i0x7t"]
+[ext_resource type="Shader" uid="uid://cu2uipuy138c6" path="res://00_SHADER/All_Materials/Main_sceneTest_dither_sh.tres" id="1_i0x7t"]
 [ext_resource type="Texture2D" uid="uid://dm5kte26psfgq" path="res://04_SCENE_MAIN_MAP/ELEMENTS/Island_set/island_set_02/Islande_gradient_02.png" id="2_o0q86"]
 
 [resource]

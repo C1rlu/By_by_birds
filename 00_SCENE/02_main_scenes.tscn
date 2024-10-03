@@ -1,39 +1,34 @@
-[gd_scene load_steps=100 format=3 uid="uid://cnmptm7i0xxmj"]
+[gd_scene load_steps=94 format=3 uid="uid://cnmptm7i0xxmj"]
 
-[ext_resource type="Script" path="res://00_SCENE/Active_Decor_Scene.gd" id="1_ounvv"]
 [ext_resource type="PackedScene" uid="uid://vpdvl0v7dubd" path="res://04_SCENE_MAIN_MAP/00_PLAYER/Player_boat.tscn" id="1_qltht"]
 [ext_resource type="Resource" uid="uid://ppxk5i543dfn" path="res://15_GAME_RESSOURCE/00_Npc_data/Mr_Birds_data.tres" id="1_trgwt"]
 [ext_resource type="Script" path="res://13_TOOLS_UI/set_Resolution_viewports.gd" id="1_xd8sb"]
 [ext_resource type="Script" path="res://03_CAMERA/CameraFollow.gd" id="2_7lb1x"]
 [ext_resource type="Shader" uid="uid://bduoqim3kfbs6" path="res://04_SCENE_MAIN_MAP/00_PLAYER/Sonar/Sonar_sh.tres" id="3_todel"]
 [ext_resource type="Script" path="res://03_CAMERA/Active_scene_viewports.gd" id="4_tulh2"]
-[ext_resource type="Material" uid="uid://ctnqf5d3uj1g7" path="res://05_SHADER/All_Materials/dark_mask.tres" id="6_vcmny"]
-[ext_resource type="Material" uid="uid://b64juw612xqpu" path="res://05_SHADER/Sea_sh/Sea_mat.tres" id="7_4y8ld"]
-[ext_resource type="Shader" uid="uid://b8pie7pbqwtks" path="res://05_SHADER/Full_screen/Main_fullscreen.tres" id="8_oftpq"]
-[ext_resource type="Shader" path="res://05_SHADER/Full_screen/Pixel_art/test_pixel.gdshader" id="8_t6l40"]
 [ext_resource type="Script" path="res://00_SCENE/In_Zone_State.gd" id="9_rhikc"]
-[ext_resource type="Script" path="res://00_SCENE/Day_state.gd" id="9_vbyff"]
 [ext_resource type="PackedScene" uid="uid://dla1534gcagbl" path="res://04_SCENE_MAIN_MAP/ELEMENTS/Pine/pine_prefabs.tscn" id="10_c6r5x"]
 [ext_resource type="Script" path="res://00_SCENE/In_Delevery_state.gd" id="10_de1nl"]
 [ext_resource type="Script" path="res://00_SCENE/In_DiveZone_State.gd" id="10_i656g"]
 [ext_resource type="Script" path="res://00_SCENE/In_NpcZone_State.gd" id="11_7hdfu"]
 [ext_resource type="PackedScene" uid="uid://cegdqm3et2y35" path="res://04_SCENE_MAIN_MAP/ELEMENTS/Iceberg/ice_berg_02.tscn" id="11_086vv"]
-[ext_resource type="Script" path="res://00_SCENE/Sonar_zone_active.gd" id="12_gjulh"]
-[ext_resource type="Script" path="res://00_SCENE/Delevery_birds.gd" id="15_2gerx"]
+[ext_resource type="Shader" path="res://00_SHADER/Full_screen/Pixel_art/test_pixel.gdshader" id="12_j62vj"]
+[ext_resource type="Shader" uid="uid://b8pie7pbqwtks" path="res://00_SHADER/Full_screen/Main_fullscreen.tres" id="13_je1hg"]
+[ext_resource type="PackedScene" uid="uid://c5wn0a86wvnq4" path="res://04_SCENE_MAIN_MAP/01_PLAYER_BIRD/Player_bird.tscn" id="14_u11n5"]
 [ext_resource type="PackedScene" uid="uid://fcjcvy77lg0o" path="res://04_SCENE_MAIN_MAP/ELEMENTS/Lighthouse/lighthouse_prefabs.tscn" id="16_u78ww"]
 [ext_resource type="Script" path="res://04_SCENE_MAIN_MAP/00_PLAYER/Check_zone.gd" id="17_unqeu"]
 [ext_resource type="PackedScene" uid="uid://exqao35losp1" path="res://04_SCENE_MAIN_MAP/ELEMENTS/Rampe/Rampe_prefab.tscn" id="18_vvmth"]
 [ext_resource type="Texture2D" uid="uid://flr7odvrvgkt" path="res://13_TOOLS_UI/delevery_box_logo.png" id="19_wl2lb"]
-[ext_resource type="Script" path="res://00_SCENE/Zone_trigger.gd" id="20_v4ay2"]
 [ext_resource type="PackedScene" uid="uid://cp1aidnp626l4" path="res://04_SCENE_MAIN_MAP/Birds/Birds_prefabs.tscn" id="21_py3bv"]
 [ext_resource type="PackedScene" uid="uid://bme2k8btnc2jn" path="res://04_SCENE_MAIN_MAP/ELEMENTS/Island_set/island_set_02/Island_set_02_prefab.tscn" id="25_bqqm8"]
 [ext_resource type="PackedScene" uid="uid://cmfuqfuw7csk0" path="res://04_SCENE_MAIN_MAP/ELEMENTS/Island_set/island_set_03/Island_set_03_prefab.tscn" id="26_k2gvt"]
-[ext_resource type="Script" path="res://00_SCENE/Disable_Meet_bird_for_today.gd" id="29_57vaj"]
 [ext_resource type="Script" path="res://00_SYSTEMS/Active_mask_at_ready.tres.gd" id="30_7kr1q"]
 [ext_resource type="Resource" uid="uid://xuxu60afj84h" path="res://15_GAME_RESSOURCE/00_Npc_data/Maurice_dialogue_data.tres" id="30_ivc7k"]
 [ext_resource type="Script" path="res://00_SCENE/Npc_zone.gd" id="30_ki3ay"]
 [ext_resource type="Resource" uid="uid://c6jw6ja2xggvh" path="res://15_GAME_RESSOURCE/00_Npc_data/Otis_Coast_guard_data.tres" id="32_pt30g"]
 [ext_resource type="Material" uid="uid://yjoyk6fvrm6q" path="res://00_SHADER/No_light_surface_mat.tres" id="33_um15u"]
+[ext_resource type="Material" uid="uid://ctnqf5d3uj1g7" path="res://00_SHADER/All_Materials/dark_mask.tres" id="34_uioem"]
+[ext_resource type="Material" uid="uid://b64juw612xqpu" path="res://00_SHADER/Sea_sh/Sea_mat.tres" id="35_q2qb8"]
 [ext_resource type="PackedScene" uid="uid://dh5kdswdhdfq6" path="res://04_SCENE_MAIN_MAP/ELEMENTS/Island_set/Island_set_01/Island_set_01_prefab.tscn" id="37_b1buk"]
 [ext_resource type="PackedScene" uid="uid://tykoadjnvbu3" path="res://04_SCENE_MAIN_MAP/Zone_info/path_zone.tscn" id="40_16tde"]
 [ext_resource type="Shader" uid="uid://jjqliete2f27" path="res://04_SCENE_MAIN_MAP/ELEMENTS/Subscene_elements/Subscene_element_sh.tres" id="46_wdctu"]
@@ -142,11 +137,10 @@ script/source = "extends Node
 
 func _input(event):
 
-	if _global_datas.Player_In_Inventory:
-		return
-	
+
 	if _global_datas.Player_InDialogue:
 		return
+		
 	if event.is_action_pressed(\"Push_to_subscene\"):
 		
 		if !_global_datas.Player_InDialogue_zone:
@@ -157,30 +151,6 @@ func _input(event):
 		_global_datas._check_dialogue_photo.emit()
 
 		
-"
-
-[sub_resource type="GDScript" id="GDScript_8cfdp"]
-script/source = "extends Node
-
-@onready var main_scene_ui = $MAIN_SCENE_UI
-
-@export var all_renders : Array[TextureRect]
-
-func _ready():
-	_global_datas._end_ini_subscene.connect(_disable_main)
-	_global_datas._backFrom_subscene.connect(_active_main)
-	#_global_datas.open_inventory.connect(active_main)
-
-
-func active_main(conditon : bool):
-	for t in all_renders:
-		t.visible = !conditon
-	
-func _active_main():
-	main_scene_ui.visible = true
-	
-func _disable_main():
-	main_scene_ui.visible = false
 "
 
 [sub_resource type="GDScript" id="GDScript_12o72"]
@@ -196,39 +166,39 @@ func _ready():
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xjml8"]
 render_priority = 0
-shader = ExtResource("8_t6l40")
+shader = ExtResource("12_j62vj")
 shader_parameter/pixel_size = 4
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_e1gkt"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_0js0h"]
 viewport_path = NodePath("01_GAME_UI/MAIN_SCENE_UI/Viewports/FOAM_Viewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_25bkd"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_ibuip"]
 viewport_path = NodePath("01_GAME_UI/MAIN_SCENE_UI/Viewports/GRID_Viewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_oj43o"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_vb55f"]
 viewport_path = NodePath("01_GAME_UI/MAIN_SCENE_UI/Viewports/MAIN_Viewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_257ui"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_m4va3"]
 viewport_path = NodePath("01_GAME_UI/MAIN_SCENE_UI/Viewports/MAIN_LIGHT_Viewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_td1dm"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_fb07g"]
 viewport_path = NodePath("01_GAME_UI/MAIN_SCENE_UI/Viewports/SONAR_Viewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_rd6y1"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_vt7is"]
 viewport_path = NodePath("01_GAME_UI/MAIN_SCENE_UI/Viewports/UI")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3mjm8"]
 resource_local_to_scene = true
-shader = ExtResource("8_oftpq")
+shader = ExtResource("13_je1hg")
 shader_parameter/Grid_Color = Color(0.254902, 0.513726, 0.552941, 1)
 shader_parameter/Grid_opacity = 0.25
 shader_parameter/Opacity = 1.0
-shader_parameter/Main = SubResource("ViewportTexture_oj43o")
-shader_parameter/Foam = SubResource("ViewportTexture_e1gkt")
-shader_parameter/Sonar = SubResource("ViewportTexture_td1dm")
-shader_parameter/Grid = SubResource("ViewportTexture_25bkd")
-shader_parameter/Main_light = SubResource("ViewportTexture_257ui")
-shader_parameter/UI = SubResource("ViewportTexture_rd6y1")
+shader_parameter/Main = SubResource("ViewportTexture_vb55f")
+shader_parameter/Foam = SubResource("ViewportTexture_0js0h")
+shader_parameter/Sonar = SubResource("ViewportTexture_fb07g")
+shader_parameter/Grid = SubResource("ViewportTexture_ibuip")
+shader_parameter/Main_light = SubResource("ViewportTexture_m4va3")
+shader_parameter/UI = SubResource("ViewportTexture_vt7is")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_4iosc"]
 viewport_path = NodePath("01_GAME_UI/MAIN_SCENE_UI/Viewports/MAIN_Viewport")
@@ -490,7 +460,7 @@ render_priority = 0
 shader = SubResource("VisualShader_lshfh")
 
 [sub_resource type="BoxMesh" id="BoxMesh_hogrq"]
-material = ExtResource("6_vcmny")
+material = ExtResource("34_uioem")
 size = Vector3(30, 0, 30)
 
 [sub_resource type="BoxMesh" id="BoxMesh_wmrfd"]
@@ -682,10 +652,6 @@ shader_parameter/Distance = 0.0
 script = SubResource("GDScript_ueh7h")
 start_position = NodePath("../../--DECOR--/Prologue_start_pos")
 
-[node name="Active_Decor_Scene" type="Node" parent="." node_paths=PackedStringArray("viewports")]
-script = ExtResource("1_ounvv")
-viewports = [NodePath("../01_GAME_UI/MAIN_SCENE_UI/Viewports/MAIN_Viewport"), NodePath("../01_GAME_UI/MAIN_SCENE_UI/Viewports/FOAM_Viewport"), NodePath("../01_GAME_UI/MAIN_SCENE_UI/Viewports/SONAR_Viewport"), NodePath("../01_GAME_UI/MAIN_SCENE_UI/Viewports/GRID_Viewport"), NodePath("../01_GAME_UI/MAIN_SCENE_UI/Viewports/MAIN_LIGHT_Viewport")]
-
 [node name="set_Resolution" type="Node" parent="." node_paths=PackedStringArray("viewports")]
 script = ExtResource("1_xd8sb")
 viewports = [NodePath("../01_GAME_UI/MAIN_SCENE_UI/Viewports/MAIN_Viewport"), NodePath("../01_GAME_UI/MAIN_SCENE_UI/Viewports/FOAM_Viewport"), NodePath("../01_GAME_UI/MAIN_SCENE_UI/Viewports/SONAR_Viewport"), NodePath("../01_GAME_UI/MAIN_SCENE_UI/Viewports/GRID_Viewport"), NodePath("../01_GAME_UI/MAIN_SCENE_UI/Viewports/MAIN_LIGHT_Viewport")]
@@ -803,16 +769,7 @@ offset_bottom = 238.5
 scale = Vector2(0.451687, 0.451687)
 texture = ExtResource("19_wl2lb")
 
-[node name="Delevery_birds" type="Node" parent="." node_paths=PackedStringArray("birds_scene")]
-script = ExtResource("15_2gerx")
-birds_scene = [NodePath("../--DECOR--/NPC_TRIGGER_ZONE/Delevery_zone/Birds"), NodePath("../--DECOR--/NPC_TRIGGER_ZONE/Delevery_zone/Birds2"), NodePath("../--DECOR--/NPC_TRIGGER_ZONE/Delevery_zone/Birds3")]
-
-[node name="Night&Day_state" type="Node" parent="."]
-script = ExtResource("9_vbyff")
-
-[node name="01_GAME_UI" type="Node" parent="." node_paths=PackedStringArray("all_renders")]
-script = SubResource("GDScript_8cfdp")
-all_renders = [NodePath("MAIN_SCENE_UI/Viewports/MAIN"), null, null, null, null]
+[node name="01_GAME_UI" type="Node" parent="."]
 
 [node name="MAIN_SCENE_UI" type="Control" parent="01_GAME_UI"]
 layout_mode = 3
@@ -829,6 +786,8 @@ viewports = [NodePath("../Viewports/MAIN_Viewport"), NodePath("../Viewports/FOAM
 
 [node name="All_Cam_Move" type="Node" parent="01_GAME_UI/MAIN_SCENE_UI" node_paths=PackedStringArray("_all_cam_array")]
 script = ExtResource("2_7lb1x")
+smooth_speed = 1.0
+_manuel_offset = Vector3(0, -0.795, 0)
 _all_cam_array = [NodePath("../Viewports/MAIN_Viewport/CAM_STATE_MAIN"), NodePath("../Viewports/FOAM_Viewport/CAM_STATE_FOAM"), NodePath("../Viewports/SONAR_Viewport/CAM_STATE_SONAR"), NodePath("../Viewports/GRID_Viewport/CAM_STATE_GRID"), NodePath("../CAM_MAIN_RAYCAST"), NodePath("../Viewports/MAIN_LIGHT_Viewport/CAM_STATE_LIGHT_MAIN"), NodePath("../Viewports/UI/CAM_STATE_UI")]
 
 [node name="CAM_MAIN_RAYCAST" type="Camera3D" parent="01_GAME_UI/MAIN_SCENE_UI"]
@@ -932,8 +891,14 @@ texture = SubResource("ViewportTexture_5wdck")
 [node name="Prologue_start_pos" type="Node3D" parent="--DECOR--"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.21605, 0, 14.8725)
 
+[node name="Player_bird" parent="--DECOR--" instance=ExtResource("14_u11n5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.85413, 0)
+mass = 4.0
+maxSpeed = 6.0
+rotation_speed = 1.0
+
 [node name="Player_Boat" parent="--DECOR--" instance=ExtResource("1_qltht")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+transform = Transform3D(0.473858, 0, -0.880601, 0, 1, 0, 0.880601, 0, 0.473858, -4.28915, 0, 13.6219)
 input_ray_pickable = false
 mass = 4.0
 physics_material_override = SubResource("PhysicsMaterial_ituqr")
@@ -947,6 +912,7 @@ zone_collider = NodePath("../Zone_trigger/Col")
 
 [node name="Main_light" type="OmniLight3D" parent="--DECOR--/Player_Boat"]
 transform = Transform3D(1, 0, 0, 2.11758e-22, 0.342545, 0.939501, 0, -0.939501, 0.342545, 0.130404, 3.19906, -0.0379682)
+visible = false
 layers = 32768
 light_energy = 8.0
 light_indirect_energy = 0.0
@@ -959,10 +925,10 @@ omni_range = 7.0
 
 [node name="Zone_trigger" type="Area3D" parent="--DECOR--/Player_Boat"]
 input_ray_pickable = false
-script = ExtResource("20_v4ay2")
 
 [node name="Col" type="CollisionShape3D" parent="--DECOR--/Player_Boat/Zone_trigger"]
 shape = SubResource("SphereShape3D_yt2xy")
+disabled = true
 
 [node name="Sonar" type="Node3D" parent="--DECOR--"]
 transform = Transform3D(-4.37114e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.37114e-09, 0, 0, 0)
@@ -985,10 +951,8 @@ skeleton = NodePath("../..")
 transform = Transform3D(3.89763, 0.0211405, -0.0748208, -0.0200288, 3.89793, 0.0579978, 0.075126, -0.0576019, 3.89726, 0.049623, -0.743807, -0.269134)
 visible = false
 
-[node name="Sonar_zone" type="Area3D" parent="--DECOR--/Sonar/02" node_paths=PackedStringArray("col")]
+[node name="Sonar_zone" type="Area3D" parent="--DECOR--/Sonar/02"]
 transform = Transform3D(1, 0, 0, 0, 1, -4.72937e-10, -7.45058e-09, -1.74623e-10, 1, 0, 0, 0)
-script = ExtResource("12_gjulh")
-col = NodePath("CollisionShape3D")
 
 [node name="Sonar" type="Node" parent="--DECOR--/Sonar/02/Sonar_zone"]
 
@@ -1481,12 +1445,6 @@ input_ray_pickable = false
 script = SubResource("GDScript_w8xnd")
 Npc_data = ExtResource("1_trgwt")
 
-[node name="Disable_Meet_bird_for_today" type="Node" parent="--DECOR--/NPC_TRIGGER_ZONE/MrBird_NPC_Area" node_paths=PackedStringArray("Visual_root", "Collider")]
-script = ExtResource("29_57vaj")
-Npc_data = ExtResource("1_trgwt")
-Visual_root = NodePath("..")
-Collider = NodePath("../CollisionShape3D")
-
 [node name="Zone" type="Node" parent="--DECOR--/NPC_TRIGGER_ZONE/MrBird_NPC_Area"]
 
 [node name="Npc_zone" type="Node" parent="--DECOR--/NPC_TRIGGER_ZONE/MrBird_NPC_Area"]
@@ -1563,7 +1521,7 @@ visible = false
 layers = 2048
 mesh = SubResource("BoxMesh_wmrfd")
 skeleton = NodePath("")
-surface_material_override/0 = ExtResource("7_4y8ld")
+surface_material_override/0 = ExtResource("35_q2qb8")
 
 [node name="Sea_foam_light" type="MeshInstance3D" parent="--DECOR--/SEA"]
 transform = Transform3D(4.4285, 0, 0, 0, 0.44285, 0, 0, 0, 4.4285, 0.739, 0, 1.214)

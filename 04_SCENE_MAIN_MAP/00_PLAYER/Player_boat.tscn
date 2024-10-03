@@ -6,10 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://dysuk0q3cq2ol" path="res://04_SCENE_MAIN_MAP/00_PLAYER/Boat/Boat_smoke/Boat_smoke_01.tscn" id="3_vgoup"]
 [ext_resource type="ArrayMesh" uid="uid://dwxmh0kw0s2qu" path="res://04_SCENE_MAIN_MAP/00_PLAYER/Boat/Boat_smoke/smoke_foam.obj" id="4_mdmqw"]
 [ext_resource type="PackedScene" uid="uid://dfonf8dcbrwpw" path="res://04_SCENE_MAIN_MAP/00_PLAYER/Boat/Player_Boat_render.blend" id="6_nby38"]
-[ext_resource type="Shader" uid="uid://cu2uipuy138c6" path="res://05_SHADER/All_Materials/Main_sceneTest_dither_sh.tres" id="7_4mny6"]
+[ext_resource type="Shader" uid="uid://cu2uipuy138c6" path="res://00_SHADER/All_Materials/Main_sceneTest_dither_sh.tres" id="7_4mny6"]
 [ext_resource type="Material" uid="uid://yjoyk6fvrm6q" path="res://00_SHADER/No_light_surface_mat.tres" id="7_ljflo"]
 [ext_resource type="Texture2D" uid="uid://biuqncbwkpu1v" path="res://04_SCENE_MAIN_MAP/00_PLAYER/Boat/Base_gradient.png" id="8_lk44d"]
-[ext_resource type="Material" uid="uid://ctnqf5d3uj1g7" path="res://05_SHADER/All_Materials/dark_mask.tres" id="9_br4nm"]
+[ext_resource type="Material" uid="uid://ctnqf5d3uj1g7" path="res://00_SHADER/All_Materials/dark_mask.tres" id="9_br4nm"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bufvh"]
 radius = 0.251435

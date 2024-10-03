@@ -3,23 +3,27 @@
 [ext_resource type="PackedScene" uid="uid://dv1iknicborl3" path="res://04_SCENE_MAIN_MAP/00_PLAYER/Boat/Boat_smoke/Factory_smoke.tscn" id="1_1pp2l"]
 [ext_resource type="Script" path="res://04_SCENE_MAIN_MAP/ELEMENTS/Buildings/Industry/Random_windows.gd" id="2_dbpr0"]
 [ext_resource type="PackedScene" uid="uid://bqqneopisva6t" path="res://04_SCENE_MAIN_MAP/ELEMENTS/Buildings/Industry/Industry_elements_01.blend" id="2_kwk65"]
-[ext_resource type="Shader" uid="uid://bdhvl7org3f04" path="res://05_SHADER/DitherMain_scene.tres" id="3_vlko8"]
-[ext_resource type="Material" uid="uid://ctnqf5d3uj1g7" path="res://05_SHADER/All_Materials/dark_mask.tres" id="4_kvixq"]
-[ext_resource type="Material" uid="uid://dnm3xbumsinu2" path="res://05_SHADER/All_Materials/Lit_light.tres" id="5_h2ge8"]
+[ext_resource type="Material" uid="uid://ctnqf5d3uj1g7" path="res://00_SHADER/All_Materials/dark_mask.tres" id="4_kvixq"]
+[ext_resource type="Shader" uid="uid://cu2uipuy138c6" path="res://00_SHADER/All_Materials/Main_sceneTest_dither_sh.tres" id="5_13i4q"]
+[ext_resource type="Material" uid="uid://dnm3xbumsinu2" path="res://00_SHADER/All_Materials/Lit_light.tres" id="5_h2ge8"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_7la2s"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_woxkm"]
-render_priority = 2
-shader = ExtResource("3_vlko8")
-shader_parameter/stayGlobal = true
-shader_parameter/Color = Color(0, 0, 0, 1)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_bjtvj"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oc5im"]
+resource_local_to_scene = true
 render_priority = 1
-shader = ExtResource("3_vlko8")
-shader_parameter/stayGlobal = true
-shader_parameter/Color = Color(0.294118, 0.25098, 0.203922, 1)
+shader = ExtResource("5_13i4q")
+shader_parameter/ColorParameter = Color(0.0235294, 0.117647, 0.12549, 1)
+shader_parameter/Color = Color(0.313726, 0.298039, 0.266667, 1)
+shader_parameter/Dither_strenght = 0.485
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4uinu"]
+resource_local_to_scene = true
+render_priority = 1
+shader = ExtResource("5_13i4q")
+shader_parameter/ColorParameter = Color(0.0235294, 0.117647, 0.12549, 1)
+shader_parameter/Color = Color(0.180392, 0.160784, 0.12549, 1)
+shader_parameter/Dither_strenght = 0.485
 
 [node name="Industry_Prefab_scene_01" type="Node3D"]
 transform = Transform3D(-4.47035e-08, 0, 0.501892, 0, 0.501891, 0, -0.501892, 0, -4.47035e-08, 0, 0, 0)
@@ -104,10 +108,11 @@ transform = Transform3D(1, 0, 1.49012e-08, 0, 1, 0, -1.49012e-08, 0, 1, 0, 0, 0)
 
 [node name="Usine_01_prefab" parent="Industry_elements_01" index="0"]
 transform = Transform3D(1, 0, 7.45058e-09, 0, 0.999999, 0, -7.45058e-09, 0, 1, 0, 0, 0)
-surface_material_override/0 = SubResource("ShaderMaterial_woxkm")
-surface_material_override/1 = SubResource("ShaderMaterial_bjtvj")
+surface_material_override/0 = SubResource("ShaderMaterial_oc5im")
+surface_material_override/1 = SubResource("ShaderMaterial_4uinu")
 
 [node name="Usine_01_prefab_mask" parent="Industry_elements_01" index="1"]
+visible = false
 layers = 1032
 surface_material_override/0 = ExtResource("4_kvixq")
 

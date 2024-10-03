@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://00_SYSTEMS/Active_mask_at_ready.tres.gd" id="1_4w66s"]
 [ext_resource type="PackedScene" uid="uid://cukwu0ltc71oi" path="res://04_SCENE_MAIN_MAP/ELEMENTS/Pine/Pine_01.blend" id="1_p2sbr"]
-[ext_resource type="Material" uid="uid://ctnqf5d3uj1g7" path="res://05_SHADER/All_Materials/dark_mask.tres" id="3_5wqao"]
-[ext_resource type="Shader" uid="uid://cu2uipuy138c6" path="res://05_SHADER/All_Materials/Main_sceneTest_dither_sh.tres" id="3_43wfd"]
+[ext_resource type="Material" uid="uid://ctnqf5d3uj1g7" path="res://00_SHADER/All_Materials/dark_mask.tres" id="3_5wqao"]
+[ext_resource type="Shader" uid="uid://cu2uipuy138c6" path="res://00_SHADER/All_Materials/Main_sceneTest_dither_sh.tres" id="3_43wfd"]
 [ext_resource type="Material" uid="uid://yjoyk6fvrm6q" path="res://00_SHADER/No_light_surface_mat.tres" id="3_kc8q3"]
 [ext_resource type="Texture2D" uid="uid://mxgdqicsuyy4" path="res://04_SCENE_MAIN_MAP/ELEMENTS/Pine/Pine_gradient.png" id="4_dbhh4"]
 

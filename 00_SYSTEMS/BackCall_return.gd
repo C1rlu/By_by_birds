@@ -4,23 +4,22 @@ extends Node
 var current_callable : Callable
 
 func _ready():
-
-	_global_datas._add_back_call.connect(add_back_call_and_check)
-	_global_datas._clear_back_call.connect(clear)
-	_global_datas._execute_back_call.connect(_execute_back_call)
+	pass
+	#_global_datas._add_back_call.connect(add_back_call_and_check)
+	#_global_datas._clear_back_call.connect(clear)
+	#_global_datas._execute_back_call.connect(_execute_back_call)
 	# need to clear back call if///
 	
 
 func _input(event):
 	
-	#var disable = true
-	#if disable:
-		#return
+	var disable = true
+	if disable:
+		return
 	
 	if _global_datas.bird_is_waiting:
 		return
-	if _global_datas.Player_InSubScene:
-		return
+
 	if event.is_action_pressed("Back_call"):
 		
 		var top_call = _global_datas._back_call_list.size()
@@ -41,7 +40,9 @@ func connect_back_call():
 	
 	var top_call = _global_datas._back_call_list.size()
 	current_callable = _global_datas._back_call_list[top_call-1] 
-	if !_global_datas._active_back_call.is_connected(current_callable): 
+	if !_global_datas._active_back_call.is_connected(current_callable):
+		if current_callable == null:
+			return 
 		_global_datas._active_back_call.connect(current_callable)
 	
 

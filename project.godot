@@ -342,10 +342,6 @@ Dither_blue_noise_size={
 "type": "float",
 "value": 5.0
 }
-BlueNoise={
-"type": "sampler2D",
-"value": "res://05_SHADER/Full_screen/Dither_pattners/Blue_noise/HDR_LA_7.png"
-}
 CyanGhost_color={
 "type": "color",
 "value": Color(0.180392, 0.462745, 0.337255, 1)
@@ -358,15 +354,15 @@ isGray={
 "type": "bool",
 "value": false
 }
+Night={
+"type": "float",
+"value": 0.5
+}
 mirror_wave_speed={
 "type": "float",
 "value": 0.0
 }
-isSubscene_value={
-"type": "float",
-"value": 1.0
-}
-Night={
-"type": "float",
-"value": 0.0
+BlueNoise={
+"type": "sampler2D",
+"value": "res://00_SHADER/Full_screen/Dither_pattners/Blue_noise/HDR_LA_7.png"
 }

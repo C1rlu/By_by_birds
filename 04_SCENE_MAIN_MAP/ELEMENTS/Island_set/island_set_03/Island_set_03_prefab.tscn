@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" path="res://00_SYSTEMS/Active_mask_at_ready.tres.gd" id="1_7ev4l"]
 [ext_resource type="Script" path="res://04_SCENE_MAIN_MAP/ELEMENTS/Island_set/Shader_variety_color.gd" id="2_nj86e"]
-[ext_resource type="Shader" uid="uid://cu2uipuy138c6" path="res://05_SHADER/All_Materials/Main_sceneTest_dither_sh.tres" id="3_3fbe4"]
+[ext_resource type="Shader" uid="uid://cu2uipuy138c6" path="res://00_SHADER/All_Materials/Main_sceneTest_dither_sh.tres" id="3_3fbe4"]
 [ext_resource type="PackedScene" uid="uid://ci87hcdt2njop" path="res://04_SCENE_MAIN_MAP/ELEMENTS/Island_set/island_set_03/Island_set_03.blend" id="3_vrfrk"]
 [ext_resource type="Texture2D" uid="uid://cvnyiat1vk25q" path="res://04_SCENE_MAIN_MAP/ELEMENTS/Island_set/island_set_03/Islande_gradient_03.png" id="4_52kk2"]
-[ext_resource type="Material" uid="uid://ctnqf5d3uj1g7" path="res://05_SHADER/All_Materials/dark_mask.tres" id="5_hb2we"]
+[ext_resource type="Material" uid="uid://ctnqf5d3uj1g7" path="res://00_SHADER/All_Materials/dark_mask.tres" id="5_hb2we"]
 [ext_resource type="Material" uid="uid://yjoyk6fvrm6q" path="res://00_SHADER/No_light_surface_mat.tres" id="6_in3o4"]
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_j14re"]

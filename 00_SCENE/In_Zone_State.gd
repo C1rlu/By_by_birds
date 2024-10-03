@@ -11,8 +11,6 @@ func _ready():
 	_global_datas._check_boat_zone.connect(check_zone)
 	
 	_global_datas._close_dialogue.connect(check_zone)
-	_global_datas._backFrom_subscene.connect(check_zone)
-	_global_datas.open_inventory.connect(_condition_check)
 	_global_datas._open_menu.connect(_condition_check)
 	
 func _condition_check(condition):

@@ -260,7 +260,7 @@ resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("5_82rk5")
 shader_parameter/Sonar_color = Color(0.25098, 0.607843, 0.447059, 1)
-shader_parameter/Distance = 0.0
+shader_parameter/Distance = 0.355
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_jof77"]
 
@@ -274,6 +274,7 @@ path = NodePath("..")
 col = NodePath("../Area3D/CollisionPolygon3D")
 
 [node name="CSGPolygon3D" type="CSGPolygon3D" parent="."]
+visible = false
 layers = 64
 material_override = SubResource("StandardMaterial3D_dai81")
 polygon = PackedVector2Array(0, 0, 0.005, 0.001, 0.001, 0.001, 0.091, 0)

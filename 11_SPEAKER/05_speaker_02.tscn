@@ -7,10 +7,10 @@
 [ext_resource type="Script" path="res://11_SPEAKER/Dialogue_typing.gd" id="4_uwbqv"]
 [ext_resource type="Script" path="res://13_TOOLS_UI/set_Resolution_viewports.gd" id="6_m0hl7"]
 [ext_resource type="Script" path="res://11_SPEAKER/Cam_Focus.gd" id="7_yfrxb"]
-[ext_resource type="Shader" uid="uid://i5hkaugkylpm" path="res://05_SHADER/Full_screen/Speaker_dither_convas.tres" id="9_8gj0l"]
 [ext_resource type="Script" path="res://11_SPEAKER/Dialogue/Dialogue_asset/Dialogue_box.gd" id="9_n4i7c"]
 [ext_resource type="Script" path="res://11_SPEAKER/End_Typing_Button.tres.gd" id="10_o8x3k"]
 [ext_resource type="PackedScene" uid="uid://kfeia6x8pslm" path="res://11_SPEAKER/00_NPC/guy_02_prefab.tscn" id="11_60j22"]
+[ext_resource type="Shader" uid="uid://i5hkaugkylpm" path="res://00_SHADER/Full_screen/Speaker_dither_convas.tres" id="11_nbar0"]
 [ext_resource type="Script" path="res://11_SPEAKER/Deliver_button.gd" id="13_ewnx3"]
 [ext_resource type="PackedScene" uid="uid://d2b7ysl6sho71" path="res://11_SPEAKER/00_NPC/Model/Mr_birds_prefab.tscn" id="13_f7b57"]
 [ext_resource type="PackedScene" uid="uid://bhp5srocc6bwr" path="res://11_SPEAKER/00_NPC/Otis_Npc_prefabs.tscn" id="13_une54"]
@@ -80,7 +80,7 @@ func _fade_in():
 		t.kill()
 	t = create_tween()
 	
-	t .tween_method(set_shader_value,actual_value,0.75,1.0)
+	t .tween_method(set_shader_value,actual_value,0.5,1.0)
 
 func _fade_out():
 	
@@ -211,7 +211,7 @@ nodes/fragment/connections = PackedInt32Array(2, 0, 4, 1, 4, 0, 5, 1, 13, 0, 14,
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7np4u"]
 shader = SubResource("VisualShader_cqqjt")
-shader_parameter/Opacity = 0.5
+shader_parameter/Opacity = 0.0
 
 [sub_resource type="GDScript" id="GDScript_6qc5w"]
 script/source = "extends Node
@@ -460,7 +460,7 @@ shader_parameter/Backdrop_color = Color(0.243137, 0.494118, 0.423529, 1)
 shader_parameter/Opacity = 1.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7ie5m"]
-shader = ExtResource("9_8gj0l")
+shader = ExtResource("11_nbar0")
 shader_parameter/Photo_exist = true
 shader_parameter/Opacity = 1.0
 
@@ -516,10 +516,6 @@ material = SubResource("ShaderMaterial_7np4u")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -4.0
-offset_top = -1.0
-offset_right = -4.0
-offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -537,6 +533,7 @@ wait_time = 0.5
 one_shot = true
 
 [node name="Npc_convas" type="Control" parent="00_NPC_CREATOR"]
+visible = false
 texture_filter = 1
 texture_repeat = 2
 material = SubResource("ShaderMaterial_6s3bf")

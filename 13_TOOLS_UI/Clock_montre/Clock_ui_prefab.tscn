@@ -1,8 +1,8 @@
 [gd_scene load_steps=19 format=3 uid="uid://clc3sbquuu1us"]
 
-[ext_resource type="PackedScene" uid="uid://b04qmdjf73spd" path="res://13_TOOLS_UI/Clock_montre/clock_3d_ui_prefab.tscn" id="1_71jwj"]
 [ext_resource type="Resource" uid="uid://ppxk5i543dfn" path="res://15_GAME_RESSOURCE/00_Npc_data/Mr_Birds_data.tres" id="1_t0k1n"]
 [ext_resource type="Script" path="res://13_TOOLS_UI/Clock_montre/Fade_dither.gd" id="1_v6xwk"]
+[ext_resource type="PackedScene" uid="uid://c50aeg7d1nugi" path="res://13_TOOLS_UI/Clock_montre/clock_3d.blend" id="3_qwf6y"]
 
 [sub_resource type="GDScript" id="GDScript_uwuod"]
 script/source = "extends Node
@@ -14,10 +14,7 @@ script/source = "extends Node
 
 var t
 func _ready():
-	_global_datas._end_ini_subscene.connect(_start_clock)
-	_global_datas._backFrom_subscene.connect(_stop)
-	
-	
+
 	_stop()
 	
 func _start_clock():
@@ -239,20 +236,23 @@ projection = 1
 fov = 40.7
 size = 2.0
 
-[node name="clock_3d_prefab" parent="SubViewport" instance=ExtResource("1_71jwj")]
+[node name="clock_3d_prefab" type="Node3D" parent="SubViewport"]
+
+[node name="clock_3d2" parent="SubViewport/clock_3d_prefab" instance=ExtResource("3_qwf6y")]
 
 [node name="clock_all" parent="SubViewport/clock_3d_prefab/clock_3d2" index="0"]
+layers = 524288
 surface_material_override/0 = SubResource("StandardMaterial3D_8lx2s")
 surface_material_override/1 = SubResource("StandardMaterial3D_hajhu")
 surface_material_override/2 = SubResource("StandardMaterial3D_f83j0")
 surface_material_override/3 = SubResource("StandardMaterial3D_0a8hu")
 
 [node name="root_equille" parent="SubViewport/clock_3d_prefab/clock_3d2" index="1"]
+layers = 524288
 surface_material_override/0 = SubResource("StandardMaterial3D_8lx2s")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="SubViewport"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.969818, 0)
 layers = 524288
 
-[editable path="SubViewport/clock_3d_prefab"]
 [editable path="SubViewport/clock_3d_prefab/clock_3d2"]

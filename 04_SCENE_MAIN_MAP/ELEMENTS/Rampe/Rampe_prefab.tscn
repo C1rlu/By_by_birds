@@ -3,9 +3,9 @@
 [ext_resource type="Script" path="res://00_SYSTEMS/Active_mask_at_ready.tres.gd" id="1_fsquf"]
 [ext_resource type="PackedScene" uid="uid://qgcnidhufff2" path="res://04_SCENE_MAIN_MAP/ELEMENTS/Rampe/Rampe_msh.blend" id="1_myr1e"]
 [ext_resource type="Texture2D" uid="uid://chhl6f8t2r2c8" path="res://04_SCENE_MAIN_MAP/ELEMENTS/Rampe/Rampe_gradient.png" id="2_a8e2w"]
-[ext_resource type="Material" uid="uid://ctnqf5d3uj1g7" path="res://05_SHADER/All_Materials/dark_mask.tres" id="3_vsmi8"]
+[ext_resource type="Material" uid="uid://ctnqf5d3uj1g7" path="res://00_SHADER/All_Materials/dark_mask.tres" id="3_vsmi8"]
 [ext_resource type="Material" uid="uid://yjoyk6fvrm6q" path="res://00_SHADER/No_light_surface_mat.tres" id="4_r6bw8"]
-[ext_resource type="Shader" uid="uid://cu2uipuy138c6" path="res://05_SHADER/All_Materials/Main_sceneTest_dither_sh.tres" id="5_ympaj"]
+[ext_resource type="Shader" uid="uid://cu2uipuy138c6" path="res://00_SHADER/All_Materials/Main_sceneTest_dither_sh.tres" id="5_ympaj"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_onwds"]
 resource_name = "Mat_01"

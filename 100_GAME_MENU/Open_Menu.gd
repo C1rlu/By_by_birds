@@ -2,7 +2,7 @@ extends Node
 
 
 @onready var game_menu_root = $"../Game_Menu_Root"
-@onready var focus_button = $"../Game_Menu_Root/MainMenu_Box/HBoxContainer/Resum_Button2"
+@onready var focus_button = $"../Game_Menu_Root/MainMenu_Box/VBoxContainer/Resum_Button2"
 
 
 func _ready():
@@ -24,11 +24,11 @@ func _input(event):
 		focus_button.grab_focus()
 
 		#set back call
-		_global_datas._add_back_call.emit(_back_call)
+		_global_datas._add_back_call.emit(back_call)
 		get_tree().paused = true
 			
 
-func _back_call():
+func back_call():
 	_global_datas._open_menu.emit(false)
 	_global_datas.Player_InMenu = false
 	get_tree().paused = false	

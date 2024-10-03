@@ -9,10 +9,6 @@ func _input(event):
 	if disable:
 		return
 	
-	if _global_datas.Player_In_Inventory:
-		return	
-	if _global_datas.Player_InSubScene:
-		return
 	if _global_datas.Player_InMenu:
 		return	
 	if _global_datas.Player_InDialogue:

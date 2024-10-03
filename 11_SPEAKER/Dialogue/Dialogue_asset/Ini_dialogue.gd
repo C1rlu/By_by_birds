@@ -59,9 +59,7 @@ func _on_ez_dialogue_custom_signal_received(value):
 			state[variable_name].emit(camera_state)
 				
 		if variable_name == "give_letter":
-				var index = params[2]
-				var _index_int : int = int(index)
-				state[variable_name].emit(_index_int)	
+				state[variable_name].emit()	
 				
 
 		if variable_name == "add_OBJ":

@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bg5086w5cu7aw"]
+[gd_scene load_steps=6 format=3 uid="uid://bm7chhateirx1"]
 
 [ext_resource type="Script" path="res://13_TOOLS_UI/Zone_info/Show_zone_info.gd" id="1_v730l"]
 [ext_resource type="Script" path="res://13_TOOLS_UI/Zone_info/Update_zone_info.gd" id="2_kpn8h"]

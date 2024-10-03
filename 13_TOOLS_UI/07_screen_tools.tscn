@@ -290,6 +290,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Clock" parent="." instance=ExtResource("31_4ftpd")]
+visible = false
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5

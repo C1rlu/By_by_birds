@@ -1,7 +1,7 @@
-[gd_resource type="VisualShader" load_steps=36 format=3 uid="uid://cw0x3o7tvvdcv"]
+[gd_resource type="VisualShader" load_steps=33 format=3 uid="uid://cw0x3o7tvvdcv"]
 
-[ext_resource type="Texture2D" uid="uid://j82ecsafafol" path="res://10_BOARD/Map/Map_board_isle_01.png" id="2_5sv43"]
-[ext_resource type="Texture2D" uid="uid://v5bi85b50j4g" path="res://10_BOARD/Map/Map_board_01.png" id="2_hic37"]
+[ext_resource type="Texture2D" uid="uid://cuul1oo87fgv6" path="res://12_INVENTORY/Map/Map_board_isle_01.png" id="2_5sv43"]
+[ext_resource type="Texture2D" uid="uid://y701g232cpu4" path="res://12_INVENTORY/Map/Map_board_01.png" id="2_hic37"]
 
 [sub_resource type="VisualShaderNodeStep" id="VisualShaderNodeStep_g35gv"]
 
@@ -117,15 +117,6 @@ qualifier = 1
 [sub_resource type="VisualShaderNodeSwitch" id="VisualShaderNodeSwitch_k75gt"]
 default_input_values = [0, false, 1, Vector3(1, 1, 1), 2, Vector3(0, 0, 0)]
 op_type = 4
-
-[sub_resource type="Gradient" id="Gradient_arwi4"]
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_tafhk"]
-gradient = SubResource("Gradient_arwi4")
-fill_from = Vector2(1, 1)
-
-[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_fxc5h"]
-texture = SubResource("GradientTexture2D_tafhk")
 
 [sub_resource type="VisualShaderNodeStep" id="VisualShaderNodeStep_4w4pw"]
 
@@ -264,6 +255,7 @@ void fragment() {
 
 }
 "
+graph_offset = Vector2(-3241.34, -56.7519)
 flags/unshaded = true
 nodes/fragment/0/position = Vector2(880, 300)
 nodes/fragment/5/node = SubResource("VisualShaderNodeColorParameter_b75wv")
@@ -363,8 +355,6 @@ nodes/fragment/42/node = SubResource("VisualShaderNodeBooleanParameter_g4gok")
 nodes/fragment/42/position = Vector2(-3440, 280)
 nodes/fragment/43/node = SubResource("VisualShaderNodeSwitch_k75gt")
 nodes/fragment/43/position = Vector2(-3080, 360)
-nodes/fragment/44/node = SubResource("VisualShaderNodeTexture_fxc5h")
-nodes/fragment/44/position = Vector2(180, 440)
 nodes/fragment/45/node = SubResource("VisualShaderNodeStep_4w4pw")
 nodes/fragment/45/position = Vector2(-3660, 160)
 nodes/fragment/connections = PackedInt32Array(12, 0, 11, 1, 15, 0, 11, 3, 13, 0, 11, 0, 14, 0, 11, 2, 16, 0, 11, 4, 18, 0, 19, 0, 11, 0, 20, 1, 19, 0, 20, 0, 27, 0, 8, 1, 27, 0, 19, 1, 9, 0, 25, 1, 28, 0, 8, 0, 23, 0, 10, 1, 25, 0, 32, 0, 32, 0, 24, 0, 31, 0, 32, 1, 29, 0, 33, 1, 33, 0, 32, 2, 21, 0, 24, 1, 38, 0, 39, 1, 39, 0, 0, 0, 41, 0, 39, 2, 20, 0, 24, 2, 8, 0, 10, 0, 42, 0, 43, 0, 10, 0, 43, 1, 23, 0, 43, 2, 43, 0, 25, 2, 5, 0, 25, 0, 32, 0, 38, 0, 32, 0, 39, 0)

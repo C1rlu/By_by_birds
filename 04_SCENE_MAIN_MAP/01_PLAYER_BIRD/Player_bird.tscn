@@ -1,6 +1,7 @@
-[gd_scene load_steps=29 format=3 uid="uid://c5wn0a86wvnq4"]
+[gd_scene load_steps=30 format=3 uid="uid://c5wn0a86wvnq4"]
 
 [ext_resource type="Script" path="res://04_SCENE_MAIN_MAP/01_PLAYER_BIRD/Player_bird_movement.gd" id="1_ot1bv"]
+[ext_resource type="Script" path="res://04_SCENE_MAIN_MAP/01_PLAYER_BIRD/Automatic_fly.gd" id="2_301bk"]
 [ext_resource type="PackedScene" uid="uid://djqtoudpd0dy6" path="res://04_SCENE_MAIN_MAP/Birds/Far_birds.blend" id="2_it8yi"]
 [ext_resource type="Material" uid="uid://btyt7asiya72t" path="res://00_SHADER/All_Materials/Light_lit_only.tres" id="3_vlt4c"]
 [ext_resource type="Material" uid="uid://ctnqf5d3uj1g7" path="res://00_SHADER/All_Materials/dark_mask.tres" id="4_mb1it"]
@@ -300,6 +301,13 @@ script = ExtResource("1_ot1bv")
 rotation_bird = NodePath("Rotation_root")
 rotation_speed = 8.68
 Raycast = NodePath("RayCast3D")
+
+[node name="Automatic_fly" type="Node" parent="." node_paths=PackedStringArray("Player_rg")]
+script = ExtResource("2_301bk")
+Player_rg = NodePath("..")
+
+[node name="Timer" type="Timer" parent="Automatic_fly"]
+autostart = true
 
 [node name="Main_light" type="OmniLight3D" parent="."]
 transform = Transform3D(1, -7.25367e-23, -1.98947e-22, 2.11758e-22, 0.342545, 0.939501, 0, -0.939501, 0.342545, 0, 0, 0)

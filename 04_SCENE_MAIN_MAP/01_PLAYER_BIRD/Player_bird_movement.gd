@@ -8,12 +8,16 @@ extends RigidBody3D
 var y_position_value : float
 
 var height_offset : float
+
+signal player_flying(condition : bool)
+
 func _ready():
 	
 	y_position_value = position.y   
 	height_offset = position.y
 
 
+		
 func _physics_process(_delta):
 	
 
@@ -34,6 +38,8 @@ func _physics_process(_delta):
 	_rotate_in_direction(_delta)	
 	check_raycast()
 	_adapth_heights(_delta)
+	
+	
 func move_c():
 	
 	var velocity = Input.get_vector("move_right", "move_left","move_backward" , "move_forward")
@@ -47,6 +53,9 @@ func move_c():
 		var force_direction = Vector3(-direction_x, 0.0, -direction_z).normalized()
 		# Apply central force in the calculated direction
 		apply_central_force(force_direction * move_speed)
+		player_flying.emit(true)
+	else:
+		player_flying.emit(false)
 	
 	
 	
@@ -68,7 +77,7 @@ func _adapth_heights(_delta):
 func check_raycast():
 	
 	if Raycast.is_colliding():
-		print(Raycast.get_collision_point())
+		#print(Raycast.get_collision_point())
 		var col = Raycast.get_collision_point()
 		var y_height = col.y
 		y_position_value = height_offset + y_height

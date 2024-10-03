@@ -38,12 +38,12 @@ func _check_if_exist():
 		
 	if _check_photoExist(_global_datas.Npc_Dialogue.photo_data):
 		_global_datas._open_dialogue.emit()
-		_global_datas._photo_checking = false
+		_global_datas.photo_checking = false
 	else:
 		var photo_data = _global_datas.Npc_Dialogue.photo_data
 		_global_datas._give_photo.emit(photo_data)
 		_global_datas.photo_archives.append(photo_data)
-		_global_datas._photo_checking = true
+		_global_datas.photo_checking = true
 func _check_photoExist(photoData : PhotoData) -> bool:
 	
 	for photo in _global_datas.photo_archives:

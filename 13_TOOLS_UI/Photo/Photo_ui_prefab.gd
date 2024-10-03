@@ -55,9 +55,9 @@ func out_movement():
 	
 	Engine.time_scale = 1.0
 	_global_datas._show_object_legend.emit(false,"null")
-	if _global_datas._photo_checking:
+	if _global_datas.photo_checking:
 		_global_datas._open_dialogue.emit()
-		_global_datas._photo_checking = false
+		_global_datas.photo_checking = false
 		
 	take_it_button.release_focus()
 	var resolution : Vector2 = get_viewport_rect().size

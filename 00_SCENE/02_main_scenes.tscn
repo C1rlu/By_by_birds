@@ -1,4 +1,4 @@
-[gd_scene load_steps=94 format=3 uid="uid://cnmptm7i0xxmj"]
+[gd_scene load_steps=95 format=3 uid="uid://cnmptm7i0xxmj"]
 
 [ext_resource type="PackedScene" uid="uid://vpdvl0v7dubd" path="res://04_SCENE_MAIN_MAP/00_PLAYER/Player_boat.tscn" id="1_qltht"]
 [ext_resource type="Resource" uid="uid://ppxk5i543dfn" path="res://15_GAME_RESSOURCE/00_Npc_data/Mr_Birds_data.tres" id="1_trgwt"]
@@ -397,7 +397,7 @@ grey_value = luminance;"
 default_input_values = [0, Vector3(0, 0, 0), 1, Vector3(1, 1, 1), 2, Vector3(0.5, 0.5, 0.5)]
 op_type = 3
 
-[sub_resource type="VisualShaderNodeBooleanParameter" id="VisualShaderNodeBooleanParameter_v5sst"]
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_vo605"]
 parameter_name = "isGray"
 qualifier = 1
 
@@ -406,7 +406,7 @@ code = "shader_type spatial;
 render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx;
 
 global uniform vec4 Dark_color : source_color;
-global uniform bool isGray;
+global uniform float isGray;
 
 
 
@@ -424,12 +424,12 @@ void fragment() {
 	}
 
 
-// BooleanParameter:6
-	bool n_out6p0 = isGray;
+// FloatParameter:9
+	float n_out9p0 = isGray;
 
 
 // Mix:5
-	vec3 n_out5p0 = mix(vec3(n_out2p0.xyz), vec3(n_out4p0), vec3(n_out6p0 ? 1.0 : 0.0));
+	vec3 n_out5p0 = mix(vec3(n_out2p0.xyz), vec3(n_out4p0), vec3(n_out9p0));
 
 
 // Output:0
@@ -438,7 +438,7 @@ void fragment() {
 
 }
 "
-graph_offset = Vector2(-600.635, -214.062)
+graph_offset = Vector2(-405.807, -218.895)
 nodes/fragment/0/position = Vector2(600, 220)
 nodes/fragment/2/node = SubResource("VisualShaderNodeColorParameter_kdi3x")
 nodes/fragment/2/position = Vector2(-600, 300)
@@ -451,9 +451,9 @@ nodes/fragment/4/expression = "float luminance = 0.299 * color.x + 0.587 * color
 grey_value = luminance;"
 nodes/fragment/5/node = SubResource("VisualShaderNodeMix_shekr")
 nodes/fragment/5/position = Vector2(403.058, 22.7459)
-nodes/fragment/6/node = SubResource("VisualShaderNodeBooleanParameter_v5sst")
-nodes/fragment/6/position = Vector2(-75.3517, 614.841)
-nodes/fragment/connections = PackedInt32Array(2, 0, 4, 0, 5, 0, 0, 0, 4, 0, 5, 1, 2, 0, 5, 0, 6, 0, 5, 2)
+nodes/fragment/9/node = SubResource("VisualShaderNodeFloatParameter_vo605")
+nodes/fragment/9/position = Vector2(60, 340)
+nodes/fragment/connections = PackedInt32Array(2, 0, 4, 0, 5, 0, 0, 0, 4, 0, 5, 1, 2, 0, 5, 0, 9, 0, 5, 2)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qtam4"]
 render_priority = 0
@@ -462,6 +462,9 @@ shader = SubResource("VisualShader_lshfh")
 [sub_resource type="BoxMesh" id="BoxMesh_hogrq"]
 material = ExtResource("34_uioem")
 size = Vector3(30, 0, 30)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_r65dx"]
+data = PackedVector3Array(-15, 0, 15, 15, 0, 15, -15, 0, 15, 15, 0, 15, 15, 0, 15, -15, 0, 15, 15, 0, -15, -15, 0, -15, 15, 0, -15, -15, 0, -15, -15, 0, -15, 15, 0, -15, 15, 0, 15, 15, 0, -15, 15, 0, 15, 15, 0, -15, 15, 0, -15, 15, 0, 15, -15, 0, -15, -15, 0, 15, -15, 0, -15, -15, 0, 15, -15, 0, 15, -15, 0, -15, 15, 0, 15, -15, 0, 15, 15, 0, -15, -15, 0, 15, -15, 0, -15, 15, 0, -15, -15, 0, 15, 15, 0, 15, -15, 0, -15, 15, 0, 15, 15, 0, -15, -15, 0, -15)
 
 [sub_resource type="BoxMesh" id="BoxMesh_wmrfd"]
 size = Vector3(30, 0, 30)
@@ -786,12 +789,12 @@ viewports = [NodePath("../Viewports/MAIN_Viewport"), NodePath("../Viewports/FOAM
 
 [node name="All_Cam_Move" type="Node" parent="01_GAME_UI/MAIN_SCENE_UI" node_paths=PackedStringArray("_all_cam_array")]
 script = ExtResource("2_7lb1x")
-smooth_speed = 1.0
+smooth_speed = 2.0
 _manuel_offset = Vector3(0, -0.795, 0)
 _all_cam_array = [NodePath("../Viewports/MAIN_Viewport/CAM_STATE_MAIN"), NodePath("../Viewports/FOAM_Viewport/CAM_STATE_FOAM"), NodePath("../Viewports/SONAR_Viewport/CAM_STATE_SONAR"), NodePath("../Viewports/GRID_Viewport/CAM_STATE_GRID"), NodePath("../CAM_MAIN_RAYCAST"), NodePath("../Viewports/MAIN_LIGHT_Viewport/CAM_STATE_LIGHT_MAIN"), NodePath("../Viewports/UI/CAM_STATE_UI")]
 
 [node name="CAM_MAIN_RAYCAST" type="Camera3D" parent="01_GAME_UI/MAIN_SCENE_UI"]
-transform = Transform3D(1, 0, 0, 0, 0.741976, 0.670427, 0, -0.670427, 0.741976, 0, 27.344, 29.059)
+transform = Transform3D(1, 0, 0, 0, 0.741976, 0.670427, 0, -0.670427, 0.741976, 0, 24.664, 26.364)
 cull_mask = 0
 fov = 10.0
 script = SubResource("GDScript_12o72")
@@ -804,7 +807,7 @@ canvas_item_default_texture_filter = 0
 size = Vector2i(1920, 1080)
 
 [node name="CAM_STATE_MAIN" type="Camera3D" parent="01_GAME_UI/MAIN_SCENE_UI/Viewports/MAIN_Viewport"]
-transform = Transform3D(1, 0, 0, 0, 0.741976, 0.670427, 0, -0.670427, 0.741976, 0, 27.344, 29.059)
+transform = Transform3D(1, 0, 0, 0, 0.741976, 0.670427, 0, -0.670427, 0.741976, 0, 24.664, 26.364)
 cull_mask = 17
 current = true
 fov = 10.0
@@ -821,7 +824,7 @@ canvas_item_default_texture_filter = 0
 size = Vector2i(1920, 1080)
 
 [node name="CAM_STATE_LIGHT_MAIN" type="Camera3D" parent="01_GAME_UI/MAIN_SCENE_UI/Viewports/MAIN_LIGHT_Viewport"]
-transform = Transform3D(1, 0, 0, 0, 0.741976, 0.670427, 0, -0.670427, 0.741976, 0, 27.344, 29.059)
+transform = Transform3D(1, 0, 0, 0, 0.741976, 0.670427, 0, -0.670427, 0.741976, 0, 24.664, 26.364)
 cull_mask = 32768
 current = true
 fov = 10.0
@@ -831,7 +834,7 @@ canvas_item_default_texture_filter = 0
 size = Vector2i(1920, 1080)
 
 [node name="CAM_STATE_FOAM" type="Camera3D" parent="01_GAME_UI/MAIN_SCENE_UI/Viewports/FOAM_Viewport"]
-transform = Transform3D(1, 0, 0, 0, 0.741976, 0.670427, 0, -0.670427, 0.741976, 0, 27.344, 29.059)
+transform = Transform3D(1, 0, 0, 0, 0.741976, 0.670427, 0, -0.670427, 0.741976, 0, 24.664, 26.364)
 cull_mask = 3072
 fov = 10.0
 
@@ -840,7 +843,7 @@ canvas_item_default_texture_filter = 0
 size = Vector2i(1920, 1080)
 
 [node name="CAM_STATE_SONAR" type="Camera3D" parent="01_GAME_UI/MAIN_SCENE_UI/Viewports/SONAR_Viewport"]
-transform = Transform3D(1, 0, 0, 0, 0.741976, 0.670427, 0, -0.670427, 0.741976, 0, 27.344, 29.059)
+transform = Transform3D(1, 0, 0, 0, 0.741976, 0.670427, 0, -0.670427, 0.741976, 0, 24.664, 26.364)
 cull_mask = 24
 fov = 10.0
 
@@ -849,7 +852,7 @@ canvas_item_default_texture_filter = 0
 size = Vector2i(1920, 1080)
 
 [node name="CAM_STATE_GRID" type="Camera3D" parent="01_GAME_UI/MAIN_SCENE_UI/Viewports/GRID_Viewport"]
-transform = Transform3D(1, 0, 0, 0, 0.741976, 0.670427, 0, -0.670427, 0.741976, 0, 27.344, 29.059)
+transform = Transform3D(1, 0, 0, 0, 0.741976, 0.670427, 0, -0.670427, 0.741976, 0, 24.664, 26.364)
 cull_mask = 72
 current = true
 fov = 10.0
@@ -860,7 +863,7 @@ canvas_item_default_texture_filter = 0
 size = Vector2i(1920, 1080)
 
 [node name="CAM_STATE_UI" type="Camera3D" parent="01_GAME_UI/MAIN_SCENE_UI/Viewports/UI"]
-transform = Transform3D(1, 0, 0, 0, 0.741976, 0.670427, 0, -0.670427, 0.741976, 0, 27.344, 29.059)
+transform = Transform3D(1, 0, 0, 0, 0.741976, 0.670427, 0, -0.670427, 0.741976, 0, 24.664, 26.364)
 cull_mask = 262144
 current = true
 fov = 10.0
@@ -893,9 +896,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.21605, 0, 14.8725)
 
 [node name="Player_bird" parent="--DECOR--" instance=ExtResource("14_u11n5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.85413, 0)
-mass = 4.0
+mass = 2.0
 maxSpeed = 6.0
-rotation_speed = 1.0
+rotation_speed = 3.0
 
 [node name="Player_Boat" parent="--DECOR--" instance=ExtResource("1_qltht")]
 transform = Transform3D(0.473858, 0, -0.880601, 0, 1, 0, 0.880601, 0, 0.473858, -4.28915, 0, 13.6219)
@@ -1452,10 +1455,12 @@ script = ExtResource("30_ki3ay")
 
 [node name="Birds" parent="--DECOR--/NPC_TRIGGER_ZONE/MrBird_NPC_Area" instance=ExtResource("21_py3bv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.175196, -0.753295, -0.605568)
+visible = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="--DECOR--/NPC_TRIGGER_ZONE/MrBird_NPC_Area"]
 transform = Transform3D(-4.2222e-08, -0.965926, -0.258819, 1, -4.37114e-08, 0, -1.13133e-08, -0.258819, 0.965926, -0.484242, 0.377731, 0.113853)
 shape = SubResource("CapsuleShape3D_qktbq")
+disabled = true
 
 [node name="Delevery_zone" type="Area3D" parent="--DECOR--/NPC_TRIGGER_ZONE"]
 transform = Transform3D(-0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, -0.5, -3.93321, -1.1921e-07, 12.7148)
@@ -1514,6 +1519,11 @@ visible = false
 layers = 8
 mesh = SubResource("BoxMesh_hogrq")
 skeleton = NodePath("../Sea_foam")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="--DECOR--/SEA/Sea_collider"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="--DECOR--/SEA/Sea_collider/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_r65dx")
 
 [node name="Sea_foam" type="MeshInstance3D" parent="--DECOR--/SEA"]
 transform = Transform3D(4.4285, 0, 0, 0, 0.44285, 0, 0, 0, 4.4285, 0.739, 0, 1.214)

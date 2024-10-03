@@ -350,10 +350,6 @@ active_Dither={
 "type": "bool",
 "value": true
 }
-isGray={
-"type": "bool",
-"value": false
-}
 Night={
 "type": "float",
 "value": 0.5
@@ -365,4 +361,8 @@ mirror_wave_speed={
 BlueNoise={
 "type": "sampler2D",
 "value": "res://00_SHADER/Full_screen/Dither_pattners/Blue_noise/HDR_LA_7.png"
+}
+isGray={
+"type": "float",
+"value": 0.0
 }

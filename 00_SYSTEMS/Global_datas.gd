@@ -29,7 +29,7 @@ signal _check_boat_zone
 signal in_dialogue_zone(condition : bool)
 signal hide_open_dialogue
 signal _check_dialogue_photo
-var _photo_checking : bool 
+var photo_checking : bool 
 signal  _open_dialogue
 signal  _close_dialogue
 signal _type_text(count : int)
@@ -88,22 +88,8 @@ signal _update_info_zone
 signal _open_zone_attributions(condition : bool)
 
 
-# scanner 
-
-signal show_on_scanner(condition : bool)
-var in_scanner_mode : bool = false
-#signal update_element_amount
-#-----------------------------
-# dialogue datas
 var Npc_Dialogue : Npc_datas
 
 
-
-#-------------------- GAME STATE ------------------
-
 signal active_prologue_demo
-
-func _ready():
-
-	_photo_checking = false
 

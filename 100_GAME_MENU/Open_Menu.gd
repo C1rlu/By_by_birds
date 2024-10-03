@@ -24,7 +24,7 @@ func _input(event):
 		focus_button.grab_focus()
 
 		#set back call
-		_global_datas._add_back_call.emit(back_call)
+		#_global_datas._add_back_call.emit(back_call)
 		get_tree().paused = true
 			
 

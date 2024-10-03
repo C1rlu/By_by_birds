@@ -289,12 +289,17 @@ shadow_mesh = SubResource("ArrayMesh_6dwlp")
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_43sk8"]
 
-[node name="Player_bird" type="RigidBody3D"]
+[node name="Player_bird" type="RigidBody3D" node_paths=PackedStringArray("rotation_bird", "Raycast")]
 axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
 gravity_scale = 0.0
+linear_damp = 1.0
+angular_damp = 3.0
 script = ExtResource("1_ot1bv")
+rotation_bird = NodePath("Rotation_root")
+rotation_speed = 8.68
+Raycast = NodePath("RayCast3D")
 
 [node name="Main_light" type="OmniLight3D" parent="."]
 transform = Transform3D(1, -7.25367e-23, -1.98947e-22, 2.11758e-22, 0.342545, 0.939501, 0, -0.939501, 0.342545, 0, 0, 0)
@@ -306,69 +311,71 @@ light_specular = 0.0
 light_bake_mode = 0
 light_cull_mask = 4293951488
 shadow_opacity = 0.64
-omni_range = 6.0
+omni_range = 7.0
 
-[node name="Far_birds" parent="." instance=ExtResource("2_it8yi")]
-transform = Transform3D(0.0854719, 0, 0, 0, 0.0854719, 0, 0, 0, 0.0854719, 0, 0, 0)
+[node name="Rotation_root" type="Node3D" parent="."]
 
-[node name="Cube" parent="Far_birds" index="0"]
+[node name="Far_birds" parent="Rotation_root" instance=ExtResource("2_it8yi")]
+transform = Transform3D(-3.80329e-09, 0, 0.087009, 0, 0.087009, 0, -0.087009, 0, -3.80329e-09, 0, 0, 0)
+
+[node name="Cube" parent="Rotation_root/Far_birds" index="0"]
 surface_material_override/0 = SubResource("ShaderMaterial_mqnyo")
 
-[node name="Cube_001" parent="Far_birds" index="1"]
+[node name="Cube_001" parent="Rotation_root/Far_birds" index="1"]
 surface_material_override/0 = SubResource("ShaderMaterial_mqnyo")
 
-[node name="Cube_002" parent="Far_birds" index="2"]
+[node name="Cube_002" parent="Rotation_root/Far_birds" index="2"]
 surface_material_override/0 = SubResource("ShaderMaterial_mqnyo")
 
-[node name="bec" parent="Far_birds" index="3"]
+[node name="bec" parent="Rotation_root/Far_birds" index="3"]
 surface_material_override/0 = SubResource("ShaderMaterial_mqnyo")
 
-[node name="Cube2" type="MeshInstance3D" parent="Far_birds"]
+[node name="Cube2" type="MeshInstance3D" parent="Rotation_root/Far_birds"]
 layers = 32768
 mesh = SubResource("ArrayMesh_ikiap")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("3_vlt4c")
 
-[node name="Cube_003" type="MeshInstance3D" parent="Far_birds"]
+[node name="Cube_003" type="MeshInstance3D" parent="Rotation_root/Far_birds"]
 layers = 32768
 mesh = SubResource("ArrayMesh_whnss")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("3_vlt4c")
 
-[node name="Cube_004" type="MeshInstance3D" parent="Far_birds"]
+[node name="Cube_004" type="MeshInstance3D" parent="Rotation_root/Far_birds"]
 transform = Transform3D(0.316406, 0, 0, 0, 0.0383384, 0, 0, 0, 0.479015, -0.386407, 0.316658, 0.790905)
 layers = 32768
 mesh = SubResource("ArrayMesh_vfnuy")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("3_vlt4c")
 
-[node name="bec2" type="MeshInstance3D" parent="Far_birds"]
+[node name="bec2" type="MeshInstance3D" parent="Rotation_root/Far_birds"]
 transform = Transform3D(0.15967, 0, 0, 0, 0.15967, 0, 0, 0, 0.15967, 1.1561, 0.0599303, 0)
 layers = 32768
 mesh = SubResource("ArrayMesh_4qs87")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("3_vlt4c")
 
-[node name="Cube3" type="MeshInstance3D" parent="Far_birds"]
+[node name="Cube3" type="MeshInstance3D" parent="Rotation_root/Far_birds"]
 layers = 1032
 mesh = SubResource("ArrayMesh_ikiap")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("4_mb1it")
 
-[node name="Cube_005" type="MeshInstance3D" parent="Far_birds"]
+[node name="Cube_005" type="MeshInstance3D" parent="Rotation_root/Far_birds"]
 layers = 1032
 mesh = SubResource("ArrayMesh_whnss")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("4_mb1it")
 
-[node name="Cube_006" type="MeshInstance3D" parent="Far_birds"]
+[node name="Cube_006" type="MeshInstance3D" parent="Rotation_root/Far_birds"]
 transform = Transform3D(0.316406, 0, 0, 0, 0.0383384, 0, 0, 0, 0.479015, -0.386407, 0.316658, 0.790905)
 layers = 1032
 mesh = SubResource("ArrayMesh_vfnuy")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("4_mb1it")
 
-[node name="bec3" type="MeshInstance3D" parent="Far_birds"]
+[node name="bec3" type="MeshInstance3D" parent="Rotation_root/Far_birds"]
 transform = Transform3D(0.15967, 0, 0, 0, 0.15967, 0, 0, 0, 0.15967, 1.1561, 0.0599303, 0)
 layers = 1032
 mesh = SubResource("ArrayMesh_4qs87")
@@ -377,5 +384,10 @@ surface_material_override/0 = ExtResource("4_mb1it")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_43sk8")
+disabled = true
 
-[editable path="Far_birds"]
+[node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.996445, -0.0842518, 0, 0.0842518, 0.996445, 0, 0, 0)
+target_position = Vector3(0, -5, 0)
+
+[editable path="Rotation_root/Far_birds"]

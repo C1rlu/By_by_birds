@@ -58,7 +58,7 @@ func _physics_process(_delta):
 	if _global_datas.Player_InDialogue:
 		return	
 	
-	if _global_datas._photo_checking:
+	if _global_datas.photo_checking:
 		return
 			
 	

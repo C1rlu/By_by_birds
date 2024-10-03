@@ -1,4 +1,4 @@
-[gd_resource type="VisualShader" load_steps=32 format=3 uid="uid://b8pie7pbqwtks"]
+[gd_resource type="VisualShader" load_steps=35 format=3 uid="uid://b8pie7pbqwtks"]
 
 [sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_dltq7"]
 parameter_name = "Main"
@@ -130,6 +130,19 @@ texture_filter = 1
 expanded_output_ports = [0]
 source = 5
 
+[sub_resource type="VisualShaderNodeExpression" id="VisualShaderNodeExpression_0k367"]
+size = Vector2(620, 200)
+expression = "float luminance = 0.299 * color.x + 0.587 * color.y + 0.114 * color.z;
+grey_value = luminance;"
+
+[sub_resource type="VisualShaderNodeMix" id="VisualShaderNodeMix_3ckcn"]
+default_input_values = [0, Vector3(0, 0, 0), 1, Vector3(1, 1, 1), 2, Vector3(0.5, 0.5, 0.5)]
+op_type = 3
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_ybun4"]
+parameter_name = "isGray"
+qualifier = 1
+
 [sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_jd15a"]
 parameter_name = "Opacity"
 hint = 1
@@ -140,6 +153,7 @@ default_value = 0.5
 code = "shader_type canvas_item;
 render_mode blend_mix;
 
+global uniform float isGray;
 uniform sampler2D Main : filter_nearest;
 uniform sampler2D Foam : filter_nearest;
 uniform sampler2D Sonar : filter_nearest;
@@ -156,6 +170,23 @@ uniform float Opacity : hint_range(0, 1) = 0.5;
 void fragment() {
 // ColorConstant:41
 	vec4 n_out41p0 = vec4(0.028948, 0.119567, 0.127153, 1.000000);
+
+
+	float n_out55p0;
+// Expression:55
+	n_out55p0 = 0.0;
+	{
+		float luminance = 0.299 * vec3(n_out41p0.xyz).x + 0.587 * vec3(n_out41p0.xyz).y + 0.114 * vec3(n_out41p0.xyz).z;
+		n_out55p0 = luminance;
+	}
+
+
+// FloatParameter:57
+	float n_out57p0 = isGray;
+
+
+// Mix:56
+	vec3 n_out56p0 = mix(vec3(n_out41p0.xyz), vec3(n_out55p0), vec3(n_out57p0));
 
 
 	vec4 n_out14p0;
@@ -243,7 +274,7 @@ void fragment() {
 
 
 // Mix:42
-	vec3 n_out42p0 = mix(vec3(n_out41p0.xyz), n_out26p0, vec3(n_out38p0.xyz));
+	vec3 n_out42p0 = mix(n_out56p0, n_out26p0, vec3(n_out38p0.xyz));
 
 
 	vec4 n_out54p0;
@@ -289,6 +320,7 @@ void fragment() {
 
 }
 "
+graph_offset = Vector2(-1028.91, 191.533)
 mode = 1
 flags/light_only = false
 nodes/fragment/0/position = Vector2(1760, 620)
@@ -380,4 +412,15 @@ nodes/fragment/53/node = SubResource("VisualShaderNodeTexture2DParameter_y85vu")
 nodes/fragment/53/position = Vector2(-840, 980)
 nodes/fragment/54/node = SubResource("VisualShaderNodeTexture_ktl3t")
 nodes/fragment/54/position = Vector2(-520, 1020)
-nodes/fragment/connections = PackedInt32Array(3, 0, 2, 1, 4, 0, 3, 1, 8, 0, 3, 0, 2, 0, 0, 1, 13, 0, 14, 2, 16, 0, 17, 2, 17, 0, 15, 2, 19, 0, 15, 1, 20, 0, 21, 2, 21, 0, 22, 2, 23, 0, 22, 1, 25, 0, 24, 2, 29, 0, 28, 2, 4, 0, 32, 1, 33, 0, 32, 0, 31, 0, 35, 2, 24, 0, 35, 1, 32, 0, 31, 1, 37, 0, 38, 2, 36, 0, 26, 1, 15, 0, 22, 0, 35, 0, 26, 2, 22, 0, 26, 0, 14, 0, 15, 0, 41, 0, 42, 0, 26, 0, 42, 1, 42, 0, 52, 0, 53, 0, 54, 2, 54, 0, 52, 1, 54, 4, 52, 2, 52, 0, 0, 0, 38, 0, 42, 2)
+nodes/fragment/55/node = SubResource("VisualShaderNodeExpression_0k367")
+nodes/fragment/55/position = Vector2(-1460, 560)
+nodes/fragment/55/size = Vector2(620, 200)
+nodes/fragment/55/input_ports = "0,4,color;"
+nodes/fragment/55/output_ports = "0,0,grey_value;"
+nodes/fragment/55/expression = "float luminance = 0.299 * color.x + 0.587 * color.y + 0.114 * color.z;
+grey_value = luminance;"
+nodes/fragment/56/node = SubResource("VisualShaderNodeMix_3ckcn")
+nodes/fragment/56/position = Vector2(-700, 760)
+nodes/fragment/57/node = SubResource("VisualShaderNodeFloatParameter_ybun4")
+nodes/fragment/57/position = Vector2(-1300, 940)
+nodes/fragment/connections = PackedInt32Array(3, 0, 2, 1, 4, 0, 3, 1, 8, 0, 3, 0, 2, 0, 0, 1, 13, 0, 14, 2, 16, 0, 17, 2, 17, 0, 15, 2, 19, 0, 15, 1, 20, 0, 21, 2, 21, 0, 22, 2, 23, 0, 22, 1, 25, 0, 24, 2, 29, 0, 28, 2, 4, 0, 32, 1, 33, 0, 32, 0, 31, 0, 35, 2, 24, 0, 35, 1, 32, 0, 31, 1, 37, 0, 38, 2, 36, 0, 26, 1, 15, 0, 22, 0, 35, 0, 26, 2, 22, 0, 26, 0, 14, 0, 15, 0, 26, 0, 42, 1, 42, 0, 52, 0, 53, 0, 54, 2, 54, 0, 52, 1, 54, 4, 52, 2, 52, 0, 0, 0, 38, 0, 42, 2, 55, 0, 56, 1, 57, 0, 56, 2, 41, 0, 55, 0, 41, 0, 56, 0, 56, 0, 42, 0)

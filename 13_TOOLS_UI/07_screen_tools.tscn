@@ -16,8 +16,7 @@ script/source = "extends Node
 
 
 @onready var front_element = $\"../Front_element\"
-const PHOTO_UI_PREFAB = preload(\"res://12_INVENTORY/Photo/Photo_ui_prefab.tscn\")
-
+const PHOTO_UI_PREFAB = preload(\"res://13_TOOLS_UI/Photo/Photo_ui_prefab.tscn\")
 
 
 func _ready():

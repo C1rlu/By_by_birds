@@ -1,14 +1,12 @@
-[gd_scene load_steps=102 format=3 uid="uid://cnmptm7i0xxmj"]
+[gd_scene load_steps=100 format=3 uid="uid://cnmptm7i0xxmj"]
 
 [ext_resource type="Script" path="res://00_SCENE/Active_Decor_Scene.gd" id="1_ounvv"]
 [ext_resource type="PackedScene" uid="uid://vpdvl0v7dubd" path="res://04_SCENE_MAIN_MAP/00_PLAYER/Player_boat.tscn" id="1_qltht"]
 [ext_resource type="Resource" uid="uid://ppxk5i543dfn" path="res://15_GAME_RESSOURCE/00_Npc_data/Mr_Birds_data.tres" id="1_trgwt"]
 [ext_resource type="Script" path="res://13_TOOLS_UI/set_Resolution_viewports.gd" id="1_xd8sb"]
 [ext_resource type="Script" path="res://03_CAMERA/CameraFollow.gd" id="2_7lb1x"]
-[ext_resource type="Script" path="res://00_SCENE/MainScene/Grid_Fade.gd" id="3_7fuin"]
 [ext_resource type="Shader" uid="uid://bduoqim3kfbs6" path="res://04_SCENE_MAIN_MAP/00_PLAYER/Sonar/Sonar_sh.tres" id="3_todel"]
 [ext_resource type="Script" path="res://03_CAMERA/Active_scene_viewports.gd" id="4_tulh2"]
-[ext_resource type="Script" path="res://00_SCENE/MainScene/Teleport_boat_at_position.gd" id="4_xkpot"]
 [ext_resource type="Material" uid="uid://ctnqf5d3uj1g7" path="res://05_SHADER/All_Materials/dark_mask.tres" id="6_vcmny"]
 [ext_resource type="Material" uid="uid://b64juw612xqpu" path="res://05_SHADER/Sea_sh/Sea_mat.tres" id="7_4y8ld"]
 [ext_resource type="Shader" uid="uid://b8pie7pbqwtks" path="res://05_SHADER/Full_screen/Main_fullscreen.tres" id="8_oftpq"]
@@ -692,15 +690,8 @@ viewports = [NodePath("../01_GAME_UI/MAIN_SCENE_UI/Viewports/MAIN_Viewport"), No
 script = ExtResource("1_xd8sb")
 viewports = [NodePath("../01_GAME_UI/MAIN_SCENE_UI/Viewports/MAIN_Viewport"), NodePath("../01_GAME_UI/MAIN_SCENE_UI/Viewports/FOAM_Viewport"), NodePath("../01_GAME_UI/MAIN_SCENE_UI/Viewports/SONAR_Viewport"), NodePath("../01_GAME_UI/MAIN_SCENE_UI/Viewports/GRID_Viewport"), NodePath("../01_GAME_UI/MAIN_SCENE_UI/Viewports/MAIN_LIGHT_Viewport")]
 
-[node name="Grid_Fade" type="Node" parent="." node_paths=PackedStringArray("Main_render")]
-script = ExtResource("3_7fuin")
-Main_render = NodePath("../01_GAME_UI/MAIN_SCENE_UI/Viewports/MAIN")
-
 [node name="Sonar_behaviour" type="Node" parent="."]
 script = SubResource("GDScript_0xo40")
-
-[node name="Teleport_boat_at_position" type="Node" parent="."]
-script = ExtResource("4_xkpot")
 
 [node name="In_Zone_State" type="Node" parent="." node_paths=PackedStringArray("area_root")]
 process_mode = 3

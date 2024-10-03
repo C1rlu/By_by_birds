@@ -4,8 +4,8 @@
 [ext_resource type="Shader" uid="uid://cg5mgo48srf08" path="res://13_TOOLS_UI/2D_MAP/2d_map_border.tres" id="1_kvg0y"]
 [ext_resource type="Script" path="res://13_TOOLS_UI/2D_MAP/Player_Map_behaviour.gd" id="1_to0fs"]
 [ext_resource type="Script" path="res://13_TOOLS_UI/2D_MAP/Control_map.gd" id="3_8kfsc"]
-[ext_resource type="Texture2D" uid="uid://cuul1oo87fgv6" path="res://12_INVENTORY/Map/Map_board_isle_01.png" id="6_7j04c"]
-[ext_resource type="Texture2D" uid="uid://y701g232cpu4" path="res://12_INVENTORY/Map/Map_board_01.png" id="7_tmq1y"]
+[ext_resource type="Texture2D" uid="uid://cuul1oo87fgv6" path="res://13_TOOLS_UI/Map/Map_board_isle_01.png" id="6_7j04c"]
+[ext_resource type="Texture2D" uid="uid://y701g232cpu4" path="res://13_TOOLS_UI/Map/Map_board_01.png" id="7_tmq1y"]
 [ext_resource type="PackedScene" uid="uid://cqbutqb21mt2l" path="res://13_TOOLS_UI/2D_MAP/Legend/Legend_prefab.tscn" id="8_x8w18"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_r6rtr"]

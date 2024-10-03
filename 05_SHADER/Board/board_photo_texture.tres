@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=12 format=3 uid="uid://25obtp1blkk6"]
 
-[ext_resource type="Texture2D" uid="uid://38btbw60olcn" path="res://12_INVENTORY/Photo/IMG/Boat.png" id="1_0jkv1"]
+[ext_resource type="Texture2D" uid="uid://38btbw60olcn" path="res://13_TOOLS_UI/Photo/IMG/Boat.png" id="1_0jkv1"]
 
 [sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_auibw"]
 source = 5

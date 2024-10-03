@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="PhotoData" load_steps=4 format=3 uid="uid://dlm0knnql1e6h"]
 
-[ext_resource type="Texture2D" uid="uid://81fqjbnarlkw" path="res://12_INVENTORY/Photo/IMG/Ghost_eyes_art.png" id="1_toluo"]
+[ext_resource type="Texture2D" uid="uid://81fqjbnarlkw" path="res://13_TOOLS_UI/Photo/IMG/Ghost_eyes_art.png" id="1_toluo"]
 [ext_resource type="Resource" uid="uid://2wvymfu1i442" path="res://15_GAME_RESSOURCE/01_info_data/Boat_subscene/i_should_check.tres" id="2_m2ybn"]
-[ext_resource type="Script" path="res://12_INVENTORY/Photo/Photo_data.gd" id="7_10dqp"]
+[ext_resource type="Script" path="res://13_TOOLS_UI/Photo/Photo_data.gd" id="7_10dqp"]
 
 [resource]
 script = ExtResource("7_10dqp")

@@ -66,7 +66,7 @@ render_priority = 1
 shader = ExtResource("5_ki868")
 shader_parameter/ColorParameter = Color(0, 0, 0, 1)
 shader_parameter/Color = Color(0.419608, 0.560784, 0.556863, 1)
-shader_parameter/Dither_strenght = 0.37
+shader_parameter/Dither_strenght = 0.58
 shader_parameter/Gradient_base = ExtResource("3_t88to")
 
 [node name="Iceberg_set_01" type="Node3D"]

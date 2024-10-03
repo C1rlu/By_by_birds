@@ -1,158 +1,18 @@
-[gd_scene load_steps=30 format=3 uid="uid://c5wn0a86wvnq4"]
+[gd_scene load_steps=20 format=3 uid="uid://c5wn0a86wvnq4"]
 
 [ext_resource type="Script" path="res://04_SCENE_MAIN_MAP/01_PLAYER_BIRD/Player_bird_movement.gd" id="1_ot1bv"]
 [ext_resource type="Script" path="res://04_SCENE_MAIN_MAP/01_PLAYER_BIRD/Automatic_fly.gd" id="2_301bk"]
 [ext_resource type="PackedScene" uid="uid://djqtoudpd0dy6" path="res://04_SCENE_MAIN_MAP/Birds/Far_birds.blend" id="2_it8yi"]
-[ext_resource type="Material" uid="uid://btyt7asiya72t" path="res://00_SHADER/All_Materials/Light_lit_only.tres" id="3_vlt4c"]
 [ext_resource type="Material" uid="uid://ctnqf5d3uj1g7" path="res://00_SHADER/All_Materials/dark_mask.tres" id="4_mb1it"]
+[ext_resource type="Shader" uid="uid://cu2uipuy138c6" path="res://00_SHADER/All_Materials/Main_sceneTest_dither_sh.tres" id="4_o4haw"]
 
-[sub_resource type="VisualShaderNodeMix" id="VisualShaderNodeMix_upjaf"]
-default_input_values = [0, Vector3(0, 0, 0), 1, Vector3(1, 1, 1), 2, Vector3(0.5, 0.5, 0.5)]
-op_type = 3
-
-[sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_suty4"]
-parameter_name = "ColorParameter"
-
-[sub_resource type="VisualShaderNodeColorConstant" id="VisualShaderNodeColorConstant_khunu"]
-constant = Color(0.461686, 0.318787, 0.144089, 1)
-
-[sub_resource type="VisualShaderNodeSmoothStep" id="VisualShaderNodeSmoothStep_76qla"]
-default_input_values = [0, 0.0, 1, 1.0, 2, 1.0]
-
-[sub_resource type="VisualShaderNodeFloatConstant" id="VisualShaderNodeFloatConstant_mbrl6"]
-constant = 0.4
-
-[sub_resource type="VisualShaderNodeFloatConstant" id="VisualShaderNodeFloatConstant_k7sl2"]
-constant = 1.0
-
-[sub_resource type="VisualShaderNodeExpression" id="VisualShaderNodeExpression_34dsp"]
-size = Vector2(724.789, 654.559)
-expression = "const float DITHER_THRESHOLDS[16] ={
-		1.0 / 17.0, 9.0 / 17.0, 3.0 / 17.0, 11.0 / 17.0,
-		13.0 / 17.0, 5.0 / 17.0, 15.0 / 17.0, 7.0 / 17.0,
-		4.0 / 17.0, 12.0 / 17.0, 2.0 / 17.0, 10.0 / 17.0,
-		16.0 / 17.0, 8.0 / 17.0, 14.0 / 17.0, 6.0 / 17.0
-	};
-	
-vec2 uv = FRAGCOORD.xy * Size;
-int index = (int(uv.x) % 4) * 4 + int(uv.y) % 4;
-Dither_Node = In - DITHER_THRESHOLDS[index];"
-
-[sub_resource type="VisualShaderNodeFresnel" id="VisualShaderNodeFresnel_g22x8"]
-
-[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_ubbeb"]
-parameter_name = "Distance"
-default_value_enabled = true
-default_value = 1.0
-
-[sub_resource type="VisualShader" id="VisualShader_yu0h7"]
-code = "shader_type spatial;
-render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx, unshaded;
-
-uniform vec4 ColorParameter : source_color;
-uniform float Distance = 1;
-
-
-
-void fragment() {
-// ColorConstant:3
-	vec4 n_out3p0 = vec4(0.461686, 0.318787, 0.144089, 1.000000);
-
-
-// ColorParameter:12
-	vec4 n_out12p0 = ColorParameter;
-
-
-// FloatParameter:9
-	float n_out9p0 = Distance;
-
-
-// Fresnel:8
-	float n_out8p0 = pow(1.0 - clamp(dot(NORMAL, VIEW), 0.0, 1.0), n_out9p0);
-
-
-// FloatConstant:6
-	float n_out6p0 = 1.000000;
-
-
-// FloatConstant:5
-	float n_out5p0 = 0.400000;
-
-
-	float n_out7p0;
-// Expression:7
-	n_out7p0 = 0.0;
-	{
-		const float DITHER_THRESHOLDS[16] ={
-				1.0 / 17.0, 9.0 / 17.0, 3.0 / 17.0, 11.0 / 17.0,
-				13.0 / 17.0, 5.0 / 17.0, 15.0 / 17.0, 7.0 / 17.0,
-				4.0 / 17.0, 12.0 / 17.0, 2.0 / 17.0, 10.0 / 17.0,
-				16.0 / 17.0, 8.0 / 17.0, 14.0 / 17.0, 6.0 / 17.0
-			};
-			
-		vec2 uv = FRAGCOORD.xy * n_out5p0;
-		int index = (int(uv.x) % 4) * 4 + int(uv.y) % 4;
-		n_out7p0 = n_out6p0 - DITHER_THRESHOLDS[index];
-	}
-
-
-// SmoothStep:4
-	float n_in4p2 = 1.00000;
-	float n_out4p0 = smoothstep(n_out8p0, n_out7p0, n_in4p2);
-
-
-// Mix:10
-	vec3 n_out10p0 = mix(vec3(n_out3p0.xyz), vec3(n_out12p0.xyz), vec3(n_out4p0));
-
-
-// Output:0
-	ALBEDO = n_out10p0;
-
-
-}
-"
-graph_offset = Vector2(-772.043, -63.679)
-flags/unshaded = true
-nodes/vertex/0/position = Vector2(400, 160)
-nodes/fragment/3/node = SubResource("VisualShaderNodeColorConstant_khunu")
-nodes/fragment/3/position = Vector2(-737.498, -39.0981)
-nodes/fragment/4/node = SubResource("VisualShaderNodeSmoothStep_76qla")
-nodes/fragment/4/position = Vector2(0, 520)
-nodes/fragment/5/node = SubResource("VisualShaderNodeFloatConstant_mbrl6")
-nodes/fragment/5/position = Vector2(-1140, 780)
-nodes/fragment/6/node = SubResource("VisualShaderNodeFloatConstant_k7sl2")
-nodes/fragment/6/position = Vector2(-1140, 640)
-nodes/fragment/7/node = SubResource("VisualShaderNodeExpression_34dsp")
-nodes/fragment/7/position = Vector2(-840, 760)
-nodes/fragment/7/size = Vector2(724.789, 654.559)
-nodes/fragment/7/input_ports = "0,0,In;1,0,Size;"
-nodes/fragment/7/output_ports = "0,0,Dither_Node;"
-nodes/fragment/7/expression = "const float DITHER_THRESHOLDS[16] ={
-		1.0 / 17.0, 9.0 / 17.0, 3.0 / 17.0, 11.0 / 17.0,
-		13.0 / 17.0, 5.0 / 17.0, 15.0 / 17.0, 7.0 / 17.0,
-		4.0 / 17.0, 12.0 / 17.0, 2.0 / 17.0, 10.0 / 17.0,
-		16.0 / 17.0, 8.0 / 17.0, 14.0 / 17.0, 6.0 / 17.0
-	};
-	
-vec2 uv = FRAGCOORD.xy * Size;
-int index = (int(uv.x) % 4) * 4 + int(uv.y) % 4;
-Dither_Node = In - DITHER_THRESHOLDS[index];"
-nodes/fragment/8/node = SubResource("VisualShaderNodeFresnel_g22x8")
-nodes/fragment/8/position = Vector2(-240, 300)
-nodes/fragment/9/node = SubResource("VisualShaderNodeFloatParameter_ubbeb")
-nodes/fragment/9/position = Vector2(-600, 380)
-nodes/fragment/10/node = SubResource("VisualShaderNodeMix_upjaf")
-nodes/fragment/10/position = Vector2(-68.347, -89.6873)
-nodes/fragment/12/node = SubResource("VisualShaderNodeColorParameter_suty4")
-nodes/fragment/12/position = Vector2(-620, 20)
-nodes/fragment/connections = PackedInt32Array(5, 0, 7, 1, 6, 0, 7, 0, 8, 0, 4, 0, 7, 0, 4, 1, 9, 0, 8, 3, 3, 0, 10, 0, 4, 0, 10, 2, 10, 0, 0, 0, 12, 0, 10, 1)
-nodes/light/0/position = Vector2(2740, 1260)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_mqnyo"]
-render_priority = 2
-shader = SubResource("VisualShader_yu0h7")
-shader_parameter/ColorParameter = Color(0.0588235, 0.141176, 0.145098, 1)
-shader_parameter/Distance = 0.295
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cac3u"]
+resource_local_to_scene = true
+render_priority = 1
+shader = ExtResource("4_o4haw")
+shader_parameter/ColorParameter = Color(0.0235294, 0.117647, 0.12549, 1)
+shader_parameter/Color = Color(0.968627, 0.972549, 0.937255, 1)
+shader_parameter/Dither_strenght = 0.485
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y7yoj"]
 
@@ -309,60 +169,22 @@ Player_rg = NodePath("..")
 [node name="Timer" type="Timer" parent="Automatic_fly"]
 autostart = true
 
-[node name="Main_light" type="OmniLight3D" parent="."]
-transform = Transform3D(1, -7.25367e-23, -1.98947e-22, 2.11758e-22, 0.342545, 0.939501, 0, -0.939501, 0.342545, 0, 0, 0)
-layers = 32768
-light_energy = 8.0
-light_indirect_energy = 0.0
-light_volumetric_fog_energy = 0.0
-light_specular = 0.0
-light_bake_mode = 0
-light_cull_mask = 4293951488
-shadow_opacity = 0.64
-omni_range = 7.0
-
 [node name="Rotation_root" type="Node3D" parent="."]
 
 [node name="Far_birds" parent="Rotation_root" instance=ExtResource("2_it8yi")]
 transform = Transform3D(-3.80329e-09, 0, 0.087009, 0, 0.087009, 0, -0.087009, 0, -3.80329e-09, 0, 0, 0)
 
 [node name="Cube" parent="Rotation_root/Far_birds" index="0"]
-surface_material_override/0 = SubResource("ShaderMaterial_mqnyo")
+surface_material_override/0 = SubResource("ShaderMaterial_cac3u")
 
 [node name="Cube_001" parent="Rotation_root/Far_birds" index="1"]
-surface_material_override/0 = SubResource("ShaderMaterial_mqnyo")
+surface_material_override/0 = SubResource("ShaderMaterial_cac3u")
 
 [node name="Cube_002" parent="Rotation_root/Far_birds" index="2"]
-surface_material_override/0 = SubResource("ShaderMaterial_mqnyo")
+surface_material_override/0 = SubResource("ShaderMaterial_cac3u")
 
 [node name="bec" parent="Rotation_root/Far_birds" index="3"]
-surface_material_override/0 = SubResource("ShaderMaterial_mqnyo")
-
-[node name="Cube2" type="MeshInstance3D" parent="Rotation_root/Far_birds"]
-layers = 32768
-mesh = SubResource("ArrayMesh_ikiap")
-skeleton = NodePath("")
-surface_material_override/0 = ExtResource("3_vlt4c")
-
-[node name="Cube_003" type="MeshInstance3D" parent="Rotation_root/Far_birds"]
-layers = 32768
-mesh = SubResource("ArrayMesh_whnss")
-skeleton = NodePath("")
-surface_material_override/0 = ExtResource("3_vlt4c")
-
-[node name="Cube_004" type="MeshInstance3D" parent="Rotation_root/Far_birds"]
-transform = Transform3D(0.316406, 0, 0, 0, 0.0383384, 0, 0, 0, 0.479015, -0.386407, 0.316658, 0.790905)
-layers = 32768
-mesh = SubResource("ArrayMesh_vfnuy")
-skeleton = NodePath("")
-surface_material_override/0 = ExtResource("3_vlt4c")
-
-[node name="bec2" type="MeshInstance3D" parent="Rotation_root/Far_birds"]
-transform = Transform3D(0.15967, 0, 0, 0, 0.15967, 0, 0, 0, 0.15967, 1.1561, 0.0599303, 0)
-layers = 32768
-mesh = SubResource("ArrayMesh_4qs87")
-skeleton = NodePath("")
-surface_material_override/0 = ExtResource("3_vlt4c")
+surface_material_override/0 = SubResource("ShaderMaterial_cac3u")
 
 [node name="Cube3" type="MeshInstance3D" parent="Rotation_root/Far_birds"]
 layers = 1032
@@ -395,7 +217,7 @@ shape = SubResource("SphereShape3D_43sk8")
 disabled = true
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.996445, -0.0842518, 0, 0.0842518, 0.996445, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 target_position = Vector3(0, -5, 0)
 
 [editable path="Rotation_root/Far_birds"]

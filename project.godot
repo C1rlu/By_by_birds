@@ -352,7 +352,7 @@ active_Dither={
 }
 Night={
 "type": "float",
-"value": 0.5
+"value": 0.45
 }
 mirror_wave_speed={
 "type": "float",
@@ -364,5 +364,5 @@ BlueNoise={
 }
 isGray={
 "type": "float",
-"value": 0.0
+"value": 1.0
 }

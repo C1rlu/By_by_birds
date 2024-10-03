@@ -1,4 +1,4 @@
-[gd_scene load_steps=111 format=3 uid="uid://cnmptm7i0xxmj"]
+[gd_scene load_steps=110 format=3 uid="uid://cnmptm7i0xxmj"]
 
 [ext_resource type="Script" path="res://00_SCENE/Active_Decor_Scene.gd" id="1_ounvv"]
 [ext_resource type="PackedScene" uid="uid://vpdvl0v7dubd" path="res://04_SCENE_MAIN_MAP/00_PLAYER/Player_boat.tscn" id="1_qltht"]
@@ -39,10 +39,9 @@
 [ext_resource type="Resource" uid="uid://xuxu60afj84h" path="res://15_GAME_RESSOURCE/00_Npc_data/Maurice_dialogue_data.tres" id="30_ivc7k"]
 [ext_resource type="Script" path="res://00_SCENE/Npc_zone.gd" id="30_ki3ay"]
 [ext_resource type="Resource" uid="uid://c6jw6ja2xggvh" path="res://15_GAME_RESSOURCE/00_Npc_data/Otis_Coast_guard_data.tres" id="32_pt30g"]
-[ext_resource type="Material" uid="uid://yjoyk6fvrm6q" path="res://10_BOARD/00_BOOK/00_SHADER/No_light_surface_mat.tres" id="33_um15u"]
+[ext_resource type="Material" uid="uid://yjoyk6fvrm6q" path="res://00_SHADER/No_light_surface_mat.tres" id="33_um15u"]
 [ext_resource type="PackedScene" uid="uid://dh5kdswdhdfq6" path="res://04_SCENE_MAIN_MAP/ELEMENTS/Island_set/Island_set_01/Island_set_01_prefab.tscn" id="37_b1buk"]
 [ext_resource type="Script" path="res://15_GAME_RESSOURCE/00_Zone_data/zone_data.gd" id="42_qpl8r"]
-[ext_resource type="PackedScene" uid="uid://bo33th5yn61n1" path="res://08_SUBSCENES/00_Scene/Vortex_scene.tscn" id="43_4lxgy"]
 [ext_resource type="PackedScene" uid="uid://tykoadjnvbu3" path="res://13_TOOLS_UI/Zone_info/path_zone.tscn" id="44_unjng"]
 [ext_resource type="Shader" uid="uid://jjqliete2f27" path="res://04_SCENE_MAIN_MAP/ELEMENTS/Subscene_elements/Subscene_element_sh.tres" id="46_wdctu"]
 [ext_resource type="PackedScene" uid="uid://dugml55e868yw" path="res://04_SCENE_MAIN_MAP/ELEMENTS/Post_office/post_office_prefabs.tscn" id="48_i4wgi"]
@@ -117,50 +116,7 @@ script/source = "extends Node
 
 func _input(event: InputEvent) -> void:
 	
-	#var _disable = true
-	#if _disable:
-		#return
-	if _global_datas.Player_InMenu:
-		_global_datas._active_progress_subscene.emit(false)
-		_global_datas._load_subscene.emit(false)
-		return
-	if _global_datas.Player_In_Inventory:
-		_global_datas._active_progress_subscene.emit(false)
-		_global_datas._load_subscene.emit(false)		
-		return
-	
-	if _subscene_datas.player_in_subscene:
-		return	
-		
-	if _global_datas.Player_InDialogue:
-		return
-	
-
-	if _global_datas.Player_InSubScene:
-		return
-		
-	if _global_datas._time_state == 0:
-			return	
-	if event.is_action_released(\"Push_to_subscene\"):
-
-		_global_datas._active_progress_subscene.emit(false)
-		_global_datas._load_subscene.emit(false)
-
-
-	if !_global_datas.subscene_progress_bar_sprite.visible:
-		return
-
-	if event.is_action_pressed(\"Push_to_subscene\"):
-		
-		if _global_datas.zoneData == null:
-			return
-		if _global_datas.Player_In_Inventory:
-			return
-			
-
-		_global_datas._active_progress_subscene.emit(true)
-		_global_datas._load_subscene.emit(true)
-		
+	pass
 "
 
 [sub_resource type="GDScript" id="GDScript_qc6pl"]
@@ -567,11 +523,10 @@ _data = {
 point_count = 6
 up_vector_enabled = false
 
-[sub_resource type="Resource" id="Resource_puk4x"]
+[sub_resource type="Resource" id="Resource_6s7tr"]
 resource_local_to_scene = true
 script = ExtResource("42_qpl8r")
 zone_node_dialogue = "vortex"
-zone_packed_scene = ExtResource("43_4lxgy")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_3syyu"]
 viewport_path = NodePath("SubViewport_zone_name")
@@ -1709,7 +1664,7 @@ surface_material_override/0 = ExtResource("33_um15u")
 [node name="Path_zone" parent="--DECOR--/DIVE_ZONES" instance=ExtResource("44_unjng")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.68113, 0, -0.405165)
 curve = SubResource("Curve3D_1y7be")
-zone_datas = SubResource("Resource_puk4x")
+zone_datas = SubResource("Resource_6s7tr")
 
 [node name="BouePrefab" parent="--DECOR--/DIVE_ZONES/Path_zone" index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.943438, 0, -2.42227)

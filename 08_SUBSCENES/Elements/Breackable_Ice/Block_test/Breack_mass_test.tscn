@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://08_SUBSCENES/Elements/Breackable_Ice/Breaking_me.gd" id="2_r0euh"]
 [ext_resource type="Script" path="res://08_SUBSCENES/Elements/Breackable_Ice/Block_test/fracture_fade.gd" id="3_tppwj"]
 [ext_resource type="PackedScene" uid="uid://cwtlyjbcep3uc" path="res://08_SUBSCENES/Elements/Breackable_Ice/Block_test/block_breack_03_back_01.blend" id="5_cknsj"]
-[ext_resource type="Material" uid="uid://yjoyk6fvrm6q" path="res://10_BOARD/00_BOOK/00_SHADER/No_light_surface_mat.tres" id="5_hlddg"]
+[ext_resource type="Material" uid="uid://yjoyk6fvrm6q" path="res://00_SHADER/No_light_surface_mat.tres" id="5_hlddg"]
 [ext_resource type="Shader" uid="uid://btl0hgwwfslhj" path="res://08_SUBSCENES/Elements/Magnetable_test/00_SHADER/Debris_scanner_sh.tres" id="6_ri18h"]
 [ext_resource type="Shader" uid="uid://be88gec6clk8u" path="res://05_SHADER/Subscene_materials/Subscene_sh.tres" id="7_rce56"]
 

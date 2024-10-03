@@ -27,13 +27,6 @@ func _check_zone_enter(area):
 		_global_datas.Npc_Dialogue = npc_zone.get_npc()
 		_global_datas._active_this_npc_zone.emit(true)
 		
-	
-	var dive_zone = area.get_node_or_null("Boue_zone")
-	if dive_zone:
-		var zone_data = dive_zone.get_dive_data()
-		_global_datas.zoneData = zone_data
-		_global_datas._active_this_dive_zone.emit(true)	
-		
 		
 	var delevery_zone = area.get_node_or_null("Delevery_zone")
 	if delevery_zone:
@@ -48,11 +41,6 @@ func _check_zone_exit(area):
 		_global_datas._check_boat_zone.emit()
 		
 		
-	var dive_zone = area.get_node_or_null("Boue_zone")
-	if dive_zone:
-		_global_datas._active_this_dive_zone.emit(false)
-		_global_datas.zoneData = null
-		_global_datas._check_boat_zone.emit()
 		
 	var delevery_zone = area.get_node_or_null("Delevery_zone")
 	if delevery_zone:
@@ -68,11 +56,6 @@ func check_zone():
 			_global_datas.Npc_Dialogue = npc_zone.get_npc()
 			_global_datas._active_this_npc_zone.emit(true)
 			
-		var dive_zone = a.get_node_or_null("Boue_zone")
-		if dive_zone:
-			var zone_data = dive_zone.get_dive_data()
-			_global_datas.zoneData = zone_data
-			_global_datas._active_this_dive_zone.emit(true)
 			
 		var delevery_zone = a.get_node_or_null("Delevery_zone")
 		if delevery_zone:

@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cdnar4v4gpadd" path="res://04_SCENE_MAIN_MAP/ELEMENTS/Lighthouse/Lighthouse_gradient.png" id="2_lv8lt"]
 [ext_resource type="Script" path="res://04_SCENE_MAIN_MAP/ELEMENTS/Lighthouse/Lighhouse_light_anim.gd" id="2_mcqu7"]
 [ext_resource type="Material" uid="uid://ctnqf5d3uj1g7" path="res://05_SHADER/All_Materials/dark_mask.tres" id="3_mvy38"]
-[ext_resource type="Material" uid="uid://yjoyk6fvrm6q" path="res://10_BOARD/00_BOOK/00_SHADER/No_light_surface_mat.tres" id="4_t041h"]
+[ext_resource type="Material" uid="uid://yjoyk6fvrm6q" path="res://00_SHADER/No_light_surface_mat.tres" id="4_t041h"]
 [ext_resource type="PackedScene" uid="uid://htj4ifkalkjm" path="res://04_SCENE_MAIN_MAP/ELEMENTS/Lighthouse/Lighthouse.blend" id="4_ukkmq"]
 [ext_resource type="Shader" uid="uid://cu2uipuy138c6" path="res://05_SHADER/All_Materials/Main_sceneTest_dither_sh.tres" id="5_n182k"]
 [ext_resource type="PackedScene" uid="uid://cayj2wqyaod67" path="res://04_SCENE_MAIN_MAP/ELEMENTS/Lighthouse/light_cone.blend" id="7_8wbog"]

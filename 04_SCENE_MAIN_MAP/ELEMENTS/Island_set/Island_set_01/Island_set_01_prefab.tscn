@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://cxxpdk6uunjjo" path="res://04_SCENE_MAIN_MAP/ELEMENTS/Island_set/Island_set_01/Island_set_01.blend" id="1_umt6k"]
 [ext_resource type="Script" path="res://04_SCENE_MAIN_MAP/ELEMENTS/Island_set/Shader_variety_color.gd" id="2_uag6g"]
 [ext_resource type="Script" path="res://00_SYSTEMS/Active_mask_at_ready.tres.gd" id="2_yckc5"]
-[ext_resource type="Material" uid="uid://yjoyk6fvrm6q" path="res://10_BOARD/00_BOOK/00_SHADER/No_light_surface_mat.tres" id="3_alele"]
+[ext_resource type="Material" uid="uid://yjoyk6fvrm6q" path="res://00_SHADER/No_light_surface_mat.tres" id="3_alele"]
 [ext_resource type="Shader" uid="uid://cu2uipuy138c6" path="res://05_SHADER/All_Materials/Main_sceneTest_dither_sh.tres" id="3_wg8yv"]
 [ext_resource type="Texture2D" uid="uid://5hamxlsfnogh" path="res://04_SCENE_MAIN_MAP/ELEMENTS/Island_set/Island_set_01/Island_gradient_01.png" id="4_y3vfy"]
 [ext_resource type="Material" uid="uid://ctnqf5d3uj1g7" path="res://05_SHADER/All_Materials/dark_mask.tres" id="5_28ike"]

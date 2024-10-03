@@ -14,7 +14,7 @@
 [ext_resource type="Script" path="res://08_SUBSCENES/Player_subscene/ELEMENT_BREAKING.gd" id="12_6dq77"]
 [ext_resource type="Resource" uid="uid://bv88qpfo17i43" path="res://08_SUBSCENES/Tools/Main_tool/magnet_remove_tool.tres" id="14_t3rck"]
 [ext_resource type="PackedScene" uid="uid://bktiy5sdjc87f" path="res://08_SUBSCENES/Player_subscene/Cosmo_Mod_01.blend" id="14_tdqlw"]
-[ext_resource type="Material" uid="uid://yjoyk6fvrm6q" path="res://10_BOARD/00_BOOK/00_SHADER/No_light_surface_mat.tres" id="17_dh0mp"]
+[ext_resource type="Material" uid="uid://yjoyk6fvrm6q" path="res://00_SHADER/No_light_surface_mat.tres" id="17_dh0mp"]
 [ext_resource type="Script" path="res://08_SUBSCENES/Player_subscene/look_at_camera.gd" id="17_mnoui"]
 [ext_resource type="Script" path="res://08_SUBSCENES/Player_subscene/Push.gd" id="17_qkxfn"]
 [ext_resource type="Shader" uid="uid://cu2uipuy138c6" path="res://05_SHADER/All_Materials/Main_sceneTest_dither_sh.tres" id="19_7vppd"]

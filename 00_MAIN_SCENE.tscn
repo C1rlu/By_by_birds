@@ -1,6 +1,5 @@
-[gd_scene load_steps=17 format=3 uid="uid://cb8k68mtsigvd"]
+[gd_scene load_steps=16 format=3 uid="uid://cb8k68mtsigvd"]
 
-[ext_resource type="Resource" uid="uid://cooqi0giysm3w" path="res://15_GAME_RESSOURCE/MrBirs_photoData.tres" id="1_ls1ba"]
 [ext_resource type="Resource" uid="uid://d2ivg06mjrg4v" path="res://15_GAME_RESSOURCE/00_Zone_data/Vortex_zone.tres" id="2_72gtw"]
 [ext_resource type="Script" path="res://00_SYSTEMS/Global_datas.gd" id="3_qrxv3"]
 [ext_resource type="Script" path="res://06_UI/Color_management/Color_Managers.gd" id="4_n4sfn"]
@@ -17,16 +16,13 @@
 [sub_resource type="GDScript" id="GDScript_c11gh"]
 script/source = "extends Node
 
-@export var photo_data : PhotoData
+
 @export var zone : ZoneData
 
 func _input(event):
 	
 	if event.is_action_pressed(\"debug_1\"):
-		_global_datas.zoneData = zone 
-		_global_datas._load_subscene.emit(true)
-		#_global_datas._go_Subscene.emit(true)
-		#_subscene_datas.go_subscene.emit(true)
+		pass
 
 	if event.is_action_pressed(\"debug_2\"):
 		_global_datas.active_prologue_demo.emit()
@@ -75,7 +71,6 @@ metadata/_edit_horizontal_guides_ = [-31.0]
 
 [node name="DEBUG_Dev_shortcut" type="Node" parent="."]
 script = SubResource("GDScript_c11gh")
-photo_data = ExtResource("1_ls1ba")
 zone = ExtResource("2_72gtw")
 
 [node name="01_GAME_MANAGERS" type="Node" parent="."]

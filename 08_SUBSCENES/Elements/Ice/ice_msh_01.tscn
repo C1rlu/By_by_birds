@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://bneebc6fpaysa"]
 
-[ext_resource type="Material" uid="uid://yjoyk6fvrm6q" path="res://10_BOARD/00_BOOK/00_SHADER/No_light_surface_mat.tres" id="2_d1cgy"]
+[ext_resource type="Material" uid="uid://yjoyk6fvrm6q" path="res://00_SHADER/No_light_surface_mat.tres" id="2_d1cgy"]
 [ext_resource type="Shader" uid="uid://btl0hgwwfslhj" path="res://08_SUBSCENES/Elements/Magnetable_test/00_SHADER/Debris_scanner_sh.tres" id="2_k2xbr"]
 [ext_resource type="Shader" uid="uid://be88gec6clk8u" path="res://05_SHADER/Subscene_materials/Subscene_sh.tres" id="3_m0dg1"]
 [ext_resource type="PackedScene" uid="uid://du7ox45438flo" path="res://08_SUBSCENES/Elements/Subrocks/subrock_01/Subrock_01.blend" id="4_bps7e"]

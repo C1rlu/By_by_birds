@@ -96,11 +96,8 @@ signal _active_this_npc_zone(condition : bool)
 
 signal _in_delevery_zone(condition : bool)
 
-var zoneData : ZoneData
 
 
-signal _load_subscene(condition : bool)
-signal _go_Subscene
 var subbscene_playerPosition : Vector3
 signal _scan_mirror_xray
 signal _photo_flash
@@ -143,10 +140,8 @@ signal _open_player_map(condition : bool)
 signal map_fade(condition : bool) # true is in : false is out
 
 
-signal camera_focus_On(focus_data : boardCamState_data)
 var camera_current_state : game_state.camera_state = game_state.camera_state.Main
 
-var previous_cam_state : boardCamState_data
 var previous_cam_target : Vector3
 
 signal  show_element_info(condition : bool, information : info_data)

@@ -2,16 +2,20 @@
 
 [ext_resource type="Shader" uid="uid://ce21gfa0ldjj7" path="res://13_TOOLS_UI/2D_MAP/2d_map_sh.tres" id="1_bcm85"]
 [ext_resource type="Shader" uid="uid://cg5mgo48srf08" path="res://13_TOOLS_UI/2D_MAP/2d_map_border.tres" id="1_kvg0y"]
-[ext_resource type="Texture2D" uid="uid://v5bi85b50j4g" path="res://10_BOARD/Map/Map_board_01.png" id="1_q1x4e"]
 [ext_resource type="Script" path="res://13_TOOLS_UI/2D_MAP/Player_Map_behaviour.gd" id="1_to0fs"]
 [ext_resource type="Resource" uid="uid://cgd8sb0q0d67c" path="res://08_SUBSCENES/Tools/Main_tool/Menu/Open_Map.tres" id="2_ofx7r"]
 [ext_resource type="Script" path="res://13_TOOLS_UI/2D_MAP/Control_map.gd" id="3_8kfsc"]
-[ext_resource type="Texture2D" uid="uid://j82ecsafafol" path="res://10_BOARD/Map/Map_board_isle_01.png" id="3_cvvbd"]
 [ext_resource type="PackedScene" uid="uid://cqbutqb21mt2l" path="res://13_TOOLS_UI/2D_MAP/Legend/Legend_prefab.tscn" id="8_x8w18"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_r6rtr"]
 shader = ExtResource("1_kvg0y")
 shader_parameter/Opacity = 1.0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_m4nfr"]
+load_path = "res://.godot/imported/Map_board_isle_01.png-9eb168cbbf87cc96a4485bd1a89501ca.s3tc.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_p5jw6"]
+load_path = "res://.godot/imported/Map_board_01.png-2ffe55e4f8b6624ab9e0a3b503019820.s3tc.ctex"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0u5bg"]
 shader = ExtResource("1_bcm85")
@@ -19,8 +23,8 @@ shader_parameter/Flat_color = Color(0.0156863, 0.109804, 0.117647, 1)
 shader_parameter/Opacity = 1.0
 shader_parameter/Mask_color = Color(0.223529, 0.211765, 0.145098, 1)
 shader_parameter/Line_color = Color(0.596078, 0.466667, 0.298039, 1)
-shader_parameter/Isle_mask = ExtResource("3_cvvbd")
-shader_parameter/Line = ExtResource("1_q1x4e")
+shader_parameter/Isle_mask = SubResource("CompressedTexture2D_m4nfr")
+shader_parameter/Line = SubResource("CompressedTexture2D_p5jw6")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_tkf7a"]
 viewport_path = NodePath("SubViewportContainer/SubViewport")
@@ -102,7 +106,7 @@ offset_bottom = 323.5
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-texture = ExtResource("3_cvvbd")
+texture = SubResource("CompressedTexture2D_m4nfr")
 expand_mode = 1
 
 [node name="Legends" type="Control" parent="SubViewportContainer/SubViewport/root"]

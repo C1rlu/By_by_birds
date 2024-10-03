@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://bme2k8btnc2jn"]
 
 [ext_resource type="Script" path="res://00_SYSTEMS/Active_mask_at_ready.tres.gd" id="1_7ixkb"]
-[ext_resource type="Material" uid="uid://yjoyk6fvrm6q" path="res://10_BOARD/00_BOOK/00_SHADER/No_light_surface_mat.tres" id="2_qwpko"]
+[ext_resource type="Material" uid="uid://yjoyk6fvrm6q" path="res://00_SHADER/No_light_surface_mat.tres" id="2_qwpko"]
 [ext_resource type="Script" path="res://04_SCENE_MAIN_MAP/ELEMENTS/Island_set/Shader_variety_color.gd" id="2_s6w0a"]
 [ext_resource type="Shader" uid="uid://cu2uipuy138c6" path="res://05_SHADER/All_Materials/Main_sceneTest_dither_sh.tres" id="4_2u672"]
 [ext_resource type="Material" uid="uid://ctnqf5d3uj1g7" path="res://05_SHADER/All_Materials/dark_mask.tres" id="6_n55b7"]

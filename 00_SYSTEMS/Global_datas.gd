@@ -53,9 +53,6 @@ signal _teleport_boat_at_pos(position : Vector3)
 signal _disable_bird_meet_for_today(condition : bool)
 signal _check_boat_zone
 
-#color signal 
-signal go_normal_color
-signal go_darker_color
 
 # dialogue signals
 signal in_dialogue_zone(condition : bool)
@@ -70,13 +67,10 @@ signal _change_language_state(l_state : int)
 signal _start_dialogue_box
 signal _hide_dialogue_box
 signal _show_dialogue_box
-signal _give_letter( index : int)
 
 
 # for save game
 var photo_archives : Array[PhotoData] 
-var tools_list : Array[tool_data]
-var element_collected : Array[element_data]
 
 #UI VAR 
 signal set_resolution(resolution : Vector2i)
@@ -102,8 +96,7 @@ var subbscene_playerPosition : Vector3
 signal _scan_mirror_xray
 signal _photo_flash
 signal _give_photo(photo_data : PhotoData)
-var _selected_tool : tool_data 
-signal set_tool_ui(tool : tool_data)
+
 signal open_tool_selector(condition : bool)
 var selector_is_open: bool = false
 signal subscene_sonar_effect(position : Vector3, color : Color)
@@ -154,13 +147,12 @@ var board_instance_position : Node3D
 
 # Delevery carton mode
 var delevery_birds_amout : int = 3
-signal _in_delivery_mode(condition : bool)
 
-signal _check_deliver(element : element_data)
+
 signal _close_box(condition: bool)
 var box_is_closed : bool
 signal _letter_is_moving(condition : bool)
-var in_delevering_element_list : Array[element_data]
+
 
 signal _deliver_inbox_element
 
@@ -188,7 +180,6 @@ signal _check_object
 signal sending_bird
 var bird_is_waiting : bool = false
 
-signal _open_boad_Focus(condition : bool,element : element_data)
 
 
 #update description on board
@@ -233,7 +224,6 @@ signal active_prologue_demo
 
 func _ready():
 	_back_call_list.clear()
-	_selected_tool = null
 	_photo_data_scene_list.clear()
 	_photo_checking = false
 	_on_button_ui  = false

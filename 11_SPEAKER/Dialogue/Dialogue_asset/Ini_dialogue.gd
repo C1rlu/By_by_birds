@@ -5,7 +5,7 @@ extends  Node
 
 @onready var state = {
 	
-	"give_letter" : _global_datas._give_letter,	
+	"give_letter" : _global_datas._back_letter,	
 	"npc_ls_node" : null, # for next selected NPC dialogie node
 	"cam_focus" : _global_datas._update_cam_focus,
 	"up_page_info_state" : null,

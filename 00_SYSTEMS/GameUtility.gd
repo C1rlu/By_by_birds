@@ -27,27 +27,6 @@ func get_closest_element(reference, array):
 
 	return closest_element	
 		
-# this is working only with selection_data ressource -> usefull  to store mesh override materials ( event the mesh index materials ) 
-func archive_materials(_root)-> Array:
-	
-	var all_render = get_all_render(_root)	
-	var selection_data_list : Array = []
-	
-	for r in all_render:
-		var new_selection_data = selection_data.new()
-		new_selection_data.render_mesh = r
-		var materials : Array[Material] = []
-		for i in range(r.mesh.get_surface_count()):
-			var material = r.get_surface_override_material(i)
-			if material:
-				materials.append(material)
-			else:
-				materials.append(r.mesh.surface_get_material(i))
-
-		new_selection_data.render_material = materials
-		selection_data_list.append(new_selection_data)
-	
-	return selection_data_list
 
 #to get all MeshInstance3D in a scene tree			
 func get_all_render(scene)-> Array: 

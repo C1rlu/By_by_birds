@@ -21,6 +21,5 @@ func _active(condition : bool):
 					
 	if Npc_zone.is_active:
 		_global_datas.in_dialogue_zone.emit(condition)
-		_global_datas.subscene_progress_bar_sprite.visible = false	
+
 	
-	#_global_datas._show_object_legend.emit(condition,_global_datas.Npc_Dialogue.name[0])	

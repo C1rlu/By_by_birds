@@ -37,7 +37,7 @@
 [ext_resource type="Resource" uid="uid://c6jw6ja2xggvh" path="res://15_GAME_RESSOURCE/00_Npc_data/Otis_Coast_guard_data.tres" id="32_pt30g"]
 [ext_resource type="Material" uid="uid://yjoyk6fvrm6q" path="res://00_SHADER/No_light_surface_mat.tres" id="33_um15u"]
 [ext_resource type="PackedScene" uid="uid://dh5kdswdhdfq6" path="res://04_SCENE_MAIN_MAP/ELEMENTS/Island_set/Island_set_01/Island_set_01_prefab.tscn" id="37_b1buk"]
-[ext_resource type="PackedScene" uid="uid://tykoadjnvbu3" path="res://13_TOOLS_UI/Zone_info/path_zone.tscn" id="44_unjng"]
+[ext_resource type="PackedScene" uid="uid://tykoadjnvbu3" path="res://04_SCENE_MAIN_MAP/Zone_info/path_zone.tscn" id="40_16tde"]
 [ext_resource type="Shader" uid="uid://jjqliete2f27" path="res://04_SCENE_MAIN_MAP/ELEMENTS/Subscene_elements/Subscene_element_sh.tres" id="46_wdctu"]
 [ext_resource type="PackedScene" uid="uid://dugml55e868yw" path="res://04_SCENE_MAIN_MAP/ELEMENTS/Post_office/post_office_prefabs.tscn" id="48_i4wgi"]
 [ext_resource type="PackedScene" uid="uid://5v570u2xxlyj" path="res://04_SCENE_MAIN_MAP/ELEMENTS/House/house_se_01/house_set_01.tscn" id="49_uyarj"]
@@ -470,6 +470,7 @@ void fragment() {
 
 }
 "
+graph_offset = Vector2(-600.635, -214.062)
 nodes/fragment/0/position = Vector2(600, 220)
 nodes/fragment/2/node = SubResource("VisualShaderNodeColorParameter_kdi3x")
 nodes/fragment/2/position = Vector2(-600, 300)
@@ -1583,7 +1584,7 @@ surface_material_override/0 = ExtResource("33_um15u")
 
 [node name="DIVE_ZONES" type="Node3D" parent="--DECOR--"]
 
-[node name="Path_zone" parent="--DECOR--/DIVE_ZONES" instance=ExtResource("44_unjng")]
+[node name="Path_zone" parent="--DECOR--/DIVE_ZONES" instance=ExtResource("40_16tde")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.68113, 0, -0.405165)
 curve = SubResource("Curve3D_1y7be")
 

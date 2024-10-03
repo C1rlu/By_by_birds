@@ -1,18 +1,11 @@
-[gd_scene load_steps=23 format=3 uid="uid://bwmu5iwushsl5"]
+[gd_scene load_steps=16 format=3 uid="uid://bwmu5iwushsl5"]
 
 [ext_resource type="Script" path="res://13_TOOLS_UI/Fade_flash_effect.gd" id="1_1dj2k"]
-[ext_resource type="Script" path="res://13_TOOLS_UI/INSTANCE_NOTE.gd" id="1_fcb2u"]
-[ext_resource type="Resource" uid="uid://duqn0ehtc8aao" path="res://12_INVENTORY/Words_note/FindSeagull_orders.tres" id="2_58sax"]
-[ext_resource type="Resource" uid="uid://61umivwjjcjs" path="res://12_INVENTORY/Words_note/Birds_goLighthouse_note.tres" id="2_77vs0"]
-[ext_resource type="Resource" uid="uid://bvadwmoawvfs0" path="res://12_INVENTORY/Words_note/Meet_Ela_note.tres" id="3_unfol"]
+[ext_resource type="Material" uid="uid://bxikm4g1nkywk" path="res://00_SHADER/Disolved_simple_texture.tres" id="4_473tf"]
 [ext_resource type="Texture2D" uid="uid://dto78na6ad5o2" path="res://00_SYSTEMS/KeyOrPad/Key_inputs.png" id="4_c4v0f"]
-[ext_resource type="Material" uid="uid://bxikm4g1nkywk" path="res://06_UI/Disolved_simple_texture.tres" id="4_opffw"]
-[ext_resource type="Resource" uid="uid://nb378vtwr23i" path="res://12_INVENTORY/Words_note/Find_The_Apicula_note.tres" id="4_whlox"]
 [ext_resource type="Texture2D" uid="uid://4bq2l5jjm4r2" path="res://00_SYSTEMS/KeyOrPad/Pad_inputs.png" id="5_jufic"]
 [ext_resource type="Script" path="res://13_TOOLS_UI/BACK_LETTERS.gd" id="7_uck14"]
-[ext_resource type="Script" path="res://13_TOOLS_UI/Main_scene_UI.gd" id="14_isnv0"]
 [ext_resource type="Shader" uid="uid://v7wu4reqmbs2" path="res://05_SHADER/Post_process/Noise_vs_effect.tres" id="15_jcxt0"]
-[ext_resource type="PackedScene" uid="uid://cbgkay5155yn3" path="res://13_TOOLS_UI/Top_bar/Money_bar.tscn" id="15_jqiih"]
 [ext_resource type="Shader" uid="uid://owtikj2jm5h5" path="res://13_TOOLS_UI/PhotoFlash_effect.tres" id="15_kco3d"]
 [ext_resource type="Texture2D" uid="uid://d31xi5f7tan5w" path="res://05_SHADER/Full_screen/Dither_pattners/Blue_noise/HDR_LA_7.png" id="16_8a3k4"]
 [ext_resource type="PackedScene" uid="uid://b4ju0ntcydix8" path="res://13_TOOLS_UI/2D_MAP/2d_map.tscn" id="17_c8quy"]
@@ -171,10 +164,6 @@ script = SubResource("GDScript_ebu32")
 [node name="Flash_effect" type="Node" parent="INSTANCE_PICTURES"]
 script = ExtResource("1_1dj2k")
 
-[node name="INSTANCE_NOTE" type="Node" parent="."]
-script = ExtResource("1_fcb2u")
-all_N_note = Array[Resource("res://12_INVENTORY/Words_note/Note_data.gd")]([ExtResource("2_58sax"), ExtResource("2_77vs0"), ExtResource("3_unfol"), ExtResource("4_whlox")])
-
 [node name="BACK_LETTERS" type="Node" parent="."]
 script = ExtResource("7_uck14")
 
@@ -236,7 +225,7 @@ script = SubResource("GDScript_1c22g")
 
 [node name="pad_img" type="TextureRect" parent="Inputs_used"]
 visible = false
-material = ExtResource("4_opffw")
+material = ExtResource("4_473tf")
 clip_contents = true
 layout_mode = 1
 anchors_preset = 15
@@ -250,7 +239,7 @@ stretch_mode = 4
 
 [node name="key_img" type="TextureRect" parent="Inputs_used"]
 visible = false
-material = ExtResource("4_opffw")
+material = ExtResource("4_473tf")
 clip_contents = true
 layout_mode = 1
 anchors_preset = 15
@@ -261,21 +250,6 @@ grow_vertical = 2
 texture = ExtResource("4_c4v0f")
 expand_mode = 1
 stretch_mode = 4
-
-[node name="Main_Scene_U" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Main_scene_UI" type="Node" parent="Main_Scene_U"]
-script = ExtResource("14_isnv0")
-
-[node name="Money_bar" parent="Main_Scene_U" instance=ExtResource("15_jqiih")]
-visible = false
-layout_mode = 1
 
 [node name="2D_Map" parent="." instance=ExtResource("17_c8quy")]
 visible = false

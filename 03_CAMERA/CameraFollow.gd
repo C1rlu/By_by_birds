@@ -20,9 +20,6 @@ func _ready():
 	var playerPosition = _global_datas.player_position
 	offset = _all_cam_array[0].transform.origin - playerPosition
 	active_target = offset
-	
-	
-	_subscene_datas.go_subscene.connect(_inSubScene_states)
 
 	
 	_global_datas._open_dialogue.connect(_inDialogue)

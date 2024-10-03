@@ -1,6 +1,6 @@
 extends Node
 
-@export var tool_clock : tool_data
+
 @export var texture_img : TextureRect
 @export var fade_timing_in : float = 0.5
 @export var fade_timing_out : float = 0.5

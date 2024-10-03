@@ -20,7 +20,6 @@ boot_splash/bg_color=Color(0.141176, 0.141176, 0.141176, 1)
 [autoload]
 
 _global_datas="*res://00_SYSTEMS/Global_datas.gd"
-_subscene_datas="*res://00_SYSTEMS/Subscene_datas.gd"
 
 [debug]
 
@@ -365,7 +364,7 @@ mirror_wave_speed={
 }
 isSubscene_value={
 "type": "float",
-"value": 0.0
+"value": 1.0
 }
 Night={
 "type": "float",

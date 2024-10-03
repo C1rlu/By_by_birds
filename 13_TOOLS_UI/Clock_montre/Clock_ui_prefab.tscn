@@ -1,7 +1,6 @@
-[gd_scene load_steps=20 format=3 uid="uid://clc3sbquuu1us"]
+[gd_scene load_steps=19 format=3 uid="uid://clc3sbquuu1us"]
 
 [ext_resource type="PackedScene" uid="uid://b04qmdjf73spd" path="res://13_TOOLS_UI/Clock_montre/clock_3d_ui_prefab.tscn" id="1_71jwj"]
-[ext_resource type="Resource" uid="uid://bcj27libgpl5g" path="res://08_SUBSCENES/Tools/Main_tool/Check_clock.tres" id="1_e231r"]
 [ext_resource type="Resource" uid="uid://ppxk5i543dfn" path="res://15_GAME_RESSOURCE/00_Npc_data/Mr_Birds_data.tres" id="1_t0k1n"]
 [ext_resource type="Script" path="res://13_TOOLS_UI/Clock_montre/Fade_dither.gd" id="1_v6xwk"]
 
@@ -206,7 +205,6 @@ bird_dialogue = ExtResource("1_t0k1n")
 [node name="Fade_dither" type="Node" parent="." node_paths=PackedStringArray("texture_img")]
 process_mode = 3
 script = ExtResource("1_v6xwk")
-tool_clock = ExtResource("1_e231r")
 texture_img = NodePath("../Render")
 fade_timing_in = 0.15
 fade_timing_out = 0.15

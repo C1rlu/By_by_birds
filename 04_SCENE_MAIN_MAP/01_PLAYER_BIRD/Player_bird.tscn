@@ -217,7 +217,6 @@ shape = SubResource("SphereShape3D_43sk8")
 disabled = true
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 target_position = Vector3(0, -5, 0)
 
 [editable path="Rotation_root/Far_birds"]

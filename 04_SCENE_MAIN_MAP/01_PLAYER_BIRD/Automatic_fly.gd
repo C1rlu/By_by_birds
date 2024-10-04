@@ -20,7 +20,7 @@ func _player_is_flying(condition : bool):
 		if !timer.is_stopped():
 			return
 			
-		print("player is flying", condition)	
+		#print("player is flying", condition)	
 		timer.start()	
 
 #func _process(delta):
@@ -32,7 +32,7 @@ func _player_is_flying(condition : bool):
 func _random_dir():
 	
 	
-	print("New random dir")
+	#print("New random dir")
 
 	var random_index = randi_range(0,3)
 

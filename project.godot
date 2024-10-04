@@ -318,21 +318,9 @@ Dark_color={
 "type": "color",
 "value": Color(0.0235294, 0.176471, 0.2, 1)
 }
-Subscene_Darker_color={
-"type": "color",
-"value": Color(0.0235294, 0.176471, 0.2, 1)
-}
-Subscene_light_color={
-"type": "color",
-"value": Color(0.741176, 0.4, 0.113725, 1)
-}
 random_faceAmount={
 "type": "float",
 "value": 0.0
-}
-Light_color_ui={
-"type": "color",
-"value": Color(0.721569, 0.580392, 0.407843, 1)
 }
 Dither_size={
 "type": "float",
@@ -342,21 +330,13 @@ Dither_blue_noise_size={
 "type": "float",
 "value": 5.0
 }
-CyanGhost_color={
-"type": "color",
-"value": Color(0.180392, 0.462745, 0.337255, 1)
-}
 active_Dither={
 "type": "bool",
 "value": true
 }
 Night={
 "type": "float",
-"value": 0.45
-}
-mirror_wave_speed={
-"type": "float",
-"value": 0.0
+"value": 0.535
 }
 BlueNoise={
 "type": "sampler2D",
@@ -364,5 +344,9 @@ BlueNoise={
 }
 isGray={
 "type": "float",
-"value": 1.0
+"value": 0.0
+}
+Light_color_ui={
+"type": "color",
+"value": Color(0.721569, 0.580392, 0.407843, 1)
 }

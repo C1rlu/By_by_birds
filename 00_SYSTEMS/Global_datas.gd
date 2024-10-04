@@ -1,11 +1,10 @@
 extends Node
 
-var Main_Camera : Camera3D
+
 var player_position : Vector3
 var Player_InMenu : bool
 var Player_InDialogue : bool
 var Player_InDialogue_zone : bool
-
 
 signal _open_menu(condition : bool)
 
@@ -48,10 +47,9 @@ signal set_resolution(resolution : Vector2i)
 signal _show_object_legend(condtion : bool, legend : String)
 
 
-# SUBSCENE VAR 
 
 var player_rg : RigidBody3D
-var attache_node: Node3D
+
 
 signal _check_zone_enter(area)
 signal _check_zone_exit(area)
@@ -62,30 +60,12 @@ signal _active_this_npc_zone(condition : bool)
 signal _in_delevery_zone(condition : bool)
 
 
-signal _scan_mirror_xray
+
 signal _give_photo(photo_data : PhotoData)
-
-signal subscene_sonar_effect(position : Vector3, color : Color)
-
-signal _open_player_map(condition : bool)
 signal _back_letter
 
-
-signal Open_ui_dark_backdrop(condition : bool)
-
-
-var selected_photoData : PhotoData
-
-#tools_ui
-var clock_timer : float
-signal active_photo_button(condition : bool)
-signal active_scanner_button(condition : bool)
-
-var current_money : int = 0
-signal update_money_amount(value : int)
-signal _show_zone_info(condition : bool)
-signal _update_info_zone
-signal _open_zone_attributions(condition : bool)
+signal subscene_sonar_effect(position : Vector3, color : Color)
+signal _open_player_map(condition : bool)
 
 
 var Npc_Dialogue : Npc_datas

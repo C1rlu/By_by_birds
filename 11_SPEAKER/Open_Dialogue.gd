@@ -54,7 +54,7 @@ func _check_photoExist(photoData : PhotoData) -> bool:
 func _open_dialogue():
 
 	_global_datas.Player_InDialogue = true
-	_global_datas.Open_ui_dark_backdrop.emit(true)
+
 	dialogue.visible = true
 	$Random_FaceChanger/Timer.start()				
 	update_name_ls()
@@ -77,7 +77,6 @@ func update_name_ls():
 func _close_dialogue():
 	
 
-	_global_datas.Open_ui_dark_backdrop.emit(false)
 	dialogue.visible =  false
 	_global_datas.Player_InDialogue = false
 

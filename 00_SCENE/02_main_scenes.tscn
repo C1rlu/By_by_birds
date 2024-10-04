@@ -1,9 +1,10 @@
-[gd_scene load_steps=78 format=3 uid="uid://cnmptm7i0xxmj"]
+[gd_scene load_steps=80 format=3 uid="uid://cnmptm7i0xxmj"]
 
 [ext_resource type="PackedScene" uid="uid://vpdvl0v7dubd" path="res://04_SCENE_MAIN_MAP/00_PLAYER/Player_boat.tscn" id="1_qltht"]
 [ext_resource type="Resource" uid="uid://ppxk5i543dfn" path="res://15_GAME_RESSOURCE/00_Npc_data/Mr_Birds_data.tres" id="1_trgwt"]
 [ext_resource type="Script" path="res://13_TOOLS_UI/set_Resolution_viewports.gd" id="1_xd8sb"]
 [ext_resource type="Script" path="res://03_CAMERA/CameraFollow.gd" id="2_7lb1x"]
+[ext_resource type="Script" path="res://00_SCENE/Click_movement.gd" id="2_q5qkb"]
 [ext_resource type="Shader" uid="uid://bduoqim3kfbs6" path="res://04_SCENE_MAIN_MAP/00_PLAYER/Sonar/Sonar_sh.tres" id="3_todel"]
 [ext_resource type="Script" path="res://00_SCENE/In_Zone_State.gd" id="9_rhikc"]
 [ext_resource type="PackedScene" uid="uid://dla1534gcagbl" path="res://04_SCENE_MAIN_MAP/ELEMENTS/Pine/pine_prefabs.tscn" id="10_c6r5x"]
@@ -151,15 +152,6 @@ func _input(event):
 		
 "
 
-[sub_resource type="GDScript" id="GDScript_12o72"]
-script/source = "extends Camera3D
-
-func _ready():
-	_global_datas.Main_Camera = self
-
-
-"
-
 [sub_resource type="QuadMesh" id="QuadMesh_cpbc0"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xjml8"]
@@ -185,7 +177,7 @@ viewport_path = NodePath("01_GAME_UI/MAIN_SCENE_UI/Viewports/UI")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3mjm8"]
 resource_local_to_scene = true
 shader = ExtResource("13_je1hg")
-shader_parameter/Foam_color = Color(0.368627, 0.521569, 0.478431, 1)
+shader_parameter/Foam_color = Color(0.243137, 0.521569, 0.443137, 1)
 shader_parameter/Grid_Color = Color(0.254902, 0.513726, 0.552941, 1)
 shader_parameter/Grid_opacity = 0.25
 shader_parameter/Main = SubResource("ViewportTexture_vb55f")
@@ -463,6 +455,12 @@ data = PackedVector3Array(-15, 0, 15, 15, 0, 15, -15, 0, 15, 15, 0, 15, 15, 0, 1
 [sub_resource type="BoxMesh" id="BoxMesh_wmrfd"]
 size = Vector3(30, 0, 30)
 
+[sub_resource type="SphereMesh" id="SphereMesh_1rgho"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7x1wp"]
+shading_mode = 0
+albedo_color = Color(0.964706, 0.584314, 0.423529, 1)
+
 [node name="02_MAIN_SCENES" type="Node"]
 
 [node name="GAME_STATE" type="Node" parent="."]
@@ -474,6 +472,11 @@ start_position = NodePath("../../--DECOR--/Prologue_start_pos")
 [node name="set_Resolution" type="Node" parent="." node_paths=PackedStringArray("viewports")]
 script = ExtResource("1_xd8sb")
 viewports = [NodePath("../01_GAME_UI/MAIN_SCENE_UI/Viewports/MAIN_Viewport"), NodePath("../01_GAME_UI/MAIN_SCENE_UI/Viewports/FOAM_Viewport"), NodePath("../01_GAME_UI/MAIN_SCENE_UI/Viewports/SONAR_Viewport"), NodePath("../01_GAME_UI/MAIN_SCENE_UI/Viewports/GRID_Viewport")]
+
+[node name="Click_movement" type="Node" parent="." node_paths=PackedStringArray("target_node", "Camera")]
+script = ExtResource("2_q5qkb")
+target_node = NodePath("../--DECOR--/Target_clic")
+Camera = NodePath("../01_GAME_UI/MAIN_SCENE_UI/CAM_MAIN_RAYCAST")
 
 [node name="Sonar_behaviour" type="Node" parent="."]
 script = SubResource("GDScript_0xo40")
@@ -609,7 +612,6 @@ _all_cam_array = [NodePath("../Viewports/MAIN_Viewport/CAM_STATE_MAIN"), NodePat
 transform = Transform3D(1, 0, 0, 0, 0.741976, 0.670427, 0, -0.670427, 0.741976, 0, 24.664, 26.364)
 cull_mask = 0
 fov = 10.0
-script = SubResource("GDScript_12o72")
 
 [node name="Viewports" type="Node" parent="01_GAME_UI/MAIN_SCENE_UI"]
 
@@ -706,6 +708,7 @@ transform = Transform3D(0.473858, 0, -0.880601, 0, 1, 0, 0.880601, 0, 0.473858, 
 input_ray_pickable = false
 mass = 4.0
 physics_material_override = SubResource("PhysicsMaterial_ituqr")
+freeze = true
 move_speed = 7.0
 maxSpeed = 7.0
 rotation_speed = 4.0
@@ -1336,3 +1339,10 @@ surface_material_override/0 = ExtResource("33_um15u")
 
 [node name="BouePrefab" parent="--DECOR--/DIVE_ZONES" instance=ExtResource("33_lgx8q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.21728, 0, -1.70141)
+
+[node name="Target_clic" type="Node3D" parent="--DECOR--"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="--DECOR--/Target_clic"]
+visible = false
+mesh = SubResource("SphereMesh_1rgho")
+surface_material_override/0 = SubResource("StandardMaterial3D_7x1wp")

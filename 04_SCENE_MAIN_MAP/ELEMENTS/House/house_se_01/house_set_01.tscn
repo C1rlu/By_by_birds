@@ -29,7 +29,7 @@ fill_to = Vector2(0.504274, 0)
 render_priority = 1
 shader = ExtResource("2_t2c44")
 shader_parameter/ColorParameter = Color(0, 0, 0, 1)
-shader_parameter/Color = Color(0.192157, 0.160784, 0.121569, 1)
+shader_parameter/Color = Color(0.2, 0.180392, 0.152941, 1)
 shader_parameter/Dither_strenght = 1.615
 shader_parameter/Gradient_base = SubResource("GradientTexture2D_qwn6x")
 

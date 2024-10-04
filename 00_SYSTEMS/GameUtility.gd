@@ -52,8 +52,8 @@ func get_raycast_target(targetPos : Vector2, Camera : Camera3D) -> Dictionary:
 	rayQuery.collision_mask = 1
 	rayQuery.from = from
 	rayQuery.to = to
-	rayQuery.collide_with_areas = true
-	rayQuery.collide_with_bodies = false
+	rayQuery.collide_with_areas = false
+	rayQuery.collide_with_bodies = true
 	
 	var result = space.intersect_ray(rayQuery)
 

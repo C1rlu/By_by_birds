@@ -23,5 +23,5 @@ func _raycast():
 	
 	target_node.position = result.position
 	_global_datas._active_sonar.emit(target_node.position)
-
+	_global_datas._follow_target.emit(target_node.position)
 	

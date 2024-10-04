@@ -19,7 +19,8 @@ var move_backward : String
 # scene signals
 
 signal _active_sonar(position : Vector3)
-signal _active_progress_subscene(condition : bool)
+signal _follow_target(position : Vector3)
+
 
 signal _check_boat_zone
 

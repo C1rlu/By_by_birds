@@ -11,6 +11,8 @@ var height_offset : float
 
 signal player_flying(condition : bool)
 
+
+@export var enable_key_control : bool 
 func _ready():
 	
 	y_position_value = position.y   
@@ -19,8 +21,8 @@ func _ready():
 
 		
 func _physics_process(_delta):
+		
 	
-
 	var translation = get_global_transform().origin
 	_global_datas.player_position = translation
 
@@ -42,6 +44,9 @@ func _physics_process(_delta):
 	
 func move_c():
 	
+	if !enable_key_control:
+		return
+		
 	var velocity = Input.get_vector("move_right", "move_left","move_backward" , "move_forward")
 	 # Calculate the torque based on input velocity
 	if velocity.length_squared() > 0.0:	

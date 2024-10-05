@@ -76,7 +76,6 @@ func _on_pressed():
 
 	_global_datas.Player_InMenu = false
 	_global_datas._open_menu.emit(_global_datas.Player_InMenu)	
-	_global_datas.Open_ui_dark_backdrop.emit(_global_datas.Player_InMenu)
 	get_tree().paused = false
 
 

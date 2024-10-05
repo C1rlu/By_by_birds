@@ -336,7 +336,7 @@ active_Dither={
 }
 Night={
 "type": "float",
-"value": 0.535
+"value": 0.19
 }
 BlueNoise={
 "type": "sampler2D",
@@ -344,7 +344,7 @@ BlueNoise={
 }
 isGray={
 "type": "float",
-"value": 0.0
+"value": 1.0
 }
 Light_color_ui={
 "type": "color",

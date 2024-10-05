@@ -3,11 +3,12 @@ extends Node
 @export var target_node : Node3D
 @export var Camera : Camera3D
 
-func _ready():
-	pass
-
+@export var active_click : bool = false
 
 func _input(event):
+	
+	if !active_click:
+		return
 	
 	if event.is_action_pressed("Click"):
 		print("click")

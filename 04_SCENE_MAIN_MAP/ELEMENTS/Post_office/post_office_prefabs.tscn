@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dugml55e868yw"]
+[gd_scene load_steps=21 format=3 uid="uid://dugml55e868yw"]
 
 [ext_resource type="PackedScene" uid="uid://dv2ya8urvkgto" path="res://04_SCENE_MAIN_MAP/ELEMENTS/Post_office/Post_office.blend" id="1_mtcuq"]
 [ext_resource type="Shader" uid="uid://cu2uipuy138c6" path="res://00_SHADER/All_Materials/Main_sceneTest_dither_sh.tres" id="2_8nrvq"]
@@ -54,13 +54,83 @@ shader_parameter/Color = Color(0.25098, 0.239216, 0.211765, 1)
 shader_parameter/Dither_strenght = 0.695
 shader_parameter/Gradient_base = SubResource("GradientTexture2D_5b3te")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_r5mpl"]
+[sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_c6dpd"]
+parameter_name = "Lit_color"
+
+[sub_resource type="VisualShaderNodeFloatConstant" id="VisualShaderNodeFloatConstant_dwfsv"]
+constant = 1.0
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_lfkj7"]
+parameter_name = "Dither_size"
+qualifier = 1
+
+[sub_resource type="VisualShaderNodeExpression" id="VisualShaderNodeExpression_ngg43"]
+size = Vector2(724.789, 654.559)
+expression = "const float DITHER_THRESHOLDS[16] ={
+		1.0 / 17.0, 9.0 / 17.0, 3.0 / 17.0, 11.0 / 17.0,
+		13.0 / 17.0, 5.0 / 17.0, 15.0 / 17.0, 7.0 / 17.0,
+		4.0 / 17.0, 12.0 / 17.0, 2.0 / 17.0, 10.0 / 17.0,
+		16.0 / 17.0, 8.0 / 17.0, 14.0 / 17.0, 6.0 / 17.0
+	};
+	
+vec2 uv = FRAGCOORD.xy * Size;
+int index = (int(uv.x) % 4) * 4 + int(uv.y) % 4;
+Dither_Node = In - DITHER_THRESHOLDS[index];"
+
+[sub_resource type="VisualShaderNodeStep" id="VisualShaderNodeStep_wx4m8"]
+default_input_values = [0, 0.87, 1, 0.0]
+
+[sub_resource type="VisualShader" id="VisualShader_gs5la"]
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx, unshaded;
+
+uniform vec4 Lit_color : source_color;
+
+
+
+void fragment() {
+// ColorParameter:2
+	vec4 n_out2p0 = Lit_color;
+
+
+// Output:0
+	ALBEDO = vec3(n_out2p0.xyz);
+
+
+}
+"
+flags/unshaded = true
+nodes/vertex/0/position = Vector2(400, 160)
+nodes/fragment/2/node = SubResource("VisualShaderNodeColorParameter_c6dpd")
+nodes/fragment/2/position = Vector2(-440, 100)
+nodes/fragment/3/node = SubResource("VisualShaderNodeFloatConstant_dwfsv")
+nodes/fragment/3/position = Vector2(-1160, 360)
+nodes/fragment/4/node = SubResource("VisualShaderNodeFloatParameter_lfkj7")
+nodes/fragment/4/position = Vector2(-1240, 580)
+nodes/fragment/5/node = SubResource("VisualShaderNodeExpression_ngg43")
+nodes/fragment/5/position = Vector2(-860, 480)
+nodes/fragment/5/size = Vector2(724.789, 654.559)
+nodes/fragment/5/input_ports = "0,0,In;1,0,Size;"
+nodes/fragment/5/output_ports = "0,0,Dither_Node;"
+nodes/fragment/5/expression = "const float DITHER_THRESHOLDS[16] ={
+		1.0 / 17.0, 9.0 / 17.0, 3.0 / 17.0, 11.0 / 17.0,
+		13.0 / 17.0, 5.0 / 17.0, 15.0 / 17.0, 7.0 / 17.0,
+		4.0 / 17.0, 12.0 / 17.0, 2.0 / 17.0, 10.0 / 17.0,
+		16.0 / 17.0, 8.0 / 17.0, 14.0 / 17.0, 6.0 / 17.0
+	};
+	
+vec2 uv = FRAGCOORD.xy * Size;
+int index = (int(uv.x) % 4) * 4 + int(uv.y) % 4;
+Dither_Node = In - DITHER_THRESHOLDS[index];"
+nodes/fragment/6/node = SubResource("VisualShaderNodeStep_wx4m8")
+nodes/fragment/6/position = Vector2(-40, 340)
+nodes/fragment/connections = PackedInt32Array(2, 0, 0, 0, 3, 0, 5, 0, 4, 0, 5, 1, 5, 0, 6, 1)
+nodes/light/0/position = Vector2(2620, 1260)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2b0j4"]
 render_priority = 1
-shader = ExtResource("2_8nrvq")
-shader_parameter/ColorParameter = Color(0, 0, 0, 1)
-shader_parameter/Color = Color(0.866667, 0.698039, 0.466667, 1)
-shader_parameter/Dither_strenght = 0.89
-shader_parameter/Gradient_base = ExtResource("3_e8da4")
+shader = SubResource("VisualShader_gs5la")
+shader_parameter/Lit_color = Color(0.721569, 0.580392, 0.407843, 1)
 
 [node name="Post_office_prefabs" type="Node3D"]
 
@@ -74,7 +144,7 @@ _active = [NodePath("../Post_office2/Post_office_foam"), NodePath("../Post_offic
 surface_material_override/0 = SubResource("ShaderMaterial_u87ph")
 surface_material_override/1 = SubResource("ShaderMaterial_85wgn")
 surface_material_override/2 = SubResource("ShaderMaterial_h3bee")
-surface_material_override/3 = SubResource("ShaderMaterial_r5mpl")
+surface_material_override/3 = SubResource("ShaderMaterial_2b0j4")
 
 [node name="Post_office_foam" parent="Post_office2" index="1"]
 visible = false

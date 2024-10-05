@@ -162,6 +162,7 @@ script = ExtResource("1_ot1bv")
 rotation_bird = NodePath("Rotation_root")
 rotation_speed = 8.68
 Raycast = NodePath("RayCast3D")
+enable_key_control = true
 
 [node name="Follow_direction_target" type="Node" parent="." node_paths=PackedStringArray("player_rg")]
 script = ExtResource("2_13a3n")

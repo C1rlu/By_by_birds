@@ -7,22 +7,24 @@ extends RigidBody3D
 @export var Raycast : RayCast3D
 @export var max_roll_angle : float = 30.0
 @export var rool_speed : float = 5.0
+@export var decal_shadow : Decal
+@export var enable_key_control : bool 
 
+@onready var timer = $Timer
 var y_position_value : float
-
 var height_offset : float
 var target_roll : float 
-signal player_flying(condition : bool)
 var is_rolling
 
-@export var enable_key_control : bool 
+var random_dir : Vector3
+var dir_index : int = 0
 func _ready():
 	
 	y_position_value = position.y   
 	height_offset = position.y
 	
 	_global_datas._roll_bird.connect(_rool_bird)
-
+	timer.timeout.connect(timer_udpate)
 		
 func _physics_process(_delta):
 		
@@ -64,15 +66,32 @@ func move_c():
 		var force_direction = Vector3(-direction_x, 0.0, -direction_z).normalized()
 		# Apply central force in the calculated direction
 		apply_central_force(force_direction * move_speed)
-		#_roll(target_rotation)
-	
-		
-		player_flying.emit(true)
+		timer.stop()
 	else:
-		player_flying.emit(false)
+
+		apply_central_force(random_dir * move_speed)
+		if timer.is_stopped():
+			timer_udpate()
+			timer.start()
+			
 	
+func timer_udpate():
 	
 
+	
+	dir_index += 1
+	if dir_index == 4:
+		dir_index = 0
+
+	if dir_index == 0:
+		random_dir = Vector3.RIGHT
+	if dir_index == 1:
+		random_dir = Vector3.FORWARD
+	if dir_index == 2:
+		random_dir = Vector3.LEFT
+	if dir_index == 3:
+		random_dir = Vector3.BACK
+		
 func _rotate_in_direction(_delta):
 	# Get the direction of the velocity
 	var direction = linear_velocity.normalized()
@@ -80,8 +99,9 @@ func _rotate_in_direction(_delta):
 
 	var target_direction = atan2(-direction.x,-direction.z)
 	rotation_bird.rotation.y = lerp_angle(rotation_bird.rotation.y,target_direction, _delta * rotation_speed)
-	
+	decal_shadow.rotation.y = lerp_angle(rotation_bird.rotation.y,target_direction, _delta * rotation_speed)
 func apply_roll(delta: float):
+	
 	
 	var velocity_direction = linear_velocity.normalized()
 	var forward_direction = global_transform.basis.z.normalized()
@@ -129,4 +149,5 @@ func check_raycast():
 		var col = Raycast.get_collision_point()
 		var y_height = col.y
 		y_position_value = height_offset + y_height
-	
+	else:
+		y_position_value = height_offset		

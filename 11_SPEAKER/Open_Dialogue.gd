@@ -58,10 +58,6 @@ func _open_dialogue():
 	dialogue.visible = true
 	$Random_FaceChanger/Timer.start()				
 	update_name_ls()
-	_global_datas._add_back_call.emit(back_call)
-
-
-
 
 
 func update_name_ls():

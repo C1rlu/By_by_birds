@@ -149,7 +149,7 @@ grey_value = luminance;"
 default_input_values = [0, Vector3(0, 0, 0), 1, Vector3(1, 1, 1), 2, Vector3(0.5, 0.5, 0.5)]
 op_type = 3
 
-[sub_resource type="VisualShaderNodeBooleanParameter" id="VisualShaderNodeBooleanParameter_7xq23"]
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_7vhh4"]
 parameter_name = "isGray"
 qualifier = 1
 
@@ -171,7 +171,6 @@ code = "shader_type canvas_item;
 render_mode blend_mix;
 
 uniform vec4 Backdrop_color : source_color;
-global uniform bool isGray;
 uniform sampler2D tex_frg_13;
 uniform float Opacity : hint_range(0, 1) = 1;
 global uniform float Dither_size;
@@ -181,23 +180,6 @@ global uniform float Dither_size;
 void fragment() {
 // ColorParameter:12
 	vec4 n_out12p0 = Backdrop_color;
-
-
-	float n_out18p0;
-// Expression:18
-	n_out18p0 = 0.0;
-	{
-		float luminance = 0.299 * vec3(n_out12p0.xyz).x + 0.587 * vec3(n_out12p0.xyz).y + 0.114 * vec3(n_out12p0.xyz).z;
-		n_out18p0 = luminance;
-	}
-
-
-// BooleanParameter:21
-	bool n_out21p0 = isGray;
-
-
-// Mix:19
-	vec3 n_out19p0 = mix(vec3(n_out12p0.xyz), vec3(n_out18p0), vec3(n_out21p0 ? 1.0 : 0.0));
 
 
 // Texture2D:13
@@ -234,13 +216,13 @@ void fragment() {
 
 
 // Output:0
-	COLOR.rgb = n_out19p0;
+	COLOR.rgb = vec3(n_out12p0.xyz);
 	COLOR.a = n_out17p0;
 
 
 }
 "
-graph_offset = Vector2(702.711, -234.06)
+graph_offset = Vector2(401.526, -253.447)
 mode = 1
 flags/light_only = false
 nodes/fragment/0/position = Vector2(1720, 160)
@@ -284,15 +266,19 @@ nodes/fragment/18/expression = "float luminance = 0.299 * color.x + 0.587 * colo
 grey_value = luminance;"
 nodes/fragment/19/node = SubResource("VisualShaderNodeMix_p4a8h")
 nodes/fragment/19/position = Vector2(1940, -340)
-nodes/fragment/21/node = SubResource("VisualShaderNodeBooleanParameter_7xq23")
-nodes/fragment/21/position = Vector2(1440, -100)
-nodes/fragment/connections = PackedInt32Array(10, 0, 9, 0, 9, 0, 11, 1, 14, 0, 15, 1, 16, 0, 9, 1, 13, 0, 17, 0, 9, 0, 17, 1, 17, 0, 15, 2, 17, 0, 0, 1, 18, 0, 19, 1, 12, 0, 18, 0, 12, 0, 19, 0, 19, 0, 0, 0, 21, 0, 19, 2)
+nodes/fragment/22/node = SubResource("VisualShaderNodeFloatParameter_7vhh4")
+nodes/fragment/22/position = Vector2(1300, -80)
+nodes/fragment/connections = PackedInt32Array(10, 0, 9, 0, 9, 0, 11, 1, 14, 0, 15, 1, 16, 0, 9, 1, 13, 0, 17, 0, 9, 0, 17, 1, 17, 0, 15, 2, 17, 0, 0, 1, 18, 0, 19, 1, 12, 0, 18, 0, 12, 0, 19, 0, 22, 0, 19, 2, 12, 0, 0, 0)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1ca5o"]
 shader = SubResource("VisualShader_jx62j")
+shader_parameter/Backdrop_color = Color(0.709804, 0.709804, 0.709804, 1)
+shader_parameter/Opacity = 1.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0ancs"]
 shader = SubResource("VisualShader_jx62j")
+shader_parameter/Backdrop_color = Color(0.509804, 0.509804, 0.509804, 1)
+shader_parameter/Opacity = 1.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7ie5m"]
 shader = ExtResource("11_nbar0")
@@ -303,7 +289,7 @@ shader_parameter/Opacity = 1.0
 viewport_path = NodePath("00_NPC_CREATOR/Npc_convas/SubViewport")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0b4rc"]
-bg_color = Color(0.588235, 0.494118, 0.376471, 1)
+bg_color = Color(0.309804, 0.309804, 0.309804, 1)
 corner_radius_top_left = 35
 corner_radius_top_right = 35
 
@@ -374,7 +360,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-color = Color(0.0156863, 0.0705882, 0.0823529, 0.662745)
+color = Color(0.121569, 0.121569, 0.121569, 0.839216)
 metadata/_edit_use_anchors_ = true
 
 [node name="Cam_Focus" type="Node" parent="00_NPC_CREATOR/Npc_convas"]
@@ -530,7 +516,7 @@ offset_right = 191.0
 offset_bottom = 31.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0.682353, 0.92549, 0.847059, 1)
+theme_override_colors/font_color = Color(0.619608, 0.619608, 0.619608, 1)
 theme_override_font_sizes/font_size = 26
 text = "Lorem ipsum lorali aticula"
 autowrap_mode = 3
@@ -545,7 +531,7 @@ offset_top = 0.499969
 offset_right = 248.0
 offset_bottom = 28.5
 grow_vertical = 0
-theme_override_colors/font_color = Color(0.317647, 0.615686, 0.529412, 1)
+theme_override_colors/font_color = Color(0.62, 0.62, 0.62, 1)
 theme_override_font_sizes/font_size = 20
 text = "............................................."
 vertical_alignment = 1
@@ -582,7 +568,8 @@ theme_override_colors/font_color = Color(0.909804, 0.807843, 0.690196, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_0b4rc")
 theme_override_styles/hover = SubResource("StyleBoxFlat_wjdu5")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_ho6ut")
-text = "DELIVER "
+text = "LEAVE
+"
 script = ExtResource("13_ewnx3")
 
 [node name="End_typing_button" type="TextureButton" parent="00_NPC_CREATOR/Npc_convas"]

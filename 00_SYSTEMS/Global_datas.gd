@@ -5,7 +5,6 @@ var player_position : Vector3
 var Player_InMenu : bool
 var Player_InDialogue : bool
 var Player_InDialogue_zone : bool
-
 signal _open_menu(condition : bool)
 
 

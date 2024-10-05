@@ -10,23 +10,14 @@ func _ready():
 	
 func _in_delevery_zone(condition : bool):
 	
-	if _global_datas.delevery_birds_amout == 0:
-		if condition:
-			_global_datas._show_object_legend.emit(true,"no birds available, come back later")
-			delevery_ui_node.visible = false
-		else:
-			_global_datas._show_object_legend.emit(false,"null")
-			delevery_ui_node.visible = false	
-		return		
-	
-	if _global_datas._time_state != 0:
-		if condition:
-			_global_datas._show_object_legend.emit(true,"closed, come back later")
-		
-		else:
-			_global_datas._show_object_legend.emit(false,"null")
-		return	
 
+	if condition:
+		_global_datas._show_object_legend.emit(true,"no birds available, come back later")
+		delevery_ui_node.visible = false
+	else:
+		_global_datas._show_object_legend.emit(false,"null")
+		delevery_ui_node.visible = false	
+	
 	delevery_ui_node.visible = condition
 
 func _input(event):
@@ -40,4 +31,5 @@ func _input(event):
 	
 	if delevery_ui_node.visible:
 		if event.is_action_pressed("Click"):
-			_global_datas._in_delivery_mode.emit(true)	
+			print("OPEN THIS")
+

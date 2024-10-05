@@ -67,7 +67,7 @@ func _on_ez_dialogue_custom_signal_received(value):
 			print(obj_name, " object gave by NPC")
 		
 		if variable_name == "can_dive":
-			_global_datas.active_diving.emit()		
+			print("active diving can be removed in text")
 		
 		
 func update_npc_active_node(ls_node_name : String):

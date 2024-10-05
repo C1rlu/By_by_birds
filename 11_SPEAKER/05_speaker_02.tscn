@@ -222,7 +222,6 @@ void fragment() {
 
 }
 "
-graph_offset = Vector2(401.526, -253.447)
 mode = 1
 flags/light_only = false
 nodes/fragment/0/position = Vector2(1720, 160)
@@ -340,6 +339,7 @@ wait_time = 0.5
 one_shot = true
 
 [node name="Npc_convas" type="Control" parent="00_NPC_CREATOR"]
+visible = false
 texture_filter = 1
 texture_repeat = 2
 material = SubResource("ShaderMaterial_6s3bf")

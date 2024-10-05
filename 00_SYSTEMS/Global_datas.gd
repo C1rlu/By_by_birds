@@ -25,6 +25,9 @@ var player_area : Area3D
 signal _check_player_zone
 
 
+# FOCUS VIEW  
+signal _open_focus_view(condition : bool)
+
 # dialogue signals
 signal in_dialogue_zone(condition : bool)
 signal hide_open_dialogue

@@ -106,10 +106,6 @@ grey_value = luminance;"
 default_input_values = [0, Vector3(0, 0, 0), 1, Vector3(1, 1, 1), 2, Vector3(0.5, 0.5, 0.5)]
 op_type = 3
 
-[sub_resource type="VisualShaderNodeBooleanParameter" id="VisualShaderNodeBooleanParameter_1vipu"]
-parameter_name = "isGray"
-qualifier = 1
-
 [sub_resource type="VisualShaderNodeBooleanParameter" id="VisualShaderNodeBooleanParameter_g4gok"]
 parameter_name = "active_Dither"
 qualifier = 1
@@ -119,6 +115,10 @@ default_input_values = [0, false, 1, Vector3(1, 1, 1), 2, Vector3(0, 0, 0)]
 op_type = 4
 
 [sub_resource type="VisualShaderNodeStep" id="VisualShaderNodeStep_4w4pw"]
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_wjpsl"]
+parameter_name = "isGray"
+qualifier = 1
 
 [sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_b75wv"]
 parameter_name = "Color"
@@ -155,7 +155,7 @@ global uniform float Dither_size;
 uniform sampler2D tex_frg_23;
 uniform vec4 Isle_color : source_color = vec4(0.575368, 0.573518, 0.000000, 1.000000);
 uniform sampler2D tex_frg_29;
-global uniform bool isGray;
+global uniform float isGray;
 
 
 
@@ -241,12 +241,12 @@ void fragment() {
 	}
 
 
-// BooleanParameter:41
-	bool n_out41p0 = isGray;
+// FloatParameter:46
+	float n_out46p0 = isGray;
 
 
 // Mix:39
-	vec3 n_out39p0 = mix(n_out32p0, vec3(n_out38p0), vec3(n_out41p0 ? 1.0 : 0.0));
+	vec3 n_out39p0 = mix(n_out32p0, vec3(n_out38p0), vec3(n_out46p0));
 
 
 // Output:0
@@ -348,13 +348,13 @@ nodes/fragment/38/expression = "float luminance = 0.299 * color.x + 0.587 * colo
 grey_value = luminance;"
 nodes/fragment/39/node = SubResource("VisualShaderNodeMix_v50np")
 nodes/fragment/39/position = Vector2(219.509, -367.303)
-nodes/fragment/41/node = SubResource("VisualShaderNodeBooleanParameter_1vipu")
-nodes/fragment/41/position = Vector2(-340, -240)
 nodes/fragment/42/node = SubResource("VisualShaderNodeBooleanParameter_g4gok")
 nodes/fragment/42/position = Vector2(-3440, 280)
 nodes/fragment/43/node = SubResource("VisualShaderNodeSwitch_k75gt")
 nodes/fragment/43/position = Vector2(-3080, 360)
 nodes/fragment/45/node = SubResource("VisualShaderNodeStep_4w4pw")
 nodes/fragment/45/position = Vector2(-3660, 160)
-nodes/fragment/connections = PackedInt32Array(12, 0, 11, 1, 15, 0, 11, 3, 13, 0, 11, 0, 14, 0, 11, 2, 16, 0, 11, 4, 18, 0, 19, 0, 11, 0, 20, 1, 19, 0, 20, 0, 27, 0, 8, 1, 27, 0, 19, 1, 9, 0, 25, 1, 28, 0, 8, 0, 23, 0, 10, 1, 25, 0, 32, 0, 32, 0, 24, 0, 31, 0, 32, 1, 29, 0, 33, 1, 33, 0, 32, 2, 21, 0, 24, 1, 38, 0, 39, 1, 39, 0, 0, 0, 41, 0, 39, 2, 20, 0, 24, 2, 8, 0, 10, 0, 42, 0, 43, 0, 10, 0, 43, 1, 23, 0, 43, 2, 43, 0, 25, 2, 5, 0, 25, 0, 32, 0, 38, 0, 32, 0, 39, 0)
+nodes/fragment/46/node = SubResource("VisualShaderNodeFloatParameter_wjpsl")
+nodes/fragment/46/position = Vector2(-160, -140)
+nodes/fragment/connections = PackedInt32Array(12, 0, 11, 1, 15, 0, 11, 3, 13, 0, 11, 0, 14, 0, 11, 2, 16, 0, 11, 4, 18, 0, 19, 0, 11, 0, 20, 1, 19, 0, 20, 0, 27, 0, 8, 1, 27, 0, 19, 1, 9, 0, 25, 1, 28, 0, 8, 0, 23, 0, 10, 1, 25, 0, 32, 0, 32, 0, 24, 0, 31, 0, 32, 1, 29, 0, 33, 1, 33, 0, 32, 2, 21, 0, 24, 1, 38, 0, 39, 1, 39, 0, 0, 0, 20, 0, 24, 2, 8, 0, 10, 0, 42, 0, 43, 0, 10, 0, 43, 1, 23, 0, 43, 2, 43, 0, 25, 2, 5, 0, 25, 0, 32, 0, 38, 0, 32, 0, 39, 0, 46, 0, 39, 2)
 nodes/light/0/position = Vector2(2920, 40)

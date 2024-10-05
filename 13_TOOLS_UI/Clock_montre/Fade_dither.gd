@@ -11,7 +11,8 @@ var actual_value : float
 
 
 func _ready():
-	material.set_shader_parameter("Opacity",0.0)
+	pass
+	#material.set_shader_parameter("Opacity",0.0)
 	
 
 func fade_in():

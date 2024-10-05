@@ -32,14 +32,7 @@ func _physics_process(_delta):
 	var translation = get_global_transform().origin
 	_global_datas.player_position = translation
 
-	if _global_datas.Player_InMenu:
-		return
-		
-	if _global_datas.Player_InDialogue:
-		return	
-	
-	if _global_datas.photo_checking:
-		return
+
 			
 
 	move_c()
@@ -52,6 +45,9 @@ func _physics_process(_delta):
 	
 func move_c():
 	
+	if _global_datas.Player_InMenu:
+		return
+		
 	if !enable_key_control:
 		return
 		
@@ -68,16 +64,18 @@ func move_c():
 		apply_central_force(force_direction * move_speed)
 		timer.stop()
 	else:
-
-		apply_central_force(random_dir * move_speed)
-		if timer.is_stopped():
-			timer_udpate()
-			timer.start()
+		_player_not_active()
+		
 			
-	
-func timer_udpate():
-	
+func _player_not_active():
 
+	apply_central_force(random_dir * move_speed)
+	if timer.is_stopped():
+		timer_udpate()
+		timer.start()
+			
+				
+func timer_udpate():
 	
 	dir_index += 1
 	if dir_index == 4:

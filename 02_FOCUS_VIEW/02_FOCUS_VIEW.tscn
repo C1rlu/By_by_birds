@@ -1,0 +1,240 @@
+[gd_scene load_steps=24 format=3 uid="uid://h2wepwtms1pe"]
+
+[ext_resource type="Script" path="res://13_TOOLS_UI/set_Resolution_viewports.gd" id="1_3ana1"]
+[ext_resource type="Script" path="res://02_FOCUS_VIEW/Open_FocusView.gd" id="1_ttndn"]
+[ext_resource type="Script" path="res://02_FOCUS_VIEW/Control_view.gd" id="2_hd46p"]
+[ext_resource type="Script" path="res://02_FOCUS_VIEW/Move_lateral.gd" id="5_4oykj"]
+[ext_resource type="PackedScene" uid="uid://clc3sbquuu1us" path="res://13_TOOLS_UI/Clock_montre/Clock_ui_prefab.tscn" id="6_srukl"]
+[ext_resource type="Script" path="res://02_FOCUS_VIEW/Cam_target.gd" id="9_or37v"]
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_y363p"]
+source = 5
+
+[sub_resource type="VisualShaderNodeUVFunc" id="VisualShaderNodeUVFunc_mfeeg"]
+function = 1
+
+[sub_resource type="VisualShaderNodeUVFunc" id="VisualShaderNodeUVFunc_dq2hy"]
+default_input_values = [1, Vector2(1, 0.5), 2, Vector2(0, 0)]
+function = 1
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_kvjfc"]
+input_name = "time"
+
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_5hys7"]
+default_input_values = [0, 0.0, 1, 0.001]
+operator = 2
+
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_01l71"]
+default_input_values = [0, 0.0, 1, 0.1]
+operator = 2
+
+[sub_resource type="VisualShaderNodeStep" id="VisualShaderNodeStep_4an0b"]
+
+[sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_2oiag"]
+parameter_name = "BlueNoise"
+qualifier = 1
+texture_repeat = 1
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_tusqw"]
+parameter_name = "Dither_blue_noise_size"
+qualifier = 1
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_46u1j"]
+parameter_name = "Opacity"
+hint = 1
+default_value_enabled = true
+default_value = 0.5
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_uj47t"]
+input_name = "color"
+
+[sub_resource type="VisualShader" id="VisualShader_rthcl"]
+code = "shader_type canvas_item;
+render_mode blend_mix;
+
+global uniform float Dither_blue_noise_size;
+global uniform sampler2D BlueNoise : repeat_enable;
+uniform float Opacity : hint_range(0, 1) = 0.5;
+
+
+
+void fragment() {
+// Input:9
+	vec4 n_out9p0 = COLOR;
+
+
+// UVFunc:16
+	vec2 n_in16p1 = vec2(1.00000, 0.50000);
+	vec2 n_in16p2 = vec2(0.00000, 0.00000);
+	vec2 n_out16p0 = (UV - n_in16p2) * n_in16p1 + n_in16p2;
+
+
+// FloatParameter:30
+	float n_out30p0 = Dither_blue_noise_size;
+
+
+// Input:17
+	float n_out17p0 = TIME;
+
+
+// FloatOp:18
+	float n_in18p1 = 0.00100;
+	float n_out18p0 = n_out17p0 * n_in18p1;
+
+
+// FloatOp:19
+	float n_in19p1 = 0.10000;
+	float n_out19p0 = n_out18p0 * n_in19p1;
+
+
+// UVFunc:15
+	vec2 n_out15p0 = (n_out16p0 - vec2(n_out19p0)) * vec2(n_out30p0) + vec2(n_out19p0);
+
+
+	vec4 n_out13p0;
+// Texture2D:13
+	n_out13p0 = texture(BlueNoise, n_out15p0);
+
+
+// FloatParameter:5
+	float n_out5p0 = Opacity;
+
+
+// Step:2
+	float n_out2p0 = step(n_out13p0.x, n_out5p0);
+
+
+// Output:0
+	COLOR.rgb = vec3(n_out9p0.xyz);
+	COLOR.a = n_out2p0;
+
+
+}
+"
+graph_offset = Vector2(-630.626, -287.672)
+mode = 1
+flags/light_only = false
+nodes/fragment/0/position = Vector2(680, 140)
+nodes/fragment/2/node = SubResource("VisualShaderNodeStep_4an0b")
+nodes/fragment/2/position = Vector2(260, 200)
+nodes/fragment/5/node = SubResource("VisualShaderNodeFloatParameter_46u1j")
+nodes/fragment/5/position = Vector2(-200, 380)
+nodes/fragment/9/node = SubResource("VisualShaderNodeInput_uj47t")
+nodes/fragment/9/position = Vector2(740, -640)
+nodes/fragment/13/node = SubResource("VisualShaderNodeTexture_y363p")
+nodes/fragment/13/position = Vector2(-820, -580)
+nodes/fragment/15/node = SubResource("VisualShaderNodeUVFunc_mfeeg")
+nodes/fragment/15/position = Vector2(-1420, -460)
+nodes/fragment/16/node = SubResource("VisualShaderNodeUVFunc_dq2hy")
+nodes/fragment/16/position = Vector2(-1740, -580)
+nodes/fragment/17/node = SubResource("VisualShaderNodeInput_kvjfc")
+nodes/fragment/17/position = Vector2(-2020, -200)
+nodes/fragment/18/node = SubResource("VisualShaderNodeFloatOp_5hys7")
+nodes/fragment/18/position = Vector2(-1700, -220)
+nodes/fragment/19/node = SubResource("VisualShaderNodeFloatOp_01l71")
+nodes/fragment/19/position = Vector2(-1640, -20)
+nodes/fragment/21/node = SubResource("VisualShaderNodeTexture2DParameter_2oiag")
+nodes/fragment/21/position = Vector2(-1180, -300)
+nodes/fragment/30/node = SubResource("VisualShaderNodeFloatParameter_tusqw")
+nodes/fragment/30/position = Vector2(-2140, -440)
+nodes/fragment/connections = PackedInt32Array(9, 0, 0, 0, 17, 0, 18, 0, 18, 0, 19, 0, 16, 0, 15, 0, 19, 0, 15, 2, 15, 0, 13, 0, 21, 0, 13, 2, 13, 0, 2, 0, 5, 0, 2, 1, 30, 0, 15, 1, 2, 0, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v0203"]
+shader = SubResource("VisualShader_rthcl")
+shader_parameter/Opacity = 0.9
+
+[sub_resource type="SphereMesh" id="SphereMesh_837u0"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_0oa2d"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bgl6d"]
+shading_mode = 0
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_fuojs"]
+viewport_path = NodePath("Viewport")
+
+[node name="02_FOCUS_VIEW" type="Node"]
+
+[node name="Open_FocusView" type="Node" parent="." node_paths=PackedStringArray("Render", "Backdrop", "Loader")]
+script = ExtResource("1_ttndn")
+Render = NodePath("../Render")
+Backdrop = NodePath("../BACKDROP_FOCUS")
+Loader = NodePath("../Viewport/Rotation_root/Loader")
+
+[node name="set_Resolution" type="Node" parent="." node_paths=PackedStringArray("viewports")]
+script = ExtResource("1_3ana1")
+viewports = [NodePath("../Viewport")]
+
+[node name="Zoom_and_rotate" type="Node" parent="." node_paths=PackedStringArray("Camera", "Render", "_Rotation_root")]
+script = ExtResource("2_hd46p")
+Camera = NodePath("../Viewport/CAM")
+Render = NodePath("../Render")
+_Rotation_root = NodePath("../Viewport/Rotation_root")
+
+[node name="Move_lateral" type="Node" parent="." node_paths=PackedStringArray("Render", "_all_cam_array")]
+script = ExtResource("5_4oykj")
+Render = NodePath("../Render")
+clamp_cam_x = Vector2(-0.07, 0.125)
+clamp_cam_z = Vector2(-0.085, 0.025)
+_all_cam_array = [NodePath("../Viewport/CAM")]
+_speed = 0.27
+
+[node name="BACKDROP_FOCUS" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_v0203")
+clip_contents = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.129412, 0.129412, 0.129412, 1)
+
+[node name="Viewport" type="SubViewport" parent="."]
+own_world_3d = true
+transparent_bg = true
+size = Vector2i(1280, 720)
+
+[node name="CAM" type="Camera3D" parent="Viewport"]
+transform = Transform3D(1, 0, 0, 0, 0.936672, 0.350207, 0, -0.350207, 0.936672, 0, 0.242, 0.602)
+cull_mask = 2
+fov = 45.0
+
+[node name="Rotation_root" type="Node3D" parent="Viewport"]
+
+[node name="Cam_target" type="Node3D" parent="Viewport/Rotation_root"]
+script = ExtResource("9_or37v")
+speed = 0.5
+x_limit = Vector2(-0.15, 0.15)
+y_limit = Vector2(-0.15, 0.15)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Viewport/Rotation_root/Cam_target"]
+transform = Transform3D(0.175, 0, 0, 0, 0.175, 0, 0, 0, 0.175, 0, 0, 0)
+visible = false
+layers = 2
+mesh = SubResource("SphereMesh_837u0")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Viewport/Rotation_root"]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 0, 0)
+layers = 2
+mesh = SubResource("BoxMesh_0oa2d")
+surface_material_override/0 = SubResource("StandardMaterial3D_bgl6d")
+
+[node name="Loader" type="Node3D" parent="Viewport/Rotation_root"]
+
+[node name="Render" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("ViewportTexture_fuojs")
+
+[node name="Clock" parent="." instance=ExtResource("6_srukl")]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_top = 126.0
+offset_bottom = 126.0
+grow_horizontal = 2
+scale = Vector2(0.802, 0.802)

@@ -14,8 +14,16 @@ script/source = "extends Node
 
 var t
 func _ready():
-
+	_global_datas._open_focus_view.connect(_check_fade)
 	_stop()
+	
+func _check_fade(condition : bool):
+	
+	if condition:
+		_start_clock()
+	else:
+		_stop()		
+	
 	
 func _start_clock():
 
@@ -173,20 +181,24 @@ nodes/fragment/connections = PackedInt32Array(37, 0, 35, 1, 72, 0, 37, 1, 39, 0,
 shader = SubResource("VisualShader_5dayk")
 shader_parameter/Opacity = 1.0
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_xhme6"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_chq7j"]
 viewport_path = NodePath("SubViewport")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8lx2s"]
-albedo_color = Color(0.219608, 0.176471, 0.101961, 1)
+shading_mode = 0
+albedo_color = Color(0.0941176, 0.0941176, 0.0941176, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hajhu"]
-albedo_color = Color(0.0235294, 0.176471, 0.2, 1)
+shading_mode = 0
+albedo_color = Color(0.215686, 0.215686, 0.215686, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f83j0"]
-albedo_color = Color(0.439216, 0.380392, 0.278431, 1)
+shading_mode = 0
+albedo_color = Color(0.584314, 0.584314, 0.584314, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0a8hu"]
-albedo_color = Color(0.0235294, 0.176471, 0.2, 1)
+shading_mode = 0
+albedo_color = Color(0.27451, 0.27451, 0.27451, 1)
 
 [node name="Clock" type="Control"]
 process_mode = 3
@@ -221,7 +233,7 @@ offset_bottom = 89.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-texture = SubResource("ViewportTexture_xhme6")
+texture = SubResource("ViewportTexture_chq7j")
 expand_mode = 1
 
 [node name="SubViewport" type="SubViewport" parent="."]
@@ -250,9 +262,5 @@ surface_material_override/3 = SubResource("StandardMaterial3D_0a8hu")
 [node name="root_equille" parent="SubViewport/clock_3d_prefab/clock_3d2" index="1"]
 layers = 524288
 surface_material_override/0 = SubResource("StandardMaterial3D_8lx2s")
-
-[node name="OmniLight3D" type="OmniLight3D" parent="SubViewport"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.969818, 0)
-layers = 524288
 
 [editable path="SubViewport/clock_3d_prefab/clock_3d2"]

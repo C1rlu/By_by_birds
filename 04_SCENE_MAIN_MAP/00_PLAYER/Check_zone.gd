@@ -1,7 +1,7 @@
 extends Node
 
 
-@onready var area_root : Area3D = $"../Zone_trigger"
+@onready var area_root : Area3D = $Zone_trigger
 @export var zone_collider : CollisionShape3D
 
 func _ready():

@@ -1,5 +1,6 @@
-extends AnimationPlayer
+extends Node
 
 
 func _ready():
-	play("Wave_animation")
+	pass
+	#play("Wave_animation")

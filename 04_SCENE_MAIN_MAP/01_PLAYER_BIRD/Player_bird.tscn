@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://c5wn0a86wvnq4"]
+[gd_scene load_steps=25 format=3 uid="uid://c5wn0a86wvnq4"]
 
 [ext_resource type="Script" path="res://04_SCENE_MAIN_MAP/01_PLAYER_BIRD/Player_bird_movement.gd" id="1_ot1bv"]
 [ext_resource type="Script" path="res://04_SCENE_MAIN_MAP/01_PLAYER_BIRD/Follow_direction_target.gd" id="2_13a3n"]
@@ -6,6 +6,12 @@
 [ext_resource type="PackedScene" uid="uid://djqtoudpd0dy6" path="res://04_SCENE_MAIN_MAP/Birds/Far_birds.blend" id="2_it8yi"]
 [ext_resource type="Material" uid="uid://ctnqf5d3uj1g7" path="res://00_SHADER/All_Materials/dark_mask.tres" id="4_mb1it"]
 [ext_resource type="Shader" uid="uid://cu2uipuy138c6" path="res://00_SHADER/All_Materials/Main_sceneTest_dither_sh.tres" id="4_o4haw"]
+[ext_resource type="Script" path="res://04_SCENE_MAIN_MAP/00_PLAYER/Check_zone.gd" id="4_r2u6d"]
+[ext_resource type="Script" path="res://04_SCENE_MAIN_MAP/01_PLAYER_BIRD/Zone_trigger.gd" id="5_sdmw4"]
+[ext_resource type="PackedScene" uid="uid://bminm75phc1qf" path="res://04_SCENE_MAIN_MAP/Birds/line_fx.tscn" id="9_i1pq4"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_decqm"]
+radius = 0.843907
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cac3u"]
 resource_local_to_scene = true
@@ -162,6 +168,8 @@ script = ExtResource("1_ot1bv")
 rotation_bird = NodePath("Rotation_root")
 rotation_speed = 8.68
 Raycast = NodePath("RayCast3D")
+max_roll_angle = 0.5
+rool_speed = 1.0
 enable_key_control = true
 
 [node name="Follow_direction_target" type="Node" parent="." node_paths=PackedStringArray("player_rg")]
@@ -174,6 +182,19 @@ Player_rg = NodePath("..")
 
 [node name="Timer" type="Timer" parent="Automatic_fly"]
 autostart = true
+
+[node name="Check_zone_ui" type="Node" parent="." node_paths=PackedStringArray("zone_collider")]
+script = ExtResource("4_r2u6d")
+zone_collider = NodePath("Zone_trigger/Col")
+
+[node name="Zone_trigger" type="Area3D" parent="Check_zone_ui"]
+visible = false
+input_ray_pickable = false
+script = ExtResource("5_sdmw4")
+
+[node name="Col" type="CollisionShape3D" parent="Check_zone_ui/Zone_trigger"]
+shape = SubResource("SphereShape3D_decqm")
+disabled = true
 
 [node name="Rotation_root" type="Node3D" parent="."]
 
@@ -218,11 +239,19 @@ mesh = SubResource("ArrayMesh_4qs87")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("4_mb1it")
 
+[node name="Line_fx" parent="Rotation_root" instance=ExtResource("9_i1pq4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.328514, 0.0129435, 0.0570308)
+
+[node name="Line_fx2" parent="Rotation_root" instance=ExtResource("9_i1pq4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.329, 0.0134228, 0.0567605)
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+visible = false
 shape = SubResource("SphereShape3D_43sk8")
 disabled = true
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.966622, -0.256205, 0, 0.256205, 0.966622, 0, 0, 0)
 target_position = Vector3(0, -5, 0)
 
 [editable path="Rotation_root/Far_birds"]

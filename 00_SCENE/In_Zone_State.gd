@@ -1,6 +1,6 @@
 extends Node
 
-@export var area_root : Area3D
+
 
 
 func _ready():
@@ -8,7 +8,7 @@ func _ready():
 	_global_datas._check_zone_enter.connect(_check_zone_enter)	
 	_global_datas._check_zone_exit.connect(_check_zone_exit)
 	
-	_global_datas._check_boat_zone.connect(check_zone)
+	_global_datas._check_player_zone.connect(check_zone)
 	
 	_global_datas._close_dialogue.connect(check_zone)
 	_global_datas._open_menu.connect(_condition_check)
@@ -36,7 +36,7 @@ func _check_zone_exit(area):
 	if npc_zone:
 		_global_datas._active_this_npc_zone.emit(false)
 		#_global_datas.Npc_Dialogue = null
-		_global_datas._check_boat_zone.emit()
+		_global_datas._check_player_zone.emit()
 		
 		
 		
@@ -47,7 +47,7 @@ func _check_zone_exit(area):
 func check_zone():
 	
 	
-	var all_area = area_root.get_overlapping_areas()
+	var all_area = _global_datas.player_area.get_overlapping_areas()
 	for a in all_area:
 		var npc_zone = a.get_node_or_null("Npc_zone")
 		if npc_zone:

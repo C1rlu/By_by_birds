@@ -20,9 +20,9 @@ var move_backward : String
 
 signal _active_sonar(position : Vector3)
 signal _follow_target(position : Vector3)
-
-
-signal _check_boat_zone
+signal _roll_bird
+var player_area : Area3D
+signal _check_player_zone
 
 
 # dialogue signals

@@ -11,8 +11,9 @@ func _input(event):
 		return
 	
 	if event.is_action_pressed("Click"):
-		print("click")
-		_raycast()
+
+		_global_datas._roll_bird.emit()
+		#_raycast()
 		
 		
 func _raycast():

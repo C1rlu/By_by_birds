@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://bminm75phc1qf"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mease"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0.823529, 0.898039, 0.913725, 0.156863)
+
+[sub_resource type="Curve" id="Curve_nao7m"]
+_data = [Vector2(0, 0.172447), 0.0, 1.16259, 0, 0, Vector2(0.247012, 0.505938), 0.0, 0.0, 0, 0, Vector2(1, 0.172447), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_ofk3l"]
+curve = SubResource("Curve_nao7m")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_d8x5u"]
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_ofk3l")
+
+[sub_resource type="BoxMesh" id="BoxMesh_hswr5"]
+size = Vector3(0.05, 0.05, 0.05)
+
+[node name="Line_fx" type="GPUParticles3D"]
+layers = 262144
+material_override = SubResource("StandardMaterial3D_mease")
+amount = 100
+preprocess = 1.0
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_d8x5u")
+draw_pass_1 = SubResource("BoxMesh_hswr5")

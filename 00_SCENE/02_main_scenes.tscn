@@ -1,4 +1,4 @@
-[gd_scene load_steps=80 format=3 uid="uid://cnmptm7i0xxmj"]
+[gd_scene load_steps=77 format=3 uid="uid://cnmptm7i0xxmj"]
 
 [ext_resource type="PackedScene" uid="uid://vpdvl0v7dubd" path="res://04_SCENE_MAIN_MAP/00_PLAYER/Player_boat.tscn" id="1_qltht"]
 [ext_resource type="Resource" uid="uid://ppxk5i543dfn" path="res://15_GAME_RESSOURCE/00_Npc_data/Mr_Birds_data.tres" id="1_trgwt"]
@@ -16,7 +16,6 @@
 [ext_resource type="Shader" uid="uid://b8pie7pbqwtks" path="res://00_SHADER/Full_screen/Main_fullscreen.tres" id="13_je1hg"]
 [ext_resource type="PackedScene" uid="uid://c5wn0a86wvnq4" path="res://04_SCENE_MAIN_MAP/01_PLAYER_BIRD/Player_bird.tscn" id="14_u11n5"]
 [ext_resource type="PackedScene" uid="uid://fcjcvy77lg0o" path="res://04_SCENE_MAIN_MAP/ELEMENTS/Lighthouse/lighthouse_prefabs.tscn" id="16_u78ww"]
-[ext_resource type="Script" path="res://04_SCENE_MAIN_MAP/00_PLAYER/Check_zone.gd" id="17_unqeu"]
 [ext_resource type="PackedScene" uid="uid://exqao35losp1" path="res://04_SCENE_MAIN_MAP/ELEMENTS/Rampe/Rampe_prefab.tscn" id="18_vvmth"]
 [ext_resource type="Texture2D" uid="uid://flr7odvrvgkt" path="res://13_TOOLS_UI/delevery_box_logo.png" id="19_wl2lb"]
 [ext_resource type="PackedScene" uid="uid://cp1aidnp626l4" path="res://04_SCENE_MAIN_MAP/Birds/Birds_prefabs.tscn" id="21_py3bv"]
@@ -191,12 +190,6 @@ viewport_path = NodePath("01_GAME_UI/MAIN_SCENE_UI/Viewports/MAIN_Viewport")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_5wdck"]
 viewport_path = NodePath("In_Zone_State/In_NpcZone_State/Button_active_Dialogue/Dialogue_UI")
-
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ituqr"]
-bounce = 500.0
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_yt2xy"]
-radius = 0.843907
 
 [sub_resource type="VisualShaderNodeProximityFade" id="VisualShaderNodeProximityFade_dnk0e"]
 default_input_values = [0, 1.5]
@@ -481,10 +474,9 @@ Camera = NodePath("../01_GAME_UI/MAIN_SCENE_UI/CAM_MAIN_RAYCAST")
 [node name="Sonar_behaviour" type="Node" parent="."]
 script = SubResource("GDScript_0xo40")
 
-[node name="In_Zone_State" type="Node" parent="." node_paths=PackedStringArray("area_root")]
+[node name="In_Zone_State" type="Node" parent="."]
 process_mode = 3
 script = ExtResource("9_rhikc")
-area_root = NodePath("../--DECOR--/Player_Boat/Zone_trigger")
 
 [node name="In_DiveZone_State" type="Node" parent="In_Zone_State"]
 script = ExtResource("10_i656g")
@@ -692,37 +684,19 @@ layers = 262144
 billboard = 1
 texture = SubResource("ViewportTexture_5wdck")
 
-[node name="--DECOR--" type="Node3D" parent="."]
-
-[node name="Prologue_start_pos" type="Node3D" parent="--DECOR--"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.21605, 0, 14.8725)
-
-[node name="Player_bird" parent="--DECOR--" instance=ExtResource("14_u11n5")]
+[node name="Player_bird" parent="." instance=ExtResource("14_u11n5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.85413, 0)
 mass = 2.0
 maxSpeed = 6.0
 rotation_speed = 3.0
 
+[node name="--DECOR--" type="Node3D" parent="."]
+
+[node name="Prologue_start_pos" type="Node3D" parent="--DECOR--"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.21605, 0, 14.8725)
+
 [node name="Player_Boat" parent="--DECOR--" instance=ExtResource("1_qltht")]
 transform = Transform3D(0.473858, 0, -0.880601, 0, 1, 0, 0.880601, 0, 0.473858, -4.28915, 0, 13.6219)
-input_ray_pickable = false
-mass = 4.0
-physics_material_override = SubResource("PhysicsMaterial_ituqr")
-freeze = true
-move_speed = 7.0
-maxSpeed = 7.0
-rotation_speed = 4.0
-
-[node name="Check_zone_ui" type="Node" parent="--DECOR--/Player_Boat" node_paths=PackedStringArray("zone_collider")]
-script = ExtResource("17_unqeu")
-zone_collider = NodePath("../Zone_trigger/Col")
-
-[node name="Zone_trigger" type="Area3D" parent="--DECOR--/Player_Boat"]
-input_ray_pickable = false
-
-[node name="Col" type="CollisionShape3D" parent="--DECOR--/Player_Boat/Zone_trigger"]
-shape = SubResource("SphereShape3D_yt2xy")
-disabled = true
 
 [node name="Sonar" type="Node3D" parent="--DECOR--"]
 transform = Transform3D(-4.37114e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.37114e-09, 0, 0, 0)

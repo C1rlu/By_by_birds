@@ -2,6 +2,7 @@ extends Node
 
 
 var player_position : Vector3
+var bird_raycast_ground_position : Vector3
 var Player_InMenu : bool
 var Player_InDialogue : bool
 var Player_InDialogue_zone : bool

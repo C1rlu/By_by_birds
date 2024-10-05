@@ -145,9 +145,10 @@ func _rool_z(value):
 func check_raycast():
 	
 	if Raycast.is_colliding():
-		#print(Raycast.get_collision_point())
+
 		var col = Raycast.get_collision_point()
 		var y_height = col.y
 		y_position_value = height_offset + y_height
+		_global_datas.bird_raycast_ground_position = Vector3(position.x,y_height,position.z)
 	else:
 		y_position_value = height_offset		

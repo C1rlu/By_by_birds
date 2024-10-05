@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://vpdvl0v7dubd"]
+[gd_scene load_steps=17 format=3 uid="uid://vpdvl0v7dubd"]
 
 [ext_resource type="Script" path="res://00_SYSTEMS/Active_mask_at_ready.tres.gd" id="2_45b7i"]
 [ext_resource type="Script" path="res://04_SCENE_MAIN_MAP/00_PLAYER/Boat_wave.gd" id="2_nbyl8"]
@@ -56,6 +56,9 @@ shader_parameter/Color = Color(0.654902, 0.545098, 0.380392, 1)
 shader_parameter/Dither_strenght = 0.0
 shader_parameter/Gradient_base = ExtResource("8_lk44d")
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_mn83n"]
+radius = 1.452
+
 [node name="Boat_root" type="Node3D"]
 
 [node name="Active_at_ready" type="Node" parent="." node_paths=PackedStringArray("_active")]
@@ -97,5 +100,14 @@ surface_material_override/0 = SubResource("ShaderMaterial_ftmbx")
 visible = false
 layers = 1032
 surface_material_override/0 = ExtResource("9_br4nm")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="Zone" type="Node" parent="Area3D"]
+
+[node name="Mission" type="Node" parent="Area3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_mn83n")
 
 [editable path="Boat_all/Player_Boat_render"]

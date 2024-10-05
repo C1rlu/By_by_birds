@@ -39,11 +39,13 @@ func _check_if_exist():
 	if _check_photoExist(_global_datas.Npc_Dialogue.photo_data):
 		_global_datas._open_dialogue.emit()
 		_global_datas.photo_checking = false
+	
 	else:
 		var photo_data = _global_datas.Npc_Dialogue.photo_data
 		_global_datas._give_photo.emit(photo_data)
 		_global_datas.photo_archives.append(photo_data)
 		_global_datas.photo_checking = true
+		
 func _check_photoExist(photoData : PhotoData) -> bool:
 	
 	for photo in _global_datas.photo_archives:
@@ -52,9 +54,9 @@ func _check_photoExist(photoData : PhotoData) -> bool:
 	return false	
 					
 func _open_dialogue():
-
+	
 	_global_datas.Player_InDialogue = true
-
+	_global_datas.Player_InMenu = true
 	dialogue.visible = true
 	$Random_FaceChanger/Timer.start()				
 	update_name_ls()
@@ -75,10 +77,8 @@ func _close_dialogue():
 
 	dialogue.visible =  false
 	_global_datas.Player_InDialogue = false
-
+	_global_datas.Player_InMenu = false
 	$Random_FaceChanger/Timer.stop()
 
 	
-func back_call():
-	_global_datas._close_dialogue.emit()
-	
+

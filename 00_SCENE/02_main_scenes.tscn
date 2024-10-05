@@ -470,6 +470,7 @@ viewports = [NodePath("../01_GAME_UI/MAIN_SCENE_UI/Viewports/MAIN_Viewport"), No
 script = ExtResource("2_q5qkb")
 target_node = NodePath("../Target_clic")
 Camera = NodePath("../01_GAME_UI/MAIN_SCENE_UI/CAM_MAIN_RAYCAST")
+active_click = true
 
 [node name="Sonar_behaviour" type="Node" parent="."]
 script = SubResource("GDScript_0xo40")
@@ -706,7 +707,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.21605, 0, 14.8725)
 transform = Transform3D(0.473858, 0, -0.880601, 0, 1, 0, 0.880601, 0, 0.473858, -4.28915, 0, 13.6219)
 
 [node name="Player_Boat2" parent="--DECOR--" instance=ExtResource("1_qltht")]
-transform = Transform3D(0.0299275, 0, 0.999552, 0, 1, 0, -0.999552, 0, 0.0299275, -2.86448, -9.53674e-07, 0.91945)
+transform = Transform3D(0.0299275, 0, 0.999552, 0, 1, 0, -0.999552, 0, 0.0299275, -5.07322, -9.53674e-07, 0.283514)
 
 [node name="Sonar" type="Node3D" parent="--DECOR--"]
 transform = Transform3D(-4.37114e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.37114e-09, 0, 0, 0)

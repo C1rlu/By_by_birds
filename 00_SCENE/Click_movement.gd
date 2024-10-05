@@ -7,14 +7,23 @@ extends Node
 
 func _input(event):
 	
+	
+	if _global_datas.Player_InMenu:
+		return
+	
 	if !active_click:
 		return
 	
 	if event.is_action_pressed("Click"):
 
 		_global_datas._roll_bird.emit()
-		#_raycast()
+		_bird_call_only()
 		
+
+func _bird_call_only():
+	var target = _global_datas.bird_raycast_ground_position
+	_global_datas._active_sonar.emit(target)	
+
 		
 func _raycast():
 	

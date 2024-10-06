@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bwmu5iwushsl5"]
+[gd_scene load_steps=25 format=3 uid="uid://bwmu5iwushsl5"]
 
 [ext_resource type="Script" path="res://13_TOOLS_UI/Fade_flash_effect.gd" id="1_1dj2k"]
 [ext_resource type="Material" uid="uid://bxikm4g1nkywk" path="res://00_SHADER/Disolved_simple_texture.tres" id="4_473tf"]
@@ -7,6 +7,10 @@
 [ext_resource type="Script" path="res://13_TOOLS_UI/BACK_LETTERS.gd" id="7_uck14"]
 [ext_resource type="Shader" uid="uid://v7wu4reqmbs2" path="res://00_SHADER/Post_process/Noise_vs_effect.tres" id="8_yxivq"]
 [ext_resource type="Texture2D" uid="uid://d31xi5f7tan5w" path="res://00_SHADER/Full_screen/Dither_pattners/Blue_noise/HDR_LA_7.png" id="9_msbsb"]
+[ext_resource type="Shader" uid="uid://cg5mgo48srf08" path="res://13_TOOLS_UI/2D_MAP/2d_map_border.tres" id="10_2glot"]
+[ext_resource type="Material" uid="uid://cvdc0nafgwfbq" path="res://13_TOOLS_UI/Map/Map_board_mat.tres" id="12_ebkyb"]
+[ext_resource type="Texture2D" uid="uid://cuul1oo87fgv6" path="res://13_TOOLS_UI/Map/Map_board_isle_01.png" id="12_vgvrk"]
+[ext_resource type="Script" path="res://13_TOOLS_UI/2D_MAP/OpenMap_Button.gd" id="14_dyhcy"]
 [ext_resource type="Shader" uid="uid://owtikj2jm5h5" path="res://13_TOOLS_UI/PhotoFlash_effect.tres" id="15_kco3d"]
 [ext_resource type="PackedScene" uid="uid://b4ju0ntcydix8" path="res://13_TOOLS_UI/2D_MAP/2d_map.tscn" id="17_c8quy"]
 
@@ -154,6 +158,20 @@ shader_parameter/FloatParameter = 3.0
 shader_parameter/Noise_opacity = 0.95
 shader_parameter/Noise_texture = ExtResource("9_msbsb")
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rjyel"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4brgt"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4vu4i"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qukco"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qcf5v"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wc83i"]
+shader = ExtResource("10_2glot")
+shader_parameter/Opacity = 1.0
+
 [node name="07_SCREEN_UI" type="Node"]
 
 [node name="INSTANCE_PICTURES" type="Node" parent="."]
@@ -249,17 +267,67 @@ texture = ExtResource("4_c4v0f")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="2D_Map" parent="." instance=ExtResource("17_c8quy")]
-visible = false
-
 [node name="Noise_shader" type="ColorRect" parent="."]
-visible = false
 material = SubResource("ShaderMaterial_b1qbk")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
+
+[node name="2D_Map" parent="." instance=ExtResource("17_c8quy")]
+
+[node name="Map_button" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1168.0
+offset_top = 605.0
+offset_right = 1668.0
+offset_bottom = 1105.0
+scale = Vector2(0.779998, 0.779998)
+mouse_filter = 2
+
+[node name="Open_map" type="Button" parent="Map_button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_rjyel")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_4brgt")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_4vu4i")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_qukco")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_qcf5v")
+script = ExtResource("14_dyhcy")
+
+[node name="Border" type="ColorRect" parent="Map_button"]
+material = SubResource("ShaderMaterial_wc83i")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = -1.0
+offset_right = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.45098, 0.364706, 0.25098, 1)
+
+[node name="Map" type="TextureRect" parent="Map_button"]
+material = ExtResource("12_ebkyb")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("12_vgvrk")
+expand_mode = 1
 
 [node name="Front_element" type="Control" parent="."]
 layout_mode = 3

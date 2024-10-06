@@ -180,6 +180,7 @@ _all_cam_array = [NodePath("../Viewport/CAM")]
 _speed = 0.27
 
 [node name="BACKDROP_FOCUS" type="ColorRect" parent="."]
+visible = false
 material = SubResource("ShaderMaterial_v0203")
 clip_contents = true
 anchors_preset = 15
@@ -223,6 +224,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_bgl6d")
 [node name="Loader" type="Node3D" parent="Viewport/Rotation_root"]
 
 [node name="Render" type="TextureRect" parent="."]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

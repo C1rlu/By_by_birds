@@ -1,36 +1,26 @@
-[gd_scene load_steps=11 format=3 uid="uid://b4ju0ntcydix8"]
+[gd_scene load_steps=10 format=3 uid="uid://b4ju0ntcydix8"]
 
-[ext_resource type="Shader" uid="uid://ce21gfa0ldjj7" path="res://13_TOOLS_UI/2D_MAP/2d_map_sh.tres" id="1_bcm85"]
 [ext_resource type="Shader" uid="uid://cg5mgo48srf08" path="res://13_TOOLS_UI/2D_MAP/2d_map_border.tres" id="1_kvg0y"]
 [ext_resource type="Script" path="res://13_TOOLS_UI/2D_MAP/Player_Map_behaviour.gd" id="1_to0fs"]
 [ext_resource type="Script" path="res://13_TOOLS_UI/2D_MAP/Control_map.gd" id="3_8kfsc"]
+[ext_resource type="Material" uid="uid://cvdc0nafgwfbq" path="res://13_TOOLS_UI/Map/Map_board_mat.tres" id="4_6ettx"]
 [ext_resource type="Texture2D" uid="uid://cuul1oo87fgv6" path="res://13_TOOLS_UI/Map/Map_board_isle_01.png" id="6_7j04c"]
-[ext_resource type="Texture2D" uid="uid://y701g232cpu4" path="res://13_TOOLS_UI/Map/Map_board_01.png" id="7_tmq1y"]
+[ext_resource type="Script" path="res://13_TOOLS_UI/2D_MAP/Leave_map.gd" id="7_7fkdg"]
 [ext_resource type="PackedScene" uid="uid://cqbutqb21mt2l" path="res://13_TOOLS_UI/2D_MAP/Legend/Legend_prefab.tscn" id="8_x8w18"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_r6rtr"]
 shader = ExtResource("1_kvg0y")
 shader_parameter/Opacity = 1.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_0u5bg"]
-shader = ExtResource("1_bcm85")
-shader_parameter/Flat_color = Color(0.0156863, 0.109804, 0.117647, 1)
-shader_parameter/Opacity = 1.0
-shader_parameter/Mask_color = Color(0.223529, 0.211765, 0.145098, 1)
-shader_parameter/Line_color = Color(0.596078, 0.466667, 0.298039, 1)
-shader_parameter/Isle_mask = ExtResource("6_7j04c")
-shader_parameter/Line = ExtResource("7_tmq1y")
-
 [sub_resource type="ViewportTexture" id="ViewportTexture_tkf7a"]
 viewport_path = NodePath("SubViewportContainer/SubViewport")
 
 [node name="2D_Map" type="Control"]
+visible = false
 layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -43,11 +33,12 @@ Map_node = NodePath("..")
 script = ExtResource("3_8kfsc")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
-layout_mode = 0
-offset_left = -640.0
-offset_top = -360.0
-offset_right = -600.0
-offset_bottom = -320.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
 disable_3d = true
@@ -55,7 +46,7 @@ transparent_bg = true
 handle_input_locally = false
 fsr_sharpness = 0.0
 size = Vector2i(1280, 720)
-render_target_update_mode = 4
+render_target_update_mode = 0
 
 [node name="root" type="Control" parent="SubViewportContainer/SubViewport"]
 layout_mode = 3
@@ -86,7 +77,7 @@ mouse_filter = 2
 color = Color(0.45098, 0.364706, 0.25098, 1)
 
 [node name="Map" type="TextureRect" parent="SubViewportContainer/SubViewport/root"]
-material = SubResource("ShaderMaterial_0u5bg")
+material = ExtResource("4_6ettx")
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -205,3 +196,19 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 texture = SubResource("ViewportTexture_tkf7a")
+
+[node name="Leave_map" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -204.0
+offset_top = -54.0
+offset_right = -109.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "LEAVE MAP
+"
+script = ExtResource("7_7fkdg")

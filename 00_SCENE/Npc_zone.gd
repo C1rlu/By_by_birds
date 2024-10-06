@@ -4,5 +4,3 @@ extends Node
 func get_npc():
 
 	return root.Npc_data
-
-

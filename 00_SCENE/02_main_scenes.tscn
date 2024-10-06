@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=3 uid="uid://cnmptm7i0xxmj"]
+[gd_scene load_steps=66 format=3 uid="uid://cnmptm7i0xxmj"]
 
 [ext_resource type="PackedScene" uid="uid://vpdvl0v7dubd" path="res://04_SCENE_MAIN_MAP/00_PLAYER/Player_boat.tscn" id="1_qltht"]
 [ext_resource type="Resource" uid="uid://ppxk5i543dfn" path="res://15_GAME_RESSOURCE/00_Npc_data/Mr_Birds_data.tres" id="1_trgwt"]
@@ -9,9 +9,11 @@
 [ext_resource type="Script" path="res://00_SCENE/In_Zone_State.gd" id="9_rhikc"]
 [ext_resource type="PackedScene" uid="uid://dla1534gcagbl" path="res://04_SCENE_MAIN_MAP/ELEMENTS/Pine/pine_prefabs.tscn" id="10_c6r5x"]
 [ext_resource type="Script" path="res://00_SCENE/In_Delevery_state.gd" id="10_de1nl"]
-[ext_resource type="Script" path="res://00_SCENE/In_DiveZone_State.gd" id="10_i656g"]
+[ext_resource type="Script" path="res://00_SCENE/in_focus_zone.gd" id="10_itmr5"]
+[ext_resource type="Script" path="res://00_SCENE/open_focus.gd" id="11_3vg4r"]
 [ext_resource type="Script" path="res://00_SCENE/In_NpcZone_State.gd" id="11_7hdfu"]
 [ext_resource type="PackedScene" uid="uid://cegdqm3et2y35" path="res://04_SCENE_MAIN_MAP/ELEMENTS/Iceberg/ice_berg_02.tscn" id="11_086vv"]
+[ext_resource type="Texture2D" uid="uid://dhphjbohctlu7" path="res://13_TOOLS_UI/Eyes/eyes_img.png" id="11_a73d8"]
 [ext_resource type="Shader" path="res://00_SHADER/Full_screen/Pixel_art/test_pixel.gdshader" id="12_j62vj"]
 [ext_resource type="Shader" uid="uid://b8pie7pbqwtks" path="res://00_SHADER/Full_screen/Main_fullscreen.tres" id="13_je1hg"]
 [ext_resource type="PackedScene" uid="uid://c5wn0a86wvnq4" path="res://04_SCENE_MAIN_MAP/01_PLAYER_BIRD/Player_bird.tscn" id="14_u11n5"]
@@ -77,8 +79,6 @@ func active_buton(condition):
 
 
 	
-
-
 "
 
 [sub_resource type="GDScript" id="GDScript_55qk3"]
@@ -141,6 +141,9 @@ viewport_path = NodePath("01_GAME_UI/MAIN_SCENE_UI/Viewports/MAIN_Viewport")
 [sub_resource type="ViewportTexture" id="ViewportTexture_5wdck"]
 viewport_path = NodePath("In_Zone_State/In_NpcZone_State/Button_active_Dialogue/Dialogue_UI")
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_u25r8"]
+viewport_path = NodePath("In_Zone_State/In_Focus_zone/Focus_UI")
+
 [sub_resource type="SphereMesh" id="SphereMesh_1rgho"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7x1wp"]
@@ -154,7 +157,6 @@ script/source = "extends Area3D
 
 func _ready():
 	Npc_data.dialogue_ui_center_position = self
-
 "
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_jvty4"]
@@ -289,9 +291,6 @@ script = ExtResource("3_aovn2")
 process_mode = 3
 script = ExtResource("9_rhikc")
 
-[node name="In_DiveZone_State" type="Node" parent="In_Zone_State"]
-script = ExtResource("10_i656g")
-
 [node name="In_NpcZone_State" type="Node" parent="In_Zone_State"]
 script = ExtResource("11_7hdfu")
 bird_data = ExtResource("1_trgwt")
@@ -322,7 +321,7 @@ offset_right = 117.98
 offset_bottom = 58.505
 rotation = 1.17948
 scale = Vector2(0.577567, 0.231991)
-color = Color(0.952941, 0.815686, 0.690196, 1)
+color = Color(0.791999, 0.791999, 0.791999, 1)
 
 [node name="ColorRect3" type="ColorRect" parent="In_Zone_State/In_NpcZone_State/Button_active_Dialogue/Dialogue_UI/Button"]
 layout_mode = 0
@@ -332,7 +331,7 @@ offset_right = 139.98
 offset_bottom = 56.505
 rotation = 1.43593
 scale = Vector2(0.577567, 0.231991)
-color = Color(0.952941, 0.815686, 0.690196, 1)
+color = Color(0.791999, 0.791999, 0.791999, 1)
 
 [node name="ColorRect" type="ColorRect" parent="In_Zone_State/In_NpcZone_State/Button_active_Dialogue/Dialogue_UI/Button"]
 layout_mode = 0
@@ -340,7 +339,7 @@ offset_left = -128.0
 offset_top = -40.0
 offset_right = 22.0
 offset_bottom = 34.505
-color = Color(0.952941, 0.815686, 0.690196, 1)
+color = Color(0.791999, 0.791999, 0.791999, 1)
 
 [node name="Label" type="Label" parent="In_Zone_State/In_NpcZone_State/Button_active_Dialogue/Dialogue_UI/Button/ColorRect"]
 layout_mode = 1
@@ -383,7 +382,7 @@ offset_left = -115.0
 offset_top = -27.5
 offset_right = 28.0
 offset_bottom = 104.5
-color = Color(0.952941, 0.815686, 0.690196, 1)
+color = Color(0.61, 0.61, 0.61, 1)
 
 [node name="TextureRect" type="TextureRect" parent="In_Zone_State/In_Delevery_state/Delevery_UI/Button"]
 layout_mode = 0
@@ -393,6 +392,37 @@ offset_right = 153.5
 offset_bottom = 238.5
 scale = Vector2(0.451687, 0.451687)
 texture = ExtResource("19_wl2lb")
+
+[node name="In_Focus_zone" type="Node" parent="In_Zone_State" node_paths=PackedStringArray("focus_view_ui")]
+script = ExtResource("10_itmr5")
+focus_view_ui = NodePath("../../01_GAME_UI/Focus_zone_ui_root")
+
+[node name="Focus_UI" type="SubViewport" parent="In_Zone_State/In_Focus_zone"]
+transparent_bg = true
+size = Vector2i(60, 60)
+
+[node name="Button" type="Control" parent="In_Zone_State/In_Focus_zone/Focus_UI"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 54.0
+offset_top = 18.0
+offset_right = 54.0
+offset_bottom = 18.0
+scale = Vector2(0.4, 0.4)
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="In_Zone_State/In_Focus_zone/Focus_UI/Button"]
+modulate = Color(0.572988, 0.572988, 0.572988, 1)
+layout_mode = 0
+offset_left = -102.5
+offset_top = -17.5
+offset_right = 153.5
+offset_bottom = 238.5
+scale = Vector2(0.451687, 0.451687)
+texture = ExtResource("11_a73d8")
+
+[node name="Open_focus" type="Node" parent="In_Zone_State/In_Focus_zone"]
+script = ExtResource("11_3vg4r")
 
 [node name="01_GAME_UI" type="Node" parent="."]
 
@@ -494,6 +524,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.377417, 0, 0)
 layers = 262144
 billboard = 1
 texture = SubResource("ViewportTexture_5wdck")
+
+[node name="Focus_zone_ui_root" type="Node3D" parent="01_GAME_UI"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75101, 0)
+visible = false
+
+[node name="Render_dialogue_icon" type="Sprite3D" parent="01_GAME_UI/Focus_zone_ui_root"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.10668, 1.71516, 0)
+layers = 262144
+billboard = 1
+texture = SubResource("ViewportTexture_u25r8")
 
 [node name="Player_bird" parent="." instance=ExtResource("14_u11n5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.65431, 0)

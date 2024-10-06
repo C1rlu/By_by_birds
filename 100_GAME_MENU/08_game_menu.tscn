@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://100_GAME_MENU/Restart.gd" id="4_0detv"]
 [ext_resource type="Script" path="res://100_GAME_MENU/Language_state_Menu.gd" id="4_34xg6"]
 [ext_resource type="Script" path="res://100_GAME_MENU/HSlider.gd" id="5_7b61k"]
-[ext_resource type="Script" path="res://Fps_counter.gd" id="5_13bt5"]
+[ext_resource type="Script" path="res://00_SYSTEMS/Fps_counter.gd" id="5_13bt5"]
 [ext_resource type="Script" path="res://100_GAME_MENU/Label_with_state.gd" id="6_sios4"]
 
 [sub_resource type="GDScript" id="GDScript_8vnul"]

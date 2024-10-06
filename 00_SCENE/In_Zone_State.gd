@@ -25,7 +25,12 @@ func _check_zone_enter(area):
 		_global_datas.Npc_Dialogue = npc_zone.get_npc()
 		_global_datas._active_this_npc_zone.emit(true)
 		
+	var focus_zone = area.get_node_or_null("Focus_zone")
+	if focus_zone:
+		var n_position = focus_zone.root_position.position
+		_global_datas._in_focus_zone.emit(true,n_position)
 		
+			
 	var delevery_zone = area.get_node_or_null("Delevery_zone")
 	if delevery_zone:
 		_global_datas._in_delevery_zone.emit(true)	
@@ -35,10 +40,11 @@ func _check_zone_exit(area):
 	var npc_zone = area.get_node_or_null("Npc_zone")
 	if npc_zone:
 		_global_datas._active_this_npc_zone.emit(false)
-		#_global_datas.Npc_Dialogue = null
 		_global_datas._check_player_zone.emit()
 		
-		
+	var focus_zone = area.get_node_or_null("Focus_zone")
+	if focus_zone:
+		_global_datas._in_focus_zone.emit(false,Vector3.ZERO)	
 		
 	var delevery_zone = area.get_node_or_null("Delevery_zone")
 	if delevery_zone:
@@ -54,6 +60,10 @@ func check_zone():
 			_global_datas.Npc_Dialogue = npc_zone.get_npc()
 			_global_datas._active_this_npc_zone.emit(true)
 			
+		var focus_zone = a.get_node_or_null("Focus_zone")
+		if focus_zone:
+			var n_position = focus_zone.root_position.position
+			_global_datas._in_focus_zone.emit(true,n_position)
 			
 		var delevery_zone = a.get_node_or_null("Delevery_zone")
 		if delevery_zone:

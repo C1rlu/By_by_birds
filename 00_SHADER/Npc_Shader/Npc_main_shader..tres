@@ -135,7 +135,7 @@ render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_s
 
 
 // Varyings
-varying float bw;
+varying float var_bw;
 
 global uniform float random_faceAmount = 0;
 uniform sampler2D tex_vtx_3;
@@ -209,7 +209,7 @@ void fragment() {
 
 
 // VaryingSetter:21
-	bw = n_out23p0;
+	var_bw = n_out23p0;
 
 
 }
@@ -229,7 +229,7 @@ void light() {
 
 
 // VaryingGetter:31
-	float n_out31p0 = bw;
+	float n_out31p0 = var_bw;
 
 
 // Mix:30

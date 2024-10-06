@@ -37,8 +37,6 @@ func check_photo_exist(photo_Data):
 	for photo in _global_datas.photo_archives:
 		if photo == photo_Data:
 			return true 	
-
-
 "
 
 [sub_resource type="GDScript" id="GDScript_cnn2b"]
@@ -158,15 +156,15 @@ shader_parameter/FloatParameter = 3.0
 shader_parameter/Noise_opacity = 0.95
 shader_parameter/Noise_texture = ExtResource("9_msbsb")
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rjyel"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qcf5v"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qukco"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4brgt"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4vu4i"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qukco"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qcf5v"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rjyel"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wc83i"]
 shader = ExtResource("10_2glot")
@@ -295,11 +293,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/normal = SubResource("StyleBoxEmpty_rjyel")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_qcf5v")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_qukco")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_4brgt")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_4vu4i")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_qukco")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_qcf5v")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_rjyel")
 script = ExtResource("14_dyhcy")
 
 [node name="Border" type="ColorRect" parent="Map_button"]

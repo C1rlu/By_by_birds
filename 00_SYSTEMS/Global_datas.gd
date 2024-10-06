@@ -61,6 +61,7 @@ signal _check_zone_exit(area)
 signal _active_this_dive_zone(condition : bool)
 signal _active_this_npc_zone(condition : bool)
 
+signal _in_focus_zone(condition : bool, position : Vector3)
 signal _in_delevery_zone(condition : bool)
 
 
@@ -76,4 +77,3 @@ var Npc_Dialogue : Npc_datas
 
 
 signal active_prologue_demo
-

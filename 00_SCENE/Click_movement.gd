@@ -5,6 +5,9 @@ extends Node
 
 @export var active_click : bool = false
 
+@onready var timer = $Timer
+
+
 func _input(event):
 	
 	
@@ -15,7 +18,10 @@ func _input(event):
 		return
 	
 	if event.is_action_pressed("Click"):
-
+		
+		if !timer.is_stopped():
+			return
+		timer.start()
 		_global_datas._roll_bird.emit()
 		_bird_call_only()
 		

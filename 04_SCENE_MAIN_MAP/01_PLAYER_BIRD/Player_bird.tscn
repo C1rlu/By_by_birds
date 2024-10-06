@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://c5wn0a86wvnq4"]
+[gd_scene load_steps=27 format=3 uid="uid://c5wn0a86wvnq4"]
 
 [ext_resource type="Script" path="res://04_SCENE_MAIN_MAP/01_PLAYER_BIRD/Player_bird_movement.gd" id="1_ot1bv"]
 [ext_resource type="Script" path="res://04_SCENE_MAIN_MAP/01_PLAYER_BIRD/Follow_direction_target.gd" id="2_13a3n"]
@@ -7,6 +7,7 @@
 [ext_resource type="Shader" uid="uid://cu2uipuy138c6" path="res://00_SHADER/All_Materials/Main_sceneTest_dither_sh.tres" id="4_o4haw"]
 [ext_resource type="Script" path="res://04_SCENE_MAIN_MAP/00_PLAYER/Check_zone.gd" id="4_r2u6d"]
 [ext_resource type="Script" path="res://04_SCENE_MAIN_MAP/01_PLAYER_BIRD/Line_amount_ratio.gd" id="4_ybxi7"]
+[ext_resource type="Script" path="res://04_SCENE_MAIN_MAP/01_PLAYER_BIRD/Push.gd" id="5_52a0j"]
 [ext_resource type="Script" path="res://04_SCENE_MAIN_MAP/01_PLAYER_BIRD/Zone_trigger.gd" id="5_sdmw4"]
 [ext_resource type="PackedScene" uid="uid://bminm75phc1qf" path="res://04_SCENE_MAIN_MAP/Birds/line_fx.tscn" id="9_i1pq4"]
 [ext_resource type="Texture2D" uid="uid://de8ndui11q6mw" path="res://04_SCENE_MAIN_MAP/01_PLAYER_BIRD/Decal_shadow.png" id="10_x2q1u"]
@@ -190,6 +191,10 @@ line_effects = [NodePath("../Rotation_root/Line_fx_01"), NodePath("../Rotation_r
 [node name="Check_zone_ui" type="Node" parent="." node_paths=PackedStringArray("area_trigger")]
 script = ExtResource("4_r2u6d")
 area_trigger = NodePath("../Zone_trigger")
+
+[node name="Push" type="Node" parent="." node_paths=PackedStringArray("player_rg")]
+script = ExtResource("5_52a0j")
+player_rg = NodePath("..")
 
 [node name="Rotation_root" type="Node3D" parent="."]
 

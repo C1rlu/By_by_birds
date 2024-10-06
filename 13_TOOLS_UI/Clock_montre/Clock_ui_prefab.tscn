@@ -28,7 +28,7 @@ func _check_fade(condition : bool):
 func _start_clock():
 
 	fade_dither.fade_in()
-	var time_need = 60.0
+	var time_need = 10.0
 	
 	if t:
 		t.kill()
@@ -39,8 +39,7 @@ func _start_clock():
 
 func done():
 	fade_dither.fade_out()
-	_global_datas._backFrom_subscene.emit()
-	_global_datas._go_Mainscene.emit()
+	_global_datas._open_focus_view.emit(false)
 	
 	
 func _stop():

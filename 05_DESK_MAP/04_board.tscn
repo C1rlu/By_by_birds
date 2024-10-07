@@ -9,17 +9,6 @@
 [ext_resource type="Script" path="res://05_DESK_MAP/Desk_Camera_state.gd" id="5_0n8j1"]
 [ext_resource type="Shader" uid="uid://7nanp4dqf4uc" path="res://05_DESK_MAP/00_SHADER/04_board_light.tres" id="41_prh4x"]
 
-[sub_resource type="SphereMesh" id="SphereMesh_ycnm1"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ifca2"]
-shading_mode = 0
-
-[sub_resource type="PrismMesh" id="PrismMesh_2j3nk"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yjabd"]
-shading_mode = 0
-albedo_color = Color(1, 0.219608, 0.219608, 1)
-
 [sub_resource type="Shader" id="Shader_8ugrd"]
 code = "
 shader_type canvas_item;
@@ -47,6 +36,17 @@ void fragment( )
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6spwj"]
 shader = SubResource("Shader_8ugrd")
 shader_parameter/amount = 1.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_ycnm1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ifca2"]
+shading_mode = 0
+
+[sub_resource type="PrismMesh" id="PrismMesh_2j3nk"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yjabd"]
+shading_mode = 0
+albedo_color = Color(1, 0.219608, 0.219608, 1)
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_gdqdh"]
 viewport_path = NodePath("SubViewport")
@@ -181,7 +181,7 @@ fov = 40.0
 far = 4.25
 
 [node name="Camera3D_Main_Desk" type="Camera3D" parent="."]
-transform = Transform3D(0.992546, 0.0761977, -0.0951103, 0, 0.78043, 0.625243, 0.121869, -0.620582, 0.774613, -0.118, 0.952, 1.277)
+transform = Transform3D(0.992546, 0.052658, -0.109906, 0, 0.901832, 0.432086, 0.121869, -0.428865, 0.89511, -0.17, 0.735, 1.245)
 cull_mask = 3
 current = true
 fov = 60.0
@@ -205,6 +205,15 @@ cull_mask = 3
 current = true
 fov = 60.0
 far = 10.0
+
+[node name="SHARP_test" type="ColorRect" parent="SubViewport"]
+visible = false
+material = SubResource("ShaderMaterial_6spwj")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Board_scene" parent="SubViewport" instance=ExtResource("2_6c571")]
 
@@ -230,16 +239,8 @@ layers = 2
 mesh = SubResource("PrismMesh_2j3nk")
 surface_material_override/0 = SubResource("StandardMaterial3D_yjabd")
 
-[node name="SHARP_test" type="ColorRect" parent="SubViewport"]
-visible = false
-material = SubResource("ShaderMaterial_6spwj")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
 [node name="RENDER" type="TextureRect" parent="."]
+visible = false
 material = SubResource("ShaderMaterial_ktpkr")
 anchors_preset = 15
 anchor_right = 1.0

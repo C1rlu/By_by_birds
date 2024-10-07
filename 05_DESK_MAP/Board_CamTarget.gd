@@ -32,7 +32,6 @@ func _process(delta):
 			move(delta)	
 
 		
-
 func move(delta):
 	var direction = Vector3.ZERO
 

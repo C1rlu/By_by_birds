@@ -26,6 +26,7 @@ func _input(event):
 		_global_datas._roll_bird.emit()
 		_bird_call_only()
 		
+	
 
 func _bird_call_only():
 	var target = _global_datas.bird_raycast_ground_position

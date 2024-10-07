@@ -9,5 +9,5 @@ func _ready():
 func push():
 	
 	var dir = player_rg.linear_velocity
-	player_rg.apply_force(dir * 150)
+	player_rg.apply_force(dir * 200)
 	

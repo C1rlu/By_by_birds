@@ -33,7 +33,7 @@ func _check_zone_enter(area):
 			
 	var delevery_zone = area.get_node_or_null("Delevery_zone")
 	if delevery_zone:
-		_global_datas._in_delevery_zone.emit(true)	
+		_global_datas._in_desk_zone.emit(true)	
 	
 func _check_zone_exit(area):
 	
@@ -48,7 +48,7 @@ func _check_zone_exit(area):
 		
 	var delevery_zone = area.get_node_or_null("Delevery_zone")
 	if delevery_zone:
-		_global_datas._in_delevery_zone.emit(false)	
+		_global_datas._in_desk_zone.emit(false)	
 			
 func check_zone():
 	
@@ -67,4 +67,4 @@ func check_zone():
 			
 		var delevery_zone = a.get_node_or_null("Delevery_zone")
 		if delevery_zone:
-			_global_datas._in_delevery_zone.emit(true)	
+			_global_datas._in_desk_zone.emit(true)	

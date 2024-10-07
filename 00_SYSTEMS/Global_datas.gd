@@ -65,7 +65,7 @@ signal _active_this_dive_zone(condition : bool)
 signal _active_this_npc_zone(condition : bool)
 
 signal _in_focus_zone(condition : bool, position : Vector3)
-signal _in_delevery_zone(condition : bool)
+signal _in_desk_zone(condition : bool)
 
 
 

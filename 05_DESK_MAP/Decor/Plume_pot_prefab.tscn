@@ -1,0 +1,42 @@
+[gd_scene load_steps=9 format=3 uid="uid://cx2rmplug5w4e"]
+
+[ext_resource type="PackedScene" uid="uid://bru8c4c70eohg" path="res://05_DESK_MAP/Decor/PLume_pot.blend" id="1_7lp5e"]
+[ext_resource type="Shader" uid="uid://bii47ft606xyy" path="res://05_DESK_MAP/00_SHADER/Element_base_sh.tres" id="2_kn6xy"]
+
+[sub_resource type="Gradient" id="Gradient_ccbmk"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_erueo"]
+gradient = SubResource("Gradient_ccbmk")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6axwa"]
+render_priority = 0
+shader = ExtResource("2_kn6xy")
+shader_parameter/BaseColor = Color(0.377919, 0.377919, 0.377919, 1)
+shader_parameter/Dither_Opacity = 1.0
+shader_parameter/BaseGradient = SubResource("GradientTexture2D_erueo")
+
+[sub_resource type="Gradient" id="Gradient_s1sgx"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_h1vmb"]
+gradient = SubResource("Gradient_s1sgx")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4wk6o"]
+render_priority = 0
+shader = ExtResource("2_kn6xy")
+shader_parameter/BaseColor = Color(0.103744, 0.103744, 0.103743, 1)
+shader_parameter/Dither_Opacity = 1.0
+shader_parameter/BaseGradient = SubResource("GradientTexture2D_h1vmb")
+
+[node name="PlumePotPrefab" type="Node3D"]
+
+[node name="PLume_pot" parent="." instance=ExtResource("1_7lp5e")]
+transform = Transform3D(0.183634, 0, 0, 0, 0.183634, 0, 0, 0, 0.183634, 0, 0, 0)
+
+[node name="Plume" parent="PLume_pot" index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_6axwa")
+surface_material_override/1 = SubResource("ShaderMaterial_4wk6o")
+
+[node name="pot" parent="PLume_pot" index="1"]
+surface_material_override/0 = SubResource("ShaderMaterial_4wk6o")
+
+[editable path="PLume_pot"]

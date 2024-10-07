@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://dr73p5vs0sixe"]
+[gd_scene load_steps=50 format=3 uid="uid://dr73p5vs0sixe"]
 
 [ext_resource type="Shader" uid="uid://upo0fuo5sqgd" path="res://05_DESK_MAP/00_SHADER/Board_sh.tres" id="1_k1enu"]
 [ext_resource type="Shader" uid="uid://cw0x3o7tvvdcv" path="res://13_TOOLS_UI/Map/Map_board_sh.tres" id="4_4w7uu"]
@@ -7,7 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://uwg2qc3svu11" path="res://05_DESK_MAP/Photo/photo_area.tscn" id="7_q3ybq"]
 [ext_resource type="PackedScene" uid="uid://kfeia6x8pslm" path="res://11_SPEAKER/00_NPC/guy_02_prefab.tscn" id="14_dryiv"]
 [ext_resource type="PackedScene" uid="uid://c36kqh5uobfku" path="res://11_SPEAKER/00_NPC/baltazar_prefabs.tscn" id="15_kkyh1"]
+[ext_resource type="PackedScene" uid="uid://cx2rmplug5w4e" path="res://05_DESK_MAP/Decor/Plume_pot_prefab.tscn" id="17_5jjjt"]
 [ext_resource type="PackedScene" uid="uid://bqbbtrchoeoe1" path="res://05_DESK_MAP/Lanterne/Lanterne_prefab.tscn" id="17_sfmpr"]
+[ext_resource type="PackedScene" uid="uid://b3i04ha2iqr4l" path="res://05_DESK_MAP/Loupe/loupe_rg.tscn" id="18_pgwn6"]
 [ext_resource type="PackedScene" uid="uid://dm5d272iur25u" path="res://05_DESK_MAP/Chavet/Chavet_prefab.tscn" id="19_vutls"]
 [ext_resource type="PackedScene" uid="uid://bi5gcavnclfud" path="res://05_DESK_MAP/Decor/Bell.blend" id="22_4fabq"]
 [ext_resource type="Shader" uid="uid://8ll6evus625p" path="res://05_DESK_MAP/00_SHADER/Gradient_surface.tres" id="26_bw6mp"]
@@ -333,6 +335,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.447027, 5.96046e-08, 0.0448
 [node name="CandlePrefab01" parent="Movable" instance=ExtResource("42_34f14")]
 transform = Transform3D(-0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, -0.5, 0.37334, 0.00217251, -0.044639)
 
+[node name="CandlePrefab04" parent="Movable" instance=ExtResource("42_34f14")]
+transform = Transform3D(0.707106, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707106, -0.538598, 0.00217257, -0.111075)
+
 [node name="Lanterne_prefab" parent="Movable" instance=ExtResource("17_sfmpr")]
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0.405936, 0.0885749, -0.270419)
 
@@ -381,6 +386,9 @@ transform = Transform3D(0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, 0.408525, 
 [node name="BookPrefab4" parent="Static" instance=ExtResource("44_8e65i")]
 transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, -0.712631, 0, -0.0236672)
 
+[node name="BookPrefab12" parent="Static" instance=ExtResource("44_8e65i")]
+transform = Transform3D(-0.976311, 0, -0.216371, 0, 1, 0, 0.216371, 0, -0.976311, -0.431769, 0, 0.299085)
+
 [node name="BookPrefab5" parent="Static" instance=ExtResource("44_8e65i")]
 transform = Transform3D(-0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, -0.866025, -0.712631, 0.0458647, -0.0236672)
 
@@ -395,6 +403,12 @@ transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 0.567211, 
 
 [node name="BookPrefab11" parent="Static" instance=ExtResource("44_8e65i")]
 transform = Transform3D(0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, 0.567211, 0.0896486, -0.0789771)
+
+[node name="PlumePotPrefab" parent="Static" instance=ExtResource("17_5jjjt")]
+transform = Transform3D(0.337084, 0, -0.337084, 0, 0.476709, 0, 0.337084, 0, 0.337084, -0.419352, 0.0516162, 0.331368)
+
+[node name="Loupe_deco" parent="Static" instance=ExtResource("18_pgwn6")]
+transform = Transform3D(-0.396827, 0, -0.229108, 0, 0.458216, 0, 0.229108, 0, -0.396827, -0.284557, 0, 0.40033)
 
 [node name="NPC_Maurice_prefab" parent="." instance=ExtResource("14_dryiv")]
 transform = Transform3D(-0.14034, 0, -0.423974, 0, 0.446598, 0, 0.423974, 0, -0.14034, 0.131197, 0.101614, -0.222118)
@@ -433,25 +447,25 @@ layers = 1
 layers = 1
 
 [node name="ChavetPrefab" parent="." instance=ExtResource("19_vutls")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00552367, 0, 0.120469)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00552367, 0.002, 0.120469)
 
 [node name="ChavetPrefab2" parent="." instance=ExtResource("19_vutls")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2004, 0, 0.052742)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2004, 0.002, 0.052742)
 
 [node name="ChavetPrefab3" parent="." instance=ExtResource("19_vutls")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0880953, 0, 0.235405)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0880953, 0.002, 0.235405)
 
 [node name="ChavetPrefab4" parent="." instance=ExtResource("19_vutls")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.213817, 0, -0.0205161)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.213817, 0.002, -0.0205161)
 
 [node name="ChavetPrefab5" parent="." instance=ExtResource("19_vutls")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0946041, 0, -0.241573)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0946041, 0.002, -0.241573)
 
 [node name="ChavetPrefab6" parent="." instance=ExtResource("19_vutls")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0423065, 0, 0.035328)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0423065, 0.002, 0.035328)
 
 [node name="ChavetPrefab7" parent="." instance=ExtResource("19_vutls")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.194513, 0, -0.220976)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.194513, 0.002, -0.220976)
 
 [editable path="Bell"]
 [editable path="NPC_Maurice_prefab"]

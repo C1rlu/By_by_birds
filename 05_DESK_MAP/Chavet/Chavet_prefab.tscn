@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://dm5d272iur25u"]
+[gd_scene load_steps=10 format=3 uid="uid://dm5d272iur25u"]
 
 [ext_resource type="PackedScene" uid="uid://dgvsf84egy43d" path="res://05_DESK_MAP/Chavet/Chavet_part.blend" id="1_sfss7"]
 [ext_resource type="Shader" uid="uid://bii47ft606xyy" path="res://05_DESK_MAP/00_SHADER/Element_base_sh.tres" id="2_hmx5r"]
+[ext_resource type="Shader" uid="uid://ceec4w3amlx7t" path="res://05_DESK_MAP/00_SHADER/photo_area_legend_sh.tres" id="3_0xh52"]
 
 [sub_resource type="Gradient" id="Gradient_gjjp3"]
 
@@ -16,6 +17,17 @@ shader_parameter/BaseColor = Color(0.466589, 0.360352, 0.228451, 1)
 shader_parameter/Dither_Opacity = 0.345
 shader_parameter/BaseGradient = SubResource("GradientTexture2D_gw46i")
 
+[sub_resource type="PlaneMesh" id="PlaneMesh_isgxu"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_30sdw"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bek7t"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("3_0xh52")
+shader_parameter/Texture2DParameter = SubResource("ViewportTexture_30sdw")
+
 [node name="ChavetPrefab" type="Node3D"]
 
 [node name="Chavet_part" parent="." instance=ExtResource("1_sfss7")]
@@ -24,5 +36,34 @@ transform = Transform3D(0.453884, 0, 0, 0, 0.453884, 0, 0, 0, 0.453884, 0, 0, 0)
 [node name="parts" parent="Chavet_part" index="0"]
 transform = Transform3D(0.0283636, 0, 0, 0, 0.0283636, 0, 0, 0, 0.0283636, 0, 0, 0)
 surface_material_override/0 = SubResource("ShaderMaterial_5eqio")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+disable_3d = true
+transparent_bg = true
+size = Vector2i(250, 60)
+
+[node name="ColorRect" type="ColorRect" parent="SubViewport"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.721569, 0.580392, 0.407843, 1)
+
+[node name="Label" type="Label" parent="SubViewport"]
+offset_left = 40.0
+offset_top = 8.19
+offset_right = 183.0
+offset_bottom = 50.19
+theme_override_colors/font_color = Color(0.0352941, 0.0862745, 0.0862745, 1)
+theme_override_font_sizes/font_size = 30
+text = "?
+"
+
+[node name="Legend_render" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.0445454, 0, 0.000585701, 0, 0.044645, 0, -0.00298135, 0, 0.00875117, 0, 0, 0.0179886)
+layers = 2
+mesh = SubResource("PlaneMesh_isgxu")
+surface_material_override/0 = SubResource("ShaderMaterial_bek7t")
 
 [editable path="Chavet_part"]

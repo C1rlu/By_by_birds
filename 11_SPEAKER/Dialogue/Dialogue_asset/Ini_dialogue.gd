@@ -5,7 +5,7 @@ extends  Node
 
 @onready var state = {
 	
-	"give_letter" : _global_datas._back_letter,	
+	"give_letter" : null,
 	"npc_ls_node" : null, # for next selected NPC dialogie node
 	"cam_focus" : _global_datas._update_cam_focus,
 	"up_page_info_state" : null,
@@ -59,8 +59,7 @@ func _on_ez_dialogue_custom_signal_received(value):
 			state[variable_name].emit(camera_state)
 				
 		if variable_name == "give_letter":
-				state[variable_name].emit()	
-				
+				print("give letter disable")
 
 		if variable_name == "add_OBJ":
 			var obj_name = params[2]
@@ -79,6 +78,3 @@ func _on_ez_dialogue_end_of_dialogue_reached():
 	dialogue_box.is_dialogue_done = true	
 	_global_datas._close_dialogue.emit()
 	_global_datas._update_cam_focus.emit(0)
-
-
-

@@ -12,10 +12,10 @@ func _in_delevery_zone(condition : bool):
 	
 
 	if condition:
-		_global_datas._show_object_legend.emit(true,"no birds available, come back later")
+		#_global_datas._show_object_legend.emit(true,"no birds available, come back later")
 		delevery_ui_node.visible = false
 	else:
-		_global_datas._show_object_legend.emit(false,"null")
+		#_global_datas._show_object_legend.emit(false,"null")
 		delevery_ui_node.visible = false	
 	
 	delevery_ui_node.visible = condition
@@ -28,7 +28,8 @@ func _input(event):
 
 	if _global_datas.Player_InMenu:
 		return	
-	
+	if _global_datas.player_in_desk:
+		return
 	if delevery_ui_node.visible:
 		if event.is_action_pressed("Click"):
 			print("OPEN THIS")

@@ -47,7 +47,9 @@ func move_c():
 	
 	if _global_datas.Player_InMenu:
 		return
-		
+	if _global_datas.player_in_desk:
+		return
+			
 	if !enable_key_control:
 		return
 		

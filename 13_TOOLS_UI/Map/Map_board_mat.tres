@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://cvdc0nafgwfbq"]
 
-[ext_resource type="Shader" uid="uid://ce21gfa0ldjj7" path="res://13_TOOLS_UI/2D_MAP/2d_map_sh.tres" id="1_3cda0"]
+[ext_resource type="Shader" uid="uid://ce21gfa0ldjj7" path="res://05_DESK_MAP/00_SHADER/2d_map_sh.tres" id="1_3cda0"]
 [ext_resource type="Texture2D" uid="uid://cuul1oo87fgv6" path="res://13_TOOLS_UI/Map/Map_board_isle_01.png" id="2_mqeqj"]
 [ext_resource type="Texture2D" uid="uid://y701g232cpu4" path="res://13_TOOLS_UI/Map/Map_board_01.png" id="3_5x20j"]
 

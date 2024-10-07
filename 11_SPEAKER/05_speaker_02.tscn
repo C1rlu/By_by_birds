@@ -287,11 +287,6 @@ shader_parameter/Opacity = 1.0
 [sub_resource type="ViewportTexture" id="ViewportTexture_ah4ff"]
 viewport_path = NodePath("00_NPC_CREATOR/Npc_convas/SubViewport")
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0b4rc"]
-bg_color = Color(0.309804, 0.309804, 0.309804, 1)
-corner_radius_top_left = 35
-corner_radius_top_right = 35
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wjdu5"]
 bg_color = Color(0.768627, 0.619608, 0.439216, 1)
 corner_radius_top_left = 35
@@ -299,6 +294,11 @@ corner_radius_top_right = 35
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ho6ut"]
 bg_color = Color(0.768627, 0.619608, 0.439216, 1)
+corner_radius_top_left = 35
+corner_radius_top_right = 35
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0b4rc"]
+bg_color = Color(0.309804, 0.309804, 0.309804, 1)
 corner_radius_top_left = 35
 corner_radius_top_right = 35
 
@@ -565,9 +565,9 @@ offset_right = 425.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_colors/font_color = Color(0.909804, 0.807843, 0.690196, 1)
-theme_override_styles/normal = SubResource("StyleBoxFlat_0b4rc")
 theme_override_styles/hover = SubResource("StyleBoxFlat_wjdu5")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_ho6ut")
+theme_override_styles/normal = SubResource("StyleBoxFlat_0b4rc")
 text = "LEAVE
 "
 script = ExtResource("13_ewnx3")

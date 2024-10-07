@@ -294,7 +294,7 @@ shader_parameter/Dark_color = Color(0.0846899, 0.0846899, 0.0846899, 1)
 transform = Transform3D(0.248807, 0, 0, 0, 0.248807, 0, 0, 0, 0.248807, 0.437723, 0.00295146, 0.371776)
 
 [node name="bell" parent="Bell" index="0"]
-transform = Transform3D(0.765345, 0, 0.146205, 0, 0.779185, 0, -0.146205, 0, 0.765345, 0, 0, 0)
+transform = Transform3D(0.765345, 0, 0.146205, 0, 0.779185, 0, -0.146205, 0, 0.765345, -4.27161, 0, -0.557209)
 layers = 2
 surface_material_override/0 = SubResource("ShaderMaterial_kqq05")
 surface_material_override/1 = SubResource("ShaderMaterial_jka2s")
@@ -327,13 +327,13 @@ transform = Transform3D(1.60191, 0, 0.0187332, 0, 1.60202, 0, -0.0187332, 0, 1.6
 [node name="Movable" type="Node3D" parent="."]
 
 [node name="CandlePrefab02" parent="Movable" instance=ExtResource("37_pa00p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.445008, 5.96046e-08, -0.121357)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.549023, 1.19209e-07, 0.122292)
 
 [node name="CandlePrefab03" parent="Movable" instance=ExtResource("38_2cvak")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.447027, 5.96046e-08, 0.0448775)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.700456, 0.220197, 0.130032)
 
 [node name="CandlePrefab01" parent="Movable" instance=ExtResource("42_34f14")]
-transform = Transform3D(-0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, -0.5, 0.37334, 0.00217251, -0.044639)
+transform = Transform3D(-0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, -0.5, 0.478593, 0.00217257, 0.0790945)
 
 [node name="CandlePrefab04" parent="Movable" instance=ExtResource("42_34f14")]
 transform = Transform3D(0.707106, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707106, -0.538598, 0.00217257, -0.111075)
@@ -404,6 +404,30 @@ transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 0.567211, 
 [node name="BookPrefab11" parent="Static" instance=ExtResource("44_8e65i")]
 transform = Transform3D(0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, 0.567211, 0.0896486, -0.0789771)
 
+[node name="BookPrefab13" parent="Static" instance=ExtResource("44_8e65i")]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0.707867, 0, 0.128613)
+
+[node name="BookPrefab14" parent="Static" instance=ExtResource("44_8e65i")]
+transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, 0.707867, 0.0458647, 0.128613)
+
+[node name="BookPrefab15" parent="Static" instance=ExtResource("44_8e65i")]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 0.707867, 0.0896486, 0.128613)
+
+[node name="BookPrefab19" parent="Static" instance=ExtResource("44_8e65i")]
+transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, 0.707867, 0.1343, 0.128613)
+
+[node name="BookPrefab20" parent="Static" instance=ExtResource("44_8e65i")]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 0.707867, 0.178084, 0.128613)
+
+[node name="BookPrefab16" parent="Static" instance=ExtResource("44_8e65i")]
+transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, 0.58289, 0, 0.299629)
+
+[node name="BookPrefab17" parent="Static" instance=ExtResource("44_8e65i")]
+transform = Transform3D(0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, 0.58289, 0.0458647, 0.299629)
+
+[node name="BookPrefab18" parent="Static" instance=ExtResource("44_8e65i")]
+transform = Transform3D(1, 0, 5.96046e-08, 0, 1, 0, -5.96046e-08, 0, 1, 0.58289, 0.0896486, 0.299629)
+
 [node name="PlumePotPrefab" parent="Static" instance=ExtResource("17_5jjjt")]
 transform = Transform3D(0.337084, 0, -0.337084, 0, 0.476709, 0, 0.337084, 0, 0.337084, -0.419352, 0.0516162, 0.331368)
 
@@ -447,7 +471,7 @@ layers = 1
 layers = 1
 
 [node name="ChavetPrefab" parent="." instance=ExtResource("19_vutls")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00552367, 0.002, 0.120469)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00346491, 0.00200001, 0.131942)
 
 [node name="ChavetPrefab2" parent="." instance=ExtResource("19_vutls")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2004, 0.002, 0.052742)

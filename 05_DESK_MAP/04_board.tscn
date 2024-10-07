@@ -174,14 +174,14 @@ camera_3d_main_Map = NodePath("../Camera3D_Main_Map")
 script = ExtResource("5_0n8j1")
 
 [node name="Camera_xray" type="Camera3D" parent="."]
-transform = Transform3D(0.994881, 0.0700724, -0.072816, 0, 0.720551, 0.693402, 0.101056, -0.689852, 0.716862, -0.08, 0.945, 1.035)
+transform = Transform3D(0.994881, 0.0700724, -0.072816, 0, 0.720551, 0.693402, 0.101056, -0.689852, 0.716862, -0.118, 0.776, 0.937)
 visible = false
 cull_mask = 0
 fov = 40.0
 far = 4.25
 
 [node name="Camera3D_Main_Desk" type="Camera3D" parent="."]
-transform = Transform3D(0.992546, 0.0761977, -0.0951103, 0, 0.78043, 0.625243, 0.121869, -0.620582, 0.774613, -0.163, 1.161, 1.492)
+transform = Transform3D(0.992546, 0.0761977, -0.0951103, 0, 0.78043, 0.625243, 0.121869, -0.620582, 0.774613, -0.118, 0.952, 1.277)
 cull_mask = 3
 current = true
 fov = 60.0
@@ -199,7 +199,7 @@ own_world_3d = true
 size = Vector2i(1920, 1080)
 
 [node name="Camera3D_follow" type="Camera3D" parent="SubViewport"]
-transform = Transform3D(0.992546, 0.0761977, -0.0951103, 0, 0.78043, 0.625243, 0.121869, -0.620582, 0.774613, -0.091, 0.642, 0.784)
+transform = Transform3D(0.992546, 0.0761977, -0.0951103, 0, 0.78043, 0.625243, 0.121869, -0.620582, 0.774613, -0.118, 0.776, 0.937)
 visible = false
 cull_mask = 3
 current = true
@@ -240,7 +240,6 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="RENDER" type="TextureRect" parent="."]
-visible = false
 material = SubResource("ShaderMaterial_ktpkr")
 anchors_preset = 15
 anchor_right = 1.0

@@ -1,38 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://bwmu5iwushsl5"]
+[gd_scene load_steps=6 format=3 uid="uid://bwmu5iwushsl5"]
 
-[ext_resource type="Script" path="res://13_TOOLS_UI/Fade_flash_effect.gd" id="1_1dj2k"]
 [ext_resource type="Material" uid="uid://bxikm4g1nkywk" path="res://00_SHADER/Disolved_simple_texture.tres" id="4_473tf"]
 [ext_resource type="Texture2D" uid="uid://dto78na6ad5o2" path="res://00_SYSTEMS/KeyOrPad/Key_inputs.png" id="4_c4v0f"]
 [ext_resource type="Texture2D" uid="uid://4bq2l5jjm4r2" path="res://00_SYSTEMS/KeyOrPad/Pad_inputs.png" id="5_jufic"]
-[ext_resource type="Script" path="res://13_TOOLS_UI/BACK_LETTERS.gd" id="7_uck14"]
-[ext_resource type="Shader" uid="uid://v7wu4reqmbs2" path="res://00_SHADER/Post_process/Noise_vs_effect.tres" id="8_yxivq"]
-[ext_resource type="Texture2D" uid="uid://d31xi5f7tan5w" path="res://00_SHADER/Full_screen/Dither_pattners/Blue_noise/HDR_LA_7.png" id="9_msbsb"]
-[ext_resource type="Shader" uid="uid://owtikj2jm5h5" path="res://13_TOOLS_UI/PhotoFlash_effect.tres" id="15_kco3d"]
-
-[sub_resource type="GDScript" id="GDScript_ebu32"]
-script/source = "extends Node
-
-
-@onready var front_element = $\"../Front_element\"
-const PHOTO_UI_PREFAB = preload(\"res://13_TOOLS_UI/Photo/Photo_ui_prefab.tscn\")
-
-
-func _ready():
-	_global_datas._give_photo.connect(_take_photo)
-	
-func _take_photo(photo_data : PhotoData):
-	
-	var photo_instance = PHOTO_UI_PREFAB.instantiate()
-	photo_instance._set_photo(photo_data.image)
-	front_element.add_child(photo_instance)
-	_global_datas._show_object_legend.emit(true,photo_data.legend)
-	
-func check_photo_exist(photo_Data):
-	
-	for photo in _global_datas.photo_archives:
-		if photo == photo_Data:
-			return true 	
-"
 
 [sub_resource type="GDScript" id="GDScript_cnn2b"]
 script/source = "extends Node
@@ -99,10 +69,6 @@ func _on_timer_timeout():
 	_global_datas._show_object_legend.emit(false,null)
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_l4k3m"]
-shader = ExtResource("15_kco3d")
-shader_parameter/Opacity = 0.0
-
 [sub_resource type="GDScript" id="GDScript_1c22g"]
 script/source = "extends Node
 
@@ -145,22 +111,7 @@ func set_shader_value_key(value):
 	material_key.set_shader_parameter(\"Opacity\",value)
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_b1qbk"]
-shader = ExtResource("8_yxivq")
-shader_parameter/FloatParameter = 3.0
-shader_parameter/Noise_opacity = 0.95
-shader_parameter/Noise_texture = ExtResource("9_msbsb")
-
 [node name="07_SCREEN_UI" type="Node"]
-
-[node name="INSTANCE_PICTURES" type="Node" parent="."]
-script = SubResource("GDScript_ebu32")
-
-[node name="Flash_effect" type="Node" parent="INSTANCE_PICTURES"]
-script = ExtResource("1_1dj2k")
-
-[node name="BACK_LETTERS" type="Node" parent="."]
-script = ExtResource("7_uck14")
 
 [node name="Description" type="Node2D" parent="."]
 position = Vector2(989, 752)
@@ -171,16 +122,6 @@ script = SubResource("GDScript_cnn2b")
 [node name="Timer" type="Timer" parent="Description/Update_description"]
 wait_time = 2.5
 one_shot = true
-
-[node name="PHOTO_FLASH" type="ColorRect" parent="."]
-material = SubResource("ShaderMaterial_l4k3m")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(0.721569, 0.580392, 0.407843, 1)
 
 [node name="Description_Text" type="Label" parent="."]
 visible = false
@@ -245,25 +186,5 @@ grow_vertical = 2
 texture = ExtResource("4_c4v0f")
 expand_mode = 1
 stretch_mode = 4
-
-[node name="Noise_shader" type="ColorRect" parent="."]
-visible = false
-material = SubResource("ShaderMaterial_b1qbk")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
-[node name="Front_element" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-metadata/_edit_use_anchors_ = true
 
 [connection signal="timeout" from="Description/Update_description/Timer" to="Description/Update_description" method="_on_timer_timeout"]

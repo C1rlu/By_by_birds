@@ -7,7 +7,7 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1l4lr"]
 render_priority = 0
 shader = ExtResource("2_iheeg")
-shader_parameter/BaseColor = Color(0.85, 0.85, 0.85, 1)
+shader_parameter/BaseColor = Color(0.666568, 0.666569, 0.666569, 1)
 shader_parameter/Dither_Opacity = 1.0
 shader_parameter/BaseGradient = ExtResource("3_8ul7h")
 

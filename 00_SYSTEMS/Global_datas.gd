@@ -9,6 +9,7 @@ var Player_InDialogue_zone : bool
 signal _open_menu(condition : bool)
 
 signal _open_desk(condition : bool)
+var player_in_desk : bool
 var camera_state_index : int 
 
 
@@ -34,8 +35,6 @@ signal _open_focus_view(condition : bool)
 # dialogue signals
 signal in_dialogue_zone(condition : bool)
 signal hide_open_dialogue
-signal _check_dialogue_photo
-var photo_checking : bool 
 signal  _open_dialogue
 signal  _close_dialogue
 signal _type_text(count : int)
@@ -51,9 +50,6 @@ var photo_archives : Array[PhotoData]
 
 #UI VAR 
 signal set_resolution(resolution : Vector2i)
-signal _show_object_legend(condtion : bool, legend : String)
-
-
 
 var player_rg : RigidBody3D
 
@@ -68,12 +64,7 @@ signal _in_focus_zone(condition : bool, position : Vector3)
 signal _in_desk_zone(condition : bool)
 
 
-
-signal _give_photo(photo_data : PhotoData)
-signal _back_letter
-
 signal subscene_sonar_effect(position : Vector3, color : Color)
-signal _open_player_map(condition : bool)
 
 
 var Npc_Dialogue : Npc_datas

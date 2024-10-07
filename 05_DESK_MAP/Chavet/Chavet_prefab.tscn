@@ -40,7 +40,7 @@ surface_material_override/0 = SubResource("ShaderMaterial_5eqio")
 [node name="SubViewport" type="SubViewport" parent="."]
 disable_3d = true
 transparent_bg = true
-size = Vector2i(250, 60)
+size = Vector2i(250, 79)
 
 [node name="ColorRect" type="ColorRect" parent="SubViewport"]
 anchors_preset = 15
@@ -56,12 +56,14 @@ offset_top = 8.19
 offset_right = 183.0
 offset_bottom = 50.19
 theme_override_colors/font_color = Color(0.0352941, 0.0862745, 0.0862745, 1)
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 50
 text = "?
 "
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Legend_render" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.0445454, 0, 0.000585701, 0, 0.044645, 0, -0.00298135, 0, 0.00875117, 0, 0, 0.0179886)
+transform = Transform3D(0.0310446, 0, 0.000684721, 0, 0.0324362, 0, -0.00207776, 0, 0.0102307, 0.00665449, 0, 0.0167034)
 layers = 2
 mesh = SubResource("PlaneMesh_isgxu")
 surface_material_override/0 = SubResource("ShaderMaterial_bek7t")

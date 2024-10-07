@@ -10,4 +10,4 @@ func _ready() -> void:
 	
 func _open_desk(condition:bool):
 	render.visible = condition	
-	_global_datas.Player_InMenu = condition
+	_global_datas.player_in_desk = condition

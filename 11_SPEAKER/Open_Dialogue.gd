@@ -15,7 +15,6 @@ var Localisation_state_index : int = 0
 var in_zone : bool = false
 
 func _ready():
-	_global_datas._check_dialogue_photo.connect(_check_if_exist)
 	_global_datas._open_dialogue.connect(_open_dialogue)
 	_global_datas._close_dialogue.connect(_close_dialogue)
 	_global_datas._show_dialogue_box.connect(_show_dialogue_box)
@@ -81,4 +80,3 @@ func _close_dialogue():
 	$Random_FaceChanger/Timer.stop()
 
 	
-

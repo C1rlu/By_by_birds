@@ -12,21 +12,10 @@ func _ready():
 func _open(condition : bool):
 	
 	_global_datas.Player_InMenu = condition
-	#if condition:
-		#pass
-		#clear_and_instantiate(board_element)
-	
 	Render.visible = condition
 	Backdrop.visible = condition	
 	_global_datas.Player_InMenu = condition
-	
-	var utility = GameUtility.new()
-	var n_timer = utility.create_timer(0.01,_hide_info,self)
-	n_timer.start()
-	
-func _hide_info():
-	_global_datas._show_object_legend.emit(false,"null")		
-	
+
 func clear_and_instantiate(board_element : PackedScene):
 	
 	var all_child = Loader.get_children()

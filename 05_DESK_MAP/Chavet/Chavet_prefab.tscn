@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://dm5d272iur25u"]
+
+[ext_resource type="PackedScene" uid="uid://dgvsf84egy43d" path="res://05_DESK_MAP/Chavet/Chavet_part.blend" id="1_sfss7"]
+[ext_resource type="Shader" uid="uid://bii47ft606xyy" path="res://05_DESK_MAP/00_SHADER/Element_base_sh.tres" id="2_hmx5r"]
+
+[sub_resource type="Gradient" id="Gradient_gjjp3"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_gw46i"]
+gradient = SubResource("Gradient_gjjp3")
+fill_from = Vector2(1, 0.397436)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5eqio"]
+render_priority = 0
+shader = ExtResource("2_hmx5r")
+shader_parameter/BaseColor = Color(0.466589, 0.360352, 0.228451, 1)
+shader_parameter/Dither_Opacity = 0.345
+shader_parameter/BaseGradient = SubResource("GradientTexture2D_gw46i")
+
+[node name="ChavetPrefab" type="Node3D"]
+
+[node name="Chavet_part" parent="." instance=ExtResource("1_sfss7")]
+transform = Transform3D(0.453884, 0, 0, 0, 0.453884, 0, 0, 0, 0.453884, 0, 0, 0)
+
+[node name="parts" parent="Chavet_part" index="0"]
+transform = Transform3D(0.0283636, 0, 0, 0, 0.0283636, 0, 0, 0, 0.0283636, 0, 0, 0)
+surface_material_override/0 = SubResource("ShaderMaterial_5eqio")
+
+[editable path="Chavet_part"]

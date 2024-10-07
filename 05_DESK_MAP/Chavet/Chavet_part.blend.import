@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://dgvsf84egy43d"
-path="res://.godot/imported/Chavet_part.blend-01c5e6d1e699be0bb61163716d275843.scn"
+path="res://.godot/imported/Chavet_part.blend-2c279539ffaa7b3f4ed8161555babae0.scn"
 
 [deps]
 
-source_file="res://05_DESK_MAP/Decor/Chavet_part.blend"
-dest_files=["res://.godot/imported/Chavet_part.blend-01c5e6d1e699be0bb61163716d275843.scn"]
+source_file="res://05_DESK_MAP/Chavet/Chavet_part.blend"
+dest_files=["res://.godot/imported/Chavet_part.blend-2c279539ffaa7b3f4ed8161555babae0.scn"]
 
 [params]
 

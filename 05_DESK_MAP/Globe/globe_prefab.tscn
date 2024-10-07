@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://bn54mxsafetjv"]
+
+[ext_resource type="Texture2D" uid="uid://cvcrosdnppe7b" path="res://05_DESK_MAP/Globe/Globe_gradient.png" id="1_by3ti"]
+[ext_resource type="Shader" uid="uid://bii47ft606xyy" path="res://05_DESK_MAP/00_SHADER/Element_base_sh.tres" id="2_dpaey"]
+[ext_resource type="PackedScene" uid="uid://dwbx63b1pksog" path="res://05_DESK_MAP/Globe/Globe_model_01.blend" id="4_ldjl6"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_80uts"]
+render_priority = 0
+shader = ExtResource("2_dpaey")
+shader_parameter/BaseColor = Color(0.12, 0.12, 0.12, 1)
+shader_parameter/Dither_Opacity = 1.0
+shader_parameter/BaseGradient = ExtResource("1_by3ti")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ur08j"]
+render_priority = 0
+shader = ExtResource("2_dpaey")
+shader_parameter/BaseColor = Color(0.26, 0.26, 0.26, 1)
+shader_parameter/Dither_Opacity = 1.0
+shader_parameter/BaseGradient = ExtResource("1_by3ti")
+
+[node name="Globe_prefab" type="Node3D"]
+
+[node name="Globe_model_01" parent="." instance=ExtResource("4_ldjl6")]
+transform = Transform3D(0.148396, 0, 0, 0, 0.148396, 0, 0, 0, 0.148396, 0, 0, 0)
+
+[node name="Globe_globe" parent="Globe_model_01" index="0"]
+layers = 2
+surface_material_override/0 = SubResource("ShaderMaterial_80uts")
+
+[node name="Globe_base" parent="Globe_model_01" index="1"]
+layers = 2
+surface_material_override/0 = SubResource("ShaderMaterial_80uts")
+surface_material_override/1 = SubResource("ShaderMaterial_ur08j")
+
+[editable path="Globe_model_01"]

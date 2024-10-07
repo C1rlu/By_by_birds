@@ -37,4 +37,3 @@ func set_resolution(index):
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN)
 		print("SCREEN SIZE",Vector2(1280,800))		
 		
-

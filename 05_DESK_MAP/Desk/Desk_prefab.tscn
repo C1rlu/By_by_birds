@@ -1,0 +1,37 @@
+[gd_scene load_steps=7 format=3 uid="uid://ypiajnwq2wfa"]
+
+[ext_resource type="Texture2D" uid="uid://mr7kuvure37a" path="res://05_DESK_MAP/Desk/Base_gradient.png" id="1_em88w"]
+[ext_resource type="PackedScene" uid="uid://cnv5ke582hclp" path="res://05_DESK_MAP/Desk/Desk_model_01.blend" id="3_664wn"]
+[ext_resource type="Shader" uid="uid://bii47ft606xyy" path="res://05_DESK_MAP/00_SHADER/Element_base_sh.tres" id="4_dvyqv"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mq658"]
+render_priority = 0
+shader = ExtResource("4_dvyqv")
+shader_parameter/BaseColor = Color(0.111197, 0.111197, 0.111197, 1)
+shader_parameter/Dither_Opacity = 1.0
+shader_parameter/BaseGradient = ExtResource("1_em88w")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1fi01"]
+render_priority = 0
+shader = ExtResource("4_dvyqv")
+shader_parameter/BaseColor = Color(0.205117, 0.205117, 0.205117, 1)
+shader_parameter/Dither_Opacity = 1.0
+shader_parameter/BaseGradient = ExtResource("1_em88w")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_op0bd"]
+render_priority = 0
+shader = ExtResource("4_dvyqv")
+shader_parameter/BaseColor = Color(0.136826, 0.136826, 0.136826, 1)
+shader_parameter/Dither_Opacity = 1.0
+shader_parameter/BaseGradient = ExtResource("1_em88w")
+
+[node name="Desk_prefab" type="Node3D"]
+
+[node name="Desk_model_01" parent="." instance=ExtResource("3_664wn")]
+
+[node name="Desk_base" parent="Desk_model_01" index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_mq658")
+surface_material_override/1 = SubResource("ShaderMaterial_1fi01")
+surface_material_override/2 = SubResource("ShaderMaterial_op0bd")
+
+[editable path="Desk_model_01"]

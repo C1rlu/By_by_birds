@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://c18stvbutb83o"]
+
+[ext_resource type="PackedScene" uid="uid://bu65fju8oonp1" path="res://05_DESK_MAP/Book/Book_01.blend" id="1_kojkf"]
+[ext_resource type="Shader" uid="uid://bii47ft606xyy" path="res://05_DESK_MAP/00_SHADER/Element_base_sh.tres" id="2_vwc7p"]
+[ext_resource type="Texture2D" uid="uid://bf1vkenq7yets" path="res://05_DESK_MAP/Book/Base_Gradient.png" id="3_prwks"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t6ie5"]
+render_priority = 0
+shader = ExtResource("2_vwc7p")
+shader_parameter/BaseColor = Color(0.22, 0.22, 0.22, 1)
+shader_parameter/Dither_Opacity = 1.0
+shader_parameter/BaseGradient = ExtResource("3_prwks")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2j822"]
+render_priority = 0
+shader = ExtResource("2_vwc7p")
+shader_parameter/BaseColor = Color(0.56, 0.56, 0.56, 1)
+shader_parameter/Dither_Opacity = 1.0
+shader_parameter/BaseGradient = ExtResource("3_prwks")
+
+[node name="BookPrefab" type="Node3D"]
+
+[node name="Book" parent="." instance=ExtResource("1_kojkf")]
+transform = Transform3D(0.893939, 0, 0, 0, 0.893939, 0, 0, 0, 0.893939, 0, 0, 0)
+
+[node name="Book_01" parent="Book" index="0"]
+transform = Transform3D(0.221001, 0, 0, 0, 0.221001, 0, 0, 0, 0.221001, 0, 0, 0)
+layers = 2
+surface_material_override/0 = SubResource("ShaderMaterial_t6ie5")
+surface_material_override/1 = SubResource("ShaderMaterial_2j822")
+
+[editable path="Book"]

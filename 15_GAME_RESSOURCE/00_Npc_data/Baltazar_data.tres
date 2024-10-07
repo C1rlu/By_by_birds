@@ -8,7 +8,7 @@
 script = ExtResource("1_lynta")
 name = Array[String](["Baltazar", "Baltazar"])
 prefabs = ExtResource("1_ymggb")
-zone_name = Array[String]([])
 Dialogue_data = ExtResource("1_vn51r")
 Dialogue_active_node = "start"
 camera_state = Array[Vector3]([])
+is_active = false

@@ -8,6 +8,9 @@ var Player_InDialogue : bool
 var Player_InDialogue_zone : bool
 signal _open_menu(condition : bool)
 
+signal _open_desk(condition : bool)
+var camera_state_index : int 
+
 
 # input type
 signal using_pad(condition : bool)

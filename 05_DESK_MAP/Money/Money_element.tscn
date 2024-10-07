@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://es8rdnov0nsr"]
+
+[ext_resource type="Shader" uid="uid://8ll6evus625p" path="res://DESK_MAP/00_SHADER/Gradient_surface.tres" id="1_pmt4k"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_bg322"]
+top_radius = 0.1
+bottom_radius = 0.1
+height = 0.1
+radial_segments = 8
+
+[sub_resource type="Gradient" id="Gradient_andc3"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_mhg0h"]
+gradient = SubResource("Gradient_andc3")
+fill_from = Vector2(1, 0.542735)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rm3b1"]
+render_priority = 0
+shader = ExtResource("1_pmt4k")
+shader_parameter/Color = Color(0.372549, 0.286275, 0.176471, 1)
+shader_parameter/Dither_Opacity = 1.0
+shader_parameter/Gradient_light = SubResource("GradientTexture2D_mhg0h")
+
+[node name="MoneyElement" type="Node3D"]
+
+[node name="MSH" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.236509, 0, 0, 0, 0.0637491, 0, 0, 0, 0.236509, 0, 0.00984228, 0)
+layers = 2
+mesh = SubResource("CylinderMesh_bg322")
+surface_material_override/0 = SubResource("ShaderMaterial_rm3b1")
+
+[node name="MSH2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.198118, 0, 0, 0, 0.053401, 0, 0, 0, 0.198118, 0, 0.0111566, 0)
+mesh = SubResource("CylinderMesh_bg322")
+surface_material_override/0 = SubResource("ShaderMaterial_rm3b1")

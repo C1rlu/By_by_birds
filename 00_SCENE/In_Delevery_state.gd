@@ -32,3 +32,4 @@ func _input(event):
 	if delevery_ui_node.visible:
 		if event.is_action_pressed("Click"):
 			print("OPEN THIS")
+			_global_datas._open_desk.emit(true)

@@ -1,0 +1,268 @@
+[gd_scene load_steps=26 format=3 uid="uid://cein0q2eirkay"]
+
+[ext_resource type="Script" path="res://05_DESK_MAP/board_ini.gd" id="1_0e632"]
+[ext_resource type="Script" path="res://13_TOOLS_UI/set_Resolution_viewports.gd" id="1_gf4dn"]
+[ext_resource type="Script" path="res://05_DESK_MAP/Board_CamTarget.gd" id="1_janbq"]
+[ext_resource type="Script" path="res://05_DESK_MAP/open_desk.gd" id="1_t26m6"]
+[ext_resource type="PackedScene" uid="uid://dr73p5vs0sixe" path="res://05_DESK_MAP/board_scene.tscn" id="2_6c571"]
+[ext_resource type="Script" path="res://05_DESK_MAP/follow_camera_map.gd" id="4_dn66i"]
+[ext_resource type="Script" path="res://05_DESK_MAP/Desk_Camera_state.gd" id="5_0n8j1"]
+[ext_resource type="Shader" uid="uid://7nanp4dqf4uc" path="res://05_DESK_MAP/00_SHADER/04_board_light.tres" id="41_prh4x"]
+
+[sub_resource type="Shader" id="Shader_8ugrd"]
+code = "
+shader_type canvas_item;
+render_mode unshaded;
+
+uniform float amount = 0.8;
+uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear_mipmap;
+void fragment( )
+{
+	float neighbor = amount * -1.0;
+	float center = amount * 4.0 + 1.0;
+
+	COLOR = vec4(
+		(
+			texture( SCREEN_TEXTURE, SCREEN_UV + SCREEN_PIXEL_SIZE * vec2( -1.0, 0.0 ) ).rgb * neighbor
+		+	texture( SCREEN_TEXTURE, SCREEN_UV + SCREEN_PIXEL_SIZE * vec2( 0.0, -1.0 ) ).rgb * neighbor
+		+	texture( SCREEN_TEXTURE, SCREEN_UV ).rgb * center
+		+	texture( SCREEN_TEXTURE, SCREEN_UV + SCREEN_PIXEL_SIZE * vec2( 1.0, 0.0 ) ).rgb * neighbor
+		+	texture( SCREEN_TEXTURE, SCREEN_UV + SCREEN_PIXEL_SIZE * vec2( 0.0, 1.0 ) ).rgb * neighbor
+		)
+	,	1.0
+	);
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6spwj"]
+shader = SubResource("Shader_8ugrd")
+shader_parameter/amount = 1.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_ycnm1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ifca2"]
+shading_mode = 0
+
+[sub_resource type="PrismMesh" id="PrismMesh_2j3nk"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yjabd"]
+shading_mode = 0
+albedo_color = Color(1, 0.219608, 0.219608, 1)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_gdqdh"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ktpkr"]
+resource_local_to_scene = true
+shader = ExtResource("41_prh4x")
+shader_parameter/Opacity = 1.0
+shader_parameter/Albedo_viewport = SubResource("ViewportTexture_gdqdh")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_56tra"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="VisualShaderNodeExpression" id="VisualShaderNodeExpression_yrkdd"]
+size = Vector2(513.781, 284.487)
+expression = "vec2 n_uv = UV -0.5;
+float d = length(n_uv);
+float c = smoothstep(r,r + feather,d);
+color = vec4(vec3(c),1.0);"
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_fxvjj"]
+input_name = "uv"
+
+[sub_resource type="VisualShaderNodeFloatConstant" id="VisualShaderNodeFloatConstant_xdogs"]
+constant = 0.5
+
+[sub_resource type="VisualShaderNodeFloatConstant" id="VisualShaderNodeFloatConstant_wb6mp"]
+
+[sub_resource type="VisualShaderNodeFloatFunc" id="VisualShaderNodeFloatFunc_evu1d"]
+function = 31
+
+[sub_resource type="VisualShaderNodeFloatConstant" id="VisualShaderNodeFloatConstant_5pf1n"]
+constant = 0.1
+
+[sub_resource type="VisualShader" id="VisualShader_elssd"]
+code = "shader_type canvas_item;
+render_mode blend_mix;
+
+
+
+
+void fragment() {
+// Input:3
+	vec2 n_out3p0 = UV;
+
+
+// FloatConstant:4
+	float n_out4p0 = 0.500000;
+
+
+// FloatConstant:5
+	float n_out5p0 = 0.000000;
+
+
+	vec4 n_out2p0;
+// Expression:2
+	n_out2p0 = vec4(0.0, 0.0, 0.0, 0.0);
+	{
+		vec2 n_uv = n_out3p0 -0.5;
+		float d = length(n_uv);
+		float c = smoothstep(n_out4p0,n_out4p0 + n_out5p0,d);
+		n_out2p0 = vec4(vec3(c),1.0);
+	}
+
+
+// FloatFunc:6
+	float n_out6p0 = 1.0 - n_out2p0.x;
+
+
+// Output:0
+	COLOR.a = n_out6p0;
+
+
+}
+"
+graph_offset = Vector2(-507.845, 108.253)
+mode = 1
+flags/light_only = false
+nodes/fragment/0/position = Vector2(820, 140)
+nodes/fragment/2/node = SubResource("VisualShaderNodeExpression_yrkdd")
+nodes/fragment/2/position = Vector2(-82.4779, 287.841)
+nodes/fragment/2/size = Vector2(513.781, 284.487)
+nodes/fragment/2/input_ports = "0,3,UV;1,0,r;2,0,feather;"
+nodes/fragment/2/output_ports = "0,5,color;"
+nodes/fragment/2/expression = "vec2 n_uv = UV -0.5;
+float d = length(n_uv);
+float c = smoothstep(r,r + feather,d);
+color = vec4(vec3(c),1.0);"
+nodes/fragment/3/node = SubResource("VisualShaderNodeInput_fxvjj")
+nodes/fragment/3/position = Vector2(-482.478, 227.841)
+nodes/fragment/4/node = SubResource("VisualShaderNodeFloatConstant_xdogs")
+nodes/fragment/4/position = Vector2(-362.478, 387.841)
+nodes/fragment/5/node = SubResource("VisualShaderNodeFloatConstant_wb6mp")
+nodes/fragment/5/position = Vector2(-282.478, 487.841)
+nodes/fragment/6/node = SubResource("VisualShaderNodeFloatFunc_evu1d")
+nodes/fragment/6/position = Vector2(654.179, 36.3039)
+nodes/fragment/7/node = SubResource("VisualShaderNodeFloatConstant_5pf1n")
+nodes/fragment/7/position = Vector2(57.5221, -12.1591)
+nodes/fragment/connections = PackedInt32Array(3, 0, 2, 0, 4, 0, 2, 1, 5, 0, 2, 2, 2, 0, 6, 0, 6, 0, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_blt4p"]
+shader = SubResource("VisualShader_elssd")
+
+[node name="04_BOARD" type="Node"]
+metadata/_edit_horizontal_guides_ = [-58.0]
+
+[node name="set_Resolution_viewports" type="Node" parent="." node_paths=PackedStringArray("viewports")]
+script = ExtResource("1_gf4dn")
+viewports = [NodePath("../SubViewport")]
+
+[node name="Open_desk" type="Node" parent="."]
+script = ExtResource("1_t26m6")
+
+[node name="Board_ini" type="Node" parent="."]
+script = ExtResource("1_0e632")
+
+[node name="Follow_camera_map" type="Node" parent="." node_paths=PackedStringArray("camera_3d_follow", "cam_target", "Camera3D_Main_Desk", "camera_3d_main_Map")]
+script = ExtResource("4_dn66i")
+camera_3d_follow = NodePath("../SubViewport/Camera3D_follow")
+cam_target = NodePath("../SubViewport/CamTarget")
+Camera3D_Main_Desk = NodePath("../Camera3D_Main_Desk")
+camera_3d_main_Map = NodePath("../Camera3D_Main_Map")
+
+[node name="Desk_Camera_state" type="Node" parent="."]
+script = ExtResource("5_0n8j1")
+
+[node name="Camera_xray" type="Camera3D" parent="."]
+transform = Transform3D(0.994881, 0.0700724, -0.072816, 0, 0.720551, 0.693402, 0.101056, -0.689852, 0.716862, -0.08, 0.945, 1.035)
+visible = false
+cull_mask = 0
+fov = 40.0
+far = 4.25
+
+[node name="Camera3D_Main_Desk" type="Camera3D" parent="."]
+transform = Transform3D(0.992546, 0.0761979, -0.0951105, 0, 0.78043, 0.625243, 0.121869, -0.620582, 0.774613, -0.091, 0.642, 0.784)
+cull_mask = 3
+current = true
+fov = 60.0
+far = 10.0
+
+[node name="Camera3D_Main_Map" type="Camera3D" parent="."]
+transform = Transform3D(0.994522, 0.0848859, -0.0609967, 0, 0.583541, 0.812084, 0.104528, -0.807635, 0.580344, -0.015, 0.2, 0.269)
+cull_mask = 3
+current = true
+fov = 60.0
+far = 10.0
+
+[node name="SubViewport" type="SubViewport" parent="."]
+own_world_3d = true
+size = Vector2i(1920, 1080)
+
+[node name="Camera3D_follow" type="Camera3D" parent="SubViewport"]
+transform = Transform3D(0.992546, 0.0761979, -0.0951105, 0, 0.78043, 0.625243, 0.121869, -0.620582, 0.774613, -0.091, 0.642, 0.784)
+cull_mask = 3
+current = true
+fov = 60.0
+far = 10.0
+
+[node name="SHARP_test" type="ColorRect" parent="SubViewport"]
+visible = false
+material = SubResource("ShaderMaterial_6spwj")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CamTarget" type="Node3D" parent="SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.125)
+visible = false
+script = ExtResource("1_janbq")
+speed = 0.4
+min_x = -0.3
+max_x = 0.3
+min_z = -0.3
+max_z = 0.3
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewport/CamTarget"]
+transform = Transform3D(0.0354637, 0, 0, 0, 0.0354637, 0, 0, 0, 0.0354637, 0, 0, 0)
+layers = 2
+mesh = SubResource("SphereMesh_ycnm1")
+surface_material_override/0 = SubResource("StandardMaterial3D_ifca2")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="SubViewport/CamTarget"]
+transform = Transform3D(0.0176783, 0, 0, 0, -7.72744e-10, 0.0176783, 0, -0.0176783, -7.72744e-10, 0, 0.017216, 0)
+layers = 2
+mesh = SubResource("PrismMesh_2j3nk")
+surface_material_override/0 = SubResource("StandardMaterial3D_yjabd")
+
+[node name="Board_scene" parent="SubViewport" instance=ExtResource("2_6c571")]
+
+[node name="RENDER" type="TextureRect" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_ktpkr")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("ViewportTexture_56tra")
+expand_mode = 3
+
+[node name="Pad_target" type="ColorRect" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_blt4p")
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -7.5
+offset_top = -7.5
+offset_right = 7.5
+offset_bottom = 7.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.8, 0.8)
+mouse_filter = 2
+color = Color(0.721569, 0.635294, 0.439216, 1)

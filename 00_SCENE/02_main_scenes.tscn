@@ -554,7 +554,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_7x1wp")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.21605, 0, 14.8725)
 
 [node name="Player_Boat" parent="--DECOR--" instance=ExtResource("1_qltht")]
-transform = Transform3D(0.473858, 0, -0.880601, 0, 1, 0, 0.880601, 0, 0.473858, -4.28915, 0, 13.6219)
+transform = Transform3D(0.473858, 0, -0.880601, 0, 1, 0, 0.880601, 0, 0.473858, -8.93523, 0, 13.1298)
 
 [node name="Player_Boat2" parent="--DECOR--" instance=ExtResource("1_qltht")]
 transform = Transform3D(0.685628, 0, -0.727952, 0, 1, 0, 0.727952, 0, 0.685628, -5.07322, -9.53674e-07, 0.283514)

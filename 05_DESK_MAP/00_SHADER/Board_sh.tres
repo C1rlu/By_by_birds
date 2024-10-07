@@ -167,7 +167,6 @@ void light() {
 
 }
 "
-graph_offset = Vector2(-599.929, 101.606)
 modes/specular = 1
 flags/unshaded = true
 flags/ambient_light_disabled = true

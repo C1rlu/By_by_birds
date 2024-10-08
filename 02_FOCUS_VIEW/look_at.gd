@@ -23,8 +23,8 @@ func _reset_cam():
 		
 func _input(event: InputEvent) -> void:
 	
-	#if disable:
-		#return
+	if disable:
+		return
 	if !Render.visible:
 		return
 		

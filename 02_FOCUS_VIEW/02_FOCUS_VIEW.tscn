@@ -235,6 +235,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="TextureRect" type="TextureRect" parent="Viewport"]
+visible = false
 custom_minimum_size = Vector2(10, 10)
 anchors_preset = 8
 anchor_left = 0.5

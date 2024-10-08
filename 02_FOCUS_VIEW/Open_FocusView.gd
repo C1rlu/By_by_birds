@@ -8,18 +8,20 @@ func _ready():
 
 	_global_datas._open_focus_view.connect(_open)
 	#_open(false)
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+
 func _open(condition : bool):
 	
 	_global_datas.Player_InMenu = condition
 	Render.visible = condition
 	Backdrop.visible = condition	
-
-	if condition:
 	
-		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	else:
+	if condition:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	else:
+		Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)	
+
+
+
 	if condition:
 		clear_and_instantiate()
 		

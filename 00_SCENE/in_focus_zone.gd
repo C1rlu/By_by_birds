@@ -31,3 +31,4 @@ func _input(event):
 	if focus_view_ui.visible:
 		if event.is_action_pressed("Click"):
 			_global_datas._open_focus_view.emit(true)
+			

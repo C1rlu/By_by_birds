@@ -7,27 +7,30 @@ extends Node
 func _ready():
 
 	_global_datas._open_focus_view.connect(_open)
-	_open(false)
-	
+	#_open(false)
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 func _open(condition : bool):
 	
 	_global_datas.Player_InMenu = condition
 	Render.visible = condition
 	Backdrop.visible = condition	
-	_global_datas.Player_InMenu = condition
 
-func clear_and_instantiate(board_element : PackedScene):
+	if condition:
+		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	else:
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	if condition:
+		clear_and_instantiate()
+		
+func clear_and_instantiate():
 	
 	var all_child = Loader.get_children()
 	
 	for e in all_child:
 		e.queue_free()
 	
-	if board_element:
-
-		var instantiate = board_element.instantiate()
-		instantiate.position = board_element.focus_start_position
-		instantiate.rotation_degrees = board_element.focus_start_rotation_degrees
-		instantiate.scale = Vector3(board_element.focus_start_scale,board_element.focus_start_scale,board_element.focus_start_scale)
+	if _global_datas.current_focus_data.focus_scene:
+		var instantiate = _global_datas.current_focus_data.focus_scene.instantiate()
 		Loader.add_child(instantiate)
 	
+	else: print("Pls set a focus data scene")

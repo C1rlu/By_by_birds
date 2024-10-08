@@ -31,6 +31,7 @@ signal _check_player_zone
 
 # FOCUS VIEW  
 signal _open_focus_view(condition : bool)
+var current_focus_data : focus_data
 
 # dialogue signals
 signal in_dialogue_zone(condition : bool)
@@ -63,6 +64,9 @@ signal _active_this_npc_zone(condition : bool)
 signal _in_focus_zone(condition : bool, position : Vector3)
 signal _in_desk_zone(condition : bool)
 
+#------ focus view ---
+signal set_instant_focus(camera : Camera3D)
+signal set_new_focus(camera : Camera3D)
 
 signal subscene_sonar_effect(position : Vector3, color : Color)
 

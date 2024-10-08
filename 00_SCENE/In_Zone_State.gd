@@ -29,7 +29,7 @@ func _check_zone_enter(area):
 	if focus_zone:
 		var n_position = focus_zone.root_position.position
 		_global_datas._in_focus_zone.emit(true,n_position)
-		
+		_global_datas.current_focus_data = focus_zone.Focus_data
 			
 	var delevery_zone = area.get_node_or_null("Delevery_zone")
 	if delevery_zone:

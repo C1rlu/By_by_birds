@@ -26,4 +26,3 @@ func _smooth_movement(new_position):
 		
 	t = create_tween()
 	t.tween_property(camera_3d,"position",new_position,0.25)	
-

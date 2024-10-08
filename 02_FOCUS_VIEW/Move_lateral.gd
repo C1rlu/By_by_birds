@@ -10,7 +10,10 @@ var cam_target : Vector3
 
 var offset : Vector3
 var base_position : Vector3
+
+var disable = true 
 func _ready():
+	
 	offset = _all_cam_array[0].global_position - cam_target
 	base_position = _all_cam_array[0].global_position 
 	
@@ -24,7 +27,9 @@ func reset(condition,element):
 			cam.global_position	= base_position 	
 			
 func _process(delta):
-	
+
+	if disable:
+		return
 	if !Render.visible:
 		return
 	_move_cam(delta)	
@@ -37,7 +42,15 @@ func _move_cam(_delta):
 	if Input.is_action_pressed("move_backward"):
 		var _magnitude = Input.get_action_strength("move_backward")
 		cam_target.z += _magnitude * _speed * _delta
-	
+		
+	if Input.is_action_pressed("move_left"):
+		var _magnitude = Input.get_action_strength("move_left")
+		cam_target.x -= _magnitude * _speed * _delta	
+	if Input.is_action_pressed("move_right"):
+		var _magnitude = Input.get_action_strength("move_right")
+		cam_target.x += _magnitude * _speed * _delta	
+		
+
 	cam_target.x = clamp(cam_target.x, clamp_cam_x.x, clamp_cam_x.y)
 	cam_target.z = clamp(cam_target.z, clamp_cam_z.x, clamp_cam_z.y)
 

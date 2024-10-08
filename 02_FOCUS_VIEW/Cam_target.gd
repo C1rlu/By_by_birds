@@ -6,7 +6,7 @@ var target_position : Vector3
 @export var x_limit : Vector2
 @export var y_limit : Vector2
 
-var _active : bool = false
+@export var _active : bool = false
 var reset_position : Vector3
 func _ready():
 	pass
@@ -36,7 +36,8 @@ func _process(delta):
 	
 	
 func move(delta):
-	
+	if !_active:
+		return
 	var direction = Vector3.ZERO
 
 	if Input.is_action_pressed("move_right"):

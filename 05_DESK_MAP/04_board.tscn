@@ -182,6 +182,7 @@ far = 4.25
 
 [node name="Camera3D_Main_Desk" type="Camera3D" parent="."]
 transform = Transform3D(0.992546, 0.052658, -0.109906, 0, 0.901832, 0.432086, 0.121869, -0.428865, 0.89511, -0.17, 0.735, 1.245)
+visible = false
 cull_mask = 3
 current = true
 fov = 60.0
@@ -189,6 +190,7 @@ far = 10.0
 
 [node name="Camera3D_Main_Map" type="Camera3D" parent="."]
 transform = Transform3D(0.994522, 0.0835898, -0.062761, 0, 0.60042, 0.799685, 0.104528, -0.795304, 0.597131, -0.015, 0.284, 0.354)
+visible = false
 cull_mask = 3
 current = true
 fov = 60.0

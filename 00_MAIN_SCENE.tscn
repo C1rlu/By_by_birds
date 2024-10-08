@@ -1,5 +1,6 @@
-[gd_scene load_steps=13 format=3 uid="uid://cb8k68mtsigvd"]
+[gd_scene load_steps=14 format=3 uid="uid://cb8k68mtsigvd"]
 
+[ext_resource type="Resource" uid="uid://bmdkj4ktpvfca" path="res://02_FOCUS_VIEW/Focus_data/Lighthouse_01_focus_data.tres" id="1_sgkwb"]
 [ext_resource type="Script" path="res://00_SYSTEMS/Global_datas.gd" id="3_qrxv3"]
 [ext_resource type="PackedScene" uid="uid://h2wepwtms1pe" path="res://02_FOCUS_VIEW/02_FOCUS_VIEW.tscn" id="6_ekkt3"]
 [ext_resource type="Script" path="res://13_TOOLS_UI/Hide_cursor.gd" id="6_q33qh"]
@@ -14,11 +15,12 @@
 script/source = "extends Node
 
 
-
+@export var _focus_data : focus_data
 
 func _input(event):
 	
 	if event.is_action_pressed(\"debug_1\"):
+		_global_datas.current_focus_data = _focus_data
 		_global_datas._open_focus_view.emit(true)
 	
 	if event.is_action_pressed(\"debug_2\"):
@@ -66,6 +68,7 @@ metadata/_edit_horizontal_guides_ = [-31.0]
 
 [node name="DEBUG_Dev_shortcut" type="Node" parent="."]
 script = SubResource("GDScript_c11gh")
+_focus_data = ExtResource("1_sgkwb")
 
 [node name="01_GAME_MANAGERS" type="Node" parent="."]
 

@@ -6,4 +6,3 @@
 render_priority = 0
 shader = ExtResource("1_tqt71")
 shader_parameter/Color = Color(0.537011, 0.537011, 0.537011, 1)
-shader_parameter/Attenuation = -0.66

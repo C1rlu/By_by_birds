@@ -49,7 +49,7 @@ movie_writer/movie_file="C:/Users/Ulric/OneDrive/05_APICULA_PROJECT/Video/Apicul
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/ez_dialogue/plugin.cfg")
+enabled=PackedStringArray()
 
 [input]
 
@@ -297,10 +297,6 @@ open_selector={
 3d_render/layer_12="Foam_02"
 3d_render/layer_14="up_sky"
 3d_render/layer_19="tool_ui"
-3d_physics/layer_2="Subscene_Rg"
-3d_physics/layer_3="Subscene_Area"
-3d_physics/layer_6="raycast_hit"
-3d_physics/layer_7="Board_raycast"
 
 [rendering]
 

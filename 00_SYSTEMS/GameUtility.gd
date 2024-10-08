@@ -15,6 +15,7 @@ func get_closest_point(_target : Vector3, points_list : Array) -> Vector3:
 	return closest_point  # Return the closest point found
 
 # WARNING  it's here with a disctionnary
+
 func get_closest_element(reference, array):
 	var closest_element = null
 	var closest_distance = INF

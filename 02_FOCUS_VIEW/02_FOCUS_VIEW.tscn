@@ -1,10 +1,14 @@
-[gd_scene load_steps=24 format=3 uid="uid://h2wepwtms1pe"]
+[gd_scene load_steps=26 format=3 uid="uid://h2wepwtms1pe"]
 
 [ext_resource type="Script" path="res://13_TOOLS_UI/set_Resolution_viewports.gd" id="1_3ana1"]
 [ext_resource type="Script" path="res://02_FOCUS_VIEW/Open_FocusView.gd" id="1_ttndn"]
 [ext_resource type="Script" path="res://02_FOCUS_VIEW/Control_view.gd" id="2_hd46p"]
-[ext_resource type="Script" path="res://02_FOCUS_VIEW/Move_lateral.gd" id="5_4oykj"]
+[ext_resource type="Script" path="res://02_FOCUS_VIEW/look_at.gd" id="5_8dylc"]
+[ext_resource type="Script" path="res://02_FOCUS_VIEW/rotate_automatique.gd" id="6_l0ewy"]
+[ext_resource type="PackedScene" uid="uid://i7vwntowo6jb" path="res://02_FOCUS_VIEW/Focus_scene/Lighthouse_01/Lighthouse_01.tscn" id="6_rjtd3"]
 [ext_resource type="PackedScene" uid="uid://clc3sbquuu1us" path="res://13_TOOLS_UI/Clock_montre/Clock_ui_prefab.tscn" id="6_srukl"]
+[ext_resource type="Script" path="res://02_FOCUS_VIEW/raycast_on_npc.gd" id="7_fr4tu"]
+[ext_resource type="Script" path="res://02_FOCUS_VIEW/update_focus.gd" id="8_yrrej"]
 [ext_resource type="Script" path="res://02_FOCUS_VIEW/Cam_target.gd" id="9_or37v"]
 
 [sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_y363p"]
@@ -141,14 +145,9 @@ nodes/fragment/connections = PackedInt32Array(9, 0, 0, 0, 17, 0, 18, 0, 18, 0, 1
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_v0203"]
 shader = SubResource("VisualShader_rthcl")
-shader_parameter/Opacity = 0.8
+shader_parameter/Opacity = 0.9
 
 [sub_resource type="SphereMesh" id="SphereMesh_837u0"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_0oa2d"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bgl6d"]
-shading_mode = 0
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_fuojs"]
 viewport_path = NodePath("Viewport")
@@ -159,28 +158,38 @@ viewport_path = NodePath("Viewport")
 script = ExtResource("1_ttndn")
 Render = NodePath("../Render")
 Backdrop = NodePath("../BACKDROP_FOCUS")
-Loader = NodePath("../Viewport/Rotation_root/Loader")
+Loader = NodePath("../Viewport/Loader")
 
 [node name="set_Resolution" type="Node" parent="." node_paths=PackedStringArray("viewports")]
 script = ExtResource("1_3ana1")
 viewports = [NodePath("../Viewport")]
 
-[node name="Zoom_and_rotate" type="Node" parent="." node_paths=PackedStringArray("Camera", "Render", "_Rotation_root")]
+[node name="Zoom" type="Node" parent="." node_paths=PackedStringArray("Camera", "Render")]
 script = ExtResource("2_hd46p")
 Camera = NodePath("../Viewport/CAM")
 Render = NodePath("../Render")
-_Rotation_root = NodePath("../Viewport/Rotation_root")
+zoom_speed = 100.0
 
-[node name="Move_lateral" type="Node" parent="." node_paths=PackedStringArray("Render", "_all_cam_array")]
-script = ExtResource("5_4oykj")
+[node name="Look_at" type="Node" parent="." node_paths=PackedStringArray("Render", "Camera")]
+script = ExtResource("5_8dylc")
 Render = NodePath("../Render")
-clamp_cam_x = Vector2(-0.07, 0.125)
-clamp_cam_z = Vector2(-0.085, 0.025)
-_all_cam_array = [NodePath("../Viewport/CAM")]
-_speed = 0.27
+Camera = NodePath("../Viewport/CAM")
+
+[node name="Rotate_automatique" type="Node" parent="." node_paths=PackedStringArray("Render", "cam_root")]
+script = ExtResource("6_l0ewy")
+Render = NodePath("../Render")
+cam_root = NodePath("../Viewport/Loader")
+
+[node name="Raycast_on_npc" type="Node" parent="." node_paths=PackedStringArray("Render", "Camera")]
+script = ExtResource("7_fr4tu")
+Render = NodePath("../Render")
+Camera = NodePath("../Viewport/CAM")
+
+[node name="Update_focus" type="Node" parent="." node_paths=PackedStringArray("Camera_root")]
+script = ExtResource("8_yrrej")
+Camera_root = NodePath("../Viewport/CAM")
 
 [node name="BACKDROP_FOCUS" type="ColorRect" parent="."]
-visible = false
 material = SubResource("ShaderMaterial_v0203")
 clip_contents = true
 anchors_preset = 15
@@ -189,42 +198,52 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-color = Color(0.129412, 0.129412, 0.129412, 1)
+color = Color(0.0885598, 0.08856, 0.0885598, 1)
 
 [node name="Viewport" type="SubViewport" parent="."]
 own_world_3d = true
 transparent_bg = true
 size = Vector2i(1280, 720)
 
-[node name="CAM" type="Camera3D" parent="Viewport"]
-transform = Transform3D(1, 0, 0, 0, 0.936672, 0.350207, 0, -0.350207, 0.936672, 0, 0.242, 0.602)
-cull_mask = 2
-fov = 45.0
-
-[node name="Rotation_root" type="Node3D" parent="Viewport"]
-
-[node name="Cam_target" type="Node3D" parent="Viewport/Rotation_root"]
+[node name="Cam_target" type="Node3D" parent="Viewport"]
 script = ExtResource("9_or37v")
 speed = 0.5
 x_limit = Vector2(-0.15, 0.15)
 y_limit = Vector2(-0.15, 0.15)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Viewport/Rotation_root/Cam_target"]
-transform = Transform3D(0.175, 0, 0, 0, 0.175, 0, 0, 0, 0.175, 0, 0, 0)
-visible = false
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Viewport/Cam_target"]
+transform = Transform3D(0.0401128, 0, 0, 0, 0.0401128, 0, 0, 0, 0.0401128, 0, 0.0801388, 0)
 layers = 2
 mesh = SubResource("SphereMesh_837u0")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Viewport/Rotation_root"]
-transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 0, 0)
-layers = 2
-mesh = SubResource("BoxMesh_0oa2d")
-surface_material_override/0 = SubResource("StandardMaterial3D_bgl6d")
+[node name="target_ui" type="ColorRect" parent="Viewport"]
+custom_minimum_size = Vector2(10, 10)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 5.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="Loader" type="Node3D" parent="Viewport/Rotation_root"]
+[node name="CAM" type="Camera3D" parent="Viewport"]
+transform = Transform3D(1, 0, 0, 0, 0.883766, 0.46793, 0, -0.46793, 0.883766, 0.034, 0.328, 0.248)
+cull_mask = 1
+current = true
+fov = 50.0
+near = 0.01
+far = 100.0
+
+[node name="Loader" type="Node3D" parent="Viewport"]
+
+[node name="Lighthouse01" parent="Viewport/Loader" instance=ExtResource("6_rjtd3")]
+transform = Transform3D(0.0127129, 0, 0.017955, 0, 0.022, 0, -0.017955, 0, 0.0127129, 0, 0, 0)
 
 [node name="Render" type="TextureRect" parent="."]
-visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -236,7 +255,7 @@ texture = SubResource("ViewportTexture_fuojs")
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_top = 126.0
-offset_bottom = 126.0
+offset_top = 116.0
+offset_bottom = 116.0
 grow_horizontal = 2
 scale = Vector2(0.802, 0.802)

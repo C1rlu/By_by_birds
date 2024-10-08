@@ -1,0 +1,72 @@
+[gd_scene load_steps=7 format=3 uid="uid://cgrywe2leg7jj"]
+
+[ext_resource type="Script" path="res://02_FOCUS_VIEW/look_at.gd" id="1_8sa6c"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_pual3"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_stxxv"]
+sky_material = SubResource("ProceduralSkyMaterial_pual3")
+
+[sub_resource type="Environment" id="Environment_blnaa"]
+background_mode = 2
+sky = SubResource("Sky_stxxv")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_y0g26"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_f4372"]
+
+[node name="LookatAtWip" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.831954, -0.244967, 0.497839, 0, 0.897258, 0.441506, -0.554844, 0.367313, -0.746478, 0, 0, 0)
+shadow_enabled = true
+directional_shadow_max_distance = 5.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_blnaa")
+
+[node name="Look_at" type="Node" parent="." node_paths=PackedStringArray("Camera", "Camera_head")]
+script = ExtResource("1_8sa6c")
+Camera = NodePath("../Camera_head/Camera3D")
+Camera_head = NodePath("../Camera_head")
+
+[node name="Camera_head" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.96363, 0.267238, 0, -0.267238, 0.96363, 0, 0.905, 1.889)
+
+[node name="Camera3D" type="Camera3D" parent="Camera_head"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(2.36594, 0, 0, 0, -1.03419e-07, 2.36594, 0, -2.36594, -1.03419e-07, 0, 0, 0)
+mesh = SubResource("QuadMesh_y0g26")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="."]
+transform = Transform3D(13.1983, 0, 0, 0, 13.1943, 0.327761, 0, -0.327761, 13.1943, 0, 0, -3.87863)
+mesh = SubResource("QuadMesh_y0g26")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.280989, 0, 0, 0, 0.280989, 0, 0, 0, 0.280989, -0.494273, 0.143558, -0.656037)
+mesh = SubResource("BoxMesh_f4372")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.280989, 0, 0, 0, 0.280989, 0, 0, 0, 0.280989, -0.330472, 0.143558, -0.331402)
+mesh = SubResource("BoxMesh_f4372")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.280989, 0, 0, 0, 0.280989, 0, 0, 0, 0.280989, 0.558488, 0.143558, -0.841937)
+mesh = SubResource("BoxMesh_f4372")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.280989, 0, 0, 0, 0.280989, 0, 0, 0, 0.280989, -0.720781, 0.143558, -0.279845)
+mesh = SubResource("BoxMesh_f4372")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.280989, 0, 0, 0, 0.280989, 0, 0, 0, 0.280989, -0.614954, 0.143558, 0.161086)
+mesh = SubResource("BoxMesh_f4372")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.280989, 0, 0, 0, 0.280989, 0, 0, 0, 0.280989, 0.547712, 0.143558, 0.172527)
+mesh = SubResource("BoxMesh_f4372")

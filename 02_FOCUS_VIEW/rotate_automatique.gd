@@ -16,10 +16,8 @@ func _reset(condition : bool):
 		#cam_root.rotation_degrees = Vector3.ZERO		
 	
 
-
 func _process(delta: float) -> void:
 	
 	if !Render.visible:
 		return
-		
-	#cam_root.rotation_degrees.y -= 1.0 * delta
+	cam_root.rotation_degrees.y -= 2.0 * delta

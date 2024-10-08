@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://h2wepwtms1pe"]
+[gd_scene load_steps=27 format=3 uid="uid://h2wepwtms1pe"]
 
 [ext_resource type="Script" path="res://13_TOOLS_UI/set_Resolution_viewports.gd" id="1_3ana1"]
 [ext_resource type="Script" path="res://02_FOCUS_VIEW/Open_FocusView.gd" id="1_ttndn"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://clc3sbquuu1us" path="res://13_TOOLS_UI/Clock_montre/Clock_ui_prefab.tscn" id="6_srukl"]
 [ext_resource type="Script" path="res://02_FOCUS_VIEW/raycast_on_npc.gd" id="7_fr4tu"]
 [ext_resource type="Script" path="res://02_FOCUS_VIEW/update_focus.gd" id="8_yrrej"]
+[ext_resource type="Texture2D" uid="uid://dhphjbohctlu7" path="res://13_TOOLS_UI/Eyes/eyes_img.png" id="9_bheeb"]
 [ext_resource type="Script" path="res://02_FOCUS_VIEW/Cam_target.gd" id="9_or37v"]
 
 [sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_y363p"]
@@ -166,14 +167,14 @@ viewports = [NodePath("../Viewport")]
 
 [node name="Zoom" type="Node" parent="." node_paths=PackedStringArray("Camera", "Render")]
 script = ExtResource("2_hd46p")
-Camera = NodePath("../Viewport/CAM")
+Camera = NodePath("../Viewport/head/CAM")
 Render = NodePath("../Render")
-zoom_speed = 100.0
 
-[node name="Look_at" type="Node" parent="." node_paths=PackedStringArray("Render", "Camera")]
+[node name="Look_at" type="Node" parent="." node_paths=PackedStringArray("Render", "Camera_head", "Camera")]
 script = ExtResource("5_8dylc")
 Render = NodePath("../Render")
-Camera = NodePath("../Viewport/CAM")
+Camera_head = NodePath("../Viewport/head")
+Camera = NodePath("../Viewport/head/CAM")
 
 [node name="Rotate_automatique" type="Node" parent="." node_paths=PackedStringArray("Render", "cam_root")]
 script = ExtResource("6_l0ewy")
@@ -183,13 +184,15 @@ cam_root = NodePath("../Viewport/Loader")
 [node name="Raycast_on_npc" type="Node" parent="." node_paths=PackedStringArray("Render", "Camera")]
 script = ExtResource("7_fr4tu")
 Render = NodePath("../Render")
-Camera = NodePath("../Viewport/CAM")
+Camera = NodePath("../Viewport/head/CAM")
 
-[node name="Update_focus" type="Node" parent="." node_paths=PackedStringArray("Camera_root")]
+[node name="Update_focus" type="Node" parent="." node_paths=PackedStringArray("Camera_root", "Camera_head")]
 script = ExtResource("8_yrrej")
-Camera_root = NodePath("../Viewport/CAM")
+Camera_root = NodePath("../Viewport/head/CAM")
+Camera_head = NodePath("../Viewport/head")
 
 [node name="BACKDROP_FOCUS" type="ColorRect" parent="."]
+visible = false
 material = SubResource("ShaderMaterial_v0203")
 clip_contents = true
 anchors_preset = 15
@@ -217,6 +220,7 @@ layers = 2
 mesh = SubResource("SphereMesh_837u0")
 
 [node name="target_ui" type="ColorRect" parent="Viewport"]
+visible = false
 custom_minimum_size = Vector2(10, 10)
 anchors_preset = 8
 anchor_left = 0.5
@@ -230,8 +234,25 @@ offset_bottom = 5.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="CAM" type="Camera3D" parent="Viewport"]
-transform = Transform3D(1, 0, 0, 0, 0.883766, 0.46793, 0, -0.46793, 0.883766, 0.034, 0.328, 0.248)
+[node name="TextureRect" type="TextureRect" parent="Viewport"]
+custom_minimum_size = Vector2(10, 10)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -7.5
+offset_top = -7.5
+offset_right = 7.5
+offset_bottom = 7.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_bheeb")
+expand_mode = 1
+
+[node name="head" type="Node3D" parent="Viewport"]
+
+[node name="CAM" type="Camera3D" parent="Viewport/head"]
 cull_mask = 1
 current = true
 fov = 50.0
@@ -244,6 +265,7 @@ far = 100.0
 transform = Transform3D(0.0127129, 0, 0.017955, 0, 0.022, 0, -0.017955, 0, 0.0127129, 0, 0, 0)
 
 [node name="Render" type="TextureRect" parent="."]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

@@ -25,5 +25,6 @@ func _check_raycast():
 		var hit_focus = raycast.collider.get_node_or_null("hit_focus")
 		if hit_focus:
 			print("hit")
+			_global_datas.transition_target = raycast.position		
 			hit_focus._set_focus()
-	
+			

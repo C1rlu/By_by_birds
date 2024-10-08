@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=4 uid="uid://fcjcvy77lg0o"]
+[gd_scene load_steps=43 format=4 uid="uid://fcjcvy77lg0o"]
 
 [ext_resource type="Script" path="res://00_SYSTEMS/Active_mask_at_ready.tres.gd" id="1_u3hy5"]
 [ext_resource type="Texture2D" uid="uid://cdnar4v4gpadd" path="res://04_SCENE_MAIN_MAP/ELEMENTS/Lighthouse/Lighthouse_gradient.png" id="2_lv8lt"]
@@ -267,17 +267,17 @@ render_priority = 1
 shader = SubResource("VisualShader_gs5la")
 shader_parameter/Lit_color = Color(0.721569, 0.580392, 0.407843, 1)
 
-[sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_cnqkx"]
+[sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_e358o"]
 parameter_name = "Lit_color"
 
-[sub_resource type="VisualShaderNodeFloatConstant" id="VisualShaderNodeFloatConstant_i12re"]
+[sub_resource type="VisualShaderNodeFloatConstant" id="VisualShaderNodeFloatConstant_6vnkk"]
 constant = 1.0
 
-[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_7d7w7"]
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_twb68"]
 parameter_name = "Dither_size"
 qualifier = 1
 
-[sub_resource type="VisualShaderNodeExpression" id="VisualShaderNodeExpression_67b00"]
+[sub_resource type="VisualShaderNodeExpression" id="VisualShaderNodeExpression_id0k5"]
 size = Vector2(724.789, 654.559)
 expression = "const float DITHER_THRESHOLDS[16] ={
 		1.0 / 17.0, 9.0 / 17.0, 3.0 / 17.0, 11.0 / 17.0,
@@ -290,19 +290,19 @@ vec2 uv = FRAGCOORD.xy * Size;
 int index = (int(uv.x) % 4) * 4 + int(uv.y) % 4;
 Dither_Node = In - DITHER_THRESHOLDS[index];"
 
-[sub_resource type="VisualShaderNodeStep" id="VisualShaderNodeStep_4t2h4"]
+[sub_resource type="VisualShaderNodeStep" id="VisualShaderNodeStep_ijl3m"]
 default_input_values = [0, 0.87, 1, 0.0]
 
-[sub_resource type="Gradient" id="Gradient_bjlve"]
+[sub_resource type="Gradient" id="Gradient_700mg"]
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_dk63l"]
-gradient = SubResource("Gradient_bjlve")
+gradient = SubResource("Gradient_700mg")
 fill_to = Vector2(0, 0.529915)
 
-[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_ooaxe"]
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_easpk"]
 texture = SubResource("GradientTexture2D_dk63l")
 
-[sub_resource type="VisualShader" id="VisualShader_lmvsu"]
+[sub_resource type="VisualShader" id="VisualShader_h1c42"]
 code = "shader_type spatial;
 render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx, unshaded;
 
@@ -360,13 +360,13 @@ void fragment() {
 graph_offset = Vector2(-1068.98, 33.0034)
 flags/unshaded = true
 nodes/vertex/0/position = Vector2(400, 160)
-nodes/fragment/2/node = SubResource("VisualShaderNodeColorParameter_cnqkx")
+nodes/fragment/2/node = SubResource("VisualShaderNodeColorParameter_e358o")
 nodes/fragment/2/position = Vector2(-440, 100)
-nodes/fragment/3/node = SubResource("VisualShaderNodeFloatConstant_i12re")
+nodes/fragment/3/node = SubResource("VisualShaderNodeFloatConstant_6vnkk")
 nodes/fragment/3/position = Vector2(-1860, 700)
-nodes/fragment/4/node = SubResource("VisualShaderNodeFloatParameter_7d7w7")
+nodes/fragment/4/node = SubResource("VisualShaderNodeFloatParameter_twb68")
 nodes/fragment/4/position = Vector2(-1940, 920)
-nodes/fragment/5/node = SubResource("VisualShaderNodeExpression_67b00")
+nodes/fragment/5/node = SubResource("VisualShaderNodeExpression_id0k5")
 nodes/fragment/5/position = Vector2(-1560, 820)
 nodes/fragment/5/size = Vector2(724.789, 654.559)
 nodes/fragment/5/input_ports = "0,0,In;1,0,Size;"
@@ -381,21 +381,21 @@ nodes/fragment/5/expression = "const float DITHER_THRESHOLDS[16] ={
 vec2 uv = FRAGCOORD.xy * Size;
 int index = (int(uv.x) % 4) * 4 + int(uv.y) % 4;
 Dither_Node = In - DITHER_THRESHOLDS[index];"
-nodes/fragment/6/node = SubResource("VisualShaderNodeStep_4t2h4")
+nodes/fragment/6/node = SubResource("VisualShaderNodeStep_ijl3m")
 nodes/fragment/6/position = Vector2(-740, 680)
-nodes/fragment/7/node = SubResource("VisualShaderNodeTexture_ooaxe")
+nodes/fragment/7/node = SubResource("VisualShaderNodeTexture_easpk")
 nodes/fragment/7/position = Vector2(-1020, 300)
 nodes/fragment/connections = PackedInt32Array(2, 0, 0, 0, 3, 0, 5, 0, 4, 0, 5, 1, 5, 0, 6, 1, 7, 0, 6, 0, 6, 0, 0, 1)
 nodes/light/0/position = Vector2(2620, 1260)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nvli8"]
 render_priority = 1
-shader = SubResource("VisualShader_lmvsu")
+shader = SubResource("VisualShader_h1c42")
 shader_parameter/Lit_color = Color(0.721569, 0.580392, 0.407843, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gmqbp"]
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_yssin"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_sop1i"]
 _surfaces = [{
 "aabb": AABB(-0.974435, -9.25381, -1.14889, 1.98993, 8.52239, 2.29778),
 "format": 34896613377,
@@ -423,33 +423,14 @@ _surfaces = [{
 "vertex_data": PackedByteArray("/38AAAAA3f//fwAAAADd//9///83Zd3//3///zdl3f///wAA/z9l1cea//+bcmXV//8AAP+/3KrHmv//Y43cqv9/AAD//1OE/3///8eaU4QAAAAA/7/cqjdl//9jjdyqAAAAAP8/ZdU3Zf//m3Jl1ZuDG/biiZwDm4Mb9uKJnAPmiZ8D5omfAzqQSgo6kEoK/v//f/7//39JisTvSYrE75+DGPafgxj2")
 }]
 blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_yssin")
-
-[sub_resource type="VisualShader" id="VisualShader_hkvt2"]
-code = "shader_type spatial;
-render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx, unshaded, ambient_light_disabled;
-
-
-
-"
-flags/unshaded = true
-flags/ambient_light_disabled = true
-nodes/fragment/0/position = Vector2(440, 140)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_tdxq4"]
-render_priority = 0
-shader = SubResource("VisualShader_hkvt2")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_jbdx1"]
-render_priority = 0
-shader = SubResource("VisualShader_hkvt2")
+shadow_mesh = SubResource("ArrayMesh_sop1i")
 
 [node name="Lighthouse_prefab" type="Node3D"]
 transform = Transform3D(-0.271044, 0, 2.89823e-08, 0, 0.271044, 0, -2.89823e-08, 0, -0.271044, 0, 0, 0)
 
 [node name="Active_at_ready" type="Node" parent="." node_paths=PackedStringArray("_active")]
 script = ExtResource("1_u3hy5")
-_active = [NodePath("../Lighthouse_mask"), NodePath("../Lighthouse_light"), NodePath("../Lighthouse_root/light_cone3/light_cone2"), NodePath("../Lighthouse_root/light_cone2/light_cone2")]
+_active = [NodePath("../Lighthouse_mask"), NodePath("../Lighthouse_light")]
 
 [node name="Lighhouse_light_anim" type="Node" parent="." node_paths=PackedStringArray("anim")]
 script = ExtResource("2_mcqu7")
@@ -493,28 +474,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0536928, 0)
 [node name="light_cone" parent="Lighthouse_root/light_cone2" index="0"]
 surface_material_override/0 = SubResource("ShaderMaterial_nvli8")
 
-[node name="light_cone2" type="MeshInstance3D" parent="Lighthouse_root/light_cone2"]
-transform = Transform3D(0, 5.96046e-08, 1, -1, 0, 5.96046e-08, -5.96046e-08, -1, 0, 0, 0, 0)
-visible = false
-layers = 32768
-mesh = SubResource("ArrayMesh_opv06")
-skeleton = NodePath("")
-surface_material_override/0 = SubResource("ShaderMaterial_tdxq4")
-
 [node name="light_cone3" parent="Lighthouse_root" instance=ExtResource("7_8wbog")]
 transform = Transform3D(-1, 0, -1.89394e-07, 0, 1, 0, 1.89394e-07, 0, -1, 0, 0.0536928, 0)
 
 [node name="light_cone" parent="Lighthouse_root/light_cone3" index="0"]
 mesh = SubResource("ArrayMesh_opv06")
 surface_material_override/0 = SubResource("ShaderMaterial_nvli8")
-
-[node name="light_cone2" type="MeshInstance3D" parent="Lighthouse_root/light_cone3"]
-transform = Transform3D(0, 5.96046e-08, 1, -1, 0, 5.96046e-08, -5.96046e-08, -1, 0, 0, 0, 0)
-visible = false
-layers = 32768
-mesh = SubResource("ArrayMesh_opv06")
-skeleton = NodePath("")
-surface_material_override/0 = SubResource("ShaderMaterial_jbdx1")
 
 [editable path="Lighthouse2"]
 [editable path="Lighthouse_root/light_cone2"]

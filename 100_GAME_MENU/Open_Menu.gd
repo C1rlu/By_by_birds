@@ -13,22 +13,19 @@ func _ready():
 func _open_menu(condition : bool):
 	game_menu_root.visible = condition		
 	
-	
+	if condition:
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	else:
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		
 func _input(event):
 	
 
 	
 	if event.is_action_pressed("Open_Menu"):
-		_global_datas.Player_InMenu =! _global_datas.Player_InMenu
+		_global_datas.Player_InMenu = true
 		_global_datas._open_menu.emit(_global_datas.Player_InMenu)	
 		focus_button.grab_focus()
 
-		#set back call
-		#_global_datas._add_back_call.emit(back_call)
 		get_tree().paused = true
 			
-
-func back_call():
-	_global_datas._open_menu.emit(false)
-	_global_datas.Player_InMenu = false
-	get_tree().paused = false	

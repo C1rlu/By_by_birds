@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=4 uid="uid://i7vwntowo6jb"]
+[gd_scene load_steps=40 format=4 uid="uid://i7vwntowo6jb"]
 
 [ext_resource type="PackedScene" uid="uid://bphmc606jqkad" path="res://02_FOCUS_VIEW/Focus_scene/Lighthouse_focus.blend" id="1_h1tuh"]
 [ext_resource type="Script" path="res://02_FOCUS_VIEW/Focus_data/set_focus_data.gd" id="1_rpkd4"]
@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://dla1534gcagbl" path="res://04_SCENE_MAIN_MAP/ELEMENTS/Pine/pine_prefabs.tscn" id="4_pikbl"]
 [ext_resource type="PackedScene" uid="uid://dfl8ypxntwour" path="res://02_FOCUS_VIEW/Npc/Npc_base.tscn" id="6_x88fn"]
 [ext_resource type="PackedScene" uid="uid://cayj2wqyaod67" path="res://04_SCENE_MAIN_MAP/ELEMENTS/Lighthouse/light_cone.blend" id="7_0b5my"]
-[ext_resource type="Shader" uid="uid://b2vtcihbo73bk" path="res://00_SHADER/Next_pass_selectEffect.tres" id="7_5v63a"]
 [ext_resource type="Script" path="res://02_FOCUS_VIEW/hit_focus.gd" id="7_e66f2"]
 [ext_resource type="PackedScene" uid="uid://djqtoudpd0dy6" path="res://04_SCENE_MAIN_MAP/Birds/Far_birds.blend" id="8_523pb"]
 
@@ -119,54 +118,6 @@ shader = ExtResource("2_l8yn2")
 shader_parameter/ColorParameter = Color(0.0235294, 0.117647, 0.12549, 1)
 shader_parameter/Color = Color(0.278431, 0.290196, 0.0980392, 1)
 shader_parameter/Dither_strenght = 0.485
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_j7svg"]
-resource_local_to_scene = true
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_wpl7k"]
-resource_local_to_scene = true
-render_priority = 1
-shader = ExtResource("7_5v63a")
-shader_parameter/Effect_color = Color(0.84, 0.68222, 0.4284, 1)
-shader_parameter/Opacity = 0.0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kityo"]
-resource_local_to_scene = true
-next_pass = SubResource("ShaderMaterial_wpl7k")
-shading_mode = 0
-albedo_color = Color(0.435192, 0.435192, 0.435192, 1)
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_niisb"]
-resource_local_to_scene = true
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_3mdtv"]
-resource_local_to_scene = true
-render_priority = 1
-shader = ExtResource("7_5v63a")
-shader_parameter/Effect_color = Color(0.84, 0.68222, 0.4284, 1)
-shader_parameter/Opacity = 0.0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vlisx"]
-resource_local_to_scene = true
-next_pass = SubResource("ShaderMaterial_3mdtv")
-shading_mode = 0
-albedo_color = Color(0.435192, 0.435192, 0.435192, 1)
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_kn6vn"]
-resource_local_to_scene = true
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_boro3"]
-resource_local_to_scene = true
-render_priority = 1
-shader = ExtResource("7_5v63a")
-shader_parameter/Effect_color = Color(0.84, 0.68222, 0.4284, 1)
-shader_parameter/Opacity = 0.0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b8fqu"]
-resource_local_to_scene = true
-next_pass = SubResource("ShaderMaterial_boro3")
-shading_mode = 0
-albedo_color = Color(0.435192, 0.435192, 0.435192, 1)
 
 [sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_cnqkx"]
 parameter_name = "Lit_color"
@@ -345,6 +296,12 @@ shader_parameter/Dither_strenght = 0.485
 [sub_resource type="SphereShape3D" id="SphereShape3D_tw7er"]
 radius = 3.57563
 
+[sub_resource type="BoxMesh" id="BoxMesh_n2vmh"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fcmlb"]
+shading_mode = 0
+albedo_color = Color(0.145098, 0.145098, 0.145098, 1)
+
 [node name="Lighthouse01" type="Node3D" node_paths=PackedStringArray("_first_camera")]
 script = ExtResource("1_rpkd4")
 _first_camera = NodePath("cam_01")
@@ -385,29 +342,35 @@ transform = Transform3D(0.171379, 0, 0, 0, 0.171379, 0, 0, 0, 0.171379, 1.60263,
 
 [node name="cam_01" type="Camera3D" parent="."]
 transform = Transform3D(0.501511, 0.41679, -0.758138, 0, 0.876306, 0.481754, 0.865151, -0.241605, 0.439477, -5.877, 12.487, 3.139)
-fov = 60.0
+fov = 50.0
 
 [node name="cam_02" type="Camera3D" parent="."]
-transform = Transform3D(0.421035, 0.121531, 0.898866, 0, 0.990983, -0.133986, -0.907043, 0.056413, 0.41724, 5.457, 6.297, 1.608)
-fov = 60.0
+transform = Transform3D(0.116671, 0.469324, 0.875285, 0, 0.881303, -0.472551, -0.993171, 0.0551329, 0.102822, 6.96837, 3.097, -0.488071)
+fov = 50.0
 
 [node name="cam_03" type="Camera3D" parent="."]
-transform = Transform3D(-0.955278, 0.0760363, -0.285765, 0, 0.966376, 0.257133, 0.295708, 0.245633, -0.923158, -0.914, 5.894, -5.93)
-fov = 60.0
+transform = Transform3D(-0.955278, 0.0760363, -0.285765, 0, 0.966376, 0.257133, 0.295708, 0.245633, -0.923158, -0.914, 5.894, -5.55)
+fov = 50.0
 
 [node name="NPC_04" parent="." instance=ExtResource("6_x88fn")]
 transform = Transform3D(0.357513, 0, 0, 0, 0.357513, 0, 0, 0, 0.357513, 0.224877, 9.91077, -0.841621)
-mesh = SubResource("CapsuleMesh_j7svg")
-surface_material_override/0 = SubResource("StandardMaterial3D_kityo")
 
 [node name="NPC_03" parent="." instance=ExtResource("6_x88fn")]
-mesh = SubResource("CapsuleMesh_niisb")
-surface_material_override/0 = SubResource("StandardMaterial3D_vlisx")
+
+[node name="NPC_11" parent="." instance=ExtResource("6_x88fn")]
+transform = Transform3D(0.357513, 0, 0, 0, 0.357513, 0, 0, 0, 0.357513, -1.67968, 1.9153, -3.59686)
 
 [node name="NPC_05" parent="." instance=ExtResource("6_x88fn")]
 transform = Transform3D(0.357513, 0, 0, 0, 0.357513, 0, 0, 0, 0.357513, 1.71093, 3.59291, 0.614647)
-mesh = SubResource("CapsuleMesh_kn6vn")
-surface_material_override/0 = SubResource("StandardMaterial3D_b8fqu")
+
+[node name="NPC_07" parent="." instance=ExtResource("6_x88fn")]
+transform = Transform3D(0.357513, 0, 0, 0, 0.357513, 0, 0, 0, 0.357513, -1.11033, 4.22346, -0.0263869)
+
+[node name="NPC_08" parent="." instance=ExtResource("6_x88fn")]
+transform = Transform3D(0.357454, -0.00648901, 0, 0.00648901, 0.357454, 0, 0, 0, 0.357513, 0.0865158, 5.49602, -2.53658)
+
+[node name="NPC_09" parent="." instance=ExtResource("6_x88fn")]
+transform = Transform3D(0.357454, -0.00648901, 0, 0.00648901, 0.357454, 0, 0, 0, 0.357513, 0.850757, 5.49602, -1.2155)
 
 [node name="Lighthouse_root" type="Node3D" parent="."]
 transform = Transform3D(0.188803, 0, -1.0612, 0, 1.07787, 0, 1.0612, 0, 0.188803, -0.392425, 10.0331, -1.56132)
@@ -427,7 +390,7 @@ mesh = SubResource("ArrayMesh_jh6ks")
 surface_material_override/0 = SubResource("ShaderMaterial_4y1i4")
 
 [node name="Far_birds" parent="." instance=ExtResource("8_523pb")]
-transform = Transform3D(-6.58635e-09, -0.106546, -0.106546, 0, 0.106546, -0.106546, 0.150678, -4.65725e-09, -4.65725e-09, 6.12842, 6.30918, -0.0256628)
+transform = Transform3D(-6.58635e-09, -0.106546, -0.106546, 0, 0.106546, -0.106546, 0.150678, -4.65725e-09, -4.65725e-09, 7.4671, 2.99351, -0.363822)
 
 [node name="Cube" parent="Far_birds" index="0"]
 surface_material_override/0 = SubResource("ShaderMaterial_jaqoj")
@@ -497,6 +460,11 @@ _focus_camera = NodePath("../../../cam_01")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Far_birds2/StaticBody3D"]
 shape = SubResource("SphereShape3D_tw7er")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.93038, 0, 0, 0, 1.93038, 0, 0, 0, 1.93038, 0.358427, 4.22278, -1.78949)
+mesh = SubResource("BoxMesh_n2vmh")
+surface_material_override/0 = SubResource("StandardMaterial3D_fcmlb")
 
 [editable path="Lighthouse_focus"]
 [editable path="Lighthouse_root/light_cone2"]

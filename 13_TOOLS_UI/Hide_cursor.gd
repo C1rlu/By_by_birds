@@ -4,8 +4,8 @@ var disable_show : bool = false
 
 
 func _ready():
-	pass
-	#Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 	
 func _disable_show(_condition : bool):

@@ -16,10 +16,6 @@ var camera_state_index : int
 # input type
 signal using_pad(condition : bool)
 var player_using_pad : bool = false
-var move_right : String
-var move_left : String
-var move_forward : String
-var move_backward : String
 # scene signals
 
 signal _active_sonar(position : Vector3)
@@ -34,6 +30,8 @@ signal _open_focus_view(condition : bool)
 signal _in_transition_start
 signal _in_transition_end
 var current_focus_data : focus_data
+signal check_focus_count
+
 
 # dialogue signals
 signal in_dialogue_zone(condition : bool)
@@ -63,7 +61,7 @@ signal _check_zone_exit(area)
 signal _active_this_dive_zone(condition : bool)
 signal _active_this_npc_zone(condition : bool)
 
-signal _in_focus_zone(condition : bool, position : Vector3)
+signal _in_focus_zone(condition : bool)
 signal _in_desk_zone(condition : bool)
 
 #------ focus view ---
@@ -72,6 +70,7 @@ signal set_instant_focus(camera : Camera3D)
 signal set_new_focus(camera : Camera3D)
 signal _end_of_transition
 
+var look_at_sensivity : float 
 
 signal subscene_sonar_effect(position : Vector3, color : Color)
 

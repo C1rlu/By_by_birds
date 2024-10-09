@@ -16,9 +16,9 @@ func _input(event: InputEvent) -> void:
 func _check_raycast():
 
 	var utility = GameUtility.new()
-	#var target_ui = $"../Viewport/target_ui".global_position
-	var mouse_position = get_viewport().get_mouse_position()
-	var raycast = utility.get_raycast_target(mouse_position,Camera)
+	var target_ui = $"../Viewport/target_ui".global_position
+	#var mouse_position = get_viewport().get_mouse_position()
+	var raycast = utility.get_raycast_target(target_ui,Camera)
 	
 	if raycast:
 		#print(raycast)

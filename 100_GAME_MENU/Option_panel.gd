@@ -40,6 +40,3 @@ func _on_vsync_button_toggled(toggled_on):
 	
 func _on_active_dither_button_toggled(toggled_on):
 	active_dither(toggled_on)
-
-
-

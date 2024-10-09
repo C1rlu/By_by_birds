@@ -13,7 +13,9 @@ func reset_state(condition : bool):
 func _input(event: InputEvent) -> void:
 	
 	
-	if event.is_action_pressed("Back_call"):
+	
+	
+	if event.is_action_pressed("right_click"):
 		
 		if _global_datas.camera_state_index == 0:
 			_global_datas._open_desk.emit(false)
@@ -22,7 +24,8 @@ func _input(event: InputEvent) -> void:
 			_global_datas.camera_state_index = 0	
 			return
 	
-	if event.is_action_pressed("Click"):
-		print("Should open")
-		_global_datas.camera_state_index = 1		
-		return
+	if _global_datas.player_in_desk:
+	
+		if event.is_action_pressed("Click"):
+			_global_datas.camera_state_index = 1		
+			return

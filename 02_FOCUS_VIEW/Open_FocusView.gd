@@ -13,13 +13,7 @@ func _open(condition : bool):
 	
 	_global_datas.Player_InMenu = condition
 	Render.visible = condition
-	Backdrop.visible = condition	
-	
-	#if condition:
-		#Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	#else:
-		#Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)	
-
+	Backdrop.visible = condition
 
 
 	if condition:

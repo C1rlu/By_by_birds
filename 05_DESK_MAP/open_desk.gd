@@ -12,7 +12,7 @@ func _open_desk(condition:bool):
 	_global_datas.player_in_desk = condition
 
 
-	#if condition:
-		#Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	#else:
-		#Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	if condition:
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	else:
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://h2wepwtms1pe"]
+[gd_scene load_steps=43 format=3 uid="uid://h2wepwtms1pe"]
 
 [ext_resource type="Script" path="res://13_TOOLS_UI/set_Resolution_viewports.gd" id="1_3ana1"]
 [ext_resource type="Script" path="res://02_FOCUS_VIEW/Open_FocusView.gd" id="1_ttndn"]
@@ -9,8 +9,9 @@
 [ext_resource type="Script" path="res://02_FOCUS_VIEW/raycast_on_npc.gd" id="7_fr4tu"]
 [ext_resource type="Script" path="res://02_FOCUS_VIEW/blink_effect.gd" id="8_b1n4x"]
 [ext_resource type="Script" path="res://02_FOCUS_VIEW/update_focus.gd" id="8_yrrej"]
-[ext_resource type="Texture2D" uid="uid://dhphjbohctlu7" path="res://13_TOOLS_UI/Eyes/eyes_img.png" id="9_bheeb"]
+[ext_resource type="Script" path="res://02_FOCUS_VIEW/check_focus_count.gd" id="9_h4ctn"]
 [ext_resource type="Script" path="res://02_FOCUS_VIEW/Cam_target.gd" id="9_or37v"]
+[ext_resource type="Texture2D" uid="uid://dafg2qvpi6wmk" path="res://13_TOOLS_UI/Loader_circle/Loader_circle.png" id="10_s3pi3"]
 [ext_resource type="Shader" uid="uid://clx3d2k1ngnqc" path="res://02_FOCUS_VIEW/Blink_effect_sh.tres" id="12_r5m8x"]
 
 [sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_y363p"]
@@ -335,6 +336,9 @@ Camera_head = NodePath("../Viewport/head")
 [node name="Blink_effect" type="Node" parent="."]
 script = ExtResource("8_b1n4x")
 
+[node name="Check_focus_count" type="Node" parent="."]
+script = ExtResource("9_h4ctn")
+
 [node name="BACKDROP_FOCUS" type="ColorRect" parent="."]
 visible = false
 material = SubResource("ShaderMaterial_v0203")
@@ -379,7 +383,6 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="TextureRect" type="TextureRect" parent="Viewport"]
-visible = false
 custom_minimum_size = Vector2(10, 10)
 anchors_preset = 8
 anchor_left = 0.5
@@ -392,7 +395,7 @@ offset_right = 7.5
 offset_bottom = 7.5
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("9_bheeb")
+texture = ExtResource("10_s3pi3")
 expand_mode = 1
 
 [node name="head" type="Node3D" parent="Viewport"]

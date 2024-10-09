@@ -3,11 +3,9 @@ extends Node
 
 @export var camera_3d_follow : Camera3D 
 @export var cam_target: Node3D 
-
-
 @export var Camera3D_Main_Desk : Camera3D
 @export var camera_3d_main_Map: Camera3D 
-
+@export var camera_3d_main_Book: Camera3D 
 var offset
 var offset_rotation
 var target_rotation
@@ -22,9 +20,7 @@ func _ready() -> void:
 	
 func _process(delta: float) -> void:
 	
-	
 
-	
 	if _global_datas.camera_state_index == 0:
 		camera_3d_follow.global_position  = lerp(camera_3d_follow.global_position, Camera3D_Main_Desk.global_position , 3.0 * delta)	
 		camera_3d_follow.rotation_degrees = lerp(camera_3d_follow.rotation_degrees, Camera3D_Main_Desk.rotation_degrees, 3.0 * delta)
@@ -34,7 +30,10 @@ func _process(delta: float) -> void:
 		camera_3d_follow.global_position  = lerp(camera_3d_follow.global_position, cam_target.global_position + offset , 3.0 * delta)	
 		camera_3d_follow.rotation_degrees = lerp(camera_3d_follow.rotation_degrees, target_rotation + cam_target.rotation_degrees, 3.0 * delta)
 	
-
+	if _global_datas.camera_state_index == 2:
+		camera_3d_follow.global_position  = lerp(camera_3d_follow.global_position, camera_3d_main_Book.global_position , 3.0 * delta)	
+		camera_3d_follow.rotation_degrees = lerp(camera_3d_follow.rotation_degrees, camera_3d_main_Book.rotation_degrees, 3.0 * delta)
+			
 func rotation_angle(delta):
 
 	#x

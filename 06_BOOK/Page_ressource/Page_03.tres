@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="book_page" load_steps=3 format=3 uid="uid://305t0o03tehu"]
+
+[ext_resource type="Script" path="res://06_BOOK/Page_ressource/book_class.gd" id="1_just4"]
+[ext_resource type="PackedScene" uid="uid://cfm6sxydm88tm" path="res://06_BOOK/Book/Page/Page_2d/Scanner_oddity_page.tscn" id="1_rtth2"]
+
+[resource]
+script = ExtResource("1_just4")
+book_page_title = "set page name"
+pages = ExtResource("1_rtth2")
+page_is_solved = false

@@ -18,7 +18,7 @@ func _check_raycast():
 	var utility = GameUtility.new()
 	var target_ui = $"../Viewport/target_ui".global_position
 	#var mouse_position = get_viewport().get_mouse_position()
-	var raycast = utility.get_raycast_target(target_ui,Camera)
+	var raycast = utility.get_raycast_target(target_ui,Camera,1)
 	
 	if raycast:
 		#print(raycast)

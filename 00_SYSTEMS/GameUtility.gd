@@ -43,14 +43,14 @@ func get_all_render(scene)-> Array:
 
 
 
-func get_raycast_target(targetPos : Vector2, Camera : Camera3D) -> Dictionary: 
+func get_raycast_target(targetPos : Vector2, Camera : Camera3D, mask : int) -> Dictionary: 
 	
 	var rayLengh = 250.0
 	var from = Camera.project_ray_origin(targetPos)
 	var to = from + Camera.project_ray_normal(targetPos) * rayLengh
 	var space = Camera.get_world_3d().direct_space_state
 	var rayQuery = PhysicsRayQueryParameters3D.new()
-	rayQuery.collision_mask = 1
+	rayQuery.collision_mask = mask
 	rayQuery.from = from
 	rayQuery.to = to
 	rayQuery.collide_with_areas = false

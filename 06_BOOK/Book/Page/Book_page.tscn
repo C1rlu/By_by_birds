@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://db6k1p6qd826g"]
+
+[ext_resource type="Script" path="res://06_BOOK/Book/Page/Book_page_set.gd" id="1_oto3u"]
+[ext_resource type="PackedScene" uid="uid://dmqvkk6j7g1ri" path="res://06_BOOK/Book/Page/Page_2d/page_table.tscn" id="3_vseyv"]
+[ext_resource type="PackedScene" uid="uid://cotyiiewaqqpu" path="res://06_BOOK/Book/Page/Page_2d/page_who_i_m.tscn" id="3_ybf1m"]
+[ext_resource type="PackedScene" uid="uid://olyejd2flb2q" path="res://06_BOOK/Book/Page/Page_2d/page_Maurice.tscn" id="4_oy232"]
+[ext_resource type="PackedScene" uid="uid://cfm6sxydm88tm" path="res://06_BOOK/Book/Page/Page_2d/Scanner_oddity_page.tscn" id="5_rg3ml"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_wygim"]
+viewport_path = NodePath("SubViewport")
+
+[node name="Book_page" type="Node3D"]
+script = ExtResource("1_oto3u")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.25
+one_shot = true
+
+[node name="Init_timer" type="Timer" parent="."]
+wait_time = 0.25
+one_shot = true
+
+[node name="Render_text" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0.366, 0)
+layers = 2
+texture = SubResource("ViewportTexture_wygim")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+disable_3d = true
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(2000, 1200)
+render_target_update_mode = 4
+
+[node name="pages" parent="SubViewport" instance=ExtResource("3_ybf1m")]
+visible = false
+
+[node name="Page_01" parent="SubViewport" instance=ExtResource("3_vseyv")]
+visible = false
+
+[node name="Page_02" parent="SubViewport" instance=ExtResource("4_oy232")]
+
+[node name="Page_03" parent="SubViewport" instance=ExtResource("5_rg3ml")]
+visible = false
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Init_timer" to="." method="_on_init_timer_timeout"]

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="book_page" load_steps=3 format=3 uid="uid://cx3ih4ggo2j2x"]
+
+[ext_resource type="Script" path="res://06_BOOK/Page_ressource/book_class.gd" id="1_33e5p"]
+[ext_resource type="PackedScene" uid="uid://olyejd2flb2q" path="res://06_BOOK/Book/Page/Page_2d/page_Maurice.tscn" id="1_42btb"]
+
+[resource]
+script = ExtResource("1_33e5p")
+book_page_title = "set page name"
+pages = ExtResource("1_42btb")
+page_is_solved = false

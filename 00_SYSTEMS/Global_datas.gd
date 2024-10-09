@@ -64,6 +64,16 @@ signal _active_this_npc_zone(condition : bool)
 signal _in_focus_zone(condition : bool)
 signal _in_desk_zone(condition : bool)
 
+
+#Book globals
+signal open_book(condition : bool)
+signal open_book_board(condition : bool)
+signal focus_on_board_book(condition:bool)
+var all_book_page_data : Array[book_page]
+signal turn_left
+signal turn_right
+var legend_page_index : int
+
 #------ focus view ---
 var transition_target : Vector3
 signal set_instant_focus(camera : Camera3D)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://cein0q2eirkay"]
+[gd_scene load_steps=28 format=3 uid="uid://cein0q2eirkay"]
 
 [ext_resource type="Script" path="res://05_DESK_MAP/board_ini.gd" id="1_0e632"]
 [ext_resource type="Script" path="res://13_TOOLS_UI/set_Resolution_viewports.gd" id="1_gf4dn"]
@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://dr73p5vs0sixe" path="res://05_DESK_MAP/board_scene.tscn" id="2_6c571"]
 [ext_resource type="Script" path="res://05_DESK_MAP/follow_camera_map.gd" id="4_dn66i"]
 [ext_resource type="Script" path="res://05_DESK_MAP/Desk_Camera_state.gd" id="5_0n8j1"]
+[ext_resource type="Script" path="res://05_DESK_MAP/board_raycast_click.gd" id="6_5qb7m"]
+[ext_resource type="Script" path="res://05_DESK_MAP/on_book.gd" id="7_n73fv"]
 [ext_resource type="Shader" uid="uid://7nanp4dqf4uc" path="res://05_DESK_MAP/00_SHADER/04_board_light.tres" id="41_prh4x"]
 
 [sub_resource type="Shader" id="Shader_8ugrd"]
@@ -163,22 +165,24 @@ script = ExtResource("1_t26m6")
 [node name="Board_ini" type="Node" parent="."]
 script = ExtResource("1_0e632")
 
-[node name="Follow_camera_map" type="Node" parent="." node_paths=PackedStringArray("camera_3d_follow", "cam_target", "Camera3D_Main_Desk", "camera_3d_main_Map")]
+[node name="Follow_camera_map" type="Node" parent="." node_paths=PackedStringArray("camera_3d_follow", "cam_target", "Camera3D_Main_Desk", "camera_3d_main_Map", "camera_3d_main_Book")]
 script = ExtResource("4_dn66i")
 camera_3d_follow = NodePath("../SubViewport/Camera3D_follow")
 cam_target = NodePath("../SubViewport/CamTarget")
 Camera3D_Main_Desk = NodePath("../Camera3D_Main_Desk")
 camera_3d_main_Map = NodePath("../Camera3D_Main_Map")
+camera_3d_main_Book = NodePath("../Camera3D_Main_Book")
 
 [node name="Desk_Camera_state" type="Node" parent="."]
 script = ExtResource("5_0n8j1")
 
-[node name="Camera_xray" type="Camera3D" parent="."]
-transform = Transform3D(0.994881, 0.0700724, -0.072816, 0, 0.720551, 0.693402, 0.101056, -0.689852, 0.716862, -0.118, 0.776, 0.937)
-visible = false
-cull_mask = 0
-fov = 40.0
-far = 4.25
+[node name="Board_Raycast_click" type="Node" parent="." node_paths=PackedStringArray("Render", "Camera")]
+script = ExtResource("6_5qb7m")
+Render = NodePath("../RENDER")
+Camera = NodePath("../SubViewport/Camera3D_follow")
+
+[node name="On_Book" type="Node" parent="."]
+script = ExtResource("7_n73fv")
 
 [node name="Camera3D_Main_Desk" type="Camera3D" parent="."]
 transform = Transform3D(0.992546, 0.052658, -0.109906, 0, 0.901832, 0.432086, 0.121869, -0.428865, 0.89511, -0.17, 0.735, 1.245)
@@ -196,17 +200,22 @@ current = true
 fov = 60.0
 far = 10.0
 
+[node name="Camera3D_Main_Book" type="Camera3D" parent="."]
+transform = Transform3D(0.983571, 0.178628, -0.0260591, 0, 0.144356, 0.989526, 0.180519, -0.973269, 0.141985, 0.183, 0.18, 0.384)
+visible = false
+cull_mask = 3
+current = true
+fov = 60.0
+far = 10.0
+
 [node name="SubViewport" type="SubViewport" parent="."]
 own_world_3d = true
 size = Vector2i(1920, 1080)
 
 [node name="Camera3D_follow" type="Camera3D" parent="SubViewport"]
 transform = Transform3D(0.992546, 0.0761977, -0.0951103, 0, 0.78043, 0.625243, 0.121869, -0.620582, 0.774613, -0.118, 0.776, 0.937)
-visible = false
 cull_mask = 3
-current = true
 fov = 60.0
-far = 10.0
 
 [node name="SHARP_test" type="ColorRect" parent="SubViewport"]
 visible = false
@@ -216,8 +225,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="Board_scene" parent="SubViewport" instance=ExtResource("2_6c571")]
 
 [node name="CamTarget" type="Node3D" parent="SubViewport"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.125)
@@ -240,6 +247,24 @@ transform = Transform3D(0.0176783, 0, 0, 0, -7.72744e-10, 0.0176783, 0, -0.01767
 layers = 2
 mesh = SubResource("PrismMesh_2j3nk")
 surface_material_override/0 = SubResource("StandardMaterial3D_yjabd")
+
+[node name="Raycast" type="Node3D" parent="SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.125)
+visible = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewport/Raycast"]
+transform = Transform3D(0.0354637, 0, 0, 0, 0.0354637, 0, 0, 0, 0.0354637, 0, 0, 0)
+layers = 2
+mesh = SubResource("SphereMesh_ycnm1")
+surface_material_override/0 = SubResource("StandardMaterial3D_ifca2")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="SubViewport/Raycast"]
+transform = Transform3D(0.0176783, 0, 0, 0, -7.72744e-10, 0.0176783, 0, -0.0176783, -7.72744e-10, 0, 0.017216, 0)
+layers = 2
+mesh = SubResource("PrismMesh_2j3nk")
+surface_material_override/0 = SubResource("StandardMaterial3D_yjabd")
+
+[node name="Board_scene" parent="SubViewport" instance=ExtResource("2_6c571")]
 
 [node name="RENDER" type="TextureRect" parent="."]
 visible = false

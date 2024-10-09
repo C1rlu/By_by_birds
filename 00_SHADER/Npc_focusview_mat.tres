@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://b7msfww1upji"]
+
+[ext_resource type="Material" uid="uid://crn20g5frvtli" path="res://00_SHADER/NextPass_selectEffect.tres" id="1_iugx4"]
+
+[resource]
+resource_local_to_scene = true
+next_pass = ExtResource("1_iugx4")
+shading_mode = 0
+albedo_color = Color(0.435192, 0.435192, 0.435192, 1)

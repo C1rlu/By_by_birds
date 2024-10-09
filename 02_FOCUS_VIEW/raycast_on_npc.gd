@@ -21,10 +21,13 @@ func _check_raycast():
 	var raycast = utility.get_raycast_target(mouse_position,Camera)
 	
 	if raycast:
-		print(raycast)
+		#print(raycast)
 		var hit_focus = raycast.collider.get_node_or_null("hit_focus")
 		if hit_focus:
-			print("hit")
+			#print("hit")
 			_global_datas.transition_target = raycast.position		
 			hit_focus._set_focus()
-			
+		
+		var hit_focus_npc = raycast.collider.get_node_or_null("npc_revealed")
+		if hit_focus_npc:
+			hit_focus_npc._npc_revealed()

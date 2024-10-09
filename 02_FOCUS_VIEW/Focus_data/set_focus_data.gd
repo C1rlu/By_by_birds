@@ -5,3 +5,4 @@ extends Node
 
 func _ready() -> void:
 	_global_datas.set_instant_focus.emit(_first_camera)
+	

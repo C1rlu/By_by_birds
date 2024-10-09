@@ -8,7 +8,7 @@ var previous_cam : Camera3D
 func _ready() -> void:
 	
 	_global_datas.set_new_focus.connect(_set_new_focus)
-	_global_datas.set_instant_focus.connect(set_instant_focus)
+	_global_datas.set_instant_focus.connect(_set_new_focus)
 
 
 func set_instant_focus(n_camera : Camera3D):

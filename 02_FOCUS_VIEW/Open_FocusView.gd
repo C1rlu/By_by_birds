@@ -7,7 +7,7 @@ extends Node
 func _ready():
 
 	_global_datas._open_focus_view.connect(_open)
-	#_open(false)
+	_open(false)
 
 func _open(condition : bool):
 	
@@ -15,10 +15,10 @@ func _open(condition : bool):
 	Render.visible = condition
 	Backdrop.visible = condition	
 	
-	if condition:
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	else:
-		Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)	
+	#if condition:
+		#Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	#else:
+		#Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)	
 
 
 

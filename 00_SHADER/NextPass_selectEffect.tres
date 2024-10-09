@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://crn20g5frvtli"]
+
+[ext_resource type="Shader" uid="uid://b2vtcihbo73bk" path="res://00_SHADER/Next_pass_selectEffect.tres" id="1_2csps"]
+
+[resource]
+resource_local_to_scene = true
+render_priority = 1
+shader = ExtResource("1_2csps")
+shader_parameter/Effect_color = Color(0.84, 0.68222, 0.4284, 1)
+shader_parameter/Opacity = 0.0

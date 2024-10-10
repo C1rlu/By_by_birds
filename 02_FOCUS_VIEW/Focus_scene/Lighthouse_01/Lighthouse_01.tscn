@@ -950,18 +950,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.78463, 0)
 visible = false
 occluder = SubResource("BoxOccluder3D_wsmyo")
 
-[node name="cam_01" type="Camera3D" parent="."]
-transform = Transform3D(0.501511, 0.41679, -0.758138, 0, 0.876306, 0.481754, 0.865151, -0.241605, 0.439477, -5.877, 12.487, 3.139)
-fov = 50.0
-
-[node name="cam_02" type="Camera3D" parent="."]
-transform = Transform3D(0.116671, 0.469324, 0.875285, 0, 0.881303, -0.472551, -0.993171, 0.0551329, 0.102822, 6.96837, 3.097, -0.488071)
-fov = 50.0
-
-[node name="cam_03" type="Camera3D" parent="."]
-transform = Transform3D(-0.955278, 0.0760363, -0.285765, 0, 0.966376, 0.257133, 0.295708, 0.245633, -0.923158, -0.914, 5.894, -5.55)
-fov = 50.0
-
 [node name="NPC_04" parent="." instance=ExtResource("6_x88fn")]
 transform = Transform3D(0.357513, 0, 0, 0, 0.357513, 0, 0, 0, 0.357513, 0.224877, 9.91077, -0.841621)
 
@@ -1016,6 +1004,22 @@ transform = Transform3D(-1, 0, -1.89394e-07, 0, 1, 0, 1.89394e-07, 0, -1, 0, 0.0
 layers = 32768
 mesh = SubResource("ArrayMesh_jh6ks")
 surface_material_override/0 = SubResource("ShaderMaterial_xc2cc")
+
+[node name="cam_01" type="Camera3D" parent="."]
+transform = Transform3D(0.501511, 0.41679, -0.758138, 0, 0.876306, 0.481754, 0.865151, -0.241605, 0.439477, -5.877, 12.487, 3.139)
+fov = 50.0
+
+[node name="cam_02" type="Camera3D" parent="."]
+transform = Transform3D(0.116671, 0.469324, 0.875284, 0, 0.881303, -0.472551, -0.993171, 0.055133, 0.102822, 6.96837, 3.097, -0.488071)
+fov = 50.0
+
+[node name="cam_03" type="Camera3D" parent="."]
+transform = Transform3D(-0.955278, 0.0760362, -0.285765, 0, 0.966376, 0.257133, 0.295708, 0.245633, -0.923158, -0.914, 5.894, -5.55)
+fov = 50.0
+
+[node name="cam_04" type="Camera3D" parent="."]
+transform = Transform3D(-0.0732382, -0.784822, 0.615379, 0, 0.617036, 0.786935, -0.997314, 0.0576337, -0.0451906, 1.841, 11.701, -0.73)
+fov = 50.0
 
 [node name="Far_birds" parent="." instance=ExtResource("8_523pb")]
 transform = Transform3D(-6.58635e-09, -0.106546, -0.106546, 0, 0.106546, -0.106546, 0.150678, -4.65725e-09, -4.65725e-09, 7.4671, 2.99351, -0.363822)
@@ -1101,6 +1105,34 @@ _focus_camera = NodePath("../../../cam_01")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Far_birds2/StaticBody3D"]
 shape = SubResource("SphereShape3D_tw7er")
 
+[node name="Far_birds4" parent="." instance=ExtResource("8_523pb")]
+transform = Transform3D(0.0621193, 0.0178061, 0.136117, 0.0883289, 0.109185, -0.054593, -0.105086, 0.1023, 0.0345752, 2.363, 10.66, -0.979)
+
+[node name="Cube" parent="Far_birds4" index="0"]
+layers = 32800
+surface_material_override/0 = SubResource("ShaderMaterial_jaqoj")
+
+[node name="Cube_001" parent="Far_birds4" index="1"]
+layers = 32800
+surface_material_override/0 = SubResource("ShaderMaterial_jaqoj")
+
+[node name="Cube_002" parent="Far_birds4" index="2"]
+layers = 32800
+surface_material_override/0 = SubResource("ShaderMaterial_jaqoj")
+
+[node name="bec" parent="Far_birds4" index="3"]
+layers = 32800
+surface_material_override/0 = SubResource("ShaderMaterial_e5dsd")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Far_birds4"]
+
+[node name="hit_focus" type="Node" parent="Far_birds4/StaticBody3D" node_paths=PackedStringArray("_focus_camera")]
+script = ExtResource("7_e66f2")
+_focus_camera = NodePath("../../../cam_04")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Far_birds4/StaticBody3D"]
+shape = SubResource("SphereShape3D_tw7er")
+
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1.93038, 0, 0, 0, 1.93038, 0, 0, 0, 1.93038, 0.358427, 4.22278, -1.78949)
 layers = 32
@@ -1179,3 +1211,4 @@ surface_material_override/0 = SubResource("ShaderMaterial_o45v5")
 [editable path="Far_birds"]
 [editable path="Far_birds3"]
 [editable path="Far_birds2"]
+[editable path="Far_birds4"]

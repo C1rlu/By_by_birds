@@ -3,12 +3,14 @@ extends Node
 
 @export var Camera_root : Camera3D
 @export var Camera_head : Node3D
+
+
 var previous_cam : Camera3D
 
 func _ready() -> void:
 	
 	_global_datas.set_new_focus.connect(_set_new_focus)
-	_global_datas.set_instant_focus.connect(_set_new_focus)
+	_global_datas.set_instant_focus.connect(set_instant_focus)
 
 
 func set_instant_focus(n_camera : Camera3D):
@@ -20,10 +22,12 @@ func set_instant_focus(n_camera : Camera3D):
 	Camera_head.global_position = n_camera.global_position
 	Camera_head.global_rotation_degrees = n_camera.global_rotation_degrees
 	
+
+	
 	_global_datas._end_of_transition.emit()
 	
 
-		
+				
 	
 func _set_new_focus(n_Camera : Camera3D):
 

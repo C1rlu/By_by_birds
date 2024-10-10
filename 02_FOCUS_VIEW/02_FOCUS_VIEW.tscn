@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://h2wepwtms1pe"]
+[gd_scene load_steps=40 format=3 uid="uid://h2wepwtms1pe"]
 
 [ext_resource type="Script" path="res://13_TOOLS_UI/set_Resolution_viewports.gd" id="1_3ana1"]
 [ext_resource type="Script" path="res://02_FOCUS_VIEW/Open_FocusView.gd" id="1_ttndn"]
@@ -9,9 +9,9 @@
 [ext_resource type="Script" path="res://02_FOCUS_VIEW/blink_effect.gd" id="8_b1n4x"]
 [ext_resource type="Script" path="res://02_FOCUS_VIEW/update_focus.gd" id="8_yrrej"]
 [ext_resource type="Script" path="res://02_FOCUS_VIEW/check_focus_count.gd" id="9_h4ctn"]
-[ext_resource type="Script" path="res://02_FOCUS_VIEW/Cam_target.gd" id="9_or37v"]
 [ext_resource type="Texture2D" uid="uid://dafg2qvpi6wmk" path="res://13_TOOLS_UI/Loader_circle/Loader_circle.png" id="10_s3pi3"]
-[ext_resource type="Shader" uid="uid://clx3d2k1ngnqc" path="res://02_FOCUS_VIEW/Blink_effect_sh.tres" id="12_r5m8x"]
+[ext_resource type="PackedScene" uid="uid://i7vwntowo6jb" path="res://02_FOCUS_VIEW/Focus_scene/Lighthouse_01/Lighthouse_01.tscn" id="11_rwa6u"]
+[ext_resource type="Material" uid="uid://70ptloj6mcfn" path="res://02_FOCUS_VIEW/02_FOCUS_VIEW_REnder.tres" id="12_kf0b6"]
 
 [sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_y363p"]
 source = 5
@@ -149,13 +149,7 @@ nodes/fragment/connections = PackedInt32Array(9, 0, 0, 0, 17, 0, 18, 0, 18, 0, 1
 shader = SubResource("VisualShader_rthcl")
 shader_parameter/Opacity = 1.0
 
-[sub_resource type="SphereMesh" id="SphereMesh_837u0"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ihqcr"]
-shader = ExtResource("12_r5m8x")
-shader_parameter/Opacity = 1.0
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_if4r2"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_pwjd2"]
 viewport_path = NodePath("Viewport")
 
 [sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_ujvxp"]
@@ -296,31 +290,38 @@ shader_parameter/Opacity = 0.056
 
 [node name="02_FOCUS_VIEW" type="Node"]
 
-[node name="Open_FocusView" type="Node" parent="." node_paths=PackedStringArray("Render", "Backdrop", "Loader")]
+[node name="Open_FocusView" type="Node" parent="." node_paths=PackedStringArray("Render", "Backdrop", "Loader", "Loader_light", "Loader_light_warm")]
 script = ExtResource("1_ttndn")
 Render = NodePath("../Render")
 Backdrop = NodePath("../BACKDROP_FOCUS")
 Loader = NodePath("../Viewport/Loader")
+Loader_light = NodePath("../Viewport_light/Loader_light")
+Loader_light_warm = NodePath("../Viewport_warm/Loader_light_warm")
 
 [node name="set_Resolution" type="Node" parent="." node_paths=PackedStringArray("viewports")]
 script = ExtResource("1_3ana1")
-viewports = [NodePath("../Viewport")]
+viewports = [NodePath("../Viewport"), NodePath("../Viewport_light"), NodePath("../Viewport_warm")]
 
 [node name="Zoom" type="Node" parent="." node_paths=PackedStringArray("Camera", "Render")]
 script = ExtResource("2_hd46p")
 Camera = NodePath("../Viewport/head/CAM")
 Render = NodePath("../Render")
 
-[node name="Look_at" type="Node" parent="." node_paths=PackedStringArray("Render", "Camera_head", "Camera")]
+[node name="Look_at" type="Node" parent="." node_paths=PackedStringArray("Render", "Camera_head", "Camera", "Camera_light")]
 script = ExtResource("5_8dylc")
 Render = NodePath("../Render")
 Camera_head = NodePath("../Viewport/head")
 Camera = NodePath("../Viewport/head/CAM")
+Camera_light = NodePath("../Viewport_light/CAM_light")
 
-[node name="Rotate_automatique" type="Node" parent="." node_paths=PackedStringArray("Render", "cam_root")]
+[node name="Rotate_automatique_camFollow" type="Node" parent="." node_paths=PackedStringArray("Render", "rotation_root", "rotation_root_light", "Cam", "Cam_light", "Cam_light_warm")]
 script = ExtResource("6_l0ewy")
 Render = NodePath("../Render")
-cam_root = NodePath("../Viewport/Loader")
+rotation_root = NodePath("../Viewport/Loader")
+rotation_root_light = NodePath("../Viewport_light/Loader_light")
+Cam = NodePath("../Viewport/head/CAM")
+Cam_light = NodePath("../Viewport_light/CAM_light")
+Cam_light_warm = NodePath("../Viewport_warm/CAM_light_warm")
 
 [node name="Raycast_on_npc" type="Node" parent="." node_paths=PackedStringArray("Render", "Camera")]
 script = ExtResource("7_fr4tu")
@@ -354,17 +355,6 @@ own_world_3d = true
 transparent_bg = true
 size = Vector2i(1280, 720)
 
-[node name="Cam_target" type="Node3D" parent="Viewport"]
-script = ExtResource("9_or37v")
-speed = 0.5
-x_limit = Vector2(-0.15, 0.15)
-y_limit = Vector2(-0.15, 0.15)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Viewport/Cam_target"]
-transform = Transform3D(0.0401128, 0, 0, 0, 0.0401128, 0, 0, 0, 0.0401128, 0, 0.0801388, 0)
-layers = 2
-mesh = SubResource("SphereMesh_837u0")
-
 [node name="target_ui" type="ColorRect" parent="Viewport"]
 visible = false
 custom_minimum_size = Vector2(10, 10)
@@ -380,8 +370,58 @@ offset_bottom = 5.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TextureRect" type="TextureRect" parent="Viewport"]
+[node name="head" type="Node3D" parent="Viewport"]
+
+[node name="CAM" type="Camera3D" parent="Viewport/head"]
+cull_mask = 32
+fov = 50.0
+near = 0.01
+far = 100.0
+
+[node name="Loader" type="Node3D" parent="Viewport"]
+
+[node name="Lighthouse02" parent="Viewport/Loader" instance=ExtResource("11_rwa6u")]
+
+[node name="Viewport_light" type="SubViewport" parent="."]
+own_world_3d = true
+transparent_bg = true
+size = Vector2i(1280, 720)
+
+[node name="CAM_light" type="Camera3D" parent="Viewport_light"]
+cull_mask = 32768
+fov = 50.0
+far = 100.0
+
+[node name="Loader_light" type="Node3D" parent="Viewport_light"]
+
+[node name="Lighthouse02" parent="Viewport_light/Loader_light" instance=ExtResource("11_rwa6u")]
+
+[node name="Viewport_warm" type="SubViewport" parent="."]
+own_world_3d = true
+transparent_bg = true
+size = Vector2i(1280, 720)
+
+[node name="CAM_light_warm" type="Camera3D" parent="Viewport_warm"]
+cull_mask = 65536
+fov = 50.0
+far = 100.0
+
+[node name="Loader_light_warm" type="Node3D" parent="Viewport_warm"]
+
+[node name="Lighthouse02" parent="Viewport_warm/Loader_light_warm" instance=ExtResource("11_rwa6u")]
+
+[node name="Render" type="TextureRect" parent="."]
+material = ExtResource("12_kf0b6")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("ViewportTexture_pwjd2")
+
+[node name="TextureRect" type="TextureRect" parent="Render"]
 custom_minimum_size = Vector2(10, 10)
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -395,25 +435,6 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("10_s3pi3")
 expand_mode = 1
-
-[node name="head" type="Node3D" parent="Viewport"]
-
-[node name="CAM" type="Camera3D" parent="Viewport/head"]
-cull_mask = 1
-fov = 50.0
-near = 0.01
-far = 100.0
-
-[node name="Loader" type="Node3D" parent="Viewport"]
-
-[node name="Render" type="TextureRect" parent="."]
-material = SubResource("ShaderMaterial_ihqcr")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = SubResource("ViewportTexture_if4r2")
 
 [node name="DOTS_EFFECT" type="ColorRect" parent="."]
 visible = false

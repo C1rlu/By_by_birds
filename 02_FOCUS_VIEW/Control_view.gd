@@ -1,6 +1,7 @@
 extends Node
 
 @export var Camera :Camera3D
+
 @export var Render : TextureRect
 
 func _ready():
@@ -29,6 +30,7 @@ func _zoom_in():
 	var t
 	t = create_tween()
 	t.tween_property(Camera,"fov",target,0.1)
+
 	_global_datas.look_at_sensivity = 0.05
 	
 func _zoom_out():	

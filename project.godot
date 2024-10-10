@@ -190,11 +190,13 @@ echap={
 
 3d_render/layer_1="MainScene"
 3d_render/layer_4="Sonar_mask"
-3d_render/layer_6="Npc"
+3d_render/layer_6="Focus_cam"
 3d_render/layer_7="GRID"
 3d_render/layer_11="Foam"
 3d_render/layer_12="Foam_02"
 3d_render/layer_14="up_sky"
+3d_render/layer_16="Focus_cam_light"
+3d_render/layer_17="Focus_cam_light_warm"
 3d_render/layer_19="tool_ui"
 
 [rendering]

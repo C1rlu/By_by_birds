@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dfl8ypxntwour"]
+[gd_scene load_steps=6 format=3 uid="uid://dfl8ypxntwour"]
 
 [ext_resource type="Material" uid="uid://b7msfww1upji" path="res://00_SHADER/Npc_focusview_mat.tres" id="1_jsitv"]
 [ext_resource type="Script" path="res://02_FOCUS_VIEW/npc_revealed.gd" id="2_ejc7x"]
+[ext_resource type="Material" uid="uid://yjoyk6fvrm6q" path="res://00_SHADER/No_light_surface_mat.tres" id="3_2rvdd"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_0rwhf"]
 resource_local_to_scene = true
@@ -12,6 +13,7 @@ data = PackedVector3Array(0, 1, 0, 0, 1, 0, 0, 0.9924, -0.0868, 0, 1, 0, -0.0085
 [node name="Npc_prefab" type="Node3D"]
 
 [node name="NPC_03" type="MeshInstance3D" parent="."]
+layers = 32
 mesh = SubResource("CapsuleMesh_0rwhf")
 surface_material_override/0 = ExtResource("1_jsitv")
 
@@ -22,3 +24,8 @@ script = ExtResource("2_ejc7x")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NPC_03/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_alulo")
+
+[node name="NPC_04" type="MeshInstance3D" parent="."]
+layers = 32768
+mesh = SubResource("CapsuleMesh_0rwhf")
+surface_material_override/0 = ExtResource("3_2rvdd")

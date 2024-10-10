@@ -1,0 +1,12 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://70ptloj6mcfn"]
+
+[ext_resource type="Shader" uid="uid://clx3d2k1ngnqc" path="res://02_FOCUS_VIEW/Blink_effect_sh.tres" id="1_bqbix"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_htsoc"]
+viewport_path = NodePath("Viewport")
+
+[resource]
+resource_local_to_scene = true
+shader = ExtResource("1_bqbix")
+shader_parameter/Shadow_color = Color(0, 0, 0, 1)
+shader_parameter/Flat_viewport = SubResource("ViewportTexture_htsoc")

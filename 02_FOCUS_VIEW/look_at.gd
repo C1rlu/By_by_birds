@@ -6,6 +6,8 @@ extends Node
 @export var Camera_head : Node3D
 @export var Camera : Camera3D
 
+@export var Camera_head_light : Node3D
+@export var Camera_light : Camera3D
 
 var disable = true
 var previous_camera : Camera3D
@@ -20,8 +22,7 @@ func _reset_cam():
 						
 func _input(event: InputEvent) -> void:
 	
-	#if disable:
-		#return
+
 	if !Render.visible:
 		return
 		
@@ -31,4 +32,5 @@ func _input(event: InputEvent) -> void:
 		Camera.rotate_x(deg_to_rad(-event.relative.y * _global_datas.look_at_sensivity))
 		
 		Camera.rotation.x = clamp(Camera.rotation.x ,deg_to_rad(-60.0),deg_to_rad(90.0))
+	
 	

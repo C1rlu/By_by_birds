@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="focus_data" load_steps=3 format=3 uid="uid://c1hblbglrmtn3"]
+
+[ext_resource type="PackedScene" uid="uid://i7vwntowo6jb" path="res://02_FOCUS_VIEW/Focus_scene/Lighthouse_01/Lighthouse_01.tscn" id="1_gvh2g"]
+[ext_resource type="Script" path="res://02_FOCUS_VIEW/Focus_data/Focus_data.gd" id="2_vgoy2"]
+
+[resource]
+script = ExtResource("2_vgoy2")
+focus_scene = ExtResource("1_gvh2g")
+scene_npc_count = 6
+scene_resolved = false

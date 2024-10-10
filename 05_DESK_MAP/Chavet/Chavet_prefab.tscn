@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://dm5d272iur25u"]
+[gd_scene load_steps=14 format=3 uid="uid://dm5d272iur25u"]
 
 [ext_resource type="PackedScene" uid="uid://dgvsf84egy43d" path="res://05_DESK_MAP/Chavet/Chavet_part.blend" id="1_sfss7"]
 [ext_resource type="Script" path="res://05_DESK_MAP/Chavet/Board_focus_zone.gd" id="1_wpfir"]
 [ext_resource type="Shader" uid="uid://bii47ft606xyy" path="res://05_DESK_MAP/00_SHADER/Element_base_sh.tres" id="2_hmx5r"]
 [ext_resource type="Shader" uid="uid://ceec4w3amlx7t" path="res://05_DESK_MAP/00_SHADER/photo_area_legend_sh.tres" id="3_0xh52"]
 [ext_resource type="Script" path="res://05_DESK_MAP/Chavet/show_focus.gd" id="5_13h2f"]
+[ext_resource type="PackedScene" uid="uid://uwg2qc3svu11" path="res://05_DESK_MAP/Photo/photo_area.tscn" id="6_owbyl"]
 
 [sub_resource type="Gradient" id="Gradient_gjjp3"]
 
@@ -31,13 +32,13 @@ shader = ExtResource("3_0xh52")
 shader_parameter/Texture2DParameter = SubResource("ViewportTexture_30sdw")
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_t0175"]
-radius = 0.18968
+radius = 0.254574
 
 [node name="ChavetPrefab" type="Node3D"]
 script = ExtResource("1_wpfir")
 
 [node name="Chavet_part" parent="." instance=ExtResource("1_sfss7")]
-transform = Transform3D(0.334154, 0, 0, 0, 0.334154, 0, 0, 0, 0.334154, 0, 0, 0)
+transform = Transform3D(0.334154, 0, 0, 0, 0.334154, 0, 0, 0, 0.334154, 0, 0.00222581, 0)
 
 [node name="parts" parent="Chavet_part" index="0"]
 transform = Transform3D(0.0283636, 0, 0, 0, 0.0283636, 0, 0, 0, 0.0283636, 0, 0, 0)
@@ -69,7 +70,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Legend_render" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.0310446, 0, 0.000684721, 0, 0.0324362, 0, -0.00207776, 0, 0.0102307, 0.00665449, 0, 0.0167034)
+transform = Transform3D(0.0310446, 0, 0.000684721, 0, 0.0324362, 0, -0.00207776, 0, 0.0102307, 0.00665449, 0.00209458, 0.0167034)
 layers = 2
 mesh = SubResource("PlaneMesh_isgxu")
 surface_material_override/0 = SubResource("ShaderMaterial_bek7t")
@@ -82,7 +83,10 @@ collision_mask = 2
 script = ExtResource("5_13h2f")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.00289233, 0, 0.00956018)
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -0.00573952, 0, 0.0291941)
 shape = SubResource("SphereShape3D_t0175")
+
+[node name="Photo_element_root" parent="." instance=ExtResource("6_owbyl")]
+transform = Transform3D(0.617202, 0, 0, 0, 0.617202, 0, 0, 0, 0.617202, -0.0104065, -0.000450507, 0.0357861)
 
 [editable path="Chavet_part"]

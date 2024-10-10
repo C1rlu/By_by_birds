@@ -29,3 +29,8 @@ shape = SubResource("ConcavePolygonShape3D_alulo")
 layers = 32768
 mesh = SubResource("CapsuleMesh_0rwhf")
 surface_material_override/0 = ExtResource("3_2rvdd")
+
+[node name="NPC_05_warm" type="MeshInstance3D" parent="."]
+layers = 65536
+mesh = SubResource("CapsuleMesh_0rwhf")
+surface_material_override/0 = ExtResource("3_2rvdd")

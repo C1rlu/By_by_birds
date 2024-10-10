@@ -6,11 +6,8 @@ extends Node
 @export var Camera_head : Node3D
 @export var Camera : Camera3D
 
-@export var Camera_head_light : Node3D
-@export var Camera_light : Camera3D
 
-var disable = true
-var previous_camera : Camera3D
+
 func _ready() -> void:	
 
 	_global_datas._end_of_transition.connect(_reset_cam)

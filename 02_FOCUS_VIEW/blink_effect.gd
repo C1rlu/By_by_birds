@@ -9,6 +9,11 @@ func _ready() -> void:
 	
 func _blink_out():
 	
+	if _global_datas.current_focus_data:
+		if _global_datas.current_focus_data.scene_resolved:
+			render.get_material().set_shader_parameter("Opacity",1.0)	
+			return
+	
 	if fade_out:
 		fade_out.kill()
 	

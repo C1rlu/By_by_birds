@@ -7,11 +7,8 @@ extends Node3D
 
 var page_index = 0 
 
-@onready var page_flip_right_root = $book_page/Page_texture/right
-@onready var page_flip_left_root = $book_page/Page_texture/left
-
-
 const PAGE_FLIP_PREFAB = preload("res://06_BOOK/Page_flip/page_flip_right.tscn")
+@onready var page_loader: Node3D = $Page_loader
 
 @onready var timer = $Timer
 var is_turning = false
@@ -28,11 +25,13 @@ var multiple_page_index : int = 0
 
 func _ready():
 
-	_global_datas.all_book_page_data.append_array(list_of_page)
+	
 	_global_datas.turn_left.connect(update_page_left)
 	_global_datas.turn_right.connect(update_page_right)
 
-
+	_global_datas.all_book_page_data.append_array(list_of_page)
+	
+	
 func update_page_right():
 	
 	if is_turning:
@@ -48,8 +47,8 @@ func update_page_right():
 	is_turning = true	
 	timer.start()
 	
-	var _page = PAGE_FLIP_PREFAB.instantiate()
-	page_flip_right_root.add_child(_page)
+	var _page = PAGE_FLIP_PREFAB.instantiate() 
+	page_loader.add_child(_page)
 	_page.turn_page.emit()		
 	_book_page.set_content.emit(page_index)
 	
@@ -69,7 +68,8 @@ func update_page_left():
 	timer.start()
 	
 	var _page = PAGE_FLIP_PREFAB.instantiate()
-	page_flip_left_root.add_child(_page)
+	_page.scale.z = -1
+	page_loader.add_child(_page)
 	_page.turn_page.emit()		
 	
 	_book_page.set_content.emit(page_index)
@@ -101,11 +101,12 @@ func _show_from_index(index):
 		
 	if index > previous_page:
 		var _page = PAGE_FLIP_PREFAB.instantiate()
-		page_flip_right_root.add_child(_page)
+		page_loader.add_child(_page)
 		_page.turn_page.emit()		
 	else :
 		var _page = PAGE_FLIP_PREFAB.instantiate()
-		page_flip_left_root.add_child(_page)
+		_page.scale.z = -1
+		page_loader.add_child(_page)
 		_page.turn_page.emit()	
 
 	previous_page = index
@@ -118,15 +119,6 @@ func multiple_page_left():
 	multiple_page_transition_left.start()	
 	
 		
-func _turn_page_right():
-	update_page_right()
-
-
-
-func turn_page_left():
-	update_page_left()
-
-
 
 func _on_timer_timeout():
 	is_turning = false
@@ -135,9 +127,8 @@ func _on_timer_timeout():
 func _on_multiple_page_transition_timeout():
 	
 	var _page = PAGE_FLIP_PREFAB.instantiate()
-	page_flip_right_root.add_child(_page)
+	page_loader.add_child(_page)
 	_page.turn_page.emit()	
-		
 	multiple_page_index += 1		
 	if multiple_page_index == 3:
 		multiple_page_index = 0
@@ -149,9 +140,9 @@ func _on_multiple_page_transition_timeout():
 func _on_multiple_page_transition_left_timeout():
 	
 	var _page = PAGE_FLIP_PREFAB.instantiate()
-	page_flip_left_root.add_child(_page)
+	page_loader.add_child(_page)
+	_page.scale.z = -1
 	_page.turn_page.emit()	
-		
 	multiple_page_index += 1		
 	if multiple_page_index == 3:
 		multiple_page_index = 0

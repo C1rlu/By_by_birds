@@ -12,6 +12,9 @@ func _ready() -> void:
 	
 func _npc_revealed():
 
+	if _global_datas.current_focus_data:
+		if _global_datas.current_focus_data.scene_resolved:
+			return
 	
 	if !is_revealed:
 		material_pass.set_shader_parameter("Opacity",1.0)

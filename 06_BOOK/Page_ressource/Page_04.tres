@@ -7,4 +7,4 @@
 script = ExtResource("1_33e5p")
 book_page_title = "set page name"
 pages = ExtResource("1_42btb")
-page_is_solved = false
+page_is_solved = true

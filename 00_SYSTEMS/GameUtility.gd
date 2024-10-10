@@ -43,7 +43,7 @@ func get_all_render(scene)-> Array:
 
 
 
-func get_raycast_target(targetPos : Vector2, Camera : Camera3D, mask : int) -> Dictionary: 
+func get_raycast_target(targetPos : Vector2, Camera : Camera3D, mask : int,collide_with_areas : bool,collide_with_bodies : bool) -> Dictionary: 
 	
 	var rayLengh = 250.0
 	var from = Camera.project_ray_origin(targetPos)
@@ -53,8 +53,8 @@ func get_raycast_target(targetPos : Vector2, Camera : Camera3D, mask : int) -> D
 	rayQuery.collision_mask = mask
 	rayQuery.from = from
 	rayQuery.to = to
-	rayQuery.collide_with_areas = false
-	rayQuery.collide_with_bodies = true
+	rayQuery.collide_with_areas = collide_with_areas
+	rayQuery.collide_with_bodies = collide_with_bodies
 	
 	var result = space.intersect_ray(rayQuery)
 

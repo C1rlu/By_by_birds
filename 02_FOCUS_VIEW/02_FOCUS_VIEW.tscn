@@ -1,11 +1,10 @@
-[gd_scene load_steps=43 format=3 uid="uid://h2wepwtms1pe"]
+[gd_scene load_steps=42 format=3 uid="uid://h2wepwtms1pe"]
 
 [ext_resource type="Script" path="res://13_TOOLS_UI/set_Resolution_viewports.gd" id="1_3ana1"]
 [ext_resource type="Script" path="res://02_FOCUS_VIEW/Open_FocusView.gd" id="1_ttndn"]
 [ext_resource type="Script" path="res://02_FOCUS_VIEW/Control_view.gd" id="2_hd46p"]
 [ext_resource type="Script" path="res://02_FOCUS_VIEW/look_at.gd" id="5_8dylc"]
 [ext_resource type="Script" path="res://02_FOCUS_VIEW/rotate_automatique.gd" id="6_l0ewy"]
-[ext_resource type="PackedScene" uid="uid://i7vwntowo6jb" path="res://02_FOCUS_VIEW/Focus_scene/Lighthouse_01/Lighthouse_01.tscn" id="6_rjtd3"]
 [ext_resource type="Script" path="res://02_FOCUS_VIEW/raycast_on_npc.gd" id="7_fr4tu"]
 [ext_resource type="Script" path="res://02_FOCUS_VIEW/blink_effect.gd" id="8_b1n4x"]
 [ext_resource type="Script" path="res://02_FOCUS_VIEW/update_focus.gd" id="8_yrrej"]
@@ -340,7 +339,6 @@ script = ExtResource("8_b1n4x")
 script = ExtResource("9_h4ctn")
 
 [node name="BACKDROP_FOCUS" type="ColorRect" parent="."]
-visible = false
 material = SubResource("ShaderMaterial_v0203")
 clip_contents = true
 anchors_preset = 15
@@ -408,11 +406,7 @@ far = 100.0
 
 [node name="Loader" type="Node3D" parent="Viewport"]
 
-[node name="Lighthouse01" parent="Viewport/Loader" instance=ExtResource("6_rjtd3")]
-transform = Transform3D(0.0127129, 0, 0.017955, 0, 0.022, 0, -0.017955, 0, 0.0127129, 0, 0, 0)
-
 [node name="Render" type="TextureRect" parent="."]
-visible = false
 material = SubResource("ShaderMaterial_ihqcr")
 anchors_preset = 15
 anchor_right = 1.0

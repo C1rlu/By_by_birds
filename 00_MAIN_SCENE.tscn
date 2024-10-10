@@ -100,9 +100,9 @@ script = SubResource("GDScript_gl82p")
 
 [node name="02_MAIN_SCENES" parent="." instance=ExtResource("10_iqa2p")]
 
-[node name="03_FOCUS_VIEW" parent="." instance=ExtResource("6_ekkt3")]
-
 [node name="04_BOARD" parent="." instance=ExtResource("7_vyiug")]
+
+[node name="03_FOCUS_VIEW" parent="." instance=ExtResource("6_ekkt3")]
 
 [node name="06_MAIN_BOOK" parent="." instance=ExtResource("9_f7d6t")]
 

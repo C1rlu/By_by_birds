@@ -210,7 +210,7 @@ far = 10.0
 
 [node name="SubViewport" type="SubViewport" parent="."]
 own_world_3d = true
-size = Vector2i(1920, 1080)
+size = Vector2i(1280, 720)
 
 [node name="Camera3D_follow" type="Camera3D" parent="SubViewport"]
 transform = Transform3D(0.992546, 0.0761977, -0.0951103, 0, 0.78043, 0.625243, 0.121869, -0.620582, 0.774613, -0.118, 0.776, 0.937)

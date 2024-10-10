@@ -37,7 +37,7 @@ func _raycast():
 	
 	var mouse_position = get_viewport().get_mouse_position()
 	var utility = GameUtility.new()
-	var result = utility.get_raycast_target(mouse_position,Camera,1)
+	var result = utility.get_raycast_target(mouse_position,Camera,1,false,true)
 	
 	
 	target_node.position = result.position

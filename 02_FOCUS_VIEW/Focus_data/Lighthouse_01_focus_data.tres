@@ -7,3 +7,4 @@
 script = ExtResource("1_ohtlb")
 focus_scene = ExtResource("1_1gt1g")
 scene_npc_count = 6
+scene_resolved = false

@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=4 uid="uid://dr73p5vs0sixe"]
+[gd_scene load_steps=80 format=4 uid="uid://dr73p5vs0sixe"]
 
 [ext_resource type="Shader" uid="uid://upo0fuo5sqgd" path="res://05_DESK_MAP/00_SHADER/Board_sh.tres" id="1_k1enu"]
 [ext_resource type="Shader" uid="uid://cw0x3o7tvvdcv" path="res://13_TOOLS_UI/Map/Map_board_sh.tres" id="4_4w7uu"]
@@ -15,9 +15,15 @@
 [ext_resource type="Material" uid="uid://bb47xs7crha0s" path="res://00_SHADER/Npc_Shader/Npc_lighter_yellow.tres" id="20_2k521"]
 [ext_resource type="Material" uid="uid://cje3d31ux7y1p" path="res://00_SHADER/Npc_Shader/Npc_medium.tres" id="21_hjagy"]
 [ext_resource type="PackedScene" uid="uid://bi5gcavnclfud" path="res://05_DESK_MAP/Decor/Bell.blend" id="22_4fabq"]
+[ext_resource type="Resource" uid="uid://bmdkj4ktpvfca" path="res://02_FOCUS_VIEW/Focus_data/Lighthouse_01_focus_data.tres" id="23_dyucn"]
 [ext_resource type="PackedScene" uid="uid://bh5a7fhvftxmm" path="res://06_BOOK/Book/Book_Pages_all.tscn" id="25_bb2f2"]
+[ext_resource type="Script" path="res://06_BOOK/Page_ressource/book_class.gd" id="26_2wsl6"]
 [ext_resource type="Shader" uid="uid://8ll6evus625p" path="res://05_DESK_MAP/00_SHADER/Gradient_surface.tres" id="26_bw6mp"]
 [ext_resource type="Script" path="res://05_DESK_MAP/open_book_board.gd" id="26_l0f88"]
+[ext_resource type="Resource" uid="uid://dkhdcuflp8dv3" path="res://06_BOOK/Page_ressource/Page_01.tres" id="27_63j78"]
+[ext_resource type="Resource" uid="uid://3vhuoia0jfuv" path="res://06_BOOK/Page_ressource/Page_02.tres" id="28_r82as"]
+[ext_resource type="Resource" uid="uid://305t0o03tehu" path="res://06_BOOK/Page_ressource/Page_03.tres" id="29_mqmpn"]
+[ext_resource type="Resource" uid="uid://cx3ih4ggo2j2x" path="res://06_BOOK/Page_ressource/Page_04.tres" id="30_ljil0"]
 [ext_resource type="PackedScene" uid="uid://bn54mxsafetjv" path="res://05_DESK_MAP/Globe/globe_prefab.tscn" id="31_kcpcd"]
 [ext_resource type="PackedScene" uid="uid://cfs26bteyyjw2" path="res://05_DESK_MAP/Apicula_maquette/Apicula_board_prefab.tscn" id="31_qn1oc"]
 [ext_resource type="PackedScene" uid="uid://dkhji76icgbfk" path="res://05_DESK_MAP/Candle/Candle_prefab_02.tscn" id="37_pa00p"]
@@ -471,6 +477,13 @@ shader_parameter/BaseColor = Color(0.265433, 0.165211, 0.0763168, 1)
 shader_parameter/Dither_Opacity = 1.0
 shader_parameter/BaseGradient = ExtResource("18_kjnxk")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b3fp2"]
+render_priority = 0
+shader = ExtResource("17_udv7n")
+shader_parameter/BaseColor = Color(0.607843, 0.529412, 0.443137, 1)
+shader_parameter/Dither_Opacity = 1.0
+shader_parameter/BaseGradient = ExtResource("18_kjnxk")
+
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_0n5oh"]
 points = PackedVector3Array(0.4163, 0.153594, 0.508411, 0.375846, 0.228587, 0.508411, 0.378173, 0.0867274, 0.51684, 0.4163, 0.0780193, 0.508411, 0.4163, 0.153594, -0.536517, -0.403704, 0.228587, 0.508411, 0.375846, 0.228587, -0.536517, -0.403704, -0.000107635, 0.508411, 0.375846, -0.000107635, 0.508411, 0.4163, 0.0780193, -0.536517, -0.357149, 0.105554, -0.546299, -0.403704, 0.228587, -0.536517, -0.403704, -0.000107635, -0.536517, 0.375846, -0.000107635, -0.536517)
 
@@ -501,11 +514,13 @@ mesh = SubResource("PlaneMesh_n7wwh")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("ShaderMaterial_1ngjl")
 
-[node name="Map" type="StaticBody3D" parent="Map/Map_texture"]
+[node name="Map" type="Area3D" parent="Map/Map_texture"]
+transform = Transform3D(1, 3.15544e-30, 0, -3.15544e-30, 1, 0, 0, 0, 1, 0, 0, 0)
 collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Map_texture/Map"]
+transform = Transform3D(1, -3.15544e-30, -7.45058e-09, 3.15544e-30, 1, 2.52435e-29, 7.45058e-09, 0, 1, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_cwrlt")
 
 [node name="Photo_element_root" parent="Map" instance=ExtResource("7_q3ybq")]
@@ -532,7 +547,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.700456, 0.220197, 0.130032)
 transform = Transform3D(-0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, -0.5, 0.478593, 0.00217257, 0.0790945)
 
 [node name="CandlePrefab04" parent="Movable" instance=ExtResource("42_34f14")]
-transform = Transform3D(0.707106, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707106, -0.538598, 0.00217257, -0.111075)
+transform = Transform3D(0.707106, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707106, -0.57211, 0.00217257, -0.0154099)
 
 [node name="Lanterne_prefab" parent="Movable" instance=ExtResource("17_sfmpr")]
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0.405936, 0.0885749, -0.270419)
@@ -895,25 +910,31 @@ layers = 1
 
 [node name="ChavetPrefab" parent="." instance=ExtResource("19_vutls")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00346491, 0.00200001, 0.131942)
+Focus_data = ExtResource("23_dyucn")
 
 [node name="ChavetPrefab2" parent="." instance=ExtResource("19_vutls")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2004, 0.002, 0.052742)
-visible = false
+Focus_data = ExtResource("23_dyucn")
 
 [node name="ChavetPrefab3" parent="." instance=ExtResource("19_vutls")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0880953, 0.002, 0.235405)
+Focus_data = ExtResource("23_dyucn")
 
 [node name="ChavetPrefab4" parent="." instance=ExtResource("19_vutls")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.213817, 0.002, -0.0205161)
+Focus_data = ExtResource("23_dyucn")
 
 [node name="ChavetPrefab5" parent="." instance=ExtResource("19_vutls")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0946041, 0.002, -0.241573)
+Focus_data = ExtResource("23_dyucn")
 
 [node name="ChavetPrefab6" parent="." instance=ExtResource("19_vutls")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0423065, 0.002, 0.035328)
+Focus_data = ExtResource("23_dyucn")
 
 [node name="ChavetPrefab7" parent="." instance=ExtResource("19_vutls")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.194513, 0.002, -0.220976)
+Focus_data = ExtResource("23_dyucn")
 
 [node name="BookPrefab12" parent="." instance=ExtResource("44_8e65i")]
 transform = Transform3D(-0.714813, 0, 0.32137, 0, 0.783733, 0, -0.32137, 0, -0.714813, 0.206323, -2.98023e-08, 0.335885)
@@ -921,20 +942,22 @@ transform = Transform3D(-0.714813, 0, 0.32137, 0, 0.783733, 0, -0.32137, 0, -0.7
 [node name="Book_01" parent="BookPrefab12/Book" index="0"]
 transform = Transform3D(0.259243, 0, 0.0364204, 0, 0.261789, 0, -0.0364204, 0, 0.259243, 0, 0, 0)
 surface_material_override/0 = SubResource("ShaderMaterial_jorhr")
+surface_material_override/1 = SubResource("ShaderMaterial_b3fp2")
 
-[node name="Book" type="StaticBody3D" parent="BookPrefab12/Book/Book_01" index="0"]
+[node name="Book_area" type="Area3D" parent="BookPrefab12/Book/Book_01" index="0"]
 collision_layer = 2
 collision_mask = 2
 
-[node name="Book" type="Node" parent="BookPrefab12/Book/Book_01/Book"]
+[node name="Book" type="Node" parent="BookPrefab12/Book/Book_01/Book_area"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="BookPrefab12/Book/Book_01/Book"]
-transform = Transform3D(1.12819, 0, 0, 0, 1.12819, 0, 0, 0, 1.12819, 0, 0, 0)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BookPrefab12/Book/Book_01/Book_area"]
+transform = Transform3D(1.12819, 0, 0, 0, 1.12819, 0, 0, 0, 1.12819, -0.00357127, 1.62489e-07, 0.00028801)
 shape = SubResource("ConvexPolygonShape3D_0n5oh")
 
 [node name="BOOK" parent="." instance=ExtResource("25_bb2f2")]
 transform = Transform3D(-0.0136706, -0.000429615, -0.0684918, -0.00219385, 0.0698096, -1.37879e-10, 0.068458, 0.00215138, -0.0136773, 0.188323, 0.0115134, 0.361104)
 visible = false
+list_of_page = Array[ExtResource("26_2wsl6")]([ExtResource("27_63j78"), ExtResource("28_r82as"), ExtResource("29_mqmpn"), ExtResource("30_ljil0")])
 
 [node name="Open_book_board" type="Node" parent="."]
 script = ExtResource("26_l0f88")

@@ -79,7 +79,6 @@ var transition_target : Vector3
 signal set_instant_focus(camera : Camera3D)
 signal set_new_focus(camera : Camera3D)
 signal _end_of_transition
-
 var look_at_sensivity : float 
 
 signal subscene_sonar_effect(position : Vector3, color : Color)

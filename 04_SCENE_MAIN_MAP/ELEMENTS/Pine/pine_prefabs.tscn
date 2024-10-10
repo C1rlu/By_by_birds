@@ -83,8 +83,8 @@ shader_parameter/Gradient_base = ExtResource("4_dbhh4")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8hcpt"]
 render_priority = 1
 shader = ExtResource("3_43wfd")
-shader_parameter/ColorParameter = Color(0.0235294, 0.117647, 0.12549, 1)
-shader_parameter/Color = Color(0.282353, 0.290196, 0.160784, 1)
+shader_parameter/ColorParameter = Color(0.13, 0.13, 0.13, 1)
+shader_parameter/Color = Color(0.415686, 0.415686, 0.415686, 1)
 shader_parameter/Dither_strenght = 0.545
 shader_parameter/Gradient_base = ExtResource("4_dbhh4")
 

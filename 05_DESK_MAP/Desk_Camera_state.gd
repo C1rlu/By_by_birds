@@ -13,7 +13,8 @@ func reset_state(condition : bool):
 func _input(event: InputEvent) -> void:
 	
 	
-	
+	if _global_datas.Player_InMenu:
+		return
 	
 	if event.is_action_pressed("right_click"):
 		

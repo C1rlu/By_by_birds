@@ -8,7 +8,10 @@ func _input(event: InputEvent) -> void:
 	
 	if !Render.visible:
 		return	
-	
+		
+	if _global_datas.Player_InMenu:
+		return
+		
 	if event.is_action_pressed("Click"):
 		_check_raycast()
 		

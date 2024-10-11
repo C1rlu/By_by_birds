@@ -32,6 +32,7 @@ signal _in_transition_end
 var current_focus_data : focus_data
 signal check_focus_count
 
+signal _open_choice_panel(condition : bool)
 
 # dialogue signals
 signal in_dialogue_zone(condition : bool)

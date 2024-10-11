@@ -40,16 +40,11 @@ func _update_text(condition : bool, _legend: String):
 
 func type_text(count : int):
 	
-	#timer.start()
-	
+
 	description_text.visible_ratio = 0.0
 	var speed = 0.01 * count
 	_is_typing = true
-	
-	
-	var node = get_tree()
-	if !node:
-		return
+
 	if t:
 		t.kill()
 	t = create_tween()
@@ -62,11 +57,6 @@ func type_text(count : int):
 func change_ration(value : float):
 	description_text.visible_ratio = value
 	
-
-
-
-func _on_timer_timeout():
-	_global_datas._show_object_legend.emit(false,null)
 "
 
 [sub_resource type="GDScript" id="GDScript_1c22g"]

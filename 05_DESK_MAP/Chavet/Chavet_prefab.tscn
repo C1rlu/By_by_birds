@@ -38,7 +38,7 @@ radius = 0.254574
 script = ExtResource("1_wpfir")
 
 [node name="Chavet_part" parent="." instance=ExtResource("1_sfss7")]
-transform = Transform3D(0.334154, 0, 0, 0, 0.334154, 0, 0, 0, 0.334154, 0, 0.00222581, 0)
+transform = Transform3D(0.334154, 0, 0, 0, 0.334154, 0, 0, 0, 0.334154, 0, 0, 0)
 
 [node name="parts" parent="Chavet_part" index="0"]
 transform = Transform3D(0.0283636, 0, 0, 0, 0.0283636, 0, 0, 0, 0.0283636, 0, 0, 0)
@@ -70,7 +70,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Legend_render" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.0310446, 0, 0.000684721, 0, 0.0324362, 0, -0.00207776, 0, 0.0102307, 0.00665449, 0.00209458, 0.0167034)
+transform = Transform3D(0.0310446, 0, 0.000684721, 0, 0.0324362, 0, -0.00207776, 0, 0.0102307, 0.00691795, 0.00209458, 0.0137803)
 layers = 2
 mesh = SubResource("PlaneMesh_isgxu")
 surface_material_override/0 = SubResource("ShaderMaterial_bek7t")
@@ -83,10 +83,11 @@ collision_mask = 2
 script = ExtResource("5_13h2f")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -0.00573952, 0, 0.0291941)
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
 shape = SubResource("SphereShape3D_t0175")
 
 [node name="Photo_element_root" parent="." instance=ExtResource("6_owbyl")]
 transform = Transform3D(0.617202, 0, 0, 0, 0.617202, 0, 0, 0, 0.617202, -0.0104065, -0.000450507, 0.0357861)
+visible = false
 
 [editable path="Chavet_part"]

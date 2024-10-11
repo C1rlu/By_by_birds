@@ -201,8 +201,7 @@ fov = 60.0
 far = 10.0
 
 [node name="Camera3D_Main_Book" type="Camera3D" parent="."]
-transform = Transform3D(0.983571, 0.178628, -0.0260591, 0, 0.144356, 0.989526, 0.180519, -0.973269, 0.141985, 0.183, 0.18, 0.384)
-visible = false
+transform = Transform3D(0.987688, 0.154551, -0.024202, 0, 0.15471, 0.98796, 0.156434, -0.975796, 0.152806, 0.186, 0.188, 0.38)
 cull_mask = 3
 current = true
 fov = 60.0

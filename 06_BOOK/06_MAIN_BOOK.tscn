@@ -77,7 +77,6 @@ fov = 40.0
 transform = Transform3D(-1.26701e-08, -3.98174e-10, -0.29, -0.00910912, 0.289857, -1.34037e-15, 0.289857, 0.00910912, -1.26763e-08, 0, 0, 0.005)
 
 [node name="RENDER" type="TextureRect" parent="."]
-visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

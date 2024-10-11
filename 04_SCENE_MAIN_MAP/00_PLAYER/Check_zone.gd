@@ -16,7 +16,9 @@ func _check_area_zone(area):
 		if zone:
 			_global_datas._check_zone_enter.emit(area)
 	
-
+		var Show_me = area.get_node_or_null("Show_me")
+		if Show_me:
+			Show_me.show_me.emit()
 
 func _exit_check_area(area):
 	

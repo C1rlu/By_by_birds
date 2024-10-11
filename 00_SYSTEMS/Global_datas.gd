@@ -51,6 +51,7 @@ var photo_archives : Array[PhotoData]
 
 #UI VAR 
 signal set_resolution(resolution : Vector2i)
+signal _show_object_legend(legend : String)
 
 var player_rg : RigidBody3D
 

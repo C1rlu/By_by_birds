@@ -1,7 +1,6 @@
-[gd_scene load_steps=12 format=3 uid="uid://cmfuqfuw7csk0"]
+[gd_scene load_steps=11 format=3 uid="uid://cmfuqfuw7csk0"]
 
 [ext_resource type="Script" path="res://00_SYSTEMS/Active_mask_at_ready.tres.gd" id="1_7ev4l"]
-[ext_resource type="Script" path="res://04_SCENE_MAIN_MAP/ELEMENTS/Island_set/Shader_variety_color.gd" id="2_nj86e"]
 [ext_resource type="PackedScene" uid="uid://ci87hcdt2njop" path="res://04_SCENE_MAIN_MAP/ELEMENTS/Island_set/island_set_03/Island_set_03.blend" id="3_vrfrk"]
 [ext_resource type="Texture2D" uid="uid://cvnyiat1vk25q" path="res://04_SCENE_MAIN_MAP/ELEMENTS/Island_set/island_set_03/Islande_gradient_03.png" id="4_52kk2"]
 [ext_resource type="Shader" uid="uid://cu2uipuy138c6" path="res://00_SHADER/All_Materials/Main_sceneTest_dither_sh.tres" id="4_lfkf0"]
@@ -37,9 +36,6 @@ shader_parameter/Gradient_base = ExtResource("4_52kk2")
 [node name="Active_at_ready" type="Node" parent="." node_paths=PackedStringArray("_active")]
 script = ExtResource("1_7ev4l")
 _active = [NodePath("../Island_set_04/Island_set_foam"), NodePath("../Island_set_04/Island_set_mask"), NodePath("../Island_set_04/Island_set_light")]
-
-[node name="Shader_variety_color" type="Node" parent="."]
-script = ExtResource("2_nj86e")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

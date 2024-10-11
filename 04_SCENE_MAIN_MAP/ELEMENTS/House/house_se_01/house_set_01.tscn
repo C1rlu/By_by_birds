@@ -25,6 +25,7 @@ fill_from = Vector2(0.444444, 0)
 fill_to = Vector2(0.504274, 0)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_435y5"]
+resource_local_to_scene = true
 render_priority = 1
 shader = ExtResource("2_t2c44")
 shader_parameter/ColorParameter = Color(0, 0, 0, 1)
@@ -38,6 +39,7 @@ shader_parameter/Gradient_base = SubResource("GradientTexture2D_qwn6x")
 gradient = SubResource("Gradient_hawk4")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5cltl"]
+resource_local_to_scene = true
 render_priority = 1
 shader = ExtResource("2_t2c44")
 shader_parameter/ColorParameter = Color(0, 0, 0, 1)
@@ -119,6 +121,7 @@ nodes/fragment/connections = PackedInt32Array(2, 0, 0, 0, 3, 0, 5, 0, 4, 0, 5, 1
 nodes/light/0/position = Vector2(2620, 1260)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7i1h2"]
+resource_local_to_scene = true
 render_priority = 1
 shader = SubResource("VisualShader_gs5la")
 shader_parameter/Lit_color = Color(0.721569, 0.580392, 0.407843, 1)

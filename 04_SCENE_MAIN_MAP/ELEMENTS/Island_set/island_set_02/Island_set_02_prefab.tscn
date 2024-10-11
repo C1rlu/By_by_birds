@@ -1,8 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://bme2k8btnc2jn"]
+[gd_scene load_steps=11 format=3 uid="uid://bme2k8btnc2jn"]
 
 [ext_resource type="Script" path="res://00_SYSTEMS/Active_mask_at_ready.tres.gd" id="1_7ixkb"]
 [ext_resource type="Material" uid="uid://yjoyk6fvrm6q" path="res://00_SHADER/No_light_surface_mat.tres" id="2_qwpko"]
-[ext_resource type="Script" path="res://04_SCENE_MAIN_MAP/ELEMENTS/Island_set/Shader_variety_color.gd" id="2_s6w0a"]
 [ext_resource type="Shader" uid="uid://cu2uipuy138c6" path="res://00_SHADER/All_Materials/Main_sceneTest_dither_sh.tres" id="5_r8wbk"]
 [ext_resource type="PackedScene" uid="uid://b6howimswkags" path="res://04_SCENE_MAIN_MAP/ELEMENTS/Island_set/island_set_02/Island_set_02.blend" id="7_pf2mo"]
 [ext_resource type="Material" uid="uid://ctnqf5d3uj1g7" path="res://00_SHADER/All_Materials/dark_mask.tres" id="7_v8ngb"]
@@ -29,9 +28,6 @@ size = Vector3(2.56777, 1.44343, 2.64774)
 [node name="Active_at_ready" type="Node" parent="." node_paths=PackedStringArray("_active")]
 script = ExtResource("1_7ixkb")
 _active = [NodePath("../Island_set_02/Island_set_foam"), NodePath("../Island_set_02/Island_set_mask"), NodePath("../Island_set_02/Island_set_light")]
-
-[node name="Shader_variety_color" type="Node" parent="."]
-script = ExtResource("2_s6w0a")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

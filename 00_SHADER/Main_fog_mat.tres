@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://b0p6axwutkdwv"]
+
+[ext_resource type="Shader" uid="uid://bogp428w4gxnx" path="res://00_SHADER/Main_fog_sh.tres" id="1_drkqv"]
+
+[resource]
+resource_local_to_scene = true
+render_priority = 1
+shader = ExtResource("1_drkqv")
+shader_parameter/Fog_colo = Color(0.0941176, 0.0941176, 0.0941176, 1)
+shader_parameter/Opacity = 1.0

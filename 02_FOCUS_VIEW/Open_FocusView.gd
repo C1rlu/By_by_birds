@@ -13,6 +13,9 @@ func _open():
 		
 func clear_and_instantiate():
 
+	for e in Loader.get_children():
+		e.queue_free()
+
 	if _global_datas.current_focus_data.focus_scene:
 		var instantiate = _global_datas.current_focus_data.focus_scene.instantiate()
 		Loader.add_child(instantiate)		

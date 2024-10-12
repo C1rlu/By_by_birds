@@ -1,6 +1,8 @@
 extends Node
 
 @export var Camera :Camera3D
+@export var Camera_light :Camera3D
+@export var Camera_warm :Camera3D
 
 @export var Render : TextureRect
 var t
@@ -39,7 +41,7 @@ func _zoom_in():
 	if t:
 		t.kill()
 	t = create_tween()
-	t.tween_property(Camera,"fov",target,0.25)
+	t.tween_method(_fov,Camera.fov,target,0.25)
 
 	_global_datas.look_at_sensivity = 0.05
 	
@@ -49,5 +51,10 @@ func _zoom_out():
 	if t:
 		t.kill()
 	t = create_tween()
-	t.tween_property(Camera,"fov",target,0.25)
+	t.tween_method(_fov,Camera.fov,target,0.25)
 	_global_datas.look_at_sensivity = 0.1
+
+func _fov(value : float):
+	Camera.fov = value	
+	Camera_light.fov = value
+	Camera_warm.fov = value	

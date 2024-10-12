@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://h2wepwtms1pe"]
+[gd_scene load_steps=48 format=3 uid="uid://h2wepwtms1pe"]
 
 [ext_resource type="Script" path="res://13_TOOLS_UI/set_Resolution_viewports.gd" id="1_3ana1"]
 [ext_resource type="Script" path="res://02_FOCUS_VIEW/Open_FocusView.gd" id="1_ttndn"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" path="res://02_FOCUS_VIEW/check_focus_count.gd" id="9_h4ctn"]
 [ext_resource type="Texture2D" uid="uid://dafg2qvpi6wmk" path="res://13_TOOLS_UI/Loader_circle/Loader_circle.png" id="10_s3pi3"]
 [ext_resource type="Shader" uid="uid://clx3d2k1ngnqc" path="res://02_FOCUS_VIEW/Blink_effect_sh.tres" id="11_5x6sk"]
+[ext_resource type="PackedScene" uid="uid://i7vwntowo6jb" path="res://02_FOCUS_VIEW/Focus_scene/Lighthouse_01/Lighthouse_01.tscn" id="11_rwa6u"]
 
 [sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_y363p"]
 source = 5
@@ -162,7 +163,6 @@ resource_local_to_scene = true
 shader = ExtResource("11_5x6sk")
 shader_parameter/Shadow_color = Color(0.0885598, 0.08856, 0.0885599, 1)
 shader_parameter/Warm_color = Color(1, 0.712397, 0.397465, 1)
-shader_parameter/Opacity = 1.0
 shader_parameter/Flat_viewport = SubResource("ViewportTexture_htsoc")
 shader_parameter/light = SubResource("ViewportTexture_05vrv")
 shader_parameter/light_warm = SubResource("ViewportTexture_7qo8q")
@@ -201,6 +201,7 @@ void fragment() {
 
 }
 "
+graph_offset = Vector2(-1207.1, -24.5329)
 mode = 1
 flags/light_only = false
 nodes/fragment/0/position = Vector2(520, 120)
@@ -210,6 +211,26 @@ nodes/fragment/connections = PackedInt32Array(2, 0, 0, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tknly"]
 shader = SubResource("VisualShader_m4qkk")
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_1oxnm"]
+parameter_name = "Opacity"
+hint = 1
+
+[sub_resource type="VisualShader" id="VisualShader_fh5ix"]
+code = "shader_type canvas_item;
+render_mode blend_mix;
+
+
+
+"
+graph_offset = Vector2(-634.114, -72.8994)
+mode = 1
+flags/light_only = false
+nodes/fragment/2/node = SubResource("VisualShaderNodeFloatParameter_1oxnm")
+nodes/fragment/2/position = Vector2(-700, 160)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bocjm"]
+shader = SubResource("VisualShader_fh5ix")
 
 [sub_resource type="VisualShaderNodeUVFunc" id="VisualShaderNodeUVFunc_lub4u"]
 default_input_values = [1, Vector2(1.005, 1.01), 2, Vector2(0, 0)]
@@ -343,9 +364,11 @@ Loader = NodePath("../Loader")
 script = ExtResource("1_3ana1")
 viewports = [NodePath("../Viewport"), NodePath("../Viewport_light"), NodePath("../Viewport_warm")]
 
-[node name="Zoom" type="Node" parent="." node_paths=PackedStringArray("Camera", "Render")]
+[node name="Zoom" type="Node" parent="." node_paths=PackedStringArray("Camera", "Camera_light", "Camera_warm", "Render")]
 script = ExtResource("2_hd46p")
 Camera = NodePath("../Viewport/head/CAM")
+Camera_light = NodePath("../Viewport_light/CAM_light")
+Camera_warm = NodePath("../Viewport_warm/CAM_light_warm")
 Render = NodePath("../Render")
 
 [node name="Look_at" type="Node" parent="." node_paths=PackedStringArray("Camera_head", "Camera")]
@@ -377,7 +400,7 @@ Camera_head = NodePath("../Viewport/head")
 script = ExtResource("8_b1n4x")
 
 [node name="Timer" type="Timer" parent="Blink_effect"]
-wait_time = 30.0
+wait_time = 20.0
 one_shot = true
 
 [node name="Check_focus_count" type="Node" parent="."]
@@ -423,6 +446,8 @@ far = 100.0
 
 [node name="Loader" type="Node3D" parent="."]
 
+[node name="Lighthouse01" parent="Loader" instance=ExtResource("11_rwa6u")]
+
 [node name="Render" type="TextureRect" parent="."]
 material = SubResource("ShaderMaterial_dn6p1")
 anchors_preset = 15
@@ -441,6 +466,30 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+color = Color(0.0901961, 0.0901961, 0.0901961, 1)
+
+[node name="Frame_blink_top" type="ColorRect" parent="Render"]
+material = SubResource("ShaderMaterial_bocjm")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -720.0
+offset_bottom = -720.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0901961, 0.0901961, 0.0901961, 1)
+
+[node name="Frame_blink_bot" type="ColorRect" parent="Render"]
+material = SubResource("ShaderMaterial_bocjm")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 720.0
+offset_bottom = 720.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0.0901961, 0.0901961, 0.0901961, 1)
 
 [node name="Glow_effect" type="ColorRect" parent="Render"]

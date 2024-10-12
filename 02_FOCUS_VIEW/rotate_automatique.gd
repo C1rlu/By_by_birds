@@ -36,11 +36,10 @@ func _process(delta: float) -> void:
 		
 	Cam_light.global_position = Cam.global_position 
 	Cam_light.global_rotation_degrees = Cam.global_rotation_degrees
-	Cam_light.fov = Cam.fov
-	
+
 	Cam_light_warm.global_position = Cam.global_position 
 	Cam_light_warm.global_rotation_degrees = Cam.global_rotation_degrees
-	Cam_light_warm.fov = Cam.fov
+
 
 
 func end_of_time():

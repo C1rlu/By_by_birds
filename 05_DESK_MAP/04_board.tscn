@@ -295,6 +295,7 @@ mouse_filter = 2
 color = Color(0.721569, 0.635294, 0.439216, 1)
 
 [node name="Target" type="TextureRect" parent="."]
+visible = false
 custom_minimum_size = Vector2(10, 10)
 anchors_preset = 8
 anchor_left = 0.5

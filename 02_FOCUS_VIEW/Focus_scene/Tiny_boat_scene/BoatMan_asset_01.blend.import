@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bphmc606jqkad"
-path="res://.godot/imported/Lighthouse_focus.blend-4d65cf26d1300bf2cfc9734fb24b578d.scn"
+uid="uid://bgrasw5i1kjw5"
+path="res://.godot/imported/BoatMan_asset_01.blend-1d960989c6bb220cc358ce8fef002b8d.scn"
 
 [deps]
 
-source_file="res://02_FOCUS_VIEW/Focus_scene/Lighthouse_focus.blend"
-dest_files=["res://.godot/imported/Lighthouse_focus.blend-4d65cf26d1300bf2cfc9734fb24b578d.scn"]
+source_file="res://02_FOCUS_VIEW/Focus_scene/Tiny_boat_scene/BoatMan_asset_01.blend"
+dest_files=["res://.godot/imported/BoatMan_asset_01.blend-1d960989c6bb220cc358ce8fef002b8d.scn"]
 
 [params]
 

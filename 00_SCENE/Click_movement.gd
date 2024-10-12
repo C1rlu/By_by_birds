@@ -13,11 +13,9 @@ func _input(event):
 	
 	if _global_datas.Player_InMenu:
 		return
-	if _global_datas.player_in_desk:
-		return
+
 	if !active_click:
 		return
-	
 	if event.is_action_pressed("Click"):
 		
 		if !timer.is_stopped():

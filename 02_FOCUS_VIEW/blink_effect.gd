@@ -1,15 +1,19 @@
 extends Node
 
 @onready var render: TextureRect = $"../Render"
+@onready var timer: Timer = $Timer
 
 var fade_out
 func _ready() -> void:
-	pass
 	#_global_datas._end_of_transition.connect(_blink_out)
-
+	
+	timer.timeout.connect(_blink_out)
+	timer.start()
+	print("START TIMER")
 	
 func _blink_out():
 	
+	print("START FADE")
 	if _global_datas.current_focus_data:
 		if _global_datas.current_focus_data.scene_resolved:
 			render.get_material().set_shader_parameter("Opacity",1.0)	

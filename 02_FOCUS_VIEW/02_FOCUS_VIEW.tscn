@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://h2wepwtms1pe"]
+[gd_scene load_steps=44 format=3 uid="uid://h2wepwtms1pe"]
 
 [ext_resource type="Script" path="res://13_TOOLS_UI/set_Resolution_viewports.gd" id="1_3ana1"]
 [ext_resource type="Script" path="res://02_FOCUS_VIEW/Open_FocusView.gd" id="1_ttndn"]
@@ -11,8 +11,6 @@
 [ext_resource type="Script" path="res://02_FOCUS_VIEW/check_focus_count.gd" id="9_h4ctn"]
 [ext_resource type="Texture2D" uid="uid://dafg2qvpi6wmk" path="res://13_TOOLS_UI/Loader_circle/Loader_circle.png" id="10_s3pi3"]
 [ext_resource type="Shader" uid="uid://clx3d2k1ngnqc" path="res://02_FOCUS_VIEW/Blink_effect_sh.tres" id="11_5x6sk"]
-[ext_resource type="PackedScene" uid="uid://i7vwntowo6jb" path="res://02_FOCUS_VIEW/Focus_scene/Lighthouse_01/Lighthouse_01.tscn" id="11_rwa6u"]
-[ext_resource type="PackedScene" uid="uid://clc3sbquuu1us" path="res://13_TOOLS_UI/Clock_montre/Clock_ui_prefab.tscn" id="13_dw4ju"]
 
 [sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_y363p"]
 source = 5
@@ -337,35 +335,27 @@ shader_parameter/Opacity = 0.379
 
 [node name="02_FOCUS_VIEW" type="Node"]
 
-[node name="Open_FocusView" type="Node" parent="." node_paths=PackedStringArray("Render", "Backdrop", "Loader", "Loader_light", "Loader_light_warm")]
+[node name="Open_FocusView" type="Node" parent="." node_paths=PackedStringArray("Loader")]
 script = ExtResource("1_ttndn")
-Render = NodePath("../Render")
-Backdrop = NodePath("../BACKDROP_FOCUS")
-Loader = NodePath("../Viewport/Loader")
-Loader_light = NodePath("../Viewport_light/Loader_light")
-Loader_light_warm = NodePath("../Viewport_warm/Loader_light_warm")
+Loader = NodePath("../Loader")
 
 [node name="set_Resolution" type="Node" parent="." node_paths=PackedStringArray("viewports")]
 script = ExtResource("1_3ana1")
-viewports = [NodePath("../Viewport"), NodePath("../Viewport_light"), NodePath("../Viewport_warm"), null]
+viewports = [NodePath("../Viewport"), NodePath("../Viewport_light"), NodePath("../Viewport_warm")]
 
 [node name="Zoom" type="Node" parent="." node_paths=PackedStringArray("Camera", "Render")]
 script = ExtResource("2_hd46p")
 Camera = NodePath("../Viewport/head/CAM")
 Render = NodePath("../Render")
 
-[node name="Look_at" type="Node" parent="." node_paths=PackedStringArray("Render", "Camera_head", "Camera")]
+[node name="Look_at" type="Node" parent="." node_paths=PackedStringArray("Camera_head", "Camera")]
 script = ExtResource("5_8dylc")
-Render = NodePath("../Render")
 Camera_head = NodePath("../Viewport/head")
 Camera = NodePath("../Viewport/head/CAM")
 
-[node name="Rotate_automatique_camFollow" type="Node" parent="." node_paths=PackedStringArray("Render", "rotation_root", "rotation_root_light", "rotation_root_light_warm", "Cam", "Cam_light", "Cam_light_warm")]
+[node name="Rotate_automatique_camFollow" type="Node" parent="." node_paths=PackedStringArray("rotation_root", "Cam", "Cam_light", "Cam_light_warm")]
 script = ExtResource("6_l0ewy")
-Render = NodePath("../Render")
-rotation_root = NodePath("../Viewport/Loader")
-rotation_root_light = NodePath("../Viewport_light/Loader_light")
-rotation_root_light_warm = NodePath("../Viewport_warm/Loader_light_warm")
+rotation_root = NodePath("../Loader")
 Cam = NodePath("../Viewport/head/CAM")
 Cam_light = NodePath("../Viewport_light/CAM_light")
 Cam_light_warm = NodePath("../Viewport_warm/CAM_light_warm")
@@ -386,6 +376,10 @@ Camera_head = NodePath("../Viewport/head")
 [node name="Blink_effect" type="Node" parent="."]
 script = ExtResource("8_b1n4x")
 
+[node name="Timer" type="Timer" parent="Blink_effect"]
+wait_time = 30.0
+one_shot = true
+
 [node name="Check_focus_count" type="Node" parent="."]
 script = ExtResource("9_h4ctn")
 
@@ -400,27 +394,9 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0.0885598, 0.08856, 0.0885598, 1)
 
-[node name="Lighthouse03" parent="." instance=ExtResource("11_rwa6u")]
-
 [node name="Viewport" type="SubViewport" parent="."]
-own_world_3d = true
 transparent_bg = true
 size = Vector2i(1280, 720)
-
-[node name="target_ui" type="ColorRect" parent="Viewport"]
-visible = false
-custom_minimum_size = Vector2(10, 10)
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -5.0
-offset_top = -5.0
-offset_right = 5.0
-offset_bottom = 5.0
-grow_horizontal = 2
-grow_vertical = 2
 
 [node name="head" type="Node3D" parent="Viewport"]
 
@@ -428,12 +404,7 @@ grow_vertical = 2
 cull_mask = 32
 fov = 50.0
 
-[node name="Loader" type="Node3D" parent="Viewport"]
-
-[node name="Lighthouse02" parent="Viewport/Loader" instance=ExtResource("11_rwa6u")]
-
 [node name="Viewport_light" type="SubViewport" parent="."]
-own_world_3d = true
 transparent_bg = true
 size = Vector2i(1280, 720)
 
@@ -441,12 +412,7 @@ size = Vector2i(1280, 720)
 cull_mask = 32768
 fov = 50.0
 
-[node name="Loader_light" type="Node3D" parent="Viewport_light"]
-
-[node name="Lighthouse02" parent="Viewport_light/Loader_light" instance=ExtResource("11_rwa6u")]
-
 [node name="Viewport_warm" type="SubViewport" parent="."]
-own_world_3d = true
 transparent_bg = true
 size = Vector2i(1280, 720)
 
@@ -455,9 +421,7 @@ cull_mask = 65536
 fov = 50.0
 far = 100.0
 
-[node name="Loader_light_warm" type="Node3D" parent="Viewport_warm"]
-
-[node name="Lighthouse02" parent="Viewport_warm/Loader_light_warm" instance=ExtResource("11_rwa6u")]
+[node name="Loader" type="Node3D" parent="."]
 
 [node name="Render" type="TextureRect" parent="."]
 material = SubResource("ShaderMaterial_dn6p1")
@@ -489,7 +453,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TextureRect" type="TextureRect" parent="Render"]
+[node name="Target" type="TextureRect" parent="Render"]
 custom_minimum_size = Vector2(10, 10)
 layout_mode = 1
 anchors_preset = 8
@@ -505,17 +469,3 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("10_s3pi3")
 expand_mode = 1
-
-[node name="Clock" parent="." instance=ExtResource("13_dw4ju")]
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -77.0
-offset_top = -63.0
-offset_right = -77.0
-offset_bottom = -63.0
-grow_horizontal = 0
-grow_vertical = 0
-scale = Vector2(0.462214, 0.462214)

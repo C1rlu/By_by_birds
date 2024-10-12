@@ -18,6 +18,9 @@ func _ready() -> void:
 	offset = camera_3d_main_Map.global_position - cam_target.global_position
 	target_rotation = camera_3d_main_Map.rotation_degrees
 	
+	camera_3d_follow.global_position = Camera3D_Main_Desk.global_position
+	camera_3d_follow.rotation_degrees = Camera3D_Main_Desk.rotation_degrees
+	
 func _process(delta: float) -> void:
 	
 

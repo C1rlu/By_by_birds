@@ -25,12 +25,7 @@ func _reset(condition):
 		
 func _input(event):
 	
-	
-	if !Render.visible:
-		return
-	
-	if _global_datas.Player_InMenu:
-		return
+
 	
 	if Input.is_action_pressed("right_click"):
 		_zoom_in()

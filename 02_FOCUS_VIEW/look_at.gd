@@ -1,8 +1,6 @@
 extends Node
 
 
-@export var Render : TextureRect
-
 @export var Camera_head : Node3D
 @export var Camera : Camera3D
 
@@ -19,13 +17,6 @@ func _reset_cam():
 						
 func _input(event: InputEvent) -> void:
 	
-
-	if !Render.visible:
-		return
-	
-	if _global_datas.Player_InMenu:
-		return
-			
 	if event is InputEventMouseMotion:
 	
 		Camera_head.rotate_y(deg_to_rad(-event.relative.x * _global_datas.look_at_sensivity))

@@ -8,7 +8,7 @@ extends RigidBody3D
 @export var max_roll_angle : float = 30.0
 @export var rool_speed : float = 5.0
 @export var decal_shadow : Decal
-@export var enable_key_control : bool 
+
 
 @onready var timer = $Timer
 var y_position_value : float
@@ -20,18 +20,18 @@ var random_dir : Vector3
 var dir_index : int = 0
 func _ready():
 	
+	
+	
 	y_position_value = position.y   
 	height_offset = position.y
 	
 	_global_datas._roll_bird.connect(_rool_bird)
 	timer.timeout.connect(timer_udpate)
 		
+	position = _global_datas.player_position 
+	
 func _physics_process(_delta):
 		
-	
-	
-	
-	
 	var translation = get_global_transform().origin
 	_global_datas.player_position = translation
 	
@@ -46,16 +46,6 @@ func _physics_process(_delta):
 	
 func move_c():
 	
-	if _global_datas.Player_InMenu:
-		return
-	if _global_datas.player_in_desk:
-		return
-	
-	if _global_datas.Player_inFocusView:
-		return
-				
-	if !enable_key_control:
-		return
 		
 	var velocity = Input.get_vector("move_right", "move_left","move_backward" , "move_forward")
 	 # Calculate the torque based on input velocity

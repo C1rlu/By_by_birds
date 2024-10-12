@@ -2,16 +2,13 @@ extends Node
 
 
 var player_position : Vector3
+var camera_offset : Vector3
 var bird_raycast_ground_position : Vector3
 var Player_InMenu : bool
-var Player_inFocusView : bool 
 
 signal _open_menu(condition : bool)
-
 signal _open_desk(condition : bool)
-var player_in_desk : bool
 var camera_state_index : int 
-
 
 # input type
 signal using_pad(condition : bool)

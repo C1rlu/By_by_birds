@@ -1,34 +1,31 @@
-[gd_scene load_steps=19 format=3 uid="uid://clc3sbquuu1us"]
+[gd_scene load_steps=18 format=3 uid="uid://clc3sbquuu1us"]
 
-[ext_resource type="Resource" uid="uid://ppxk5i543dfn" path="res://15_GAME_RESSOURCE/00_Npc_data/Mr_Birds_data.tres" id="1_t0k1n"]
 [ext_resource type="Script" path="res://13_TOOLS_UI/Clock_montre/Fade_dither.gd" id="1_v6xwk"]
 [ext_resource type="PackedScene" uid="uid://c50aeg7d1nugi" path="res://13_TOOLS_UI/Clock_montre/clock_3d.blend" id="3_qwf6y"]
 
 [sub_resource type="GDScript" id="GDScript_uwuod"]
 script/source = "extends Node
 
-@export var bird_dialogue : Npc_datas
-@onready var render = $\"../Render\"
 @onready var clock_root = $\"../SubViewport/clock_3d_prefab/clock_3d2/root_equille\"
 @onready var fade_dither = $\"../Fade_dither\"
 
 var t
 func _ready():
-	_global_datas._open_focus_view.connect(_check_fade)
+	#_check_fade()	
 	_stop()
+func _check_fade():
 	
-func _check_fade(condition : bool):
-	
-	if condition:
-		_start_clock()
+	if _global_datas.current_focus_data.scene_resolved:
+		_stop()
 	else:
-		_stop()		
+		_start_clock()
 	
+
 	
 func _start_clock():
 
 	fade_dither.fade_in()
-	var time_need = 60.0
+	var time_need = 30.0
 	
 	if t:
 		t.kill()
@@ -207,7 +204,6 @@ mouse_filter = 2
 [node name="Time" type="Node" parent="."]
 process_mode = 1
 script = SubResource("GDScript_uwuod")
-bird_dialogue = ExtResource("1_t0k1n")
 
 [node name="Fade_dither" type="Node" parent="." node_paths=PackedStringArray("texture_img")]
 process_mode = 3

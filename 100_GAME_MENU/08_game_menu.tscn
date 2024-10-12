@@ -1,61 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://bemddl0bqqfwo"]
+[gd_scene load_steps=10 format=3 uid="uid://bemddl0bqqfwo"]
 
 [ext_resource type="Script" path="res://100_GAME_MENU/Open_Menu.gd" id="1_2jpo2"]
 [ext_resource type="Script" path="res://100_GAME_MENU/Option_panel.gd" id="2_gelwi"]
-[ext_resource type="Script" path="res://100_GAME_MENU/Restart.gd" id="4_0detv"]
 [ext_resource type="Script" path="res://100_GAME_MENU/Language_state_Menu.gd" id="4_34xg6"]
 [ext_resource type="Script" path="res://100_GAME_MENU/HSlider.gd" id="5_7b61k"]
 [ext_resource type="Script" path="res://00_SYSTEMS/Fps_counter.gd" id="5_13bt5"]
 [ext_resource type="Script" path="res://100_GAME_MENU/Label_with_state.gd" id="6_sios4"]
-
-[sub_resource type="GDScript" id="GDScript_8vnul"]
-script/source = "extends Node
-
-#
-#@export var menu_backdrop_normal : ColorRect
-#@onready var material_normal : Material = menu_backdrop_normal.get_material()
-#
-#
-#
-#var actual_value : float
-#var t
-#
-#func _ready():	
-	#pass
-	##_global_datas._open_menu.connect(check_condition)
-	#
-	##_global_datas.Open_ui_dark_backdrop.emit(_global_datas.Player_InMenu)
-#
-#func check_condition(condition : bool):
-	#
-	#if condition:
-		#_fade_in()
-	#else:
-		#_fade_out()
-	#
-#func _fade_in():
-#
-	#
-	#if t:
-		#t.kill()
-	#t = create_tween()
-	#
-	#t .tween_method(set_shader_value,actual_value,0.8,0.25)
-#
-#func _fade_out():
-	#
-	#if t:
-		#t.kill()
-	#t = create_tween()
-	#
-	#t .tween_method(set_shader_value,actual_value,0.0,0.25)
-#
-#
-#func set_shader_value(value):
-	#material_normal.set_shader_parameter(\"Opacity\",value)
-	#actual_value = value
-#
-"
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_hcfes"]
 color = Color(0.329412, 0.313726, 0.278431, 1)
@@ -117,13 +67,6 @@ script = ExtResource("1_2jpo2")
 [node name="Option_Panel" type="Node" parent="."]
 process_mode = 3
 script = ExtResource("2_gelwi")
-
-[node name="Restart" type="Node" parent="."]
-script = ExtResource("4_0detv")
-
-[node name="Open_backdrop" type="Node" parent="."]
-process_mode = 3
-script = SubResource("GDScript_8vnul")
 
 [node name="Language_state_Menu" type="Node" parent="."]
 script = ExtResource("4_34xg6")
@@ -255,7 +198,6 @@ language_state = Array[String](["Fullscreen ............................", "Plei
 process_mode = 2
 layout_mode = 2
 focus_neighbor_top = NodePath("../Fullscreen_button")
-focus_neighbor_bottom = NodePath("../ActiveDither_button")
 button_pressed = true
 alignment = 2
 
@@ -305,60 +247,6 @@ text = "Vsync ...................................."
 script = ExtResource("6_sios4")
 language_state = Array[String](["Vsync ....................................", "Vsync ...................................."])
 
-[node name="ActiveDither_button" type="CheckBox" parent="Game_Menu_Root/MainMenu_Box/Options/VBoxContainer"]
-process_mode = 2
-layout_mode = 2
-focus_neighbor_top = NodePath("../Vsync_button")
-focus_neighbor_bottom = NodePath("../Label/HSlider_dither")
-button_pressed = true
-alignment = 2
-
-[node name="Checker_off" type="ColorRect" parent="Game_Menu_Root/MainMenu_Box/Options/VBoxContainer/ActiveDither_button"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(0.329412, 0.313726, 0.278431, 1)
-
-[node name="Checker_on" type="ColorRect" parent="Game_Menu_Root/MainMenu_Box/Options/VBoxContainer/ActiveDither_button/Checker_off"]
-visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -7.5
-offset_top = -7.5
-offset_right = 7.5
-offset_bottom = 7.5
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(0.745098, 0.6, 0.431373, 1)
-
-[node name="Label" type="Label" parent="Game_Menu_Root/MainMenu_Box/Options/VBoxContainer/ActiveDither_button"]
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -364.0
-offset_top = -20.0
-offset_right = -36.0
-offset_bottom = 15.0
-grow_horizontal = 0
-grow_vertical = 2
-theme_override_colors/font_color = Color(0.560784, 0.490196, 0.403922, 1)
-theme_override_font_sizes/font_size = 25
-text = "Active Dither........................"
-script = ExtResource("6_sios4")
-language_state = Array[String](["Active Dither........................", "Activer Dither......................"])
-
 [node name="Label" type="Label" parent="Game_Menu_Root/MainMenu_Box/Options/VBoxContainer"]
 visible = false
 layout_mode = 2
@@ -379,7 +267,6 @@ offset_right = -27.2
 offset_bottom = 7.0
 grow_horizontal = 2
 grow_vertical = 2
-focus_neighbor_top = NodePath("../../ActiveDither_button")
 focus_neighbor_bottom = NodePath("../../../../Language_choice")
 theme_override_styles/slider = SubResource("StyleBoxLine_hcfes")
 min_value = 0.1
@@ -451,7 +338,6 @@ language_state = Array[String](["EXIT ", "QUITTER"])
 
 [connection signal="toggled" from="Game_Menu_Root/MainMenu_Box/Options/VBoxContainer/Fullscreen_button" to="Option_Panel" method="_on_fullscreen_button_toggled"]
 [connection signal="toggled" from="Game_Menu_Root/MainMenu_Box/Options/VBoxContainer/Vsync_button" to="Option_Panel" method="_on_vsync_button_toggled"]
-[connection signal="toggled" from="Game_Menu_Root/MainMenu_Box/Options/VBoxContainer/ActiveDither_button" to="Option_Panel" method="_on_active_dither_button_toggled"]
 [connection signal="value_changed" from="Game_Menu_Root/MainMenu_Box/Options/VBoxContainer/Label/HSlider_dither" to="Game_Menu_Root/MainMenu_Box/Options/VBoxContainer/Label/HSlider_dither" method="_on_value_changed"]
 [connection signal="item_selected" from="Game_Menu_Root/MainMenu_Box/Language_choice" to="Language_state_Menu" method="_on_language_choice_item_selected"]
 [connection signal="pressed" from="Game_Menu_Root/MainMenu_Box/VBoxContainer/Resum_Button2" to="Game_Menu_Root/MainMenu_Box/VBoxContainer/Resum_Button2" method="_on_pressed"]

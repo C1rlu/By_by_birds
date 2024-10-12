@@ -813,9 +813,10 @@ shader_parameter/Stars = SubResource("NoiseTexture2D_kkfgb")
 shader_parameter/Stars2 = SubResource("NoiseTexture2D_omccs")
 shader_parameter/Gradient = SubResource("GradientTexture2D_8q7mt")
 
-[node name="Lighthouse01" type="Node3D" node_paths=PackedStringArray("_first_camera")]
+[node name="Lighthouse01" type="Node3D" node_paths=PackedStringArray("_first_camera", "npc_count")]
 script = ExtResource("1_rpkd4")
 _first_camera = NodePath("cam_01")
+npc_count = [NodePath("NPC_04"), NodePath("NPC_11"), NodePath("NPC_05"), NodePath("NPC_07"), NodePath("NPC_08"), NodePath("NPC_09")]
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.799541, 6.45281, -1.68972)
@@ -1202,8 +1203,6 @@ occluder = SubResource("BoxOccluder3D_wsmyo")
 
 [node name="NPC_04" parent="." instance=ExtResource("6_x88fn")]
 transform = Transform3D(0.357513, 0, 0, 0, 0.357513, 0, 0, 0, 0.357513, 0.224877, 9.91077, -0.841621)
-
-[node name="NPC_03" parent="." instance=ExtResource("6_x88fn")]
 
 [node name="NPC_11" parent="." instance=ExtResource("6_x88fn")]
 transform = Transform3D(0.357513, 0, 0, 0, 0.357513, 0, 0, 0, 0.357513, -1.67968, 1.9153, -3.59686)

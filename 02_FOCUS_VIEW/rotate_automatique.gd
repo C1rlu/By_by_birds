@@ -1,9 +1,8 @@
 extends Node
 
-@export var Render : TextureRect
+
 @export var rotation_root: Node3D 
-@export var rotation_root_light: Node3D 
-@export var rotation_root_light_warm: Node3D 
+
 @export var Cam: Camera3D
 @export var Cam_light: Camera3D
 @export var Cam_light_warm: Camera3D
@@ -20,13 +19,8 @@ func _ready() -> void:
 	
 func _reset(value):
 	
-	if !Render.visible:
-		return		
-		
 	rotation_root.rotation_degrees = Vector3.ZERO
-	rotation_root_light.rotation_degrees = Vector3.ZERO
-	rotation_root_light_warm.rotation_degrees = Vector3.ZERO
-	
+
 	if value:	
 		timer.start()	
 	else:	
@@ -34,18 +28,10 @@ func _reset(value):
 		
 func _process(delta: float) -> void:
 	
-	if !Render.visible:
-		return
-	
 	if direction_speed:
-		rotation_root.rotation_degrees.y -= 1.0 * delta
-		rotation_root_light.rotation_degrees.y -= 1.0 * delta
-		rotation_root_light_warm.rotation_degrees.y -= 1.0 * delta
-		
+		rotation_root.rotation_degrees.y -= 1.0 * delta	
 	else:
 		rotation_root.rotation_degrees.y += 1.0 * delta
-		rotation_root_light.rotation_degrees.y += 1.0 * delta
-		rotation_root_light_warm.rotation_degrees.y += 1.0 * delta
 
 		
 	Cam_light.global_position = Cam.global_position 

@@ -16,7 +16,7 @@ func _open_menu(condition : bool):
 	if condition:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	else:
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		
 func _input(event):
 	

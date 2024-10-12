@@ -3,10 +3,10 @@ extends Node
 
 
 func _ready() -> void:
-	_global_datas._open_desk.connect(reset_state)
+	reset_state()	
 
 
-func reset_state(condition : bool):
+func reset_state():
 	
 	_global_datas.camera_state_index = 0	
 	
@@ -30,11 +30,8 @@ func _input(event: InputEvent) -> void:
 
 			return
 	
-	if _global_datas.player_in_desk:
-	
-		if event.is_action_pressed("Click"):
-			if _global_datas.camera_state_index == 2:
-				return
-			_global_datas.camera_state_index = 1
-
+	if event.is_action_pressed("Click"):
+		if _global_datas.camera_state_index == 2:
 			return
+		_global_datas.camera_state_index = 1
+		

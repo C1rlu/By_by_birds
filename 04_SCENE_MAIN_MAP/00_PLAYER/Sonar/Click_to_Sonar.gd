@@ -19,10 +19,7 @@ func _input(event: InputEvent) -> void:
 	if !can_click:
 		return
 
-		
-	if _global_datas.Player_InDialogue:
-		return				
-		
+
 	if event.is_action_pressed("Click"):
 	
 		_global_datas._active_sonar.emit()
@@ -34,10 +31,7 @@ func _on_mouse_entered():
 	pass
 	if !lock_tools:
 		return
-	if _global_datas.Player_InDialogue:
-		return	
-	if _global_datas.Player_InDialogue_zone:
-		return
+
 	
 	can_click = true
 	#_global_datas.Cursor_mode.cursor_in()

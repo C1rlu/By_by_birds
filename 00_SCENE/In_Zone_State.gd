@@ -17,11 +17,7 @@ func _condition_check(condition):
 	
 func _check_zone_enter(area):
 	
-	var npc_zone = area.get_node_or_null("Npc_zone")
-	if npc_zone:
-		_global_datas.Npc_Dialogue = npc_zone.get_npc()
-		_global_datas._active_this_npc_zone.emit(true)
-		
+
 	var focus_zone = area.get_node_or_null("Focus_zone")
 	if focus_zone:
 		_global_datas.current_focus_data = focus_zone.Focus_data
@@ -34,11 +30,7 @@ func _check_zone_enter(area):
 	
 func _check_zone_exit(area):
 	
-	var npc_zone = area.get_node_or_null("Npc_zone")
-	if npc_zone:
-		_global_datas._active_this_npc_zone.emit(false)
-		_global_datas._check_player_zone.emit()
-		
+
 	var focus_zone = area.get_node_or_null("Focus_zone")
 	if focus_zone:
 		_global_datas._in_focus_zone.emit(false)	
@@ -53,11 +45,7 @@ func check_zone():
 	
 	var all_area = _global_datas.player_area.get_overlapping_areas()
 	for a in all_area:
-		var npc_zone = a.get_node_or_null("Npc_zone")
-		if npc_zone:
-			_global_datas.Npc_Dialogue = npc_zone.get_npc()
-			_global_datas._active_this_npc_zone.emit(true)
-			
+
 		var focus_zone = a.get_node_or_null("Focus_zone")
 		if focus_zone:
 			_global_datas.current_focus_data = focus_zone.Focus_data

@@ -12,6 +12,7 @@ func _ready():
 
 func _open(condition : bool):
 	
+	_global_datas.Player_inFocusView = condition
 	
 	Render.visible = condition
 	Backdrop.visible = condition
@@ -19,8 +20,7 @@ func _open(condition : bool):
 	if condition:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
-		
-		
+	
 	if condition:
 		clear_and_instantiate()
 		

@@ -9,7 +9,7 @@ var zoomed : bool = false
 
 func _ready():
 	_global_datas._open_focus_view.connect(_reset)
-	_global_datas._open_choice_panel.connect(_in_condition)
+
 	
 func _in_condition(condition):
 	
@@ -44,7 +44,7 @@ func _zoom_in():
 	if t:
 		t.kill()
 	t = create_tween()
-	t.tween_property(Camera,"fov",target,0.1)
+	t.tween_property(Camera,"fov",target,0.25)
 
 	_global_datas.look_at_sensivity = 0.05
 	
@@ -54,5 +54,5 @@ func _zoom_out():
 	if t:
 		t.kill()
 	t = create_tween()
-	t.tween_property(Camera,"fov",target,0.1)
+	t.tween_property(Camera,"fov",target,0.25)
 	_global_datas.look_at_sensivity = 0.1

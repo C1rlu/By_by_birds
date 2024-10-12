@@ -25,23 +25,23 @@ func close_menu_check(condition):
 	
 	if condition:
 		return
-	if _global_datas.Player_InDialogue:
-		var choice = v_box_container.get_children()
-		if !choice:
-			return
-		for c in choice:
-			c.visible = true
+	#if _global_datas.Player_InDialogue:
+		#var choice = v_box_container.get_children()
+		#if !choice:
+			#return
+		#for c in choice:
+			#c.visible = true
 		
-		choice[0].grab_focus()		
+		#choice[0].grab_focus()		
 		
 func _change_localisation_state(ls):
 		
 	
 	Localisation_state_index = ls
 	
-	if !_global_datas.Player_InDialogue:
-		return
-		
+	#if !_global_datas.Player_InDialogue:
+		#return
+		#
 		
 	var select_language_here = actual_text_all.split("/")
 	
@@ -121,4 +121,3 @@ func _on_choice_selected(choice_index : int):
 func _on_dialogue_typing_text_type_done():
 	show_all_responce()
 	
-

@@ -28,7 +28,7 @@ func _check_fade(condition : bool):
 func _start_clock():
 
 	fade_dither.fade_in()
-	var time_need = 10.0
+	var time_need = 60.0
 	
 	if t:
 		t.kill()
@@ -50,7 +50,6 @@ func _stop():
 func _value(value : float):
 	
 	clock_root.rotation_degrees.y = -value
-
 "
 
 [sub_resource type="VisualShaderNodeStep" id="VisualShaderNodeStep_uppoe"]

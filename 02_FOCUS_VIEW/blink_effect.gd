@@ -4,7 +4,8 @@ extends Node
 
 var fade_out
 func _ready() -> void:
-	_global_datas._end_of_transition.connect(_blink_out)
+	pass
+	#_global_datas._end_of_transition.connect(_blink_out)
 
 	
 func _blink_out():
@@ -18,8 +19,8 @@ func _blink_out():
 		fade_out.kill()
 	
 	fade_out = create_tween()
-	fade_out.tween_method(_effect,1.0,0.0,4.0)
-	#fade_out.connect("finished",done)
+	fade_out.tween_method(_effect,1.0,0.0,6.0)
+	fade_out.connect("finished",done)
 	
 func done():
 	_global_datas._open_focus_view.emit(false)	

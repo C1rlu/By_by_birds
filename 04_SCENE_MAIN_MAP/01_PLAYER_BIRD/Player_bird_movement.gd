@@ -29,11 +29,12 @@ func _ready():
 func _physics_process(_delta):
 		
 	
+	
+	
+	
 	var translation = get_global_transform().origin
 	_global_datas.player_position = translation
-
-
-			
+	
 
 	move_c()
 	
@@ -49,7 +50,10 @@ func move_c():
 		return
 	if _global_datas.player_in_desk:
 		return
-			
+	
+	if _global_datas.Player_inFocusView:
+		return
+				
 	if !enable_key_control:
 		return
 		

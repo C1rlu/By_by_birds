@@ -54,7 +54,7 @@ func _check_photoExist(photoData : PhotoData) -> bool:
 					
 func _open_dialogue():
 	
-	_global_datas.Player_InDialogue = true
+
 	_global_datas.Player_InMenu = true
 	dialogue.visible = true
 	$Random_FaceChanger/Timer.start()				
@@ -63,8 +63,8 @@ func _open_dialogue():
 
 func update_name_ls():
 	
-	if !_global_datas.Player_InDialogue:
-		return
+	#if !_global_datas.Player_InDialogue:
+		#return
 	if Localisation_state_index > _global_datas.Npc_Dialogue.name.size()-1:
 		dialogue_name_show.text  = "NO LOCALISATION NAME HERE"
 		dialogue_name_show.text  = "NO LOCALISATION NAME HERE"
@@ -75,7 +75,7 @@ func _close_dialogue():
 	
 
 	dialogue.visible =  false
-	_global_datas.Player_InDialogue = false
+	#_global_datas.Player_InDialogue = false
 	_global_datas.Player_InMenu = false
 	$Random_FaceChanger/Timer.stop()
 

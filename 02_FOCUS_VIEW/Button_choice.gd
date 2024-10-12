@@ -1,7 +1,7 @@
 extends Button
 
 @export var choice_text : String = "Set a text"
-@onready var Choice_behaviour = $"../Choices_behaviour"
+@onready var Choice_behaviour = $"../../../Choices_behaviour"
 
 
 func _ready() -> void:

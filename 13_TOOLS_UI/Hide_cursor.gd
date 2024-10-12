@@ -27,6 +27,6 @@ func condition(_condition : bool):
 	if _condition:
 		_show()
 	else:	
-		if !_global_datas.Player_InDialogue:	
-			_hide()	
+		#if !_global_datas.Player_InDialogue:	
+		_hide()	
 	

@@ -1,19 +1,14 @@
 extends Node
 
 
-@export var Render : TextureRect
+
 @export var Camera : Camera3D
 
 func _input(event: InputEvent) -> void:
 	
-	if !Render.visible:
-		return	
-		
-	if _global_datas.Player_InMenu:
-		return
-		
-	if event.is_action_pressed("Click"):
-		_check_raycast()
+	if _global_datas.Player_inFocusView:
+		if event.is_action_pressed("Click"):
+			_check_raycast()
 		
 		
 func _check_raycast():
@@ -31,9 +26,9 @@ func _check_raycast():
 			_global_datas.transition_target = raycast.position
 			hit_focus._set_focus()
 		
-		var hit_focus_npc = raycast.collider.get_node_or_null("npc_revealed")
-		if hit_focus_npc:
-			hit_focus_npc._npc_revealed()
+		#var hit_focus_npc = raycast.collider.get_node_or_null("npc_revealed")
+		#if hit_focus_npc:
+			#hit_focus_npc._npc_revealed()
 		
 		var Close_focus_view = raycast.collider.get_node_or_null("Close_focus_view")
 		if Close_focus_view:

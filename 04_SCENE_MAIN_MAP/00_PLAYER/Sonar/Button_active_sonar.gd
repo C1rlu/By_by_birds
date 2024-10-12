@@ -11,8 +11,6 @@ func _input(event):
 	
 	if _global_datas.Player_InMenu:
 		return	
-	if _global_datas.Player_InDialogue:
-		return	
 
 	if event.is_action_pressed("Push_to_subscene"):
 		

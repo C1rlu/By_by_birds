@@ -7,6 +7,8 @@ extends Node
 @export var Cam: Camera3D
 @export var Cam_light: Camera3D
 @export var Cam_light_warm: Camera3D
+
+
 @onready var timer: Timer = $Timer
 var direction_speed : bool
 
@@ -39,10 +41,12 @@ func _process(delta: float) -> void:
 		rotation_root.rotation_degrees.y -= 1.0 * delta
 		rotation_root_light.rotation_degrees.y -= 1.0 * delta
 		rotation_root_light_warm.rotation_degrees.y -= 1.0 * delta
+		
 	else:
 		rotation_root.rotation_degrees.y += 1.0 * delta
 		rotation_root_light.rotation_degrees.y += 1.0 * delta
 		rotation_root_light_warm.rotation_degrees.y += 1.0 * delta
+
 		
 	Cam_light.global_position = Cam.global_position 
 	Cam_light.global_rotation_degrees = Cam.global_rotation_degrees

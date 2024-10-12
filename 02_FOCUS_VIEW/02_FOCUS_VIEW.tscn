@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://h2wepwtms1pe"]
+[gd_scene load_steps=46 format=3 uid="uid://h2wepwtms1pe"]
 
 [ext_resource type="Script" path="res://13_TOOLS_UI/set_Resolution_viewports.gd" id="1_3ana1"]
 [ext_resource type="Script" path="res://02_FOCUS_VIEW/Open_FocusView.gd" id="1_ttndn"]
@@ -12,10 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://dafg2qvpi6wmk" path="res://13_TOOLS_UI/Loader_circle/Loader_circle.png" id="10_s3pi3"]
 [ext_resource type="Shader" uid="uid://clx3d2k1ngnqc" path="res://02_FOCUS_VIEW/Blink_effect_sh.tres" id="11_5x6sk"]
 [ext_resource type="PackedScene" uid="uid://i7vwntowo6jb" path="res://02_FOCUS_VIEW/Focus_scene/Lighthouse_01/Lighthouse_01.tscn" id="11_rwa6u"]
-[ext_resource type="Script" path="res://02_FOCUS_VIEW/Choice_panel/open_choice_panel.gd" id="13_j2s5i"]
-[ext_resource type="Script" path="res://02_FOCUS_VIEW/choices_behaviour.gd" id="14_oje0i"]
-[ext_resource type="Script" path="res://02_FOCUS_VIEW/type_choice.gd" id="15_o45am"]
-[ext_resource type="Script" path="res://02_FOCUS_VIEW/Button_choice.gd" id="16_sxsa8"]
+[ext_resource type="PackedScene" uid="uid://clc3sbquuu1us" path="res://13_TOOLS_UI/Clock_montre/Clock_ui_prefab.tscn" id="13_dw4ju"]
 
 [sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_y363p"]
 source = 5
@@ -167,6 +164,7 @@ resource_local_to_scene = true
 shader = ExtResource("11_5x6sk")
 shader_parameter/Shadow_color = Color(0.0885598, 0.08856, 0.0885599, 1)
 shader_parameter/Warm_color = Color(1, 0.712397, 0.397465, 1)
+shader_parameter/Opacity = 1.0
 shader_parameter/Flat_viewport = SubResource("ViewportTexture_htsoc")
 shader_parameter/light = SubResource("ViewportTexture_05vrv")
 shader_parameter/light_warm = SubResource("ViewportTexture_7qo8q")
@@ -205,7 +203,6 @@ void fragment() {
 
 }
 "
-graph_offset = Vector2(-535.984, 79.7881)
 mode = 1
 flags/light_only = false
 nodes/fragment/0/position = Vector2(520, 120)
@@ -316,7 +313,6 @@ void fragment() {
 
 }
 "
-graph_offset = Vector2(-1008.13, -58.1718)
 mode = 1
 flags/light_only = false
 nodes/fragment/6/node = SubResource("VisualShaderNodeFloatParameter_r043l")
@@ -338,8 +334,6 @@ nodes/fragment/connections = PackedInt32Array(10, 0, 8, 0, 9, 0, 10, 0, 6, 0, 0,
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lxqpv"]
 shader = SubResource("VisualShader_d3np6")
 shader_parameter/Opacity = 0.379
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_oycco"]
 
 [node name="02_FOCUS_VIEW" type="Node"]
 
@@ -380,9 +374,8 @@ Cam_light_warm = NodePath("../Viewport_warm/CAM_light_warm")
 wait_time = 10.0
 one_shot = true
 
-[node name="Raycast_on_npc" type="Node" parent="." node_paths=PackedStringArray("Render", "Camera")]
+[node name="Raycast_on_npc" type="Node" parent="." node_paths=PackedStringArray("Camera")]
 script = ExtResource("7_fr4tu")
-Render = NodePath("../Render")
 Camera = NodePath("../Viewport/head/CAM")
 
 [node name="Update_focus" type="Node" parent="." node_paths=PackedStringArray("Camera_root", "Camera_head")]
@@ -406,6 +399,8 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 color = Color(0.0885598, 0.08856, 0.0885598, 1)
+
+[node name="Lighthouse03" parent="." instance=ExtResource("11_rwa6u")]
 
 [node name="Viewport" type="SubViewport" parent="."]
 own_world_3d = true
@@ -511,149 +506,16 @@ grow_vertical = 2
 texture = ExtResource("10_s3pi3")
 expand_mode = 1
 
-[node name="Choice_panel" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 15
+[node name="Clock" parent="." instance=ExtResource("13_dw4ju")]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Open_choice_Panel" type="Node" parent="Choice_panel" node_paths=PackedStringArray("Panel_root", "target_look")]
-script = ExtResource("13_j2s5i")
-Panel_root = NodePath("..")
-target_look = NodePath("../../Render/TextureRect")
-
-[node name="Choices_behaviour" type="Node" parent="Choice_panel" node_paths=PackedStringArray("Type_choice_node")]
-script = ExtResource("14_oje0i")
-Type_choice_node = NodePath("../Type_choice")
-
-[node name="Type_choice" type="Node" parent="Choice_panel" node_paths=PackedStringArray("Label_text")]
-script = ExtResource("15_o45am")
-Label_text = NodePath("../Description_result_Text")
-
-[node name="Button9" type="Button" parent="Choice_panel"]
-layout_mode = 2
-offset_left = 91.0
-offset_top = 148.0
-offset_right = 334.0
-offset_bottom = 179.0
-theme_override_colors/font_outline_color = Color(0.0901961, 0.0901961, 0.0901961, 1)
-theme_override_constants/outline_size = 85
-theme_override_styles/normal = SubResource("StyleBoxEmpty_oycco")
-text = "THIS CHOICE"
-script = ExtResource("16_sxsa8")
-choice_text = "A man"
-
-[node name="Button10" type="Button" parent="Choice_panel"]
-layout_mode = 2
-offset_left = 402.0
-offset_top = 69.0
-offset_right = 645.0
-offset_bottom = 100.0
-theme_override_colors/font_outline_color = Color(0.0901961, 0.0901961, 0.0901961, 1)
-theme_override_constants/outline_size = 85
-theme_override_styles/normal = SubResource("StyleBoxEmpty_oycco")
-text = "THIS CHOICE"
-script = ExtResource("16_sxsa8")
-choice_text = "in a cave"
-
-[node name="Button11" type="Button" parent="Choice_panel"]
-layout_mode = 2
-offset_left = 662.0
-offset_top = 139.0
-offset_right = 905.0
-offset_bottom = 170.0
-theme_override_colors/font_outline_color = Color(0.0901961, 0.0901961, 0.0901961, 1)
-theme_override_constants/outline_size = 85
-theme_override_styles/normal = SubResource("StyleBoxEmpty_oycco")
-text = "THIS CHOICE"
-script = ExtResource("16_sxsa8")
-choice_text = "whatching"
-
-[node name="Button12" type="Button" parent="Choice_panel"]
-layout_mode = 2
-offset_left = 666.0
-offset_top = 74.0
-offset_right = 909.0
-offset_bottom = 105.0
-theme_override_colors/font_outline_color = Color(0.0901961, 0.0901961, 0.0901961, 1)
-theme_override_constants/outline_size = 85
-theme_override_styles/normal = SubResource("StyleBoxEmpty_oycco")
-text = "THIS CHOICE"
-script = ExtResource("16_sxsa8")
-choice_text = "horror"
-
-[node name="Button13" type="Button" parent="Choice_panel"]
-layout_mode = 2
-offset_left = 385.0
-offset_top = 166.0
-offset_right = 628.0
-offset_bottom = 197.0
-theme_override_colors/font_outline_color = Color(0.0901961, 0.0901961, 0.0901961, 1)
-theme_override_constants/outline_size = 85
-theme_override_styles/normal = SubResource("StyleBoxEmpty_oycco")
-text = "THIS CHOICE"
-script = ExtResource("16_sxsa8")
-choice_text = "lucky"
-
-[node name="Button14" type="Button" parent="Choice_panel"]
-layout_mode = 2
-offset_left = 956.0
-offset_top = 68.0
-offset_right = 1199.0
-offset_bottom = 99.0
-theme_override_colors/font_outline_color = Color(0.0901961, 0.0901961, 0.0901961, 1)
-theme_override_constants/outline_size = 85
-theme_override_styles/normal = SubResource("StyleBoxEmpty_oycco")
-text = "THIS CHOICE"
-script = ExtResource("16_sxsa8")
-choice_text = "because"
-
-[node name="Button15" type="Button" parent="Choice_panel"]
-layout_mode = 2
-offset_left = 112.0
-offset_top = 81.0
-offset_right = 355.0
-offset_bottom = 112.0
-theme_override_colors/font_outline_color = Color(0.0901961, 0.0901961, 0.0901961, 1)
-theme_override_constants/outline_size = 85
-theme_override_styles/normal = SubResource("StyleBoxEmpty_oycco")
-text = "THIS CHOICE"
-script = ExtResource("16_sxsa8")
-choice_text = "ahah"
-
-[node name="Button16" type="Button" parent="Choice_panel"]
-layout_mode = 2
-offset_left = 989.0
-offset_top = 171.0
-offset_right = 1232.0
-offset_bottom = 202.0
-theme_override_colors/font_outline_color = Color(0.0901961, 0.0901961, 0.0901961, 1)
-theme_override_constants/outline_size = 85
-theme_override_styles/normal = SubResource("StyleBoxEmpty_oycco")
-text = "THIS CHOICE"
-script = ExtResource("16_sxsa8")
-choice_text = "i don't cate"
-
-[node name="Description_result_Text" type="Label" parent="Choice_panel"]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -300.0
-offset_top = -113.0
-offset_right = 300.0
-offset_bottom = -13.0
-grow_horizontal = 2
+offset_left = -77.0
+offset_top = -63.0
+offset_right = -77.0
+offset_bottom = -63.0
+grow_horizontal = 0
 grow_vertical = 0
-theme_override_colors/font_color = Color(0.965267, 0.928357, 0.885485, 1)
-theme_override_colors/font_outline_color = Color(0.0901961, 0.0901961, 0.0901961, 1)
-theme_override_constants/outline_size = 60
-theme_override_font_sizes/font_size = 30
-text = "..."
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 2
+scale = Vector2(0.462214, 0.462214)

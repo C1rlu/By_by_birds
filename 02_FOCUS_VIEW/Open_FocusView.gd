@@ -4,15 +4,18 @@ extends Node
 @export var Loader : Node3D
 
 func _ready():
-	_open()
-
-func _open():
-	
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)	
 	clear_and_instantiate()
+	_global_datas._open_menu.connect(_open_menu)
+
+	
+func _open_menu(condition : bool):
+
+	if !condition:
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)	
 		
 func clear_and_instantiate():
-
+	
 	for e in Loader.get_children():
 		e.queue_free()
 

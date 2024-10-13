@@ -3,6 +3,7 @@ extends Node
 @export var Camera :Camera3D
 @export var Camera_light :Camera3D
 @export var Camera_warm :Camera3D
+@export var Camera_ui :Camera3D
 
 @export var Render : TextureRect
 var t
@@ -58,3 +59,4 @@ func _fov(value : float):
 	Camera.fov = value	
 	Camera_light.fov = value
 	Camera_warm.fov = value	
+	Camera_ui.fov = value

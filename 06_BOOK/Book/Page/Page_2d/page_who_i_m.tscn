@@ -23,76 +23,49 @@ script = SubResource("GDScript_6ohfl")
 
 [node name="Label3" type="Label" parent="."]
 layout_mode = 0
-offset_left = 40.0
-offset_top = 41.0
-offset_right = 372.0
-offset_bottom = 85.0
+offset_left = 63.0
+offset_top = 107.0
+offset_right = 460.0
+offset_bottom = 176.0
 theme_override_colors/font_color = Color(0.0235294, 0.176471, 0.2, 1)
 theme_override_font_sizes/font_size = 50
-text = "Mission purpose
-"
+text = "LOREM IPSUM"
 
 [node name="Label2" type="Label" parent="."]
 layout_mode = 0
 offset_left = 55.0
 offset_top = 208.0
 offset_right = 924.0
-offset_bottom = 426.0
+offset_bottom = 668.0
 theme_override_colors/font_color = Color(0.0235294, 0.176471, 0.2, 1)
 theme_override_font_sizes/font_size = 35
-text = "The central republic is sending me to investigate about some oddities
-"
-autowrap_mode = 3
-
-[node name="Label5" type="Label" parent="."]
-layout_mode = 0
-offset_left = 55.0
-offset_top = 403.0
-offset_right = 924.0
-offset_bottom = 621.0
-theme_override_colors/font_color = Color(0.0235294, 0.176471, 0.2, 1)
-theme_override_font_sizes/font_size = 35
-text = "The central republic is sending me to investigate about some oddities
-"
-autowrap_mode = 3
-
-[node name="Label7" type="Label" parent="."]
-layout_mode = 0
-offset_left = 55.0
-offset_top = 589.0
-offset_right = 924.0
-offset_bottom = 807.0
-theme_override_colors/font_color = Color(0.0235294, 0.176471, 0.2, 1)
-theme_override_font_sizes/font_size = 35
-text = "The central republic is sending me to investigate about some oddities
-"
+text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sit amet vulputate neque. Nam id tempor risus, quis tincidunt mauris. Quisque nec malesuada diam. Duis vitae mauris in risus tristique consectetur. "
 autowrap_mode = 3
 
 [node name="Label6" type="Label" parent="."]
 layout_mode = 0
 offset_left = 51.0
-offset_top = 811.0
+offset_top = 572.0
 offset_right = 537.0
-offset_bottom = 880.0
+offset_bottom = 641.0
 theme_override_colors/font_color = Color(0.0235294, 0.176471, 0.2, 1)
 theme_override_font_sizes/font_size = 50
-text = "FIRST OBSERVATION"
+text = "LOREM IPSUM"
 
 [node name="Label4" type="Label" parent="."]
 layout_mode = 0
 offset_left = 1088.0
-offset_top = 85.0
+offset_top = 146.0
 offset_right = 1952.0
 offset_bottom = 1125.0
 theme_override_colors/font_color = Color(0.0235294, 0.176471, 0.2, 1)
 theme_override_font_sizes/font_size = 35
-text = "This regions is cold, i hate the cold.
+text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sit amet vulputate neque. 
 
-I don't know how many time i'll be stuck here. But since there is the civil war in the capital, i should stay here and do my mission 
 
-Eva 1 february 1901
+Nam id tempor risus, quis tincidunt mauris. Quisque nec malesuada diam. 
 
-"
+Duis vitae mauris in risus tristique consectetur. Vivamus eget efficitur neque, at ornare velit. Quisque fermentum, tortor id euismod cursus, purus massa scelerisque risus, pharetra imperdiet enim nisi ut sapien. Nulla facilisi. In hac habitasse platea dictumst. Praesent rutrum metus et purus pellentesque tempor. Etiam vulputate ac ipsum vitae mattis. "
 autowrap_mode = 3
 
 [node name="ColorRect" type="ColorRect" parent="."]

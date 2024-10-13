@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=4 uid="uid://exqao35losp1"]
+[gd_scene load_steps=15 format=4 uid="uid://exqao35losp1"]
 
 [ext_resource type="Script" path="res://00_SYSTEMS/Active_mask_at_ready.tres.gd" id="1_fsquf"]
 [ext_resource type="PackedScene" uid="uid://qgcnidhufff2" path="res://04_SCENE_MAIN_MAP/ELEMENTS/Rampe/Rampe_msh.blend" id="1_myr1e"]
+[ext_resource type="Script" path="res://04_SCENE_MAIN_MAP/set_revealed.gd" id="1_w72jw"]
 [ext_resource type="Texture2D" uid="uid://chhl6f8t2r2c8" path="res://04_SCENE_MAIN_MAP/ELEMENTS/Rampe/Rampe_gradient.png" id="2_a8e2w"]
 [ext_resource type="Material" uid="uid://ctnqf5d3uj1g7" path="res://00_SHADER/All_Materials/dark_mask.tres" id="3_vsmi8"]
 [ext_resource type="Material" uid="uid://yjoyk6fvrm6q" path="res://00_SHADER/No_light_surface_mat.tres" id="4_r6bw8"]
@@ -86,14 +87,17 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_hp4c4")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tyjla"]
+resource_local_to_scene = true
 render_priority = 1
 shader = ExtResource("5_ympaj")
 shader_parameter/ColorParameter = Color(0, 0, 0, 1)
-shader_parameter/Color = Color(0.25098, 0.239216, 0.211765, 1)
+shader_parameter/Color = Color(0.25, 0.25, 0.25, 1)
 shader_parameter/Dither_strenght = 0.37
 shader_parameter/Gradient_base = ExtResource("2_a8e2w")
 
-[node name="Rampe_Prefab" type="Node3D"]
+[node name="Rampe_Prefab" type="Node3D" node_paths=PackedStringArray("element_to_revealed")]
+script = ExtResource("1_w72jw")
+element_to_revealed = [NodePath("Rampe_msh/Rampe")]
 
 [node name="Active_at_ready" type="Node" parent="." node_paths=PackedStringArray("_active")]
 script = ExtResource("1_fsquf")

@@ -177,6 +177,7 @@ echap={
 [layer_names]
 
 3d_render/layer_1="MainScene"
+3d_render/layer_2="Top_view"
 3d_render/layer_4="Sonar_mask"
 3d_render/layer_6="Focus_cam"
 3d_render/layer_7="GRID"
@@ -220,7 +221,7 @@ active_Dither={
 }
 Night={
 "type": "float",
-"value": 0.19
+"value": 0.0
 }
 BlueNoise={
 "type": "sampler2D",

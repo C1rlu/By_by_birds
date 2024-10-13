@@ -8,42 +8,64 @@ extends Node
 
 
 var fade_out
-
 var frame_top
 var frame_bot
-
+var current_value : float
 
 func _ready() -> void:
-	#_global_datas._end_of_transition.connect(_blink_out)
+	
+	_global_datas._frame_to_close.connect(directed_close)
+	_global_datas._frame_to_journal.connect(directed_close_journal)
+	
 	timer.timeout.connect(_blink_out)
 	timer.start()
+	
 func _blink_out():
-
 	if _global_datas.current_focus_data:
 		if _global_datas.current_focus_data.scene_resolved:
 			render.get_material().set_shader_parameter("Opacity",1.0)	
 			return
-	#if fade_out:
-		#fade_out.kill()
-	#
-	#fade_out = create_tween()
-	#fade_out.tween_method(_effect,1.0,0.0,6.0)
-	#fade_out.connect("finished",done)
-	
 	if frame_top:
 		frame_top.kill()
 		
 	frame_top = create_tween()
 	frame_top.tween_method(_frame_top,-720,-360,10.0)
 	frame_top.connect("finished",done)	
+
+
+
+func directed_close():
 	
+	if frame_top:
+		frame_top.kill()
+		
+	frame_top = create_tween()
+	if !current_value:
+		current_value = 720	
+	frame_top.tween_method(_frame_top,-current_value,-360,0.5)
+	frame_top.connect("finished",done)
+				
+func directed_close_journal():
+	
+	if frame_top:
+		frame_top.kill()
+		
+	frame_top = create_tween()
+	if !current_value:
+		current_value = 720	
+	frame_top.tween_method(_frame_top,-current_value,-360,0.5)
+	frame_top.connect("finished",done_mission)
+		
 func done():
 	_global_datas._open_focus_view.emit(false)	
 
+func done_mission():
+	_global_datas._add_journal.emit(true)
+	
 func _effect(value : float):
 	render.get_material().set_shader_parameter("Opacity",value)	
 	
 func _frame_top(value : float):
 	frame_blink_top.position.y = value		
 	frame_blink_bot.position.y = -value
-	
+	current_value = value

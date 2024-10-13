@@ -1,6 +1,7 @@
-[gd_scene load_steps=43 format=4 uid="uid://fcjcvy77lg0o"]
+[gd_scene load_steps=44 format=4 uid="uid://fcjcvy77lg0o"]
 
 [ext_resource type="Script" path="res://00_SYSTEMS/Active_mask_at_ready.tres.gd" id="1_u3hy5"]
+[ext_resource type="Script" path="res://04_SCENE_MAIN_MAP/set_revealed.gd" id="1_va3h8"]
 [ext_resource type="Texture2D" uid="uid://cdnar4v4gpadd" path="res://04_SCENE_MAIN_MAP/ELEMENTS/Lighthouse/Lighthouse_gradient.png" id="2_lv8lt"]
 [ext_resource type="Script" path="res://04_SCENE_MAIN_MAP/ELEMENTS/Lighthouse/Lighhouse_light_anim.gd" id="2_mcqu7"]
 [ext_resource type="Material" uid="uid://ctnqf5d3uj1g7" path="res://00_SHADER/All_Materials/dark_mask.tres" id="3_mvy38"]
@@ -185,7 +186,7 @@ shader = SubResource("VisualShader_swao4")
 render_priority = 1
 shader = ExtResource("5_n182k")
 shader_parameter/ColorParameter = Color(0, 0, 0, 1)
-shader_parameter/Color = Color(0.215686, 0.211765, 0.172549, 1)
+shader_parameter/Color = Color(0.22, 0.22, 0.22, 1)
 shader_parameter/Dither_strenght = 0.37
 shader_parameter/Gradient_base = ExtResource("2_lv8lt")
 
@@ -425,8 +426,10 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_sop1i")
 
-[node name="Lighthouse_prefab" type="Node3D"]
+[node name="Lighthouse_prefab" type="Node3D" node_paths=PackedStringArray("element_to_revealed")]
 transform = Transform3D(-0.271044, 0, 2.89823e-08, 0, 0.271044, 0, -2.89823e-08, 0, -0.271044, 0, 0, 0)
+script = ExtResource("1_va3h8")
+element_to_revealed = [NodePath("Lighthouse2/Lighthouse")]
 
 [node name="Active_at_ready" type="Node" parent="." node_paths=PackedStringArray("_active")]
 script = ExtResource("1_u3hy5")

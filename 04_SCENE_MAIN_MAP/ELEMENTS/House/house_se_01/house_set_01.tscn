@@ -29,7 +29,7 @@ resource_local_to_scene = true
 render_priority = 1
 shader = ExtResource("2_t2c44")
 shader_parameter/ColorParameter = Color(0, 0, 0, 1)
-shader_parameter/Color = Color(0.2, 0.180392, 0.152941, 1)
+shader_parameter/Color = Color(0.140448, 0.140447, 0.140447, 1)
 shader_parameter/Dither_strenght = 1.615
 shader_parameter/Gradient_base = SubResource("GradientTexture2D_qwn6x")
 
@@ -43,7 +43,7 @@ resource_local_to_scene = true
 render_priority = 1
 shader = ExtResource("2_t2c44")
 shader_parameter/ColorParameter = Color(0, 0, 0, 1)
-shader_parameter/Color = Color(0.419608, 0.317647, 0.176471, 1)
+shader_parameter/Color = Color(0.42, 0.42, 0.42, 1)
 shader_parameter/Dither_strenght = 0.675
 shader_parameter/Gradient_base = SubResource("GradientTexture2D_djcsk")
 

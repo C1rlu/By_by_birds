@@ -1,6 +1,7 @@
-[gd_scene load_steps=14 format=4 uid="uid://dla1534gcagbl"]
+[gd_scene load_steps=15 format=4 uid="uid://dla1534gcagbl"]
 
 [ext_resource type="Script" path="res://00_SYSTEMS/Active_mask_at_ready.tres.gd" id="1_1lpix"]
+[ext_resource type="Script" path="res://04_SCENE_MAIN_MAP/set_revealed.gd" id="1_kdbpq"]
 [ext_resource type="PackedScene" uid="uid://cukwu0ltc71oi" path="res://04_SCENE_MAIN_MAP/ELEMENTS/Pine/Pine_01.blend" id="1_p2sbr"]
 [ext_resource type="Material" uid="uid://ctnqf5d3uj1g7" path="res://00_SHADER/All_Materials/dark_mask.tres" id="3_5wqao"]
 [ext_resource type="Shader" uid="uid://cu2uipuy138c6" path="res://00_SHADER/All_Materials/Main_sceneTest_dither_sh.tres" id="3_43wfd"]
@@ -87,15 +88,17 @@ resource_local_to_scene = true
 render_priority = 1
 shader = ExtResource("3_43wfd")
 shader_parameter/ColorParameter = Color(0.13, 0.13, 0.13, 1)
-shader_parameter/Color = Color(0.415686, 0.415686, 0.415686, 1)
+shader_parameter/Color = Color(0.458405, 0.458405, 0.458405, 1)
 shader_parameter/Dither_strenght = 0.545
 shader_parameter/Gradient_base = ExtResource("4_dbhh4")
 
 [sub_resource type="BoxOccluder3D" id="BoxOccluder3D_wsmyo"]
 size = Vector3(4.7987, 11.3786, 4.92407)
 
-[node name="Pine_prefabs" type="Node3D"]
+[node name="Pine_prefabs" type="Node3D" node_paths=PackedStringArray("element_to_revealed")]
 transform = Transform3D(0.0845396, 0, 0, 0, 0.0845396, 0, 0, 0, 0.0845396, 0, 0, 0)
+script = ExtResource("1_kdbpq")
+element_to_revealed = [NodePath("Pine_013/Pine_01")]
 
 [node name="Active_at_ready" type="Node" parent="." node_paths=PackedStringArray("_active")]
 script = ExtResource("1_1lpix")

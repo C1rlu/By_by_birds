@@ -45,7 +45,7 @@ func get_all_render(scene)-> Array:
 
 func get_raycast_target(targetPos : Vector2, Camera : Camera3D, mask : int,collide_with_areas : bool,collide_with_bodies : bool) -> Dictionary: 
 	
-	var rayLengh = 250.0
+	var rayLengh = 1000.0
 	var from = Camera.project_ray_origin(targetPos)
 	var to = from + Camera.project_ray_normal(targetPos) * rayLengh
 	var space = Camera.get_world_3d().direct_space_state

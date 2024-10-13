@@ -42,6 +42,11 @@ func _check_raycast():
 		var Show_focus = raycast.collider.get_node_or_null("Show_focus")
 		
 		if Show_focus:
-			_global_datas._open_desk.emit(false)
-			_global_datas.current_focus_data = Show_focus.get_focus_data()
-			_global_datas._open_focus_view.emit(true)
+			_global_datas.focus_on_board_book.emit(true)
+			_global_datas.open_book_board.emit(true)
+			var page = Show_focus.get_focus_data().book_page_index
+			_global_datas.turn_to_page.emit(page)
+			
+			#_global_datas._open_desk.emit(false)
+			#_global_datas.current_focus_data = Show_focus.get_focus_data()
+			#_global_datas._open_focus_view.emit(true)

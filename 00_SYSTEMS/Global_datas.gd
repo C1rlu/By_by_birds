@@ -23,11 +23,17 @@ signal _check_player_zone
 
 
 # FOCUS VIEW  
+signal _frame_to_close
+signal _frame_to_journal
 signal _open_focus_view(condition : bool)
 signal _in_transition_start
 signal _in_transition_end
 var current_focus_data : focus_data
 signal check_focus_count
+signal hide_all_FocusScene_dialogue
+
+# Journal_mission_done
+signal _add_journal(condition : bool)
 
 
 # dialogue signals
@@ -64,10 +70,10 @@ signal _in_desk_zone(condition : bool)
 
 
 #Book globals
-signal open_book(condition : bool)
 signal open_book_board(condition : bool)
 signal focus_on_board_book(condition:bool)
 var all_book_page_data : Array[book_page]
+signal turn_to_page(page : int)
 signal turn_left
 signal turn_right
 var legend_page_index : int

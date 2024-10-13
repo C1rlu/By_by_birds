@@ -31,6 +31,7 @@ func _ready():
 
 	_global_datas.all_book_page_data.append_array(list_of_page)
 	
+	_global_datas.turn_to_page.connect(_show_from_index)
 	
 func update_page_right():
 	

@@ -38,12 +38,8 @@ func _set_new_focus(n_Camera : Camera3D):
 		return
 	previous_cam = n_Camera
 	
-	# BLINK EFFECT
-	#if blink:
-		#blink.kill()
-	#blink = create_tween()
-	#blink.tween_method(_blink_effect,0.0,3.0,0.3).set_ease(Tween.EASE_OUT)
-	#
+	_global_datas.hide_all_FocusScene_dialogue.emit()
+	
 	#CAM MOVE
 	var move_cam 
 	move_cam = create_tween()
@@ -57,8 +53,3 @@ func _done():
 	_global_datas._end_of_transition.emit()
 	Camera_head.global_rotation_degrees = previous_cam.global_rotation_degrees	
 	Camera_head.global_position = previous_cam.global_position
-	#Blink_texture.get_material().set_shader_parameter("Blink",0.0)
-	#
-#func _blink_effect(value : float):
-	#
-	#Blink_texture.get_material().set_shader_parameter("Blink",value)

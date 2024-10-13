@@ -7,7 +7,7 @@ extends Node
 var to_remove : bool 
 func _set_focus():
 	_global_datas.set_new_focus.emit(_focus_camera)
-	_global_datas._end_of_transition.connect(_check_remove)
+	#_global_datas._end_of_transition.connect(_check_remove)
 	to_remove = true
 
 

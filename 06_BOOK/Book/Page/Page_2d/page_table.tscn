@@ -51,8 +51,23 @@ offset_right = 1431.0
 offset_bottom = 185.0
 theme_override_colors/font_color = Color(0.0235294, 0.176471, 0.2, 1)
 theme_override_font_sizes/font_size = 50
-text = "Table
+text = "Lorem
 "
+
+[node name="Label4" type="Label" parent="."]
+layout_mode = 0
+offset_left = 78.0
+offset_top = 87.0
+offset_right = 940.0
+offset_bottom = 1106.0
+theme_override_colors/font_color = Color(0.0235294, 0.176471, 0.2, 1)
+theme_override_font_sizes/font_size = 40
+text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sit amet vulputate neque. 
+Nam id tempor risus, quis tincidunt mauris. Quisque nec malesuada diam. Duis vitae mauris in risus tristique consectetur. Vivamus eget efficitur neque, at ornare velit. Quisque fermentum, tortor id euismod cursus, purus massa scelerisque risus, pharetra imperdiet enim nisi ut sapien. Nulla facilisi. In hac habitasse platea dictumst.
+
+
+Praesent rutrum metus et purus pellentesque tempor. Etiam vulputate ac ipsum vitae mattis. "
+autowrap_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 0
@@ -66,31 +81,73 @@ theme_override_constants/separation = 25
 layout_mode = 2
 theme_override_colors/font_color = Color(0.0235294, 0.176471, 0.2, 1)
 theme_override_font_sizes/font_size = 35
-text = "The scanner ............................................... 02"
+text = "Ipsum ............................................... 01"
 
 [node name="Label2" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.0235294, 0.176471, 0.2, 1)
 theme_override_font_sizes/font_size = 35
-text = "The scanner ............................................... 02"
+text = "Ipsum ............................................... 01"
 
 [node name="Label3" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.0235294, 0.176471, 0.2, 1)
 theme_override_font_sizes/font_size = 35
-text = "The scanner ............................................... 02"
+text = "Ipsum ............................................... 01"
 
 [node name="Label4" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.0235294, 0.176471, 0.2, 1)
 theme_override_font_sizes/font_size = 35
-text = "The scanner ............................................... 02"
+text = "Ipsum ............................................... 01"
 
 [node name="Label5" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.0235294, 0.176471, 0.2, 1)
 theme_override_font_sizes/font_size = 35
-text = "The scanner ............................................... 02"
+text = "Ipsum ............................................... 01"
+
+[node name="Label6" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.0235294, 0.176471, 0.2, 1)
+theme_override_font_sizes/font_size = 35
+text = "Ipsum ............................................... 01"
+
+[node name="Label7" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.0235294, 0.176471, 0.2, 1)
+theme_override_font_sizes/font_size = 35
+text = "Ipsum ............................................... 01"
+
+[node name="Label8" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.0235294, 0.176471, 0.2, 1)
+theme_override_font_sizes/font_size = 35
+text = "Ipsum ............................................... 01"
+
+[node name="Label9" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.0235294, 0.176471, 0.2, 1)
+theme_override_font_sizes/font_size = 35
+text = "Ipsum ............................................... 01"
+
+[node name="Label10" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.0235294, 0.176471, 0.2, 1)
+theme_override_font_sizes/font_size = 35
+text = "Ipsum ............................................... 01"
+
+[node name="Label11" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.0235294, 0.176471, 0.2, 1)
+theme_override_font_sizes/font_size = 35
+text = "Ipsum ............................................... 01"
+
+[node name="Label12" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.0235294, 0.176471, 0.2, 1)
+theme_override_font_sizes/font_size = 35
+text = "Ipsum ............................................... 01"
 
 [node name="Panel" type="Panel" parent="."]
 visible = false

@@ -1,4 +1,4 @@
-[gd_resource type="VisualShader" load_steps=3 format=3 uid="uid://bogp428w4gxnx"]
+[gd_resource type="VisualShader" load_steps=7 format=3 uid="uid://bogp428w4gxnx"]
 
 [sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_mvbsw"]
 parameter_name = "Fog_colo"
@@ -8,6 +8,19 @@ parameter_name = "Opacity"
 hint = 1
 default_value_enabled = true
 default_value = 1.0
+
+[sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_y3pul"]
+parameter_name = "BlueNoise"
+qualifier = 1
+texture_filter = 1
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_v0ri0"]
+source = 5
+
+[sub_resource type="VisualShaderNodeStep" id="VisualShaderNodeStep_mq5pw"]
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_c36rt"]
+input_name = "screen_uv"
 
 [resource]
 resource_local_to_scene = true
@@ -38,8 +51,17 @@ void fragment() {
 flags/unshaded = true
 flags/shadows_disabled = true
 flags/ambient_light_disabled = true
+nodes/fragment/0/position = Vector2(540, 80)
 nodes/fragment/2/node = SubResource("VisualShaderNodeColorParameter_mvbsw")
 nodes/fragment/2/position = Vector2(-140, 20)
 nodes/fragment/3/node = SubResource("VisualShaderNodeFloatParameter_o0vti")
-nodes/fragment/3/position = Vector2(-140, 260)
-nodes/fragment/connections = PackedInt32Array(2, 0, 0, 0, 3, 0, 0, 1)
+nodes/fragment/3/position = Vector2(-440, 220)
+nodes/fragment/4/node = SubResource("VisualShaderNodeTexture2DParameter_y3pul")
+nodes/fragment/4/position = Vector2(-760, 500)
+nodes/fragment/5/node = SubResource("VisualShaderNodeTexture_v0ri0")
+nodes/fragment/5/position = Vector2(-380, 640)
+nodes/fragment/6/node = SubResource("VisualShaderNodeStep_mq5pw")
+nodes/fragment/6/position = Vector2(85.1236, 434.793)
+nodes/fragment/7/node = SubResource("VisualShaderNodeInput_c36rt")
+nodes/fragment/7/position = Vector2(-703.465, 922.723)
+nodes/fragment/connections = PackedInt32Array(2, 0, 0, 0, 4, 0, 5, 2, 5, 0, 6, 0, 3, 0, 6, 1, 7, 0, 5, 0, 3, 0, 0, 1)

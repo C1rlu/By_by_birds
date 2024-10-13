@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=3 uid="uid://olyejd2flb2q"]
 
 [ext_resource type="PackedScene" uid="uid://cx7k4grvoqu2b" path="res://06_BOOK/Photo_2d_book/Photo_2D.tscn" id="4_pi5e5"]
-[ext_resource type="Texture2D" uid="uid://ga5yb54aj2kv" path="res://06_BOOK/Shader/question_back_alpha.png" id="8_edeh0"]
+[ext_resource type="Texture2D" uid="uid://ga5yb54aj2kv" path="res://06_BOOK/question_back_alpha.png" id="8_edeh0"]
 
 [sub_resource type="GDScript" id="GDScript_v4jor"]
 script/source = "extends Node
@@ -199,7 +199,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.25098, 0.211765, 0.117647, 1)
 theme_override_font_sizes/font_size = 35
-text = "I meet at the lighthouse a old man named Maurice"
+text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sit amet vulputate neque. "
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
@@ -235,7 +235,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.25098, 0.211765, 0.117647, 1)
 theme_override_font_sizes/font_size = 35
-text = "He put on the land at every dive spot a indication buoy  "
+text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sit amet "
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
@@ -281,7 +281,7 @@ grow_vertical = 2
 scale = Vector2(0.220406, 0.220406)
 theme_override_colors/font_color = Color(0.25098, 0.211765, 0.117647, 1)
 theme_override_font_sizes/font_size = 160
-text = "People are calling him the \"Grognard\""
+text = "Lorem ipsum "
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
@@ -318,7 +318,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.25098, 0.211765, 0.117647, 1)
 theme_override_font_sizes/font_size = 35
-text = "He told me that there is somthing weird in the fisher area"
+text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sit amet vulputate neque. "
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
@@ -352,7 +352,41 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.25098, 0.211765, 0.117647, 1)
 theme_override_font_sizes/font_size = 35
-text = "I should start to check in the south at the fisher area"
+text = "Sed cursus pulvinar tortor, eu vehicula nunc auctor ac. Aliquam justo metus"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Info6" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1406.0
+offset_top = 873.0
+offset_right = 1941.0
+offset_bottom = 1153.0
+rotation = -0.0217575
+
+[node name="back" type="ColorRect" parent="Info6"]
+material = SubResource("ShaderMaterial_4d7dv")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.811765, 0.745098, 0.67451, 1)
+
+[node name="Text" type="Label" parent="Info6"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.25098, 0.211765, 0.117647, 1)
+theme_override_font_sizes/font_size = 35
+text = "Sed cursus pulvinar tortor, eu vehicula nunc auctor ac. Aliquam justo metus"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
@@ -362,3 +396,4 @@ autowrap_mode = 2
 [connection signal="tree_exited" from="Info3" to="Info3" method="_on_tree_exited"]
 [connection signal="tree_exited" from="Info2" to="Info2" method="_on_tree_exited"]
 [connection signal="tree_exited" from="Info5" to="Info5" method="_on_tree_exited"]
+[connection signal="tree_exited" from="Info6" to="Info6" method="_on_tree_exited"]

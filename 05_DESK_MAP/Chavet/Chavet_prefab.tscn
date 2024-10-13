@@ -55,7 +55,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.721569, 0.580392, 0.407843, 1)
+color = Color(0.72, 0.72, 0.72, 1)
 
 [node name="Label" type="Label" parent="SubViewport"]
 offset_left = 40.0

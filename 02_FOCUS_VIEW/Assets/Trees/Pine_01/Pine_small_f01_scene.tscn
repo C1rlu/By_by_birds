@@ -143,6 +143,7 @@ _active = [NodePath("../Pine_f01_light"), NodePath("../Pine_f01_warm")]
 
 [node name="Pine_f01_light" type="MeshInstance3D" parent="."]
 transform = Transform3D(-0.102628, 0.00114895, 0.139322, -0.0125292, 0.172262, -0.0106499, -0.138762, -0.0164037, -0.102081, -0.395883, 3.75528, 0.068255)
+visible = false
 layers = 2
 gi_mode = 0
 mesh = SubResource("ArrayMesh_wu81r")

@@ -469,14 +469,12 @@ transform = Transform3D(1.30166, 0, 0, 0, 1.30166, 0, 0, 0, 1.30166, 1.89189e-07
 
 [node name="IMG" type="MeshInstance3D" parent="Photo"]
 transform = Transform3D(0.0725886, 0, 0, 0, -3.17295e-09, 0.0725886, 0, -0.0725886, -3.17295e-09, 0, 0.0026472, 0.003)
-layers = 2
 mesh = SubResource("QuadMesh_1i4du")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("ShaderMaterial_trilb")
 
 [node name="render_base" type="MeshInstance3D" parent="Photo"]
 transform = Transform3D(0.08478, 0, 0, 0, 0.00135893, 0, 0, 0, 0.0810078, 0, 0.00166521, 0.00384115)
-layers = 2
 mesh = SubResource("BoxMesh_8e2mh")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("ShaderMaterial_lopb6")

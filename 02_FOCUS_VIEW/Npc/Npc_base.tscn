@@ -60,7 +60,7 @@ text = "\"I know where he is\""
 [node name="Dialogue" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.90723, 0)
 visible = false
-layers = 32
+layers = 33
 cast_shadow = 0
 gi_mode = 0
 billboard = 1

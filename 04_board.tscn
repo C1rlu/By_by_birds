@@ -213,7 +213,7 @@ script = ExtResource("8_gvph7")
 [node name="Camera3D_Main_Desk" type="Camera3D" parent="."]
 transform = Transform3D(0.978509, -0.0828833, 0.188813, 0, 0.915662, 0.401948, -0.206204, -0.393309, 0.895984, 0.437, 0.701, 1.245)
 visible = false
-cull_mask = 3
+cull_mask = 1
 current = true
 fov = 60.0
 far = 10.0
@@ -221,14 +221,14 @@ far = 10.0
 [node name="Camera3D_Main_Map" type="Camera3D" parent="."]
 transform = Transform3D(0.994522, 0.0835898, -0.062761, 0, 0.60042, 0.799685, 0.104528, -0.795304, 0.597131, -0.015, 0.284, 0.354)
 visible = false
-cull_mask = 3
+cull_mask = 1
 current = true
 fov = 60.0
 far = 10.0
 
 [node name="Camera3D_Main_Book" type="Camera3D" parent="."]
 transform = Transform3D(0.987688, 0.154551, -0.024202, 0, 0.15471, 0.98796, 0.156434, -0.975796, 0.152806, 0.186, 0.188, 0.38)
-cull_mask = 3
+cull_mask = 1
 current = true
 fov = 60.0
 far = 10.0
@@ -239,7 +239,7 @@ size = Vector2i(1280, 720)
 
 [node name="Camera3D_follow" type="Camera3D" parent="SubViewport"]
 transform = Transform3D(0.992546, 0.0761977, -0.0951103, 0, 0.78043, 0.625243, 0.121869, -0.620582, 0.774613, -0.118, 0.776, 0.937)
-cull_mask = 3
+cull_mask = 1
 fov = 60.0
 
 [node name="SHARP_test" type="ColorRect" parent="SubViewport"]

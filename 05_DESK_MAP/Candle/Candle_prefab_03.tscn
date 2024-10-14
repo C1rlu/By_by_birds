@@ -197,13 +197,11 @@ shader_parameter/Fresnel_value = 4.795
 transform = Transform3D(0.401, 0, 0, 0, 0.401, 0, 0, 0, 0.401, 0, 0, 0)
 
 [node name="candle_02" parent="Candle_03" index="0"]
-layers = 2
 surface_material_override/0 = SubResource("ShaderMaterial_1l4lr")
 surface_material_override/1 = SubResource("ShaderMaterial_x81jw")
 
 [node name="Flame" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.0354224, 0, 0, 0, 0.0354224, 0, 0, 0, 0.0354224, 0, 0.140167, 0)
-layers = 65538
 mesh = SubResource("SphereMesh_bo7e3")
 surface_material_override/0 = SubResource("ShaderMaterial_ag2o0")
 

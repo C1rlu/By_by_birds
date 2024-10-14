@@ -57,7 +57,7 @@ op_type = 3
 parameter_name = "Warm_color"
 
 [sub_resource type="VisualShaderNodeMix" id="VisualShaderNodeMix_prxwi"]
-default_input_values = [0, 0.0, 1, 1.0, 2, 0.3]
+default_input_values = [0, 0.0, 1, 1.0, 2, 0.1]
 
 [sub_resource type="VisualShaderNodeStep" id="VisualShaderNodeStep_vkqlt"]
 default_input_values = [0, 0.0, 1, 0.31]
@@ -154,7 +154,7 @@ void fragment() {
 
 
 // Mix:34
-	float n_in34p2 = 0.30000;
+	float n_in34p2 = 0.10000;
 	float n_out34p0 = mix(n_out27p0, n_out38p0, n_in34p2);
 
 
@@ -206,6 +206,7 @@ void fragment() {
 
 }
 "
+graph_offset = Vector2(-690.049, -753.358)
 mode = 1
 flags/light_only = false
 nodes/fragment/0/position = Vector2(1440, -160)
@@ -251,7 +252,7 @@ nodes/fragment/31/position = Vector2(540, -540)
 nodes/fragment/32/node = SubResource("VisualShaderNodeColorParameter_luxvt")
 nodes/fragment/32/position = Vector2(-180, -520)
 nodes/fragment/34/node = SubResource("VisualShaderNodeMix_prxwi")
-nodes/fragment/34/position = Vector2(-400, -940)
+nodes/fragment/34/position = Vector2(-620, -1060)
 nodes/fragment/35/node = SubResource("VisualShaderNodeStep_vkqlt")
 nodes/fragment/35/position = Vector2(-160, 220)
 nodes/fragment/36/node = SubResource("VisualShaderNodeMix_ih3gt")
@@ -261,7 +262,7 @@ nodes/fragment/37/position = Vector2(-1212.83, -714.557)
 nodes/fragment/38/node = SubResource("VisualShaderNodeFloatFunc_hk2iw")
 nodes/fragment/38/position = Vector2(-880, -740)
 nodes/fragment/39/node = SubResource("VisualShaderNodeMix_oicnq")
-nodes/fragment/39/position = Vector2(-100, -820)
+nodes/fragment/39/position = Vector2(-320, -940)
 nodes/fragment/40/node = SubResource("VisualShaderNodeTexture_fi3o1")
 nodes/fragment/40/position = Vector2(400, 400)
 nodes/fragment/41/node = SubResource("VisualShaderNodeTexture2DParameter_nalts")

@@ -271,7 +271,6 @@ render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_s
 
 
 "
-graph_offset = Vector2(-653.825, -77.928)
 flags/unshaded = true
 flags/ambient_light_disabled = true
 nodes/fragment/0/position = Vector2(440, 140)
@@ -514,7 +513,7 @@ nodes/light/0/position = Vector2(2620, 1260)
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4y1i4"]
 render_priority = 1
 shader = SubResource("VisualShader_lmvsu")
-shader_parameter/Lit_color = Color(0.721569, 0.580392, 0.407843, 1)
+shader_parameter/Lit_color = Color(1, 1, 1, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gmqbp"]
 
@@ -848,64 +847,62 @@ npc_count = [NodePath("NPC_04"), NodePath("NPC_11"), NodePath("NPC_05"), NodePat
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.799541, 6.45281, -1.68972)
-layers = 65536
+layers = 4
 light_energy = 1.946
-light_cull_mask = 4293984256
+light_cull_mask = 4293918724
 shadow_enabled = true
 omni_range = 1.14175
 
 [node name="OmniLight3D3" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.666154, 4.70454, 1.68043)
-layers = 65536
+layers = 4
 light_energy = 1.946
-light_cull_mask = 4293984256
+light_cull_mask = 4293918724
 shadow_enabled = true
 omni_range = 2.6799
 
 [node name="OmniLight3D2" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.394013, 10.1874, -1.71398)
-layers = 65536
+layers = 4
 light_energy = 1.946
-light_cull_mask = 4293984256
+light_cull_mask = 4293918724
 shadow_enabled = true
 omni_range = 2.20289
 
 [node name="Lighthouse_focus" parent="." instance=ExtResource("1_h1tuh")]
 
 [node name="Lighthouse" parent="Lighthouse_focus" index="0"]
-layers = 32
 surface_material_override/0 = SubResource("ShaderMaterial_8dv7n")
 surface_material_override/1 = SubResource("ShaderMaterial_dm5u8")
 
 [node name="ground" parent="Lighthouse_focus" index="1"]
-layers = 32
 surface_material_override/0 = SubResource("ShaderMaterial_ba6tt")
 surface_material_override/1 = SubResource("ShaderMaterial_tm3rk")
 
 [node name="ground_light" type="MeshInstance3D" parent="Lighthouse_focus"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.89099, 0, -1.94291)
-layers = 32768
+layers = 2
 mesh = SubResource("ArrayMesh_st0rn")
 surface_material_override/0 = ExtResource("5_44prs")
 surface_material_override/1 = ExtResource("5_44prs")
 
 [node name="ground_light_warm" type="MeshInstance3D" parent="Lighthouse_focus"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.89099, 0, -1.94291)
-layers = 65536
+layers = 4
 mesh = SubResource("ArrayMesh_st0rn")
 surface_material_override/0 = ExtResource("5_44prs")
 surface_material_override/1 = ExtResource("5_44prs")
 
 [node name="Lighthouse_ligth" type="MeshInstance3D" parent="Lighthouse_focus"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.385184, 3.52771, -1.47209)
-layers = 32768
+layers = 2
 mesh = SubResource("ArrayMesh_gl1xe")
 surface_material_override/0 = ExtResource("5_44prs")
 surface_material_override/1 = SubResource("ShaderMaterial_o45v5")
 
 [node name="Lighthouse_ligth_warm" type="MeshInstance3D" parent="Lighthouse_focus"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.385184, 3.52771, -1.47209)
-layers = 65536
+layers = 4
 mesh = SubResource("ArrayMesh_gl1xe")
 surface_material_override/0 = ExtResource("5_44prs")
 surface_material_override/1 = SubResource("ShaderMaterial_o45v5")
@@ -919,7 +916,7 @@ _active = [NodePath("../Pine_01_light"), NodePath("../Pine_013/Pine_01_mask")]
 
 [node name="Pine_01_light" type="MeshInstance3D" parent="Pine_prefabs"]
 transform = Transform3D(0.445567, 0, 0, 0, 0.445567, 0, 0, 0, 0.445567, 0, 0, 0)
-layers = 32768
+layers = 2
 mesh = SubResource("ArrayMesh_sp2wa")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("5_44prs")
@@ -927,7 +924,7 @@ surface_material_override/1 = ExtResource("5_44prs")
 
 [node name="Pine_01_light_warm" type="MeshInstance3D" parent="Pine_prefabs"]
 transform = Transform3D(0.445567, 0, 0, 0, 0.445567, 0, 0, 0, 0.445567, 0, 0, 0)
-layers = 65536
+layers = 4
 mesh = SubResource("ArrayMesh_sp2wa")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("5_44prs")
@@ -936,11 +933,10 @@ surface_material_override/1 = ExtResource("5_44prs")
 [node name="Pine_013" parent="Pine_prefabs" instance=ExtResource("8_v7qmp")]
 
 [node name="Pine_01_mask" parent="Pine_prefabs/Pine_013" index="0"]
-layers = 1032
+layers = 0
 surface_material_override/0 = ExtResource("9_3c37t")
 
 [node name="Pine_01" parent="Pine_prefabs/Pine_013" index="1"]
-layers = 32
 surface_material_override/0 = SubResource("ShaderMaterial_8mo3b")
 surface_material_override/1 = SubResource("ShaderMaterial_8hcpt")
 
@@ -958,7 +954,7 @@ _active = [NodePath("../Pine_01_light"), NodePath("../Pine_013/Pine_01_mask")]
 
 [node name="Pine_01_light" type="MeshInstance3D" parent="Pine_prefabs3"]
 transform = Transform3D(0.445567, 0, 0, 0, 0.445567, 0, 0, 0, 0.445567, 0, 0, 0)
-layers = 32768
+layers = 2
 mesh = SubResource("ArrayMesh_sp2wa")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("5_44prs")
@@ -966,7 +962,7 @@ surface_material_override/1 = ExtResource("5_44prs")
 
 [node name="Pine_01_light_warm" type="MeshInstance3D" parent="Pine_prefabs3"]
 transform = Transform3D(0.445567, 0, 0, 0, 0.445567, 0, 0, 0, 0.445567, 0, 0, 0)
-layers = 65536
+layers = 4
 mesh = SubResource("ArrayMesh_sp2wa")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("5_44prs")
@@ -976,11 +972,10 @@ surface_material_override/1 = ExtResource("5_44prs")
 
 [node name="Pine_01_mask" parent="Pine_prefabs3/Pine_013" index="0"]
 visible = false
-layers = 1032
+layers = 0
 surface_material_override/0 = ExtResource("9_3c37t")
 
 [node name="Pine_01" parent="Pine_prefabs3/Pine_013" index="1"]
-layers = 32
 surface_material_override/0 = SubResource("ShaderMaterial_8mo3b")
 surface_material_override/1 = SubResource("ShaderMaterial_8hcpt")
 
@@ -998,7 +993,7 @@ _active = [NodePath("../Pine_01_light"), NodePath("../Pine_013/Pine_01_mask")]
 
 [node name="Pine_01_light" type="MeshInstance3D" parent="Pine_prefabs4"]
 transform = Transform3D(0.445567, 0, 0, 0, 0.445567, 0, 0, 0, 0.445567, 0, 0, 0)
-layers = 32768
+layers = 2
 mesh = SubResource("ArrayMesh_sp2wa")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("5_44prs")
@@ -1006,7 +1001,7 @@ surface_material_override/1 = ExtResource("5_44prs")
 
 [node name="Pine_01_light_warm" type="MeshInstance3D" parent="Pine_prefabs4"]
 transform = Transform3D(0.445567, 0, 0, 0, 0.445567, 0, 0, 0, 0.445567, 0, 0, 0)
-layers = 65536
+layers = 4
 mesh = SubResource("ArrayMesh_sp2wa")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("5_44prs")
@@ -1016,11 +1011,10 @@ surface_material_override/1 = ExtResource("5_44prs")
 
 [node name="Pine_01_mask" parent="Pine_prefabs4/Pine_013" index="0"]
 visible = false
-layers = 1032
+layers = 0
 surface_material_override/0 = ExtResource("9_3c37t")
 
 [node name="Pine_01" parent="Pine_prefabs4/Pine_013" index="1"]
-layers = 32
 surface_material_override/0 = SubResource("ShaderMaterial_8mo3b")
 surface_material_override/1 = SubResource("ShaderMaterial_8hcpt")
 
@@ -1038,7 +1032,7 @@ _active = [NodePath("../Pine_01_light"), NodePath("../Pine_013/Pine_01_mask")]
 
 [node name="Pine_01_light" type="MeshInstance3D" parent="Pine_prefabs5"]
 transform = Transform3D(0.445567, 0, 0, 0, 0.445567, 0, 0, 0, 0.445567, 0, 0, 0)
-layers = 32768
+layers = 2
 mesh = SubResource("ArrayMesh_sp2wa")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("5_44prs")
@@ -1046,7 +1040,7 @@ surface_material_override/1 = ExtResource("5_44prs")
 
 [node name="Pine_01_light_warm" type="MeshInstance3D" parent="Pine_prefabs5"]
 transform = Transform3D(0.445567, 0, 0, 0, 0.445567, 0, 0, 0, 0.445567, 0, 0, 0)
-layers = 65536
+layers = 4
 mesh = SubResource("ArrayMesh_sp2wa")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("5_44prs")
@@ -1060,7 +1054,6 @@ layers = 1032
 surface_material_override/0 = ExtResource("9_3c37t")
 
 [node name="Pine_01" parent="Pine_prefabs5/Pine_013" index="1"]
-layers = 32
 surface_material_override/0 = SubResource("ShaderMaterial_8mo3b")
 surface_material_override/1 = SubResource("ShaderMaterial_8hcpt")
 
@@ -1078,7 +1071,7 @@ _active = [NodePath("../Pine_01_light"), NodePath("../Pine_013/Pine_01_mask")]
 
 [node name="Pine_01_light" type="MeshInstance3D" parent="Pine_prefabs6"]
 transform = Transform3D(0.445567, 0, 0, 0, 0.445567, 0, 0, 0, 0.445567, 0, 0, 0)
-layers = 32768
+layers = 2
 mesh = SubResource("ArrayMesh_sp2wa")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("5_44prs")
@@ -1086,7 +1079,7 @@ surface_material_override/1 = ExtResource("5_44prs")
 
 [node name="Pine_01_light_warm" type="MeshInstance3D" parent="Pine_prefabs6"]
 transform = Transform3D(0.445567, 0, 0, 0, 0.445567, 0, 0, 0, 0.445567, 0, 0, 0)
-layers = 65536
+layers = 4
 mesh = SubResource("ArrayMesh_sp2wa")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("5_44prs")
@@ -1100,7 +1093,6 @@ layers = 1032
 surface_material_override/0 = ExtResource("9_3c37t")
 
 [node name="Pine_01" parent="Pine_prefabs6/Pine_013" index="1"]
-layers = 32
 surface_material_override/0 = SubResource("ShaderMaterial_8mo3b")
 surface_material_override/1 = SubResource("ShaderMaterial_8hcpt")
 
@@ -1118,7 +1110,7 @@ _active = [NodePath("../Pine_01_light"), NodePath("../Pine_013/Pine_01_mask")]
 
 [node name="Pine_01_light" type="MeshInstance3D" parent="Pine_prefabs7"]
 transform = Transform3D(0.445567, 0, 0, 0, 0.445567, 0, 0, 0, 0.445567, 0, 0, 0)
-layers = 32768
+layers = 2
 mesh = SubResource("ArrayMesh_sp2wa")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("5_44prs")
@@ -1126,7 +1118,7 @@ surface_material_override/1 = ExtResource("5_44prs")
 
 [node name="Pine_01_light_warm" type="MeshInstance3D" parent="Pine_prefabs7"]
 transform = Transform3D(0.445567, 0, 0, 0, 0.445567, 0, 0, 0, 0.445567, 0, 0, 0)
-layers = 65536
+layers = 4
 mesh = SubResource("ArrayMesh_sp2wa")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("5_44prs")
@@ -1140,7 +1132,6 @@ layers = 1032
 surface_material_override/0 = ExtResource("9_3c37t")
 
 [node name="Pine_01" parent="Pine_prefabs7/Pine_013" index="1"]
-layers = 32
 surface_material_override/0 = SubResource("ShaderMaterial_8mo3b")
 surface_material_override/1 = SubResource("ShaderMaterial_8hcpt")
 
@@ -1158,7 +1149,7 @@ _active = [NodePath("../Pine_01_light"), NodePath("../Pine_013/Pine_01_mask")]
 
 [node name="Pine_01_light" type="MeshInstance3D" parent="Pine_prefabs8"]
 transform = Transform3D(0.445567, 0, 0, 0, 0.445567, 0, 0, 0, 0.445567, 0, 0, 0)
-layers = 32768
+layers = 2
 mesh = SubResource("ArrayMesh_sp2wa")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("5_44prs")
@@ -1166,7 +1157,7 @@ surface_material_override/1 = ExtResource("5_44prs")
 
 [node name="Pine_01_light_warm" type="MeshInstance3D" parent="Pine_prefabs8"]
 transform = Transform3D(0.445567, 0, 0, 0, 0.445567, 0, 0, 0, 0.445567, 0, 0, 0)
-layers = 65536
+layers = 4
 mesh = SubResource("ArrayMesh_sp2wa")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("5_44prs")
@@ -1180,7 +1171,6 @@ layers = 1032
 surface_material_override/0 = ExtResource("9_3c37t")
 
 [node name="Pine_01" parent="Pine_prefabs8/Pine_013" index="1"]
-layers = 32
 surface_material_override/0 = SubResource("ShaderMaterial_8mo3b")
 surface_material_override/1 = SubResource("ShaderMaterial_8hcpt")
 
@@ -1198,7 +1188,7 @@ _active = [NodePath("../Pine_01_light"), NodePath("../Pine_013/Pine_01_mask")]
 
 [node name="Pine_01_light" type="MeshInstance3D" parent="Pine_prefabs2"]
 transform = Transform3D(0.445567, 0, 0, 0, 0.445567, 0, 0, 0, 0.445567, 0, 0, 0)
-layers = 32768
+layers = 2
 mesh = SubResource("ArrayMesh_sp2wa")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("5_44prs")
@@ -1206,7 +1196,7 @@ surface_material_override/1 = ExtResource("5_44prs")
 
 [node name="Pine_01_light_warm" type="MeshInstance3D" parent="Pine_prefabs2"]
 transform = Transform3D(0.445567, 0, 0, 0, 0.445567, 0, 0, 0, 0.445567, 0, 0, 0)
-layers = 65536
+layers = 4
 mesh = SubResource("ArrayMesh_sp2wa")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("5_44prs")
@@ -1220,7 +1210,6 @@ layers = 1032
 surface_material_override/0 = ExtResource("9_3c37t")
 
 [node name="Pine_01" parent="Pine_prefabs2/Pine_013" index="1"]
-layers = 32
 surface_material_override/0 = SubResource("ShaderMaterial_8mo3b")
 surface_material_override/1 = SubResource("ShaderMaterial_8hcpt")
 
@@ -1252,7 +1241,6 @@ transform = Transform3D(0.357454, -0.00648901, 0, 0.00648901, 0.357454, 0, 0, 0,
 
 [node name="NPC_03" type="MeshInstance3D" parent="BIRDS_TO_FIND"]
 transform = Transform3D(0.990173, -9.31323e-10, 0, 1.86265e-09, 0.458692, 0, 0, 0, 1, 0, 0, 0)
-layers = 32
 mesh = SubResource("CapsuleMesh_5v6gw")
 surface_material_override/0 = SubResource("StandardMaterial3D_etdun")
 
@@ -1266,13 +1254,13 @@ shape = SubResource("ConcavePolygonShape3D_alulo")
 
 [node name="NPC_04" type="MeshInstance3D" parent="BIRDS_TO_FIND"]
 transform = Transform3D(0.990173, -9.31323e-10, 0, 1.86265e-09, 0.458692, 0, 0, 0, 1, 0, 0, 0)
-layers = 32768
+layers = 2
 mesh = SubResource("CapsuleMesh_5v6gw")
 surface_material_override/0 = SubResource("ShaderMaterial_lb24i")
 
 [node name="NPC_05_warm" type="MeshInstance3D" parent="BIRDS_TO_FIND"]
 transform = Transform3D(0.990173, -9.31323e-10, 0, 1.86265e-09, 0.458692, 0, 0, 0, 1, 0, 0, 0)
-layers = 65536
+layers = 4
 mesh = SubResource("CapsuleMesh_5v6gw")
 surface_material_override/0 = SubResource("ShaderMaterial_lb24i")
 
@@ -1284,14 +1272,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0536928, 0)
 
 [node name="light_cone" parent="Lighthouse_root/light_cone2" index="0"]
 transform = Transform3D(0, 5.96046e-08, 1.00788, -1.00788, 0, 6.0074e-08, -6.0074e-08, -1.00787, 0, 0, 0, 0)
-layers = 32
+layers = 5
 surface_material_override/0 = SubResource("ShaderMaterial_4y1i4")
 
 [node name="light_cone3" parent="Lighthouse_root" instance=ExtResource("7_0b5my")]
 transform = Transform3D(-1, 0, -1.89394e-07, 0, 1, 0, 1.89394e-07, 0, -1, 0, 0.0536928, 0)
 
 [node name="light_cone" parent="Lighthouse_root/light_cone3" index="0"]
-layers = 32
+layers = 5
 mesh = SubResource("ArrayMesh_jh6ks")
 surface_material_override/0 = SubResource("ShaderMaterial_4y1i4")
 
@@ -1300,14 +1288,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0536928, 0)
 
 [node name="light_cone" parent="Lighthouse_root/light_cone4" index="0"]
 transform = Transform3D(0, 5.96046e-08, 1.00788, -1.00788, 0, 6.0074e-08, -6.0074e-08, -1.00787, 0, 0, 0, 0)
-layers = 32768
+layers = 2
 surface_material_override/0 = SubResource("ShaderMaterial_xc2cc")
 
 [node name="light_cone5" parent="Lighthouse_root" instance=ExtResource("7_0b5my")]
 transform = Transform3D(-1, 0, -1.89394e-07, 0, 1, 0, 1.89394e-07, 0, -1, 0, 0.0536928, 0)
 
 [node name="light_cone" parent="Lighthouse_root/light_cone5" index="0"]
-layers = 32768
+layers = 2
 mesh = SubResource("ArrayMesh_jh6ks")
 surface_material_override/0 = SubResource("ShaderMaterial_xc2cc")
 
@@ -1335,19 +1323,19 @@ fov = 50.0
 transform = Transform3D(-6.58635e-09, -0.106546, -0.106546, 0, 0.106546, -0.106546, 0.150678, -4.65725e-09, -4.65725e-09, 7.4671, 2.99351, -0.363822)
 
 [node name="Cube" parent="Far_birds" index="0"]
-layers = 32800
+layers = 3
 surface_material_override/0 = SubResource("ShaderMaterial_jaqoj")
 
 [node name="Cube_001" parent="Far_birds" index="1"]
-layers = 32800
+layers = 3
 surface_material_override/0 = SubResource("ShaderMaterial_jaqoj")
 
 [node name="Cube_002" parent="Far_birds" index="2"]
-layers = 32800
+layers = 3
 surface_material_override/0 = SubResource("ShaderMaterial_jaqoj")
 
 [node name="bec" parent="Far_birds" index="3"]
-layers = 32800
+layers = 3
 surface_material_override/0 = SubResource("ShaderMaterial_e5dsd")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Far_birds"]
@@ -1363,19 +1351,19 @@ shape = SubResource("SphereShape3D_tw7er")
 transform = Transform3D(-0.135402, 0.0512536, 0.0417523, 0.0661073, 0.104978, 0.0855176, -2.27159e-09, 0.0951657, -0.116822, -1.174, 5.636, -5.823)
 
 [node name="Cube" parent="Far_birds3" index="0"]
-layers = 32800
+layers = 3
 surface_material_override/0 = SubResource("ShaderMaterial_jaqoj")
 
 [node name="Cube_001" parent="Far_birds3" index="1"]
-layers = 32800
+layers = 3
 surface_material_override/0 = SubResource("ShaderMaterial_jaqoj")
 
 [node name="Cube_002" parent="Far_birds3" index="2"]
-layers = 32800
+layers = 3
 surface_material_override/0 = SubResource("ShaderMaterial_jaqoj")
 
 [node name="bec" parent="Far_birds3" index="3"]
-layers = 32800
+layers = 3
 surface_material_override/0 = SubResource("ShaderMaterial_e5dsd")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Far_birds3"]
@@ -1391,19 +1379,19 @@ shape = SubResource("SphereShape3D_tw7er")
 transform = Transform3D(-0.034496, 0.127204, 0.0730278, 0.0307389, 0.079624, -0.124173, -0.143419, -0.01353, -0.0441791, -7.09492, 12.0153, 2.96236)
 
 [node name="Cube" parent="Far_birds2" index="0"]
-layers = 32800
+layers = 3
 surface_material_override/0 = SubResource("ShaderMaterial_jaqoj")
 
 [node name="Cube_001" parent="Far_birds2" index="1"]
-layers = 32800
+layers = 3
 surface_material_override/0 = SubResource("ShaderMaterial_jaqoj")
 
 [node name="Cube_002" parent="Far_birds2" index="2"]
-layers = 32800
+layers = 3
 surface_material_override/0 = SubResource("ShaderMaterial_jaqoj")
 
 [node name="bec" parent="Far_birds2" index="3"]
-layers = 32800
+layers = 3
 surface_material_override/0 = SubResource("ShaderMaterial_e5dsd")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Far_birds2"]
@@ -1419,19 +1407,19 @@ shape = SubResource("SphereShape3D_tw7er")
 transform = Transform3D(0.0621193, 0.0178061, 0.136117, 0.0883289, 0.109185, -0.054593, -0.105086, 0.1023, 0.0345752, 2.363, 10.66, -0.979)
 
 [node name="Cube" parent="Far_birds4" index="0"]
-layers = 32800
+layers = 3
 surface_material_override/0 = SubResource("ShaderMaterial_jaqoj")
 
 [node name="Cube_001" parent="Far_birds4" index="1"]
-layers = 32800
+layers = 3
 surface_material_override/0 = SubResource("ShaderMaterial_jaqoj")
 
 [node name="Cube_002" parent="Far_birds4" index="2"]
-layers = 32800
+layers = 3
 surface_material_override/0 = SubResource("ShaderMaterial_jaqoj")
 
 [node name="bec" parent="Far_birds4" index="3"]
-layers = 32800
+layers = 3
 surface_material_override/0 = SubResource("ShaderMaterial_e5dsd")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Far_birds4"]
@@ -1445,40 +1433,28 @@ shape = SubResource("SphereShape3D_tw7er")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1.93038, 0, 0, 0, 1.93038, 0, 0, 0, 1.93038, 0.358427, 4.22278, -1.78949)
-layers = 32
 mesh = SubResource("BoxMesh_n2vmh")
 surface_material_override/0 = SubResource("StandardMaterial3D_fcmlb")
 
 [node name="MeshInstance3D2_light" type="MeshInstance3D" parent="."]
 transform = Transform3D(1.93038, 0, 0, 0, 1.93038, 0, 0, 0, 1.93038, 0.358427, 4.22278, -1.78949)
-layers = 32768
+layers = 2
 mesh = SubResource("BoxMesh_n2vmh")
 surface_material_override/0 = ExtResource("5_44prs")
 
 [node name="MeshInstance3D2_light_warm" type="MeshInstance3D" parent="."]
 transform = Transform3D(1.93038, 0, 0, 0, 1.93038, 0, 0, 0, 1.93038, 0.358427, 4.22278, -1.78949)
-layers = 65536
+layers = 4
 mesh = SubResource("BoxMesh_n2vmh")
 surface_material_override/0 = ExtResource("5_44prs")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.80152, 0.369429, 0.470199, 0.116079, -0.675245, 0.728402, 0.586592, 0.63841, 0.49834, 80.1438, 54.7177, 108.61)
-layers = 32768
-light_bake_mode = 0
-light_cull_mask = 4293951488
-shadow_enabled = true
-directional_shadow_mode = 1
-directional_shadow_split_1 = 0.155
-sky_mode = 1
-
 [node name="MOON" type="MeshInstance3D" parent="."]
 transform = Transform3D(32.3015, 0, 0, 0, 32.3015, 0, 0, 0, 32.3015, 89.7247, 62.9154, 132.942)
-layers = 32
 mesh = SubResource("SphereMesh_uunxd")
 surface_material_override/0 = SubResource("StandardMaterial3D_x46lg")
 
 [node name="MOON2" type="MeshInstance3D" parent="MOON"]
-layers = 32768
+layers = 2
 mesh = SubResource("SphereMesh_uunxd")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("ShaderMaterial_xc2cc")
@@ -1493,13 +1469,12 @@ shape = SubResource("ConcavePolygonShape3D_8463a")
 
 [node name="Sea_foam" type="MeshInstance3D" parent="."]
 transform = Transform3D(1.37731, 0, 0, 0, 0.137731, 0, 0, 0, 1.37731, 0.739, 0.764415, 1.214)
-layers = 32
 mesh = SubResource("CylinderMesh_34g7i")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("14_wuf8k")
 
 [node name="Sea_foam2" type="MeshInstance3D" parent="Sea_foam"]
-layers = 32768
+layers = 2
 cast_shadow = 0
 gi_mode = 0
 mesh = SubResource("CylinderMesh_34g7i")
@@ -1510,15 +1485,25 @@ surface_material_override/0 = SubResource("ShaderMaterial_o45v5")
 
 [node name="Horizon" type="MeshInstance3D" parent="Sphere_sky"]
 transform = Transform3D(261.363, 0, 0, 0, 261.363, 0, 0, 0, 261.363, 0, 0, 0)
-layers = 32800
+layers = 3
 mesh = SubResource("SphereMesh_6aebu")
 surface_material_override/0 = SubResource("ShaderMaterial_63aji")
 
 [node name="Stars" type="MeshInstance3D" parent="Sphere_sky"]
 transform = Transform3D(261.363, 0, 0, 0, 261.363, 0, 0, 0, 261.363, 0, 0, 0)
-layers = 32800
+layers = 3
 mesh = SubResource("SphereMesh_6aebu")
 surface_material_override/0 = SubResource("ShaderMaterial_0je5b")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.80152, 0.369429, 0.470199, 0.116079, -0.675245, 0.728403, 0.586592, 0.63841, 0.498339, 66.2677, 54.7177, 89.7516)
+layers = 2
+light_bake_mode = 0
+light_cull_mask = 4293918722
+shadow_enabled = true
+directional_shadow_mode = 1
+directional_shadow_split_1 = 0.155
+sky_mode = 1
 
 [editable path="Lighthouse_focus"]
 [editable path="Pine_prefabs/Pine_013"]

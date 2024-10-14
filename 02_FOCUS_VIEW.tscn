@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://h2wepwtms1pe"]
+[gd_scene load_steps=48 format=3 uid="uid://h2wepwtms1pe"]
 
 [ext_resource type="Script" path="res://13_TOOLS_UI/set_Resolution_viewports.gd" id="1_3ana1"]
 [ext_resource type="Script" path="res://02_FOCUS_VIEW/Open_FocusView.gd" id="1_ttndn"]
@@ -149,27 +149,23 @@ nodes/fragment/connections = PackedInt32Array(9, 0, 0, 0, 17, 0, 18, 0, 18, 0, 1
 shader = SubResource("VisualShader_rthcl")
 shader_parameter/Opacity = 1.0
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_htsoc"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_phkus"]
 viewport_path = NodePath("Viewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_05vrv"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_oo2x4"]
 viewport_path = NodePath("Viewport_light")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_7qo8q"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_3nfd7"]
 viewport_path = NodePath("Viewport_warm")
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_3l532"]
-viewport_path = NodePath("Viewport_Dialogue_ui")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dn6p1"]
 resource_local_to_scene = true
 shader = ExtResource("11_5x6sk")
-shader_parameter/Shadow_color = Color(0.0885598, 0.08856, 0.0885599, 1)
-shader_parameter/Warm_color = Color(1, 0.712397, 0.397465, 1)
-shader_parameter/Flat_viewport = SubResource("ViewportTexture_htsoc")
-shader_parameter/light = SubResource("ViewportTexture_05vrv")
-shader_parameter/light_warm = SubResource("ViewportTexture_7qo8q")
-shader_parameter/light_warm2 = SubResource("ViewportTexture_3l532")
+shader_parameter/Shadow_color = Color(0.0901961, 0.0901961, 0.0901961, 1)
+shader_parameter/Warm_color = Color(0.84, 0.6244, 0.378, 1)
+shader_parameter/Flat_viewport = SubResource("ViewportTexture_phkus")
+shader_parameter/light = SubResource("ViewportTexture_oo2x4")
+shader_parameter/light_warm = SubResource("ViewportTexture_3nfd7")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_tlqux"]
 viewport_path = NodePath("Viewport")
@@ -430,7 +426,7 @@ size = Vector2i(1280, 720)
 [node name="head" type="Node3D" parent="Viewport"]
 
 [node name="CAM" type="Camera3D" parent="Viewport/head"]
-cull_mask = 32
+cull_mask = 1
 fov = 50.0
 
 [node name="Viewport_light" type="SubViewport" parent="."]
@@ -438,7 +434,7 @@ transparent_bg = true
 size = Vector2i(1280, 720)
 
 [node name="CAM_light" type="Camera3D" parent="Viewport_light"]
-cull_mask = 32768
+cull_mask = 2
 fov = 50.0
 
 [node name="Viewport_warm" type="SubViewport" parent="."]
@@ -446,16 +442,15 @@ transparent_bg = true
 size = Vector2i(1280, 720)
 
 [node name="CAM_light_warm" type="Camera3D" parent="Viewport_warm"]
-cull_mask = 65536
+cull_mask = 4
 fov = 50.0
-far = 100.0
 
 [node name="Viewport_Dialogue_ui" type="SubViewport" parent="."]
 transparent_bg = true
 size = Vector2i(1280, 720)
 
 [node name="CAM_dialogue_ui" type="Camera3D" parent="Viewport_Dialogue_ui"]
-cull_mask = 4
+cull_mask = 34
 fov = 50.0
 
 [node name="Loader" type="Node3D" parent="."]

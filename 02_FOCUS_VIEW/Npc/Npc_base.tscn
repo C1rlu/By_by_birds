@@ -17,17 +17,16 @@ viewport_path = NodePath("SubViewport")
 [node name="Npc_prefab" type="Node3D"]
 
 [node name="NPC_03" type="MeshInstance3D" parent="."]
-layers = 32
 mesh = SubResource("CapsuleMesh_0rwhf")
 surface_material_override/0 = ExtResource("1_jsitv")
 
 [node name="NPC_04" type="MeshInstance3D" parent="."]
-layers = 32768
+layers = 2
 mesh = SubResource("CapsuleMesh_0rwhf")
 surface_material_override/0 = ExtResource("3_2rvdd")
 
 [node name="NPC_05_warm" type="MeshInstance3D" parent="."]
-layers = 65536
+layers = 4
 mesh = SubResource("CapsuleMesh_0rwhf")
 surface_material_override/0 = ExtResource("3_2rvdd")
 
@@ -61,7 +60,7 @@ text = "\"I know where he is\""
 [node name="Dialogue" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.90723, 0)
 visible = false
-layers = 36
+layers = 32
 cast_shadow = 0
 gi_mode = 0
 billboard = 1

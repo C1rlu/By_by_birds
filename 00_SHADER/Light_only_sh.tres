@@ -6,7 +6,7 @@ default_value_enabled = true
 
 [resource]
 code = "shader_type spatial;
-render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx, ambient_light_disabled;
+render_mode blend_mix, depth_draw_opaque, cull_disabled, diffuse_lambert, specular_schlick_ggx, ambient_light_disabled;
 
 uniform vec4 ColorParameter : source_color = vec4(1.000000, 1.000000, 1.000000, 1.000000);
 
@@ -23,6 +23,7 @@ void fragment() {
 
 }
 "
+modes/cull = 2
 flags/ambient_light_disabled = true
 nodes/fragment/0/position = Vector2(440, 140)
 nodes/fragment/2/node = SubResource("VisualShaderNodeColorParameter_dri4v")

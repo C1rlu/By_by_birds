@@ -43,8 +43,6 @@ surface_material_override/0 = ExtResource("8_efoyq")
 surface_material_override/1 = SubResource("ShaderMaterial_e7t81")
 
 [node name="Island_set_foam" parent="Island_set_02" index="1"]
-visible = false
-layers = 1024
 surface_material_override/0 = ExtResource("7_v8ngb")
 
 [node name="Island_set_mask" parent="Island_set_02" index="2"]

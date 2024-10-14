@@ -78,8 +78,8 @@ shadow_mesh = SubResource("ArrayMesh_cj3mk")
 resource_local_to_scene = true
 render_priority = 1
 shader = ExtResource("3_43wfd")
-shader_parameter/ColorParameter = Color(0.0235294, 0.117647, 0.12549, 1)
-shader_parameter/Color = Color(0.231373, 0.219608, 0.192157, 1)
+shader_parameter/ColorParameter = Color(0.13, 0.13, 0.13, 1)
+shader_parameter/Color = Color(0.23, 0.23, 0.23, 1)
 shader_parameter/Dither_strenght = 0.49
 shader_parameter/Gradient_base = ExtResource("4_dbhh4")
 
@@ -107,7 +107,7 @@ _active = [NodePath("../Pine_01_light"), NodePath("../Pine_013/Pine_01_mask")]
 [node name="Pine_01_light" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.445567, 0, 0, 0, 0.445567, 0, 0, 0, 0.445567, 0, 0, 0)
 visible = false
-layers = 32
+layers = 2
 mesh = SubResource("ArrayMesh_sp2wa")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("3_kc8q3")

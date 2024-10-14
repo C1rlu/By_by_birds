@@ -28,7 +28,10 @@ func _ready():
 	_global_datas._roll_bird.connect(_rool_bird)
 	timer.timeout.connect(timer_udpate)
 		
-	position = _global_datas.player_position 
+	if position == Vector3.ZERO:
+		position = Vector3(0.0,2.5,0.0)
+	else:
+		position	 = _global_datas.player_position
 	
 func _physics_process(_delta):
 		

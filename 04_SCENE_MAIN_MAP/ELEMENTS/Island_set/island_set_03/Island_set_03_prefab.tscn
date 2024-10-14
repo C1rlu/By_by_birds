@@ -40,6 +40,7 @@ _active = [NodePath("../Island_set_04/Island_set_foam"), NodePath("../Island_set
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+visible = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.262267)
@@ -57,8 +58,6 @@ surface_material_override/0 = SubResource("ShaderMaterial_lcyvs")
 surface_material_override/1 = SubResource("ShaderMaterial_hjwql")
 
 [node name="Island_set_foam" parent="Island_set_04" index="1"]
-visible = false
-layers = 1024
 surface_material_override/0 = ExtResource("6_hngl4")
 
 [node name="Island_set_mask" parent="Island_set_04" index="2"]

@@ -1,8 +1,7 @@
-[gd_scene load_steps=16 format=4 uid="uid://dh5kdswdhdfq6"]
+[gd_scene load_steps=15 format=4 uid="uid://dh5kdswdhdfq6"]
 
 [ext_resource type="Script" path="res://04_SCENE_MAIN_MAP/set_revealed.gd" id="1_kpc5v"]
 [ext_resource type="PackedScene" uid="uid://cxxpdk6uunjjo" path="res://04_SCENE_MAIN_MAP/ELEMENTS/Island_set/Island_set_01/Island_set_01.blend" id="1_umt6k"]
-[ext_resource type="Script" path="res://00_SYSTEMS/Active_mask_at_ready.tres.gd" id="2_yckc5"]
 [ext_resource type="Material" uid="uid://yjoyk6fvrm6q" path="res://00_SHADER/No_light_surface_mat.tres" id="3_alele"]
 [ext_resource type="Texture2D" uid="uid://5hamxlsfnogh" path="res://04_SCENE_MAIN_MAP/ELEMENTS/Island_set/Island_set_01/Island_gradient_01.png" id="4_y3vfy"]
 [ext_resource type="Shader" uid="uid://cu2uipuy138c6" path="res://00_SHADER/All_Materials/Main_sceneTest_dither_sh.tres" id="6_dixv0"]
@@ -106,10 +105,6 @@ size = Vector3(2.59535, 1.70014, 4.44433)
 script = ExtResource("1_kpc5v")
 element_to_revealed = [NodePath("Island_set_012/Island_set_01")]
 
-[node name="Active_at_ready" type="Node" parent="." node_paths=PackedStringArray("_active")]
-script = ExtResource("2_yckc5")
-_active = [NodePath("../Island_set_012/Island_set_01_mask"), NodePath("../Island_set_012/Island_set_01_foam"), NodePath("../Island_set_01_light")]
-
 [node name="Island_set_01_light" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 visible = false
@@ -133,8 +128,6 @@ surface_material_override/0 = SubResource("ShaderMaterial_7i7uh")
 surface_material_override/1 = SubResource("ShaderMaterial_wutwc")
 
 [node name="Island_set_01_foam" parent="Island_set_012" index="1"]
-visible = false
-layers = 1024
 surface_material_override/0 = ExtResource("7_upc2r")
 
 [node name="Island_set_01_mask" parent="Island_set_012" index="2"]

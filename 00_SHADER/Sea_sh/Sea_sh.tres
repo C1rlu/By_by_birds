@@ -1,4 +1,4 @@
-[gd_resource type="VisualShader" load_steps=27 format=3 uid="uid://p0i5v32kvdqt"]
+[gd_resource type="VisualShader" load_steps=28 format=3 uid="uid://p0i5v32kvdqt"]
 
 [sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_fbrv5"]
 default_input_values = [0, 0.0, 1, -0.001]
@@ -83,6 +83,9 @@ qualifier = 1
 parameter_name = "Dither_size"
 qualifier = 1
 
+[sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_l83eh"]
+parameter_name = "Sea_color"
+
 [sub_resource type="VisualShaderNodeFloatFunc" id="VisualShaderNodeFloatFunc_iyxyn"]
 function = 31
 
@@ -107,6 +110,7 @@ input_name = "time"
 code = "shader_type spatial;
 render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx, unshaded;
 
+uniform vec4 Sea_color : source_color;
 uniform vec4 Water_lighter_color : source_color;
 global uniform bool active_Dither;
 global uniform float Dither_size;
@@ -117,6 +121,10 @@ uniform sampler2D depth_tex_frg_13 : hint_depth_texture;
 
 
 void fragment() {
+// ColorParameter:33
+	vec4 n_out33p0 = Sea_color;
+
+
 // ColorParameter:16
 	vec4 n_out16p0 = Water_lighter_color;
 
@@ -235,8 +243,7 @@ void fragment() {
 
 
 // Mix:5
-	vec3 n_in5p0 = vec3(0.00000, 0.00000, 0.00000);
-	vec3 n_out5p0 = mix(n_in5p0, vec3(n_out16p0.xyz), n_out21p0);
+	vec3 n_out5p0 = mix(vec3(n_out33p0.xyz), vec3(n_out16p0.xyz), n_out21p0);
 
 
 // Mix:15
@@ -251,6 +258,7 @@ void fragment() {
 
 }
 "
+graph_offset = Vector2(-754.738, -318.263)
 flags/unshaded = true
 nodes/fragment/0/position = Vector2(1620, 140)
 nodes/fragment/3/node = SubResource("VisualShaderNodeUVFunc_6lwoe")
@@ -280,7 +288,7 @@ nodes/fragment/14/position = Vector2(-1288.13, 552.948)
 nodes/fragment/15/node = SubResource("VisualShaderNodeMix_2gr8n")
 nodes/fragment/15/position = Vector2(200, 240)
 nodes/fragment/16/node = SubResource("VisualShaderNodeColorParameter_mpuoj")
-nodes/fragment/16/position = Vector2(-1160, -120)
+nodes/fragment/16/position = Vector2(-1180, 0)
 nodes/fragment/17/node = SubResource("VisualShaderNodeFloatOp_06kkp")
 nodes/fragment/17/position = Vector2(-3148.13, 872.948)
 nodes/fragment/19/node = SubResource("VisualShaderNodeFloatConstant_cehsh")
@@ -314,5 +322,7 @@ nodes/fragment/31/node = SubResource("VisualShaderNodeBooleanParameter_21y1g")
 nodes/fragment/31/position = Vector2(-880, 1100)
 nodes/fragment/32/node = SubResource("VisualShaderNodeFloatParameter_dx3br")
 nodes/fragment/32/position = Vector2(-940, 1640)
-nodes/fragment/connections = PackedInt32Array(7, 0, 3, 2, 8, 0, 11, 1, 10, 0, 11, 2, 8, 0, 3, 1, 17, 0, 10, 0, 17, 0, 7, 0, 19, 0, 20, 1, 3, 0, 22, 0, 4, 0, 21, 1, 22, 0, 12, 0, 11, 0, 23, 0, 23, 0, 12, 1, 12, 0, 14, 1, 14, 0, 24, 0, 12, 0, 24, 2, 13, 0, 14, 2, 5, 0, 15, 1, 24, 0, 6, 0, 6, 0, 4, 0, 16, 0, 5, 1, 9, 0, 17, 0, 31, 0, 30, 0, 20, 0, 30, 1, 15, 0, 0, 0, 32, 0, 20, 2, 30, 0, 21, 0, 21, 0, 5, 2)
+nodes/fragment/33/node = SubResource("VisualShaderNodeColorParameter_l83eh")
+nodes/fragment/33/position = Vector2(-805.062, -269.86)
+nodes/fragment/connections = PackedInt32Array(7, 0, 3, 2, 8, 0, 11, 1, 10, 0, 11, 2, 8, 0, 3, 1, 17, 0, 10, 0, 17, 0, 7, 0, 19, 0, 20, 1, 3, 0, 22, 0, 4, 0, 21, 1, 22, 0, 12, 0, 11, 0, 23, 0, 23, 0, 12, 1, 12, 0, 14, 1, 14, 0, 24, 0, 12, 0, 24, 2, 13, 0, 14, 2, 5, 0, 15, 1, 24, 0, 6, 0, 6, 0, 4, 0, 16, 0, 5, 1, 9, 0, 17, 0, 31, 0, 30, 0, 20, 0, 30, 1, 15, 0, 0, 0, 32, 0, 20, 2, 30, 0, 21, 0, 21, 0, 5, 2, 33, 0, 5, 0)
 nodes/light/0/position = Vector2(600, 260)

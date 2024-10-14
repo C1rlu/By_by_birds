@@ -2,7 +2,7 @@
 
 [ext_resource type="Shader" uid="uid://chrnjykjq63wr" path="res://06_BOOK/Photo_2d_book/Photo_2D.tres" id="1_gehiu"]
 [ext_resource type="Script" path="res://07_JOURNAL/journal_anim.gd" id="1_ipkyj"]
-[ext_resource type="Texture2D" uid="uid://dvlnqtm1lcg0r" path="res://05_DESK_MAP/IMG/Birds_photo.png" id="2_rpmdr"]
+[ext_resource type="Texture2D" uid="uid://dvlnqtm1lcg0r" path="res://13_TOOLS_UI/Photo/IMG/Birds_photo.png" id="2_rpmdr"]
 [ext_resource type="Shader" uid="uid://cvoap2k5dfte8" path="res://07_JOURNAL/Journal_paper_sh.tres" id="2_vn6ii"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wx2ps"]
@@ -48,7 +48,6 @@ void fragment() {
 
 }
 "
-graph_offset = Vector2(-502.314, -19.1416)
 mode = 1
 flags/light_only = false
 nodes/fragment/0/position = Vector2(520, 120)

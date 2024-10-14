@@ -176,17 +176,10 @@ echap={
 
 [layer_names]
 
-3d_render/layer_1="MainScene"
-3d_render/layer_2="Top_view"
-3d_render/layer_4="Sonar_mask"
-3d_render/layer_6="Focus_cam"
-3d_render/layer_7="GRID"
-3d_render/layer_11="Foam"
-3d_render/layer_12="Foam_02"
-3d_render/layer_14="up_sky"
-3d_render/layer_16="Focus_cam_light"
-3d_render/layer_17="Focus_cam_light_warm"
-3d_render/layer_19="tool_ui"
+3d_render/layer_1="Flat_pass"
+3d_render/layer_2="light_pass"
+3d_render/layer_3="warm_light_pass"
+3d_render/layer_6="Ui_pass"
 
 [rendering]
 
@@ -199,10 +192,6 @@ occlusion_culling/use_occlusion_culling=true
 
 [shader_globals]
 
-Dark_color={
-"type": "color",
-"value": Color(0.0235294, 0.176471, 0.2, 1)
-}
 random_faceAmount={
 "type": "float",
 "value": 0.0
@@ -219,10 +208,6 @@ active_Dither={
 "type": "bool",
 "value": true
 }
-Night={
-"type": "float",
-"value": 0.0
-}
 BlueNoise={
 "type": "sampler2D",
 "value": "res://00_SHADER/Full_screen/Dither_pattners/Blue_noise/HDR_LA_7.png"
@@ -230,8 +215,4 @@ BlueNoise={
 isGray={
 "type": "float",
 "value": 1.0
-}
-Light_color_ui={
-"type": "color",
-"value": Color(0.721569, 0.580392, 0.407843, 1)
 }

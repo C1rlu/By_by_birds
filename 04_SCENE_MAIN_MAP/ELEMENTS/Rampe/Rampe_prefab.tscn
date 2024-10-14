@@ -123,8 +123,6 @@ surface_material_override/0 = ExtResource("4_r6bw8")
 surface_material_override/0 = SubResource("ShaderMaterial_tyjla")
 
 [node name="Rampe_foam" parent="Rampe_msh" index="1"]
-visible = false
-layers = 1024
 surface_material_override/0 = ExtResource("3_vsmi8")
 
 [editable path="Rampe_msh"]

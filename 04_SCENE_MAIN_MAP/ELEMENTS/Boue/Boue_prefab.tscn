@@ -110,8 +110,6 @@ layers = 1032
 surface_material_override/0 = ExtResource("5_mfje0")
 
 [node name="Boue_dive_msh_foam" parent="Boue_msh2" index="2"]
-visible = false
-layers = 1024
 surface_material_override/0 = ExtResource("5_mfje0")
 
 [editable path="Boue_msh2"]

@@ -41,7 +41,7 @@ default_value = 1.0
 
 [resource]
 code = "shader_type spatial;
-render_mode blend_mix, depth_draw_never, cull_back, diffuse_lambert, specular_schlick_ggx, unshaded;
+render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx, unshaded;
 
 uniform vec4 Sonar_color : source_color = vec4(1.000000, 1.000000, 1.000000, 1.000000);
 uniform sampler2D depth_tex_frg_2 : hint_depth_texture;
@@ -114,7 +114,6 @@ void fragment() {
 
 }
 "
-modes/depth_draw = 2
 flags/unshaded = true
 nodes/fragment/0/position = Vector2(1060, 200)
 nodes/fragment/2/node = SubResource("VisualShaderNodeProximityFade_ct8fr")

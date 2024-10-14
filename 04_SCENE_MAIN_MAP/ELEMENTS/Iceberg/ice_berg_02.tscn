@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://cegdqm3et2y35"]
+[gd_scene load_steps=12 format=4 uid="uid://cegdqm3et2y35"]
 
 [ext_resource type="Script" path="res://04_SCENE_MAIN_MAP/set_revealed.gd" id="1_ond7x"]
 [ext_resource type="Material" uid="uid://ctnqf5d3uj1g7" path="res://00_SHADER/All_Materials/dark_mask.tres" id="2_k7vpw"]
@@ -6,17 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://bgy6cpu8wuums" path="res://04_SCENE_MAIN_MAP/ELEMENTS/Iceberg/Iceberg_gradient.png" id="3_t88to"]
 [ext_resource type="Material" uid="uid://yjoyk6fvrm6q" path="res://00_SHADER/No_light_surface_mat.tres" id="4_kbg42"]
 [ext_resource type="Shader" uid="uid://cu2uipuy138c6" path="res://00_SHADER/All_Materials/Main_sceneTest_dither_sh.tres" id="5_ki868"]
-
-[sub_resource type="GDScript" id="GDScript_8yxvc"]
-script/source = "extends Node
-
-@export var _active : Array[MeshInstance3D]
-
-func _ready():
-	
-	for e in _active:
-		e.visible = true
-"
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y2j80"]
 resource_name = "Mat_01"
@@ -75,9 +64,7 @@ shader_parameter/Gradient_base = ExtResource("3_t88to")
 script = ExtResource("1_ond7x")
 element_to_revealed = [NodePath("Iceberg_02/IceBerg_02")]
 
-[node name="Active" type="Node" parent="." node_paths=PackedStringArray("_active")]
-script = SubResource("GDScript_8yxvc")
-_active = [NodePath("../IceBerg_03_Light"), NodePath("../IceBerg_03_mask"), NodePath("../Iceberg_02/IceBerg_02_Foam")]
+[node name="Active" type="Node" parent="."]
 
 [node name="IceBerg_03_Light" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.591206, -0.6, 0)
@@ -86,14 +73,6 @@ layers = 32768
 mesh = SubResource("ArrayMesh_v6plu")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("4_kbg42")
-
-[node name="IceBerg_03_mask" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.591206, -0.6, 0)
-visible = false
-layers = 1032
-mesh = SubResource("ArrayMesh_v6plu")
-skeleton = NodePath("")
-surface_material_override/0 = ExtResource("2_k7vpw")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.591206, -0.6, 0)
@@ -104,8 +83,6 @@ shape = SubResource("ConcavePolygonShape3D_84u3s")
 [node name="Iceberg_02" parent="." instance=ExtResource("3_qicwl")]
 
 [node name="IceBerg_02_Foam" parent="Iceberg_02" index="0"]
-visible = false
-layers = 1024
 surface_material_override/0 = ExtResource("2_k7vpw")
 
 [node name="IceBerg_02" parent="Iceberg_02" index="1"]

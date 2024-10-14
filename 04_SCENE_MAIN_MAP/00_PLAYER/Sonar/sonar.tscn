@@ -66,7 +66,7 @@ func _stop():
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kcje2"]
 render_priority = 1
 shader = ExtResource("1_tckxx")
-shader_parameter/Sonar_color = Color(1, 1, 1, 1)
+shader_parameter/Sonar_color = Color(0.333333, 0.643137, 0.54902, 1)
 shader_parameter/Opacity = 1.0
 
 [node name="Sonar" type="Node3D"]
@@ -80,13 +80,11 @@ meshes = [NodePath("../01/MeshInstance3D"), NodePath("../01/MeshInstance3D2"), N
 transform = Transform3D(5.52237, 0, 0, 0, 5.52237, 0, 0, 0, 5.52237, 0.049623, -0.743807, -0.269134)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="01"]
-layers = 8
 mesh = SubResource("SphereMesh_pgy1w")
 skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("1_vdbo1")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="01"]
-layers = 8
 mesh = SubResource("SphereMesh_56jr0")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("ShaderMaterial_kcje2")
@@ -95,13 +93,11 @@ surface_material_override/0 = SubResource("ShaderMaterial_kcje2")
 transform = Transform3D(3.74874, 0, -1.42109e-13, 0, 3.74874, 0, 1.42109e-13, 0, 3.74874, 0.049623, -0.743807, -0.269134)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="02"]
-layers = 8
 mesh = SubResource("SphereMesh_pgy1w")
 skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("1_vdbo1")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="02"]
-layers = 8
 mesh = SubResource("SphereMesh_56jr0")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("ShaderMaterial_kcje2")

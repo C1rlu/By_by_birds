@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=4 uid="uid://ctrf5fdwo22iv"]
+[gd_scene load_steps=13 format=4 uid="uid://ctrf5fdwo22iv"]
 
 [ext_resource type="PackedScene" uid="uid://c25ya6gj4v67v" path="res://02_FOCUS_VIEW/Assets/Islands/Island_03/Island_03_msh.blend" id="1_ohvu4"]
 [ext_resource type="Script" path="res://00_SYSTEMS/Active_mask_at_ready.tres.gd" id="1_toi6b"]
+[ext_resource type="Script" path="res://00_SHADER/add_pass.gd" id="2_nv2ct"]
 [ext_resource type="Shader" uid="uid://cu2uipuy138c6" path="res://00_SHADER/All_Materials/Main_sceneTest_dither_sh.tres" id="3_bhfox"]
 [ext_resource type="Material" uid="uid://yjoyk6fvrm6q" path="res://00_SHADER/No_light_surface_mat.tres" id="3_yc5db"]
 [ext_resource type="Texture2D" uid="uid://fy87xoj5enwi" path="res://02_FOCUS_VIEW/Assets/Islands/Island_03/island_f03_grandient.png" id="4_7jiec"]
@@ -92,6 +93,9 @@ shader_parameter/Gradient_base = ExtResource("4_7jiec")
 [node name="Active_at_ready" type="Node" parent="." node_paths=PackedStringArray("_active")]
 script = ExtResource("1_toi6b")
 _active = [NodePath("../Island_f_03_light"), NodePath("../Island_f_03_warm")]
+
+[node name="Add_pass" type="Node" parent="."]
+script = ExtResource("2_nv2ct")
 
 [node name="Island_f_03_light" type="MeshInstance3D" parent="."]
 visible = false

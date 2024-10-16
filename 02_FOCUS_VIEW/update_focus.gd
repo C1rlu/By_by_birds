@@ -50,6 +50,7 @@ func _set_new_focus(n_Camera : Camera3D):
 	
 func _done():
 	
+	_global_datas.previous_bird.visible = false
 	_global_datas._end_of_transition.emit()
 	Camera_head.global_rotation_degrees = previous_cam.global_rotation_degrees	
 	Camera_head.global_position = previous_cam.global_position

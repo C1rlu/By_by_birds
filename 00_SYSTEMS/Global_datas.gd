@@ -30,7 +30,11 @@ signal _in_transition_start
 signal _in_transition_end
 var current_focus_data : focus_data
 signal check_focus_count
+
+var previous_bird : Node3D
 signal hide_all_FocusScene_dialogue
+
+
 var photo_pause : bool
 signal _take_photo
 
@@ -87,7 +91,6 @@ signal set_instant_focus(camera : Camera3D)
 signal set_new_focus(camera : Camera3D)
 signal _end_of_transition
 var look_at_sensivity : float 
-
 signal subscene_sonar_effect(position : Vector3, color : Color)
 
 

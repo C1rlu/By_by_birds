@@ -2,7 +2,6 @@ extends Node
 
 
 @export var rotation_root: Node3D 
-
 @export var Cam: Camera3D
 @export var Cam_light: Camera3D
 @export var Cam_light_warm: Camera3D
@@ -22,6 +21,7 @@ func _reset(value):
 	
 	rotation_root.rotation_degrees = Vector3.ZERO
 
+	
 	if value:	
 		timer.start()	
 	else:	
@@ -31,7 +31,7 @@ func _process(delta: float) -> void:
 	
 	
 	if direction_speed:
-		rotation_root.rotation_degrees.y -= 1.0 * delta	
+		rotation_root.rotation_degrees.y -= 1.0 * delta
 	else:
 		rotation_root.rotation_degrees.y += 1.0 * delta
 

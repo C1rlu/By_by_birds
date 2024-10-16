@@ -23,6 +23,7 @@ func _check_raycast():
 		if hit_focus:
 		
 			_global_datas.transition_target = raycast.position
+			
 			hit_focus._set_focus()
 		
 		var hit_focus_npc = raycast.collider.get_node_or_null("npc_revealed")

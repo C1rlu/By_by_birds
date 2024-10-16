@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://81fqjbnarlkw"
-path.s3tc="res://.godot/imported/Ghost_eyes_art.png-0bf404939a531cb5aeeee61c099cbe04.s3tc.ctex"
+uid="uid://dvlnqtm1lcg0r"
+path.s3tc="res://.godot/imported/Birds_photo.png-d008ccfaa90da46056e834892044b7cc.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://13_TOOLS_UI/Photo/IMG/Ghost_eyes_art.png"
-dest_files=["res://.godot/imported/Ghost_eyes_art.png-0bf404939a531cb5aeeee61c099cbe04.s3tc.ctex"]
+source_file="res://08_PHOTO_SYSTEMS/Photo/IMG/Birds_photo.png"
+dest_files=["res://.godot/imported/Birds_photo.png-d008ccfaa90da46056e834892044b7cc.s3tc.ctex"]
 
 [params]
 

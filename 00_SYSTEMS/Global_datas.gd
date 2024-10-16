@@ -31,6 +31,9 @@ signal _in_transition_end
 var current_focus_data : focus_data
 signal check_focus_count
 signal hide_all_FocusScene_dialogue
+var photo_pause : bool
+signal _take_photo
+
 
 # Journal_mission_done
 signal _add_journal(condition : bool)

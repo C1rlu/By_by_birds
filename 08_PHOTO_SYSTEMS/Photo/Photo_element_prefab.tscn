@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://c5bpklb8b6y6l"]
 
-[ext_resource type="Script" path="res://13_TOOLS_UI/Photo/Photo_element_prefab.gd" id="1_2hak6"]
-[ext_resource type="Shader" uid="uid://bhctfh42jxjgh" path="res://13_TOOLS_UI/Photo/Photo_ui_prefab_fadeIn.tres" id="2_2kkqm"]
-[ext_resource type="Texture2D" uid="uid://dvlnqtm1lcg0r" path="res://13_TOOLS_UI/Photo/IMG/Birds_photo.png" id="3_c60an"]
+[ext_resource type="Script" path="res://08_PHOTO_SYSTEMS/Photo/Photo_element_prefab.gd" id="1_2hak6"]
+[ext_resource type="Shader" uid="uid://bhctfh42jxjgh" path="res://08_PHOTO_SYSTEMS/Photo/Photo_ui_prefab_fadeIn.tres" id="2_2kkqm"]
+[ext_resource type="Texture2D" uid="uid://dvlnqtm1lcg0r" path="res://08_PHOTO_SYSTEMS/Photo/IMG/Birds_photo.png" id="3_c60an"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hrjbm"]
 shader = ExtResource("2_2kkqm")

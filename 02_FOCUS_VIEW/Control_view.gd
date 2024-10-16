@@ -28,7 +28,8 @@ func _reset(condition):
 		
 func _input(event):
 	
-
+	if _global_datas.photo_pause:
+		return
 	
 	if Input.is_action_pressed("right_click"):
 		_zoom_in()

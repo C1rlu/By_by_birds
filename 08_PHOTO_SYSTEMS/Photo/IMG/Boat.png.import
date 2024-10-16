@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dkqa1xnttnmoq"
-path.s3tc="res://.godot/imported/Maurice_photo.png-5b90b1f1e8c64bd65cdff75a0c8c6fee.s3tc.ctex"
+uid="uid://38btbw60olcn"
+path.s3tc="res://.godot/imported/Boat.png-c80436b2050c070a59e9d16514c62c7e.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://13_TOOLS_UI/Photo/IMG/Maurice_photo.png"
-dest_files=["res://.godot/imported/Maurice_photo.png-5b90b1f1e8c64bd65cdff75a0c8c6fee.s3tc.ctex"]
+source_file="res://08_PHOTO_SYSTEMS/Photo/IMG/Boat.png"
+dest_files=["res://.godot/imported/Boat.png-c80436b2050c070a59e9d16514c62c7e.s3tc.ctex"]
 
 [params]
 

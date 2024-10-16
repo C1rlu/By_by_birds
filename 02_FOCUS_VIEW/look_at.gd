@@ -17,6 +17,9 @@ func _reset_cam():
 						
 func _input(event: InputEvent) -> void:
 	
+	if _global_datas.photo_pause:
+		return
+	
 	if event is InputEventMouseMotion:
 	
 		Camera_head.rotate_y(deg_to_rad(-event.relative.x * _global_datas.look_at_sensivity))

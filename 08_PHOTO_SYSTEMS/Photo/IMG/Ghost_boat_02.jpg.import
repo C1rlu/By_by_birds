@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d12yty78225bi"
-path.s3tc="res://.godot/imported/Otis_photo.png-bf90cb478c861ee8933dcedcd33763aa.s3tc.ctex"
+uid="uid://ct7uio3bsh25"
+path.s3tc="res://.godot/imported/Ghost_boat_02.jpg-9ab5346ca7faaeb2875467bc3e21e461.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://13_TOOLS_UI/Photo/IMG/Otis_photo.png"
-dest_files=["res://.godot/imported/Otis_photo.png-bf90cb478c861ee8933dcedcd33763aa.s3tc.ctex"]
+source_file="res://08_PHOTO_SYSTEMS/Photo/IMG/Ghost_boat_02.jpg"
+dest_files=["res://.godot/imported/Ghost_boat_02.jpg-9ab5346ca7faaeb2875467bc3e21e461.s3tc.ctex"]
 
 [params]
 

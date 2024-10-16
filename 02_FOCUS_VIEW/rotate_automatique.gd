@@ -29,6 +29,7 @@ func _reset(value):
 		
 func _process(delta: float) -> void:
 	
+	
 	if direction_speed:
 		rotation_root.rotation_degrees.y -= 1.0 * delta	
 	else:

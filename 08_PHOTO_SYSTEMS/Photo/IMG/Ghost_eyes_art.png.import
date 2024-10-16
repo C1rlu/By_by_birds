@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://38btbw60olcn"
-path.s3tc="res://.godot/imported/Boat.png-6e575b401bae68c3edef675100d53a81.s3tc.ctex"
+uid="uid://81fqjbnarlkw"
+path.s3tc="res://.godot/imported/Ghost_eyes_art.png-bcb41b61e47f568735786b501430810c.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://13_TOOLS_UI/Photo/IMG/Boat.png"
-dest_files=["res://.godot/imported/Boat.png-6e575b401bae68c3edef675100d53a81.s3tc.ctex"]
+source_file="res://08_PHOTO_SYSTEMS/Photo/IMG/Ghost_eyes_art.png"
+dest_files=["res://.godot/imported/Ghost_eyes_art.png-bcb41b61e47f568735786b501430810c.s3tc.ctex"]
 
 [params]
 

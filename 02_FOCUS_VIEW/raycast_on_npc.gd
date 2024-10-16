@@ -4,6 +4,9 @@ extends Node
 
 func _input(event: InputEvent) -> void:
 	
+	if _global_datas.photo_pause:
+		return
+	
 	if event.is_action_pressed("Click"):
 		_check_raycast()
 		

@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://betillijib3ln"]
+
+[ext_resource type="Script" path="res://08_PHOTO_SYSTEMS/take_photo.gd" id="1_kffft"]
+[ext_resource type="Script" path="res://08_PHOTO_SYSTEMS/flash_effect.gd" id="2_qtdf3"]
+[ext_resource type="Shader" uid="uid://owtikj2jm5h5" path="res://08_PHOTO_SYSTEMS/PhotoFlash_effect.tres" id="3_uqcda"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cpio6"]
+shader = ExtResource("3_uqcda")
+shader_parameter/Opacity = 0.0
+
+[node name="PHOTO_SYSTEMS" type="Node"]
+
+[node name="TAKE_PHOTO" type="Node" parent="."]
+script = ExtResource("1_kffft")
+
+[node name="FRONT_ELEMENT" type="Node2D" parent="."]
+
+[node name="FLASH_EFFECT" type="Node" parent="."]
+script = ExtResource("2_qtdf3")
+
+[node name="FLASH_EFFECT_PANEL" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_cpio6")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0.816661, 0.512113, 1)

@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://cb8k68mtsigvd"]
+[gd_scene load_steps=13 format=3 uid="uid://cb8k68mtsigvd"]
 
 [ext_resource type="Resource" uid="uid://bmdkj4ktpvfca" path="res://02_FOCUS_VIEW/Focus_data/Lighthouse_01_focus_data.tres" id="1_sgkwb"]
 [ext_resource type="Script" path="res://00_SYSTEMS/scene_state.gd" id="3_b0tpt"]
 [ext_resource type="Script" path="res://00_SYSTEMS/Global_datas.gd" id="3_qrxv3"]
 [ext_resource type="Script" path="res://13_TOOLS_UI/Hide_cursor.gd" id="6_q33qh"]
 [ext_resource type="Script" path="res://00_SYSTEMS/KeyOrPad/Controllers_inputs_Type.gd" id="7_1x7hl"]
+[ext_resource type="PackedScene" uid="uid://betillijib3ln" path="res://08_PHOTO_SYSTEMS/Photo_systems.tscn" id="8_ceqxc"]
 [ext_resource type="Script" path="res://100_GAME_MENU/Set_Resolution.gd" id="9_i5bih"]
 [ext_resource type="PackedScene" uid="uid://cnmptm7i0xxmj" path="res://00_SCENE/02_main_scenes.tscn" id="10_iqa2p"]
 [ext_resource type="PackedScene" uid="uid://bemddl0bqqfwo" path="res://100_GAME_MENU/08_game_menu.tscn" id="16_5y5wa"]
@@ -100,6 +101,8 @@ script = SubResource("GDScript_gl82p")
 script = ExtResource("3_b0tpt")
 
 [node name="02_MAIN_SCENES" parent="GAME_SCENE" instance=ExtResource("10_iqa2p")]
+
+[node name="PHOTO_SYSTEMS" parent="." instance=ExtResource("8_ceqxc")]
 
 [node name="08_GAME_MENU" parent="." instance=ExtResource("16_5y5wa")]
 

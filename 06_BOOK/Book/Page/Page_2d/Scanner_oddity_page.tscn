@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://ga5yb54aj2kv" path="res://06_BOOK/question_back_alpha.png" id="3_5pcx0"]
 [ext_resource type="PackedScene" uid="uid://cx7k4grvoqu2b" path="res://06_BOOK/Photo_2d_book/Photo_2D.tscn" id="3_5sk7w"]
-[ext_resource type="Texture2D" uid="uid://81fqjbnarlkw" path="res://13_TOOLS_UI/Photo/IMG/Ghost_eyes_art.png" id="4_g4lsa"]
+[ext_resource type="Texture2D" uid="uid://81fqjbnarlkw" path="res://08_PHOTO_SYSTEMS/Photo/IMG/Ghost_eyes_art.png" id="4_g4lsa"]
 
 [sub_resource type="GDScript" id="GDScript_mnex3"]
 script/source = "extends Node

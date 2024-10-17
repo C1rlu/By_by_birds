@@ -8,6 +8,8 @@ var Player_InMenu : bool
 
 signal _open_menu(condition : bool)
 signal _open_desk(condition : bool)
+
+var player_on_desk : bool
 var camera_state_index : int 
 
 # input type
@@ -27,11 +29,11 @@ signal _frame_to_close
 signal _frame_to_journal
 signal _open_focus_view(condition : bool)
 signal _in_transition_start
-signal _in_transition_end
 var current_focus_data : focus_data
 signal check_focus_count
 
-var previous_bird : Node3D
+var previous_bird_hit : Node
+
 signal hide_all_FocusScene_dialogue
 
 

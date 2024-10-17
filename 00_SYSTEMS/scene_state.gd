@@ -21,10 +21,12 @@ func _add_focus_scene(condition: bool):
 		game_scene.add_child(instance_scene)
 	else:
 		_clear_scene()
-		var instance_scene = _02_MAIN_SCENES.instantiate() 			
+		var instance_scene = _04_BOARD.instantiate() 			
 		game_scene.add_child(instance_scene)
 		
 func _add_desk_scene(condition: bool):
+	
+	_global_datas.player_on_desk = condition
 	
 	if condition:
 		_clear_scene()
@@ -32,7 +34,7 @@ func _add_desk_scene(condition: bool):
 		game_scene.add_child(instance_scene)
 	else:
 		_clear_scene()
-		var instance_scene = _02_MAIN_SCENES.instantiate() 			
+		var instance_scene = _02_FOCUS_VIEW.instantiate() 			
 		game_scene.add_child(instance_scene)
 
 func _add_journal(condition: bool):
@@ -46,7 +48,7 @@ func _add_journal(condition: bool):
 		var instance_scene = _02_MAIN_SCENES.instantiate() 			
 		game_scene.add_child(instance_scene)
 
-
+	
 func _clear_scene():
 	
 	var child_scene = game_scene.get_children()	

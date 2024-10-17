@@ -17,9 +17,7 @@ func _ready() -> void:
 	_global_datas._frame_to_close.connect(directed_close)
 	_global_datas._frame_to_journal.connect(directed_close_journal)
 	
-	#timer.timeout.connect(_blink_out)
-	#timer.start()
-	
+
 func _blink_out():
 	if _global_datas.current_focus_data:
 		if _global_datas.current_focus_data.scene_resolved:
@@ -58,7 +56,7 @@ func directed_close_journal():
 		
 func done():
 	_global_datas._open_focus_view.emit(false)	
-
+	
 func done_mission():
 	_global_datas._add_journal.emit(true)
 	

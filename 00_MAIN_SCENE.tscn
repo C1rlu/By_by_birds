@@ -1,13 +1,14 @@
-[gd_scene load_steps=13 format=3 uid="uid://cb8k68mtsigvd"]
+[gd_scene load_steps=14 format=3 uid="uid://cb8k68mtsigvd"]
 
 [ext_resource type="Resource" uid="uid://bmdkj4ktpvfca" path="res://02_FOCUS_VIEW/Focus_data/Lighthouse_01_focus_data.tres" id="1_sgkwb"]
+[ext_resource type="Script" path="res://05_DESK_MAP/open_board.gd" id="2_dfh13"]
 [ext_resource type="Script" path="res://00_SYSTEMS/scene_state.gd" id="3_b0tpt"]
 [ext_resource type="Script" path="res://00_SYSTEMS/Global_datas.gd" id="3_qrxv3"]
 [ext_resource type="Script" path="res://13_TOOLS_UI/Hide_cursor.gd" id="6_q33qh"]
 [ext_resource type="Script" path="res://00_SYSTEMS/KeyOrPad/Controllers_inputs_Type.gd" id="7_1x7hl"]
+[ext_resource type="PackedScene" uid="uid://h2wepwtms1pe" path="res://02_FOCUS_VIEW.tscn" id="7_hlrec"]
 [ext_resource type="PackedScene" uid="uid://betillijib3ln" path="res://08_PHOTO_SYSTEMS/Photo_systems.tscn" id="8_ceqxc"]
 [ext_resource type="Script" path="res://100_GAME_MENU/Set_Resolution.gd" id="9_i5bih"]
-[ext_resource type="PackedScene" uid="uid://cnmptm7i0xxmj" path="res://00_SCENE/02_main_scenes.tscn" id="10_iqa2p"]
 [ext_resource type="PackedScene" uid="uid://bemddl0bqqfwo" path="res://100_GAME_MENU/08_game_menu.tscn" id="16_5y5wa"]
 
 [sub_resource type="GDScript" id="GDScript_c11gh"]
@@ -16,21 +17,18 @@ script/source = "extends Node
 
 @export var _focus_data : focus_data
 
+func _ready() -> void:
+	_global_datas.current_focus_data = _focus_data
+
 func _input(event):
 	
 	if event.is_action_pressed(\"debug_1\"):
-		_global_datas.current_focus_data = _focus_data
 		_global_datas._open_focus_view.emit(true)
-	
-	if event.is_action_pressed(\"debug_2\"):
-		_global_datas.active_prologue_demo.emit()
-		print(\"debug 2\")
 
-	if event.is_action_pressed(\"debug_3\"):
+	if event.is_action_pressed(\"debug_2\"):
 		_global_datas._open_desk.emit(true)
 	
-	if event.is_action_pressed(\"debug_4\"):
-		_global_datas.open_book.emit(true)
+
 		
 "
 
@@ -71,6 +69,9 @@ _focus_data = ExtResource("1_sgkwb")
 
 [node name="01_GAME_MANAGERS" type="Node" parent="."]
 
+[node name="Open_Board" type="Node" parent="01_GAME_MANAGERS"]
+script = ExtResource("2_dfh13")
+
 [node name="Global_datas" type="Node" parent="01_GAME_MANAGERS"]
 script = ExtResource("3_qrxv3")
 
@@ -100,7 +101,7 @@ script = SubResource("GDScript_gl82p")
 [node name="GAME_SCENE" type="Node" parent="."]
 script = ExtResource("3_b0tpt")
 
-[node name="02_MAIN_SCENES" parent="GAME_SCENE" instance=ExtResource("10_iqa2p")]
+[node name="02_FOCUS_VIEW" parent="GAME_SCENE" instance=ExtResource("7_hlrec")]
 
 [node name="PHOTO_SYSTEMS" parent="." instance=ExtResource("8_ceqxc")]
 

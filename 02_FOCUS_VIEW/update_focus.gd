@@ -4,11 +4,11 @@ extends Node
 @export var Camera_root : Camera3D
 @export var Camera_head : Node3D
 
-#@export var Blink_texture : ColorRect
 
 var previous_cam : Camera3D
 
-var blink
+
+
 func _ready() -> void:
 	
 	_global_datas.set_new_focus.connect(_set_new_focus)
@@ -23,7 +23,7 @@ func set_instant_focus(n_camera : Camera3D):
 	
 	Camera_head.global_position = n_camera.global_position
 	Camera_head.global_rotation_degrees = n_camera.global_rotation_degrees
-	
+	Camera_root.global_rotation_degrees = n_camera.global_rotation_degrees
 
 	
 	_global_datas._end_of_transition.emit()
@@ -50,7 +50,10 @@ func _set_new_focus(n_Camera : Camera3D):
 	
 func _done():
 	
-	_global_datas.previous_bird.visible = false
+	
 	_global_datas._end_of_transition.emit()
-	Camera_head.global_rotation_degrees = previous_cam.global_rotation_degrees	
 	Camera_head.global_position = previous_cam.global_position
+	
+	Camera_head.rotation.y = previous_cam.rotation.y	
+	Camera_root.rotation.x = previous_cam.rotation.x
+	

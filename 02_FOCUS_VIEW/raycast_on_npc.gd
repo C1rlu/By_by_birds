@@ -25,7 +25,7 @@ func _check_raycast():
 			_global_datas.transition_target = raycast.position
 			
 			hit_focus._set_focus()
-		
+			
 		var hit_focus_npc = raycast.collider.get_node_or_null("npc_revealed")
 		if hit_focus_npc:
 			hit_focus_npc._npc_revealed()
@@ -33,7 +33,7 @@ func _check_raycast():
 		var Close_focus_view = raycast.collider.get_node_or_null("Close_focus_view")
 		if Close_focus_view:
 			_global_datas._frame_to_close.emit()
-		
+			
 		var To_Find = raycast.collider.get_node_or_null("To_Find")
 		if To_Find:
 			_global_datas.current_focus_data.scene_resolved = true

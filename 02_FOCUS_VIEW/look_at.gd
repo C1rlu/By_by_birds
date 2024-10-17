@@ -25,6 +25,6 @@ func _input(event: InputEvent) -> void:
 		Camera_head.rotate_y(deg_to_rad(-event.relative.x * _global_datas.look_at_sensivity))
 		Camera.rotate_x(deg_to_rad(-event.relative.y * _global_datas.look_at_sensivity))
 		
-		Camera.rotation.x = clamp(Camera.rotation.x ,deg_to_rad(-60.0),deg_to_rad(90.0))
+		Camera.rotation.x = clamp(Camera.rotation.x ,deg_to_rad(-90.0),deg_to_rad(90.0))
 	
-	
+		

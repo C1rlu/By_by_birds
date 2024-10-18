@@ -23,6 +23,6 @@ func _npc_revealed():
 		is_revealed = true
 		
 	#_global_datas.hide_all_FocusScene_dialogue.emit()
-	show_FocusScene_dialogue._show_dialogue()
+	#show_FocusScene_dialogue._show_dialogue()
 	
-	_global_datas._take_photo.emit()
+	#_global_datas._take_photo.emit()

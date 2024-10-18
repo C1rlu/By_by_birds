@@ -46,6 +46,7 @@ func _set_new_focus(n_Camera : Camera3D):
 	move_cam.tween_property(Camera_head,"global_position",_global_datas.transition_target,0.3).set_ease(Tween.EASE_OUT)
 	move_cam.connect("finished",_done)
 
+
 	
 	
 func _done():

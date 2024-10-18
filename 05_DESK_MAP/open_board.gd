@@ -10,4 +10,4 @@ func _input(event: InputEvent) -> void:
 		
 		
 	if event.is_action_pressed("Open_desk"):
-		_global_datas._frame_to_close.emit()
+		_global_datas._open_desk.emit(true)

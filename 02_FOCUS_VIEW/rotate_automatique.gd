@@ -11,31 +11,36 @@ extends Node
 var direction_speed : bool
 var dir_value
 
+var rotation_speed : float 
+
+@export var disable = true
+	
 func _ready() -> void:
 	
-	_global_datas._update_cam_focus.connect(_reset)
+	if disable:
+		return
+		
+	_global_datas._end_of_transition.connect(_reset)
 	timer.timeout.connect(end_of_time)
 	timer.start()
+	
 
-func _reset(value):
+func _reset():
 	
 	rotation_root.rotation_degrees = Vector3.ZERO
-
+	adapt_speed()	
 	
-	if value:	
-		timer.start()	
-	else:	
-		timer.stop()	
-		
+	
+func adapt_speed():
+	
+	var camera_distance = Cam.global_position.distance_to(Vector3.ZERO)
+	
+
+	rotation_speed = 0.8 / camera_distance * 10	
+	
+	
 func _process(delta: float) -> void:
 	
-	
-	if direction_speed:
-		rotation_root.rotation_degrees.y -= 1.0 * delta
-	else:
-		rotation_root.rotation_degrees.y += 1.0 * delta
-
-		
 	Cam_light.global_position = Cam.global_position 
 	Cam_light.global_rotation_degrees = Cam.global_rotation_degrees
 
@@ -44,6 +49,17 @@ func _process(delta: float) -> void:
 	
 	Cam_ui.global_position = Cam.global_position 
 	Cam_ui.global_rotation_degrees = Cam.global_rotation_degrees
+	
+	if disable:
+		return
+	
+	if direction_speed:
+		rotation_root.rotation_degrees.y -= rotation_speed * delta
+	else:
+		rotation_root.rotation_degrees.y += rotation_speed * delta
+
+		
+	
 
 func end_of_time():
 	direction_speed =! direction_speed	

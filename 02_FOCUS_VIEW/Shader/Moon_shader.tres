@@ -37,7 +37,7 @@ qualifier = 1
 
 [resource]
 code = "shader_type spatial;
-render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx, unshaded;
+render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx, unshaded, shadows_disabled, ambient_light_disabled;
 
 uniform sampler2D Moon_alpha : filter_nearest;
 global uniform float Dither_size;
@@ -94,16 +94,18 @@ void fragment() {
 
 }
 "
-graph_offset = Vector2(-812.627, -160.389)
 flags/unshaded = true
+flags/shadows_disabled = true
+flags/ambient_light_disabled = true
+nodes/fragment/0/position = Vector2(720, 200)
 nodes/fragment/2/node = SubResource("VisualShaderNodeTexture_sr4g3")
 nodes/fragment/2/position = Vector2(-960, -120)
 nodes/fragment/3/node = SubResource("VisualShaderNodeTexture2DParameter_eyf30")
 nodes/fragment/3/position = Vector2(-1420, -160)
 nodes/fragment/5/node = SubResource("VisualShaderNodeStep_31rmb")
-nodes/fragment/5/position = Vector2(-340, 240)
+nodes/fragment/5/position = Vector2(-460, 160)
 nodes/fragment/7/node = SubResource("VisualShaderNodeFloatFunc_k787n")
-nodes/fragment/7/position = Vector2(-600, 200)
+nodes/fragment/7/position = Vector2(-740, 160)
 nodes/fragment/8/node = SubResource("VisualShaderNodeExpression_07ry6")
 nodes/fragment/8/position = Vector2(-2200, -40)
 nodes/fragment/8/size = Vector2(724.789, 654.559)
@@ -124,5 +126,5 @@ nodes/fragment/9/position = Vector2(-2580, 320)
 nodes/fragment/10/node = SubResource("VisualShaderNodeFloatConstant_t5mxm")
 nodes/fragment/10/position = Vector2(-2520, 100)
 nodes/fragment/11/node = SubResource("VisualShaderNodeMix_2ohb6")
-nodes/fragment/11/position = Vector2(-80, 420)
+nodes/fragment/11/position = Vector2(-260, 300)
 nodes/fragment/connections = PackedInt32Array(3, 0, 2, 2, 2, 0, 7, 0, 7, 0, 5, 0, 9, 0, 8, 1, 10, 0, 8, 0, 8, 0, 5, 1, 5, 0, 11, 0, 2, 0, 11, 1, 11, 0, 0, 1)

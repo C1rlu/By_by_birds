@@ -1,11 +1,6 @@
 extends Node
 
-@onready var root : Node3D = $"../.."
-
-@export var _focus_camera : Camera3D
-@onready var col: CollisionShape3D = $"../CollisionShape3D"
-
-
+var bird_data : Bird_view_data
 
 func _ready() -> void:
 	_global_datas._in_transition_start.connect(start_enable)
@@ -19,16 +14,16 @@ func start_enable():
 	timer_n.start()
 	
 func _enable():
-	col.disabled = false
-	root.visible = true	
+	bird_data.bird_col.disabled = false
+	bird_data.bird_node.visible = true	
 	
 func _disable():
-	col.disabled = true
-	root.visible = false
+	bird_data.bird_col.disabled = true
+	bird_data.bird_node.visible = false
 	
 	
 func _set_focus():
-	_global_datas.set_new_focus.emit(_focus_camera)
+	_global_datas.set_new_focus.emit(bird_data.camera_view)
 	_global_datas._in_transition_start.emit()
 	
 	var utility = GameUtility.new()

@@ -23,8 +23,6 @@ func clear_and_instantiate():
 		var instantiate = _global_datas.current_focus_data.focus_scene.instantiate()
 		Loader.add_child(instantiate)		
 		
-		var focus_data_count = instantiate.npc_count.size()
-		_global_datas.current_focus_data.scene_npc_count = focus_data_count
 	
 		
 	else: print("Pls set a focus data scene")

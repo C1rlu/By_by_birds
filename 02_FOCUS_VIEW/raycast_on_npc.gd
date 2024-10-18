@@ -15,7 +15,7 @@ func _check_raycast():
 
 	var utility = GameUtility.new()
 	var target_ui = $"../Render/Target".global_position
-	var raycast = utility.get_raycast_target(target_ui,Camera,1,false,true)
+	var raycast = utility.get_raycast_target(target_ui,Camera,1,true,false)
 	
 	if raycast:
 
@@ -39,3 +39,8 @@ func _check_raycast():
 			_global_datas.current_focus_data.scene_resolved = true
 			_global_datas._frame_to_journal.emit()
 		
+
+		var Destination = raycast.collider.get_node_or_null("Destination")
+		if Destination:
+	
+			Destination._load_destination()

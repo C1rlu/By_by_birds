@@ -30,7 +30,6 @@ signal _frame_to_journal
 signal _open_focus_view(condition : bool)
 signal _in_transition_start
 var current_focus_data : focus_data
-signal check_focus_count
 
 var previous_bird_hit : Node
 

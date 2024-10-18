@@ -216,3 +216,7 @@ isGray={
 "type": "float",
 "value": 1.0
 }
+light_color={
+"type": "color",
+"value": Color(1, 0.721569, 0.372549, 1)
+}

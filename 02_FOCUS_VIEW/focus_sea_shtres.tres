@@ -98,14 +98,14 @@ default_input_values = [0, 0.0, 1, 0.001]
 operator = 2
 
 [sub_resource type="VisualShaderNodeFloatConstant" id="VisualShaderNodeFloatConstant_wxdaw"]
-constant = 10.0
+constant = 15.0
 
 [sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_g0gln"]
 input_name = "time"
 
 [resource]
 code = "shader_type spatial;
-render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_disabled, unshaded, shadows_disabled;
+render_mode blend_mix, depth_draw_always, cull_back, diffuse_lambert, specular_disabled, unshaded, shadows_disabled;
 
 uniform vec4 Sea_color : source_color;
 uniform vec4 Water_lighter_color : source_color;
@@ -162,7 +162,7 @@ void fragment() {
 
 
 // FloatConstant:8
-	float n_out8p0 = 10.000000;
+	float n_out8p0 = 15.000000;
 
 
 // FloatOp:17
@@ -246,6 +246,7 @@ void fragment() {
 
 }
 "
+modes/depth_draw = 1
 modes/specular = 2
 flags/unshaded = true
 flags/shadows_disabled = true

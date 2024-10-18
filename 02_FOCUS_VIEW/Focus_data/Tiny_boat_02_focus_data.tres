@@ -7,3 +7,4 @@
 script = ExtResource("2_wnce4")
 focus_scene = ExtResource("1_56r13")
 scene_resolved = false
+book_page_index = 0

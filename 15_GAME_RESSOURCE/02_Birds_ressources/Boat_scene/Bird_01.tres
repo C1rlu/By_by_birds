@@ -1,0 +1,6 @@
+[gd_resource type="Resource" script_class="Bird_view_data" load_steps=2 format=3 uid="uid://dws8i21ekegpf"]
+
+[ext_resource type="Script" path="res://15_GAME_RESSOURCE/02_Birds_ressources/Bird_view_data.gd" id="1_n6xvl"]
+
+[resource]
+script = ExtResource("1_n6xvl")

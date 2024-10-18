@@ -1,7 +1,8 @@
-[gd_scene load_steps=19 format=4 uid="uid://n7fje3pkvptd"]
+[gd_scene load_steps=20 format=4 uid="uid://n7fje3pkvptd"]
 
 [ext_resource type="Script" path="res://02_FOCUS_VIEW/Birds_view/birds_view_prefab.gd" id="1_hgwdi"]
 [ext_resource type="PackedScene" uid="uid://djqtoudpd0dy6" path="res://04_SCENE_MAIN_MAP/Birds/Far_birds.blend" id="1_jf0iy"]
+[ext_resource type="Script" path="res://02_FOCUS_VIEW/Birds_view/bird_emit_sound_effect.gd" id="2_tw303"]
 [ext_resource type="Material" uid="uid://cvng1dwrp1vmq" path="res://00_SHADER/Light_pass_lit_mat.tres" id="3_iw44k"]
 [ext_resource type="Material" uid="uid://yjoyk6fvrm6q" path="res://00_SHADER/No_light_surface_mat.tres" id="4_sa6ij"]
 [ext_resource type="Script" path="res://02_FOCUS_VIEW/hit_focus.gd" id="5_hfgyk"]
@@ -148,6 +149,14 @@ bird_node = NodePath("Far_birds")
 [node name="cam" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.366778, 0)
 fov = 50.0
+
+[node name="Bird_emit_sound_effect" type="Node" parent="." node_paths=PackedStringArray("parent_root")]
+script = ExtResource("2_tw303")
+parent_root = NodePath("../Far_birds")
+
+[node name="Timer" type="Timer" parent="Bird_emit_sound_effect"]
+wait_time = 6.0
+autostart = true
 
 [node name="Area3D" type="Area3D" parent="."]
 

@@ -37,11 +37,11 @@
 [sub_resource type="Resource" id="Resource_g8a00"]
 script = ExtResource("11_vlw4y")
 
-[sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_2o3a0"]
+[sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_o2jea"]
 parameter_name = "ColorParameter"
 default_value_enabled = true
 
-[sub_resource type="VisualShader" id="VisualShader_6s3eo"]
+[sub_resource type="VisualShader" id="VisualShader_167y5"]
 code = "shader_type spatial;
 render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx, ambient_light_disabled;
 
@@ -62,14 +62,14 @@ void fragment() {
 "
 flags/ambient_light_disabled = true
 nodes/fragment/0/position = Vector2(440, 140)
-nodes/fragment/2/node = SubResource("VisualShaderNodeColorParameter_2o3a0")
+nodes/fragment/2/node = SubResource("VisualShaderNodeColorParameter_o2jea")
 nodes/fragment/2/position = Vector2(79.9654, 46.8294)
 nodes/fragment/connections = PackedInt32Array(2, 0, 0, 0)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_aoolg"]
 resource_local_to_scene = true
 render_priority = 0
-shader = SubResource("VisualShader_6s3eo")
+shader = SubResource("VisualShader_167y5")
 shader_parameter/ColorParameter = Color(1, 1, 1, 1)
 
 [sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_cnqkx"]
@@ -540,7 +540,7 @@ shadow_enabled = true
 omni_range = 2.20289
 
 [node name="OmniLight3D5" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.4608, 6.46083, -20.8069)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.4499, 6.48964, -20.8364)
 layers = 4
 light_energy = 1.946
 light_cull_mask = 4293918724
@@ -556,7 +556,7 @@ _Bird_view_data = ExtResource("5_qybha")
 [node name="cam" parent="VIEW/BirdsView_Prefab_00" index="0"]
 transform = Transform3D(-0.85264, -0.0952178, -0.513749, 0, 0.983255, -0.182235, 0.522499, -0.155381, -0.838363, 0, 0.747, 0)
 
-[node name="Far_birds" parent="VIEW/BirdsView_Prefab_00" index="2"]
+[node name="Far_birds" parent="VIEW/BirdsView_Prefab_00" index="3"]
 transform = Transform3D(-0.0446018, 0.1421, 0.163344, 0.138442, 0.146942, -0.0900284, -0.166456, 0.0841359, -0.118645, -0.912289, 0.538487, 0)
 
 [node name="Cube" parent="VIEW/BirdsView_Prefab_00/Far_birds" index="0"]
@@ -571,28 +571,31 @@ surface_material_override/0 = null
 [node name="bec" parent="VIEW/BirdsView_Prefab_00/Far_birds" index="3"]
 surface_material_override/0 = null
 
-[node name="Cube2" parent="VIEW/BirdsView_Prefab_00/Far_birds" index="4"]
+[node name="GPUParticles3D" parent="VIEW/BirdsView_Prefab_00/Far_birds" index="4"]
+transform = Transform3D(5.58637, 0, 0, 0, 5.58637, 0, 0, 0, 5.58637, 0, 0, 0)
+
+[node name="Cube2" parent="VIEW/BirdsView_Prefab_00/Far_birds" index="5"]
 surface_material_override/0 = null
 
-[node name="Cube_003" parent="VIEW/BirdsView_Prefab_00/Far_birds" index="5"]
+[node name="Cube_003" parent="VIEW/BirdsView_Prefab_00/Far_birds" index="6"]
 surface_material_override/0 = null
 
-[node name="Cube_004" parent="VIEW/BirdsView_Prefab_00/Far_birds" index="6"]
+[node name="Cube_004" parent="VIEW/BirdsView_Prefab_00/Far_birds" index="7"]
 surface_material_override/0 = null
 
-[node name="bec2" parent="VIEW/BirdsView_Prefab_00/Far_birds" index="7"]
+[node name="bec2" parent="VIEW/BirdsView_Prefab_00/Far_birds" index="8"]
 surface_material_override/0 = null
 
-[node name="Cube3" parent="VIEW/BirdsView_Prefab_00/Far_birds" index="8"]
+[node name="Cube3" parent="VIEW/BirdsView_Prefab_00/Far_birds" index="9"]
 surface_material_override/0 = null
 
-[node name="Cube_005" parent="VIEW/BirdsView_Prefab_00/Far_birds" index="9"]
+[node name="Cube_005" parent="VIEW/BirdsView_Prefab_00/Far_birds" index="10"]
 surface_material_override/0 = null
 
-[node name="Cube_006" parent="VIEW/BirdsView_Prefab_00/Far_birds" index="10"]
+[node name="Cube_006" parent="VIEW/BirdsView_Prefab_00/Far_birds" index="11"]
 surface_material_override/0 = null
 
-[node name="bec3" parent="VIEW/BirdsView_Prefab_00/Far_birds" index="11"]
+[node name="bec3" parent="VIEW/BirdsView_Prefab_00/Far_birds" index="12"]
 surface_material_override/0 = null
 
 [node name="BirdsView_Prefab_01" parent="VIEW" instance=ExtResource("4_m6m46")]
@@ -602,31 +605,34 @@ _Bird_view_data = ExtResource("6_ywu3b")
 [node name="cam" parent="VIEW/BirdsView_Prefab_01" index="0"]
 transform = Transform3D(0.97237, 0, -0.233445, 0, 1, 0, 0.233445, 0, 0.97237, 0, 0.366778, 0)
 
-[node name="Far_birds" parent="VIEW/BirdsView_Prefab_01" index="2"]
+[node name="Far_birds" parent="VIEW/BirdsView_Prefab_01" index="3"]
 transform = Transform3D(0.172328, -0.118047, 0.0723252, 0.138442, 0.146942, -0.0900284, 0, 0.115482, 0.188486, 0, -0.508859, 0)
 
-[node name="Cube2" parent="VIEW/BirdsView_Prefab_01/Far_birds" index="4"]
+[node name="GPUParticles3D" parent="VIEW/BirdsView_Prefab_01/Far_birds" index="4"]
+transform = Transform3D(5.58637, 0, 0, 0, 5.58637, 0, 0, 0, 5.58637, 0, 0, 0)
+
+[node name="Cube2" parent="VIEW/BirdsView_Prefab_01/Far_birds" index="5"]
 surface_material_override/0 = null
 
-[node name="Cube_003" parent="VIEW/BirdsView_Prefab_01/Far_birds" index="5"]
+[node name="Cube_003" parent="VIEW/BirdsView_Prefab_01/Far_birds" index="6"]
 surface_material_override/0 = null
 
-[node name="Cube_004" parent="VIEW/BirdsView_Prefab_01/Far_birds" index="6"]
+[node name="Cube_004" parent="VIEW/BirdsView_Prefab_01/Far_birds" index="7"]
 surface_material_override/0 = null
 
-[node name="bec2" parent="VIEW/BirdsView_Prefab_01/Far_birds" index="7"]
+[node name="bec2" parent="VIEW/BirdsView_Prefab_01/Far_birds" index="8"]
 surface_material_override/0 = null
 
-[node name="Cube3" parent="VIEW/BirdsView_Prefab_01/Far_birds" index="8"]
+[node name="Cube3" parent="VIEW/BirdsView_Prefab_01/Far_birds" index="9"]
 surface_material_override/0 = null
 
-[node name="Cube_005" parent="VIEW/BirdsView_Prefab_01/Far_birds" index="9"]
+[node name="Cube_005" parent="VIEW/BirdsView_Prefab_01/Far_birds" index="10"]
 surface_material_override/0 = null
 
-[node name="Cube_006" parent="VIEW/BirdsView_Prefab_01/Far_birds" index="10"]
+[node name="Cube_006" parent="VIEW/BirdsView_Prefab_01/Far_birds" index="11"]
 surface_material_override/0 = null
 
-[node name="bec3" parent="VIEW/BirdsView_Prefab_01/Far_birds" index="11"]
+[node name="bec3" parent="VIEW/BirdsView_Prefab_01/Far_birds" index="12"]
 surface_material_override/0 = null
 
 [node name="BirdsView_Prefab_03" parent="VIEW" instance=ExtResource("4_m6m46")]
@@ -636,31 +642,34 @@ _Bird_view_data = ExtResource("7_2gn1f")
 [node name="cam" parent="VIEW/BirdsView_Prefab_03" index="0"]
 transform = Transform3D(0.492424, -0.651858, 0.576715, 0, 0.66262, 0.748956, -0.870356, -0.368803, 0.32629, 0, 0.366778, 0)
 
-[node name="Far_birds" parent="VIEW/BirdsView_Prefab_03" index="2"]
+[node name="Far_birds" parent="VIEW/BirdsView_Prefab_03" index="3"]
 transform = Transform3D(-0.166456, 0.0841359, -0.118645, 0.111792, 0.189358, -0.0225609, 0.0930475, -0.0769916, -0.185142, -0.222861, -0.508859, -0.886779)
 
-[node name="Cube2" parent="VIEW/BirdsView_Prefab_03/Far_birds" index="4"]
+[node name="GPUParticles3D" parent="VIEW/BirdsView_Prefab_03/Far_birds" index="4"]
+transform = Transform3D(5.58637, 0, 0, 0, 5.58637, 0, 0, 0, 5.58637, 0, 0, 0)
+
+[node name="Cube2" parent="VIEW/BirdsView_Prefab_03/Far_birds" index="5"]
 surface_material_override/0 = null
 
-[node name="Cube_003" parent="VIEW/BirdsView_Prefab_03/Far_birds" index="5"]
+[node name="Cube_003" parent="VIEW/BirdsView_Prefab_03/Far_birds" index="6"]
 surface_material_override/0 = null
 
-[node name="Cube_004" parent="VIEW/BirdsView_Prefab_03/Far_birds" index="6"]
+[node name="Cube_004" parent="VIEW/BirdsView_Prefab_03/Far_birds" index="7"]
 surface_material_override/0 = null
 
-[node name="bec2" parent="VIEW/BirdsView_Prefab_03/Far_birds" index="7"]
+[node name="bec2" parent="VIEW/BirdsView_Prefab_03/Far_birds" index="8"]
 surface_material_override/0 = null
 
-[node name="Cube3" parent="VIEW/BirdsView_Prefab_03/Far_birds" index="8"]
+[node name="Cube3" parent="VIEW/BirdsView_Prefab_03/Far_birds" index="9"]
 surface_material_override/0 = null
 
-[node name="Cube_005" parent="VIEW/BirdsView_Prefab_03/Far_birds" index="9"]
+[node name="Cube_005" parent="VIEW/BirdsView_Prefab_03/Far_birds" index="10"]
 surface_material_override/0 = null
 
-[node name="Cube_006" parent="VIEW/BirdsView_Prefab_03/Far_birds" index="10"]
+[node name="Cube_006" parent="VIEW/BirdsView_Prefab_03/Far_birds" index="11"]
 surface_material_override/0 = null
 
-[node name="bec3" parent="VIEW/BirdsView_Prefab_03/Far_birds" index="11"]
+[node name="bec3" parent="VIEW/BirdsView_Prefab_03/Far_birds" index="12"]
 surface_material_override/0 = null
 
 [node name="BirdsView_Prefab_04" parent="VIEW" instance=ExtResource("4_m6m46")]
@@ -670,37 +679,40 @@ _Bird_view_data = ExtResource("8_aboaw")
 [node name="cam" parent="VIEW/BirdsView_Prefab_04" index="0"]
 transform = Transform3D(-0.566406, -0.535227, -0.62667, 0, 0.760406, -0.649448, 0.824127, -0.367851, -0.430699, 0, 0.366778, 0)
 
-[node name="Far_birds" parent="VIEW/BirdsView_Prefab_04" index="2"]
+[node name="Far_birds" parent="VIEW/BirdsView_Prefab_04" index="3"]
 transform = Transform3D(-0.197999, 0.0385606, -0.090403, 0.09817, 0.0873538, -0.17775, 0.00471792, -0.199363, -0.0953692, -0.222861, 0.26416, -0.886779)
 
-[node name="Cube2" parent="VIEW/BirdsView_Prefab_04/Far_birds" index="4"]
+[node name="GPUParticles3D" parent="VIEW/BirdsView_Prefab_04/Far_birds" index="4"]
+transform = Transform3D(5.58637, 0, 0, 0, 5.58637, 0, 0, 0, 5.58637, 0, 0, 0)
+
+[node name="Cube2" parent="VIEW/BirdsView_Prefab_04/Far_birds" index="5"]
 skeleton = NodePath("../../../../..")
 surface_material_override/0 = null
 
-[node name="Cube_003" parent="VIEW/BirdsView_Prefab_04/Far_birds" index="5"]
+[node name="Cube_003" parent="VIEW/BirdsView_Prefab_04/Far_birds" index="6"]
 surface_material_override/0 = null
 
-[node name="Cube_004" parent="VIEW/BirdsView_Prefab_04/Far_birds" index="6"]
+[node name="Cube_004" parent="VIEW/BirdsView_Prefab_04/Far_birds" index="7"]
 skeleton = NodePath("../../../../..")
 surface_material_override/0 = null
 
-[node name="bec2" parent="VIEW/BirdsView_Prefab_04/Far_birds" index="7"]
+[node name="bec2" parent="VIEW/BirdsView_Prefab_04/Far_birds" index="8"]
 skeleton = NodePath("../../../../..")
 surface_material_override/0 = null
 
-[node name="Cube3" parent="VIEW/BirdsView_Prefab_04/Far_birds" index="8"]
+[node name="Cube3" parent="VIEW/BirdsView_Prefab_04/Far_birds" index="9"]
 skeleton = NodePath("../../../../..")
 surface_material_override/0 = null
 
-[node name="Cube_005" parent="VIEW/BirdsView_Prefab_04/Far_birds" index="9"]
+[node name="Cube_005" parent="VIEW/BirdsView_Prefab_04/Far_birds" index="10"]
 skeleton = NodePath("../../../../..")
 surface_material_override/0 = null
 
-[node name="Cube_006" parent="VIEW/BirdsView_Prefab_04/Far_birds" index="10"]
+[node name="Cube_006" parent="VIEW/BirdsView_Prefab_04/Far_birds" index="11"]
 skeleton = NodePath("../../../../..")
 surface_material_override/0 = null
 
-[node name="bec3" parent="VIEW/BirdsView_Prefab_04/Far_birds" index="11"]
+[node name="bec3" parent="VIEW/BirdsView_Prefab_04/Far_birds" index="12"]
 skeleton = NodePath("../../../../..")
 surface_material_override/0 = null
 
@@ -711,31 +723,34 @@ _Bird_view_data = ExtResource("9_n7lc2")
 [node name="cam" parent="VIEW/BirdsView_Prefab_05" index="0"]
 transform = Transform3D(-0.987414, -0.0499224, 0.150072, 0, 0.948876, 0.315649, -0.158158, 0.311676, -0.936933, 0, 0.366778, 0)
 
-[node name="Far_birds" parent="VIEW/BirdsView_Prefab_05" index="2"]
+[node name="Far_birds" parent="VIEW/BirdsView_Prefab_05" index="3"]
 transform = Transform3D(0.139999, -0.0690528, 0.156509, 0.159407, 0.126043, -0.0869802, -0.0620704, 0.167952, 0.129624, -0.222861, 0.26416, -0.88678)
 
-[node name="Cube2" parent="VIEW/BirdsView_Prefab_05/Far_birds" index="4"]
+[node name="GPUParticles3D" parent="VIEW/BirdsView_Prefab_05/Far_birds" index="4"]
+transform = Transform3D(5.58637, 0, 0, 0, 5.58637, 0, 0, 0, 5.58637, 0, 0, 0)
+
+[node name="Cube2" parent="VIEW/BirdsView_Prefab_05/Far_birds" index="5"]
 surface_material_override/0 = null
 
-[node name="Cube_003" parent="VIEW/BirdsView_Prefab_05/Far_birds" index="5"]
+[node name="Cube_003" parent="VIEW/BirdsView_Prefab_05/Far_birds" index="6"]
 surface_material_override/0 = null
 
-[node name="Cube_004" parent="VIEW/BirdsView_Prefab_05/Far_birds" index="6"]
+[node name="Cube_004" parent="VIEW/BirdsView_Prefab_05/Far_birds" index="7"]
 surface_material_override/0 = null
 
-[node name="bec2" parent="VIEW/BirdsView_Prefab_05/Far_birds" index="7"]
+[node name="bec2" parent="VIEW/BirdsView_Prefab_05/Far_birds" index="8"]
 surface_material_override/0 = null
 
-[node name="Cube3" parent="VIEW/BirdsView_Prefab_05/Far_birds" index="8"]
+[node name="Cube3" parent="VIEW/BirdsView_Prefab_05/Far_birds" index="9"]
 surface_material_override/0 = null
 
-[node name="Cube_005" parent="VIEW/BirdsView_Prefab_05/Far_birds" index="9"]
+[node name="Cube_005" parent="VIEW/BirdsView_Prefab_05/Far_birds" index="10"]
 surface_material_override/0 = null
 
-[node name="Cube_006" parent="VIEW/BirdsView_Prefab_05/Far_birds" index="10"]
+[node name="Cube_006" parent="VIEW/BirdsView_Prefab_05/Far_birds" index="11"]
 surface_material_override/0 = null
 
-[node name="bec3" parent="VIEW/BirdsView_Prefab_05/Far_birds" index="11"]
+[node name="bec3" parent="VIEW/BirdsView_Prefab_05/Far_birds" index="12"]
 surface_material_override/0 = null
 
 [node name="BirdsView_Prefab_06" parent="VIEW" instance=ExtResource("4_m6m46")]
@@ -745,31 +760,34 @@ _Bird_view_data = ExtResource("10_81mib")
 [node name="cam" parent="VIEW/BirdsView_Prefab_06" index="0"]
 transform = Transform3D(0.681999, 0.403661, 0.609866, 0, 0.833886, -0.551937, -0.731354, 0.37642, 0.568709, 0, 0.366778, 0)
 
-[node name="Far_birds" parent="VIEW/BirdsView_Prefab_06" index="2"]
+[node name="Far_birds" parent="VIEW/BirdsView_Prefab_06" index="3"]
 transform = Transform3D(0.0466888, 0.18259, 0.115518, 0.09817, 0.0873538, -0.17775, -0.192473, 0.0888456, -0.0626392, 0.796137, -0.120271, -0.583147)
 
-[node name="Cube2" parent="VIEW/BirdsView_Prefab_06/Far_birds" index="4"]
+[node name="GPUParticles3D" parent="VIEW/BirdsView_Prefab_06/Far_birds" index="4"]
+transform = Transform3D(5.58637, 0, 0, 0, 5.58637, 0, 0, 0, 5.58637, 0, 0, 0)
+
+[node name="Cube2" parent="VIEW/BirdsView_Prefab_06/Far_birds" index="5"]
 surface_material_override/0 = null
 
-[node name="Cube_003" parent="VIEW/BirdsView_Prefab_06/Far_birds" index="5"]
+[node name="Cube_003" parent="VIEW/BirdsView_Prefab_06/Far_birds" index="6"]
 surface_material_override/0 = null
 
-[node name="Cube_004" parent="VIEW/BirdsView_Prefab_06/Far_birds" index="6"]
+[node name="Cube_004" parent="VIEW/BirdsView_Prefab_06/Far_birds" index="7"]
 surface_material_override/0 = null
 
-[node name="bec2" parent="VIEW/BirdsView_Prefab_06/Far_birds" index="7"]
+[node name="bec2" parent="VIEW/BirdsView_Prefab_06/Far_birds" index="8"]
 surface_material_override/0 = null
 
-[node name="Cube3" parent="VIEW/BirdsView_Prefab_06/Far_birds" index="8"]
+[node name="Cube3" parent="VIEW/BirdsView_Prefab_06/Far_birds" index="9"]
 surface_material_override/0 = null
 
-[node name="Cube_005" parent="VIEW/BirdsView_Prefab_06/Far_birds" index="9"]
+[node name="Cube_005" parent="VIEW/BirdsView_Prefab_06/Far_birds" index="10"]
 surface_material_override/0 = null
 
-[node name="Cube_006" parent="VIEW/BirdsView_Prefab_06/Far_birds" index="10"]
+[node name="Cube_006" parent="VIEW/BirdsView_Prefab_06/Far_birds" index="11"]
 surface_material_override/0 = null
 
-[node name="bec3" parent="VIEW/BirdsView_Prefab_06/Far_birds" index="11"]
+[node name="bec3" parent="VIEW/BirdsView_Prefab_06/Far_birds" index="12"]
 surface_material_override/0 = null
 
 [node name="BirdsView_Prefab_07" parent="VIEW" instance=ExtResource("4_m6m46")]
@@ -779,31 +797,34 @@ _Bird_view_data = ExtResource("10_nmldi")
 [node name="cam" parent="VIEW/BirdsView_Prefab_07" index="0"]
 transform = Transform3D(0.130526, -0.0432462, 0.990501, 0, 0.999048, 0.0436194, -0.991445, -0.00569348, 0.130402, 2.17313, 0.366778, 0)
 
-[node name="Far_birds" parent="VIEW/BirdsView_Prefab_07" index="2"]
+[node name="Far_birds" parent="VIEW/BirdsView_Prefab_07" index="3"]
 transform = Transform3D(0.0466888, 0.18259, 0.115518, 0.09817, 0.0873538, -0.17775, -0.192473, 0.0888456, -0.0626392, 2.926, 0.527313, -0.227625)
 
-[node name="Cube2" parent="VIEW/BirdsView_Prefab_07/Far_birds" index="4"]
+[node name="GPUParticles3D" parent="VIEW/BirdsView_Prefab_07/Far_birds" index="4"]
+transform = Transform3D(5.58637, 0, 0, 0, 5.58637, 0, 0, 0, 5.58637, 0, 0, 0)
+
+[node name="Cube2" parent="VIEW/BirdsView_Prefab_07/Far_birds" index="5"]
 surface_material_override/0 = null
 
-[node name="Cube_003" parent="VIEW/BirdsView_Prefab_07/Far_birds" index="5"]
+[node name="Cube_003" parent="VIEW/BirdsView_Prefab_07/Far_birds" index="6"]
 surface_material_override/0 = null
 
-[node name="Cube_004" parent="VIEW/BirdsView_Prefab_07/Far_birds" index="6"]
+[node name="Cube_004" parent="VIEW/BirdsView_Prefab_07/Far_birds" index="7"]
 surface_material_override/0 = null
 
-[node name="bec2" parent="VIEW/BirdsView_Prefab_07/Far_birds" index="7"]
+[node name="bec2" parent="VIEW/BirdsView_Prefab_07/Far_birds" index="8"]
 surface_material_override/0 = null
 
-[node name="Cube3" parent="VIEW/BirdsView_Prefab_07/Far_birds" index="8"]
+[node name="Cube3" parent="VIEW/BirdsView_Prefab_07/Far_birds" index="9"]
 surface_material_override/0 = null
 
-[node name="Cube_005" parent="VIEW/BirdsView_Prefab_07/Far_birds" index="9"]
+[node name="Cube_005" parent="VIEW/BirdsView_Prefab_07/Far_birds" index="10"]
 surface_material_override/0 = null
 
-[node name="Cube_006" parent="VIEW/BirdsView_Prefab_07/Far_birds" index="10"]
+[node name="Cube_006" parent="VIEW/BirdsView_Prefab_07/Far_birds" index="11"]
 surface_material_override/0 = null
 
-[node name="bec3" parent="VIEW/BirdsView_Prefab_07/Far_birds" index="11"]
+[node name="bec3" parent="VIEW/BirdsView_Prefab_07/Far_birds" index="12"]
 surface_material_override/0 = null
 
 [node name="BirdsView_Prefab_08" parent="VIEW" instance=ExtResource("4_m6m46")]
@@ -813,31 +834,34 @@ _Bird_view_data = SubResource("Resource_g8a00")
 [node name="cam" parent="VIEW/BirdsView_Prefab_08" index="0"]
 transform = Transform3D(-0.861629, 0.0530522, -0.504758, 0, 0.994522, 0.104528, 0.507538, 0.0900648, -0.856909, 2.17313, 0.366778, 0)
 
-[node name="Far_birds" parent="VIEW/BirdsView_Prefab_08" index="2"]
+[node name="Far_birds" parent="VIEW/BirdsView_Prefab_08" index="3"]
 transform = Transform3D(0.0466888, 0.18259, 0.115518, 0.09817, 0.0873538, -0.17775, -0.192473, 0.0888456, -0.0626392, 2.536, 0.102, -0.828)
 
-[node name="Cube2" parent="VIEW/BirdsView_Prefab_08/Far_birds" index="4"]
+[node name="GPUParticles3D" parent="VIEW/BirdsView_Prefab_08/Far_birds" index="4"]
+transform = Transform3D(5.58637, 0, 0, 0, 5.58637, 0, 0, 0, 5.58637, 0, 0, 0)
+
+[node name="Cube2" parent="VIEW/BirdsView_Prefab_08/Far_birds" index="5"]
 surface_material_override/0 = null
 
-[node name="Cube_003" parent="VIEW/BirdsView_Prefab_08/Far_birds" index="5"]
+[node name="Cube_003" parent="VIEW/BirdsView_Prefab_08/Far_birds" index="6"]
 surface_material_override/0 = null
 
-[node name="Cube_004" parent="VIEW/BirdsView_Prefab_08/Far_birds" index="6"]
+[node name="Cube_004" parent="VIEW/BirdsView_Prefab_08/Far_birds" index="7"]
 surface_material_override/0 = null
 
-[node name="bec2" parent="VIEW/BirdsView_Prefab_08/Far_birds" index="7"]
+[node name="bec2" parent="VIEW/BirdsView_Prefab_08/Far_birds" index="8"]
 surface_material_override/0 = null
 
-[node name="Cube3" parent="VIEW/BirdsView_Prefab_08/Far_birds" index="8"]
+[node name="Cube3" parent="VIEW/BirdsView_Prefab_08/Far_birds" index="9"]
 surface_material_override/0 = null
 
-[node name="Cube_005" parent="VIEW/BirdsView_Prefab_08/Far_birds" index="9"]
+[node name="Cube_005" parent="VIEW/BirdsView_Prefab_08/Far_birds" index="10"]
 surface_material_override/0 = null
 
-[node name="Cube_006" parent="VIEW/BirdsView_Prefab_08/Far_birds" index="10"]
+[node name="Cube_006" parent="VIEW/BirdsView_Prefab_08/Far_birds" index="11"]
 surface_material_override/0 = null
 
-[node name="bec3" parent="VIEW/BirdsView_Prefab_08/Far_birds" index="11"]
+[node name="bec3" parent="VIEW/BirdsView_Prefab_08/Far_birds" index="12"]
 surface_material_override/0 = null
 
 [node name="Motacilla_View" parent="VIEW" instance=ExtResource("11_qh48y")]

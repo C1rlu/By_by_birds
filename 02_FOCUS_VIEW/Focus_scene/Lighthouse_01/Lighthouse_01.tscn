@@ -1,4 +1,4 @@
-[gd_scene load_steps=125 format=4 uid="uid://i7vwntowo6jb"]
+[gd_scene load_steps=126 format=4 uid="uid://i7vwntowo6jb"]
 
 [ext_resource type="PackedScene" uid="uid://bphmc606jqkad" path="res://02_FOCUS_VIEW/Focus_scene/Lighthouse_01/Lighthouse_focus.blend" id="1_h1tuh"]
 [ext_resource type="Script" path="res://02_FOCUS_VIEW/Focus_data/set_focus_data.gd" id="1_rpkd4"]
@@ -41,6 +41,9 @@
 [ext_resource type="PackedScene" uid="uid://bme2k8btnc2jn" path="res://04_SCENE_MAIN_MAP/ELEMENTS/Island_set/island_set_02/Island_set_02_prefab.tscn" id="39_3rap5"]
 
 [sub_resource type="Resource" id="Resource_g8a00"]
+script = ExtResource("11_vlw4y")
+
+[sub_resource type="Resource" id="Resource_hglte"]
 script = ExtResource("11_vlw4y")
 
 [sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_cnqkx"]
@@ -1141,6 +1144,40 @@ surface_material_override/0 = null
 [node name="bec3" parent="VIEW/BirdsView_Prefab_08/Far_birds" index="11"]
 surface_material_override/0 = null
 
+[node name="BirdsView_Prefab_09" parent="VIEW" instance=ExtResource("4_m6m46")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.386, 23.661, -65.041)
+_Bird_view_data = SubResource("Resource_hglte")
+
+[node name="cam" parent="VIEW/BirdsView_Prefab_09" index="0"]
+transform = Transform3D(-0.819152, -0.237858, 0.521932, 0, 0.909961, 0.414693, -0.573576, 0.339697, -0.745397, 2.17313, 0.366778, 0)
+
+[node name="Far_birds" parent="VIEW/BirdsView_Prefab_09" index="3"]
+transform = Transform3D(0.192473, -0.0888456, 0.0626392, 0.09817, 0.0873538, -0.17775, 0.0466888, 0.18259, 0.115518, 2.536, 0.101999, -0.827999)
+
+[node name="Cube2" parent="VIEW/BirdsView_Prefab_09/Far_birds" index="4"]
+surface_material_override/0 = null
+
+[node name="Cube_003" parent="VIEW/BirdsView_Prefab_09/Far_birds" index="5"]
+surface_material_override/0 = null
+
+[node name="Cube_004" parent="VIEW/BirdsView_Prefab_09/Far_birds" index="6"]
+surface_material_override/0 = null
+
+[node name="bec2" parent="VIEW/BirdsView_Prefab_09/Far_birds" index="7"]
+surface_material_override/0 = null
+
+[node name="Cube3" parent="VIEW/BirdsView_Prefab_09/Far_birds" index="8"]
+surface_material_override/0 = null
+
+[node name="Cube_005" parent="VIEW/BirdsView_Prefab_09/Far_birds" index="9"]
+surface_material_override/0 = null
+
+[node name="Cube_006" parent="VIEW/BirdsView_Prefab_09/Far_birds" index="10"]
+surface_material_override/0 = null
+
+[node name="bec3" parent="VIEW/BirdsView_Prefab_09/Far_birds" index="11"]
+surface_material_override/0 = null
+
 [node name="Motacilla_View" parent="VIEW" instance=ExtResource("11_qh48y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.5387, 0.686799, 20.1225)
 _Bird_view_data = ExtResource("12_i2uie")
@@ -1655,7 +1692,19 @@ surface_material_override/0 = SubResource("ShaderMaterial_jl8ab")
 transform = Transform3D(0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, 0.258819, 35.8936, 5.38696, -21.0365)
 
 [node name="Cabin_set_05" parent="." instance=ExtResource("32_fidam")]
-transform = Transform3D(-0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, -0.965926, 34.0767, 16.0789, -56.7885)
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 34.0767, 15.6804, -56.7885)
+
+[node name="Cabin_set_06" parent="." instance=ExtResource("32_fidam")]
+transform = Transform3D(0.31616, 0, 1.43966, 0, 1.47396, 0, -1.43966, 0, 0.31616, 33.6822, 17.3446, -63.225)
+
+[node name="Cabin_set_07" parent="." instance=ExtResource("32_fidam")]
+transform = Transform3D(-1.28601, 0, 0.282418, 0, 1.31666, 0, -0.282418, 0, -1.28601, 36.8762, 17.3446, -62.7421)
+
+[node name="Cabin_set_08" parent="." instance=ExtResource("32_fidam")]
+transform = Transform3D(-1.28601, 0, 0.282418, 0, 1.31666, 0, -0.282418, 0, -1.28601, 32.4216, 15.6855, -60.4756)
+
+[node name="Cabin_set_09" parent="." instance=ExtResource("32_fidam")]
+transform = Transform3D(-1.28601, 0, 0.282418, 0, 1.31666, 0, -0.282418, 0, -1.28601, 37.3626, 18.2361, -71.013)
 
 [node name="Cabin_set_02" parent="." instance=ExtResource("32_fidam")]
 transform = Transform3D(-0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, -0.965926, 28.1614, 9.25485, -14.7293)
@@ -1743,6 +1792,8 @@ transform = Transform3D(1.62422, 0, -2.81323, 0, 3.24844, 0, 2.81323, 0, 1.62422
 [editable path="VIEW/BirdsView_Prefab_07/Far_birds"]
 [editable path="VIEW/BirdsView_Prefab_08"]
 [editable path="VIEW/BirdsView_Prefab_08/Far_birds"]
+[editable path="VIEW/BirdsView_Prefab_09"]
+[editable path="VIEW/BirdsView_Prefab_09/Far_birds"]
 [editable path="VIEW/Motacilla_View"]
 [editable path="VIEW/Motacilla_View/Motacilla_bird_msh_01"]
 [editable path="VIEW/Motacilla_View/MotacillaFlying_bird_msh_01"]

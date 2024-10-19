@@ -6,9 +6,9 @@ var is_revealed : bool
 
 
 func _ready() -> void:
-	
-	if element_to_revealed:
-		set_fog(element_to_revealed)
+	pass	
+	#if element_to_revealed:
+		#set_fog(element_to_revealed)
 	
 
 func set_fog(mesh_array: Array):

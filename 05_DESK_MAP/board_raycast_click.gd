@@ -16,7 +16,7 @@ func _check_raycast():
 	
 	if _global_datas.camera_state_index == 0:
 		return
-
+	
 	Camera.current = true
 	var utility = GameUtility.new()
 	var mouse_position = get_viewport().get_mouse_position()
@@ -44,7 +44,7 @@ func _check_raycast():
 		if Show_focus:
 			_global_datas.focus_on_board_book.emit(true)
 			_global_datas.open_book_board.emit(true)
-			var page = Show_focus.get_focus_data().book_page_index
+			var page = Show_focus.get_photo_data().book_page_index
 			_global_datas.turn_to_page.emit(page)
 			
 			#_global_datas._open_desk.emit(false)

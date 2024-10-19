@@ -1,15 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://bme2k8btnc2jn"]
+[gd_scene load_steps=12 format=4 uid="uid://bme2k8btnc2jn"]
 
-[ext_resource type="Script" path="res://00_SYSTEMS/Active_mask_at_ready.tres.gd" id="1_7ixkb"]
+[ext_resource type="Script" path="res://00_SYSTEMS/Active_mask_at_ready.tres.gd" id="1_p4q8b"]
 [ext_resource type="Material" uid="uid://yjoyk6fvrm6q" path="res://00_SHADER/No_light_surface_mat.tres" id="2_qwpko"]
 [ext_resource type="Shader" uid="uid://cu2uipuy138c6" path="res://00_SHADER/All_Materials/Main_sceneTest_dither_sh.tres" id="5_r8wbk"]
 [ext_resource type="PackedScene" uid="uid://b6howimswkags" path="res://04_SCENE_MAIN_MAP/ELEMENTS/Island_set/island_set_02/Island_set_02.blend" id="7_pf2mo"]
 [ext_resource type="Material" uid="uid://ctnqf5d3uj1g7" path="res://00_SHADER/All_Materials/dark_mask.tres" id="7_v8ngb"]
 [ext_resource type="Material" uid="uid://bp78h2ifb8rb4" path="res://04_SCENE_MAIN_MAP/ELEMENTS/Island_set/Island_set_01_prefab_brown.tres" id="8_efoyq"]
 [ext_resource type="Texture2D" uid="uid://dm5kte26psfgq" path="res://04_SCENE_MAIN_MAP/ELEMENTS/Island_set/island_set_02/Islande_gradient_02.png" id="9_v0alh"]
-
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_0pjmy"]
-data = PackedVector3Array(-1.2181, -1, 0.862, -1.0701, 0.082, -0.4111, -1.0313, -0.0062, 0.3658, -1.2181, -1, 0.862, -1.213, -1, -0.0579, -1.0701, 0.082, -0.4111, 0.7863, -0.3331, -0.1783, 1.22, -1, 0.9624, 1.1151, -0.4499, 0.6538, 0.7863, -0.3331, -0.1783, 0.9639, -1, 0.0481, 1.22, -1, 0.9624, -1.213, -1, -0.0579, -1.1188, -0.3334, -0.8461, -1.0701, 0.082, -0.4111, -1.213, -1, -0.0579, -1.2078, -1, -0.7267, -1.1188, -0.3334, -0.8461, 0.4575, -0.2163, -0.7593, 0.9639, -1, 0.0481, 0.7863, -0.3331, -0.1783, 0.4575, -0.2163, -0.7593, 0.7079, -1, -0.6152, 0.9639, -1, 0.0481, -1.2078, -1, -0.7267, -0.0062, -0.0477, -0.9732, -1.1188, -0.3334, -0.8461, -1.2078, -1, -0.7267, -0.0421, -1, -0.7852, -0.0062, -0.0477, -0.9732, 1.22, -1, 0.9624, -0.0166, -0.3008, 1.1645, 1.1151, -0.4499, 0.6538, 1.22, -1, 0.9624, -0.0421, -1, 1.6105, -0.0166, -0.3008, 1.1645, -0.0421, -1, 1.6105, -1.0313, -0.0062, 0.3658, -0.0166, -0.3008, 1.1645, -0.0421, -1, 1.6105, -1.2181, -1, 0.862, -1.0313, -0.0062, 0.3658, -0.0421, -1, -0.7852, 0.4575, -0.2163, -0.7593, -0.0062, -0.0477, -0.9732, -0.0421, -1, -0.7852, 0.7079, -1, -0.6152, 0.4575, -0.2163, -0.7593, -1.0986, 0.0996, -0.812, 0, 0.3038, -0.2765, -1.0493, 0.3038, -0.4635, -1.0986, 0.0996, -0.812, 0, 0.0996, -0.9975, 0, 0.3038, -0.2765, -0.0063, -0.0477, -0.9733, 0.2433, 0.0996, -0.8276, 0, 0.0996, -0.9975, -0.0063, -0.0477, -0.9733, 0.4575, -0.2163, -0.7593, 0.2433, 0.0996, -0.8276, -0.0166, -0.3008, 1.1645, -1, 0.1536, 0.3153, 0, 0.1536, 0.8747, -0.0166, -0.3008, 1.1645, -1.0313, -0.0062, 0.3658, -1, 0.1536, 0.3153, 0, 0.3038, -0.2765, 0.902, -0.2097, 0.5819, 0, 0.1536, 0.8747, 0, 0.3038, -0.2765, 0.6514, 0.1889, -0.4184, 0.902, -0.2097, 0.5819, 0.902, -0.2097, 0.5819, 0.7863, -0.3331, -0.1782, 1.1151, -0.4499, 0.6538, 0.902, -0.2097, 0.5819, 0.6514, 0.1889, -0.4184, 0.7863, -0.3331, -0.1782, 0.6514, 0.1889, -0.4184, 0.4575, -0.2163, -0.7593, 0.7863, -0.3331, -0.1782, 0.6514, 0.1889, -0.4184, 0.2433, 0.0996, -0.8276, 0.4575, -0.2163, -0.7593, 1.1151, -0.4499, 0.6538, 0, 0.1536, 0.8747, 0.902, -0.2097, 0.5819, 1.1151, -0.4499, 0.6538, -0.0166, -0.3008, 1.1645, 0, 0.1536, 0.8747, -1.1188, -0.3334, -0.8461, 0, 0.0996, -0.9975, -1.0986, 0.0996, -0.812, -1.1188, -0.3334, -0.8461, -0.0063, -0.0477, -0.9733, 0, 0.0996, -0.9975, -1.0493, 0.3038, -0.4635, -1.1188, -0.3334, -0.8461, -1.0986, 0.0996, -0.812, -1.0493, 0.3038, -0.4635, -1.0701, 0.082, -0.4111, -1.1188, -0.3334, -0.8461, -1.0493, 0.3038, -0.4635, 0, 0.1536, 0.8747, -1, 0.1536, 0.3153, -1.0493, 0.3038, -0.4635, 0, 0.3038, -0.2765, 0, 0.1536, 0.8747, 0, 0.0996, -0.9975, 0.6514, 0.1889, -0.4184, 0, 0.3038, -0.2765, 0, 0.0996, -0.9975, 0.2433, 0.0996, -0.8276, 0.6514, 0.1889, -0.4184, -1, 0.1536, 0.3153, -1.0701, 0.082, -0.4111, -1.0493, 0.3038, -0.4635, -1, 0.1536, 0.3153, -1.0313, -0.0062, 0.3658, -1.0701, 0.082, -0.4111)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_e7t81"]
 resource_local_to_scene = true
@@ -20,21 +17,49 @@ shader_parameter/Color = Color(0.415686, 0.415686, 0.415686, 1)
 shader_parameter/Dither_strenght = 0.485
 shader_parameter/Gradient_base = ExtResource("9_v0alh")
 
-[sub_resource type="BoxOccluder3D" id="BoxOccluder3D_8v1h7"]
-size = Vector3(2.56777, 1.44343, 2.64774)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q6t14"]
+resource_name = "03"
+cull_mode = 2
+albedo_color = Color(0.906332, 0.906332, 0.906332, 1)
+roughness = 0.5
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_n017b"]
+_surfaces = [{
+"aabb": AABB(-1.21814, -1, -0.997549, 2.43812, 1.30376, 2.60806),
+"format": 34896613377,
+"index_count": 120,
+"index_data": PackedByteArray("AwAYABcAAwAJABgAFgAHAAkAFgARAAcAAAANAA8AAAATAA0AFQABAAsAFQAPAAEAGAAFAAsAGAAOAAUABQAMABIABQAOAAwADgARAAwADgAHABEAEgALAAUAEgAVAAsAEAAJAAMAEAAWAAkADAAEABIADAAUAAQAFwAQAAMAFwANABAAEwAQAA0AEwACABAAEQAUAAwAEQAGABQAFwALAAEAFwAYAAsAAgAWABAAAgAIABYABAAVABIABAAKABUACQAOABgACQAHAA4ACgAPABUACgAAAA8ACAARABYACAAGABEAAQANABcAAQAPAA0A"),
+"name": "03",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 25,
+"vertex_data": PackedByteArray("AAAAAIa2AADnFoLi3YAAABcBAACWGgAAjgzp1zUSAAD//wAAYMAAAJzeLZsHmwAAOsoAAIclAABzmenXrhAAAHp7AADZFAAA5n/p1wAAAAB6ewAA//8AAOZ/guLFtwAAddLxgmtQAACLD3LUjzkAAErEcOnZOAAAnxMgw9GFAABtCuKC3Q4AAO+v4pljFwAA+/QBbBeiAACLAAAAPVwAABzlAACiZgAAKH5MiTfUAAA/f/y6YgIAALsR//9sNAAA5n///8ZGAAA=")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_kttai"]
+resource_name = "Island_set_02_Cube_007"
+_surfaces = [{
+"aabb": AABB(-1.21814, -1, -0.997549, 2.43812, 1.30376, 2.60806),
+"attribute_data": PackedByteArray("yeSAh4fuKbnKrb+/5O/EwSTE+o/k7zb936Pn/0LI1Zfv7+f/JLPctCDqKblVhFOzrM4luO+wtPskxNy0H4hF+8fJ4LDK1+f/nMNopYaMk/+syAGr59iXoTOb17AXwNzd6snx1o7Yv+J09EzfnoXZ13PUJt0Nr0u+vNmixJ3xSIox887A57WikWXZSZbR4f////9N+3mzHLDtwef/1MkJ+efY2rQ1hP2vQb7Qu//J2rR08XO2Nu8w2wqySNg6nTaq0eMyoTmvw6Vn0Lqq1KjT3+rv1eDdkzXY"),
+"format": 34896613399,
+"index_count": 120,
+"index_data": PackedByteArray("BgA1ADMABgATADUAMgAQABQAMgAoABAAAQAZAB4AAQAtABkALwACABYALwAdAAIANQALABYANQAbAAsADAAYACsADAAcABgAHAAnABgAHAARACcAKQAWAAsAKQAvABYAIgAUAAcAIgAyABQAFwAJACoAFwAuAAkANAAkAAgANAAaACQALQAjABkALQAFACMAJgAuABcAJgANAC4AMwAWAAIAMwA1ABYABAAxACEABAASADEACgAwACwACgAVADAAEwAbADUAEwAPABsAFQAfADAAFQAAAB8AEgAlADEAEgAOACUAAwAaADQAAwAgABoA"),
+"material": SubResource("StandardMaterial3D_q6t14"),
+"name": "03",
+"primitive": 3,
+"uv_scale": Vector4(1.9518, 2.00143, 0, 0),
+"vertex_count": 54,
+"vertex_data": PackedByteArray("AAAAAIa2488AAAAAhrZgz+cWguLdgKLt5xaC4t2AidkXAQAAlho95BcBAACWGkjjjgzp1zUSveGODOnXNRJp+I4M6dc1Euf2//8AAGDAi87//wAAYMCnwpzeLZsHm2fwnN4tmweb4+I6ygAAhyU+5zrKAACHJSHpc5np164Q+e1zmenXrhDq3XOZ6deuEGL7ensAANkUU/7mf+nXAADE+eZ/6dcAABHqensAAP//i8Hmf4LixbfS+3XS8YJrUP/fddLxgmtQSd+LD3LUjzmH04sPctSPOcLUSsRw6dk4Oe9KxHDp2Thv7Z8TIMPRhcDcnxMgw9GFJdCfEyDD0YUu0p8TIMPRhcrQbQrigt0OLehtCuKC3Q7Z620K4oLdDs3nbQrigt0Oe+nvr+KZYxe+7O+v4pljF1Pq76/imWMXM+rvr+KZYxdA7Pv0AWwXosno+/QBbBeigdT79AFsF6KQ3vv0AWwXoubHiwAAAD1cfdQc5QAAomYU3Sh+TIk31IH6KH5MiTfUbcE/f/y6YgLs/D9//LpiAin9uxH//2w0Ueu7Ef//bDQ77uZ////GRvz9ePX3zsltiaxja22pwHcqtfpOorezUDi6UHn92jJS5q8CVOWxnDAoEVc8kwgEJ4AZni4dEu08+i3et3NOqla5CNPIOEoBPdMjizvuw1ZihQAYyk4/QOrzGWqEBKnkNpUmCDjMJcFbqq/2Wjuu5zm8GcM72hckZFCkx2norMrxe850aWqs9U1GufxGaK/CTme6UkuKtR+5E02QPoovBz8yLwe4kUu6IvsiHTI1GNYpAB7HQPENllx6sfk2fSingOCcvumrGSi9WUOMv95F6m/DujxtYLjmPtwE")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_n017b")
 
 [node name="Island_Set02_Prefab" type="Node3D"]
 
 [node name="Active_at_ready" type="Node" parent="." node_paths=PackedStringArray("_active")]
-script = ExtResource("1_7ixkb")
-_active = [NodePath("../Island_set_02/Island_set_foam"), NodePath("../Island_set_02/Island_set_mask"), NodePath("../Island_set_02/Island_set_light")]
-
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-visible = false
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_0pjmy")
+script = ExtResource("1_p4q8b")
+_active = [NodePath("../Island_set_02/Island_set_light"), NodePath("../Island_set_02/Island_set_light2")]
 
 [node name="Island_set_02" parent="." instance=ExtResource("7_pf2mo")]
 
@@ -43,6 +68,7 @@ surface_material_override/0 = ExtResource("8_efoyq")
 surface_material_override/1 = SubResource("ShaderMaterial_e7t81")
 
 [node name="Island_set_foam" parent="Island_set_02" index="1"]
+visible = false
 surface_material_override/0 = ExtResource("7_v8ngb")
 
 [node name="Island_set_mask" parent="Island_set_02" index="2"]
@@ -52,12 +78,15 @@ surface_material_override/0 = ExtResource("7_v8ngb")
 
 [node name="Island_set_light" parent="Island_set_02" index="3"]
 visible = false
-layers = 32768
+layers = 2
 surface_material_override/0 = ExtResource("2_qwpko")
 
-[node name="OccluderInstance3D" type="OccluderInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.588067, 0.17694)
+[node name="Island_set_light2" type="MeshInstance3D" parent="Island_set_02"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 visible = false
-occluder = SubResource("BoxOccluder3D_8v1h7")
+layers = 4
+mesh = SubResource("ArrayMesh_kttai")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_qwpko")
 
 [editable path="Island_set_02"]

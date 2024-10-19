@@ -1,4 +1,4 @@
-[gd_scene load_steps=81 format=4 uid="uid://dr73p5vs0sixe"]
+[gd_scene load_steps=80 format=4 uid="uid://dr73p5vs0sixe"]
 
 [ext_resource type="Shader" uid="uid://upo0fuo5sqgd" path="res://05_DESK_MAP/00_SHADER/Board_sh.tres" id="1_k1enu"]
 [ext_resource type="Shader" uid="uid://cw0x3o7tvvdcv" path="res://13_TOOLS_UI/Map/Map_board_sh.tres" id="4_4w7uu"]
@@ -15,8 +15,7 @@
 [ext_resource type="Material" uid="uid://bb47xs7crha0s" path="res://00_SHADER/Npc_Shader/Npc_lighter_yellow.tres" id="20_2k521"]
 [ext_resource type="Material" uid="uid://cje3d31ux7y1p" path="res://00_SHADER/Npc_Shader/Npc_medium.tres" id="21_hjagy"]
 [ext_resource type="PackedScene" uid="uid://bi5gcavnclfud" path="res://05_DESK_MAP/Decor/Bell.blend" id="22_4fabq"]
-[ext_resource type="Resource" uid="uid://go4vt1xarptu" path="res://02_FOCUS_VIEW/Focus_data/Tiny_boat_02_focus_data.tres" id="23_57gx8"]
-[ext_resource type="Resource" uid="uid://bmdkj4ktpvfca" path="res://02_FOCUS_VIEW/Focus_data/Lighthouse_01_focus_data.tres" id="23_dyucn"]
+[ext_resource type="Resource" uid="uid://bcid58kxecbk2" path="res://15_GAME_RESSOURCE/Maurice_photoData.tres" id="23_o6wwv"]
 [ext_resource type="PackedScene" uid="uid://bh5a7fhvftxmm" path="res://06_BOOK/Book/Book_Pages_all.tscn" id="25_bb2f2"]
 [ext_resource type="Script" path="res://06_BOOK/Page_ressource/book_class.gd" id="26_2wsl6"]
 [ext_resource type="Shader" uid="uid://8ll6evus625p" path="res://05_DESK_MAP/00_SHADER/Gradient_surface.tres" id="26_bw6mp"]
@@ -906,31 +905,31 @@ layers = 1
 
 [node name="ChavetPrefab" parent="." instance=ExtResource("19_vutls")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00346491, 0.00200001, 0.131942)
-Focus_data = ExtResource("23_dyucn")
+Photo_data = ExtResource("23_o6wwv")
 
 [node name="ChavetPrefab2" parent="." instance=ExtResource("19_vutls")]
 transform = Transform3D(0.99458, 0, 0.103973, 0, 1, 0, -0.103973, 0, 0.99458, -0.2004, 0.002, 0.052742)
-Focus_data = ExtResource("23_dyucn")
+Photo_data = ExtResource("23_o6wwv")
 
 [node name="ChavetPrefab3" parent="." instance=ExtResource("19_vutls")]
 transform = Transform3D(0.993371, 0, -0.114954, 0, 1, 0, 0.114954, 0, 0.993371, -0.0880953, 0.002, 0.235405)
-Focus_data = ExtResource("23_57gx8")
+Photo_data = ExtResource("23_o6wwv")
 
 [node name="ChavetPrefab4" parent="." instance=ExtResource("19_vutls")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.213817, 0.002, -0.0205161)
-Focus_data = ExtResource("23_dyucn")
+Photo_data = ExtResource("23_o6wwv")
 
 [node name="ChavetPrefab5" parent="." instance=ExtResource("19_vutls")]
 transform = Transform3D(0.974185, 0, -0.22575, 0, 1, 0, 0.22575, 0, 0.974185, -0.0946041, 0.002, -0.241573)
-Focus_data = ExtResource("23_dyucn")
+Photo_data = ExtResource("23_o6wwv")
 
 [node name="ChavetPrefab6" parent="." instance=ExtResource("19_vutls")]
 transform = Transform3D(0.95051, 0, -0.310693, 0, 1, 0, 0.310693, 0, 0.95051, 0.0423065, 0.002, 0.035328)
-Focus_data = ExtResource("23_dyucn")
+Photo_data = ExtResource("23_o6wwv")
 
 [node name="ChavetPrefab7" parent="." instance=ExtResource("19_vutls")]
 transform = Transform3D(0.979607, 0, -0.200924, 0, 1, 0, 0.200924, 0, 0.979607, 0.194513, 0.002, -0.220976)
-Focus_data = ExtResource("23_dyucn")
+Photo_data = ExtResource("23_o6wwv")
 
 [node name="BookPrefab12" parent="." instance=ExtResource("44_8e65i")]
 transform = Transform3D(-0.714813, 0, 0.32137, 0, 0.783733, 0, -0.32137, 0, -0.714813, 0.206323, -2.98023e-08, 0.335885)

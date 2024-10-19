@@ -1,7 +1,9 @@
-[gd_scene load_steps=13 format=4 uid="uid://k8l35ijjolux"]
+[gd_scene load_steps=15 format=4 uid="uid://k8l35ijjolux"]
 
 [ext_resource type="PackedScene" uid="uid://b37y0vsmlfg07" path="res://02_FOCUS_VIEW/Assets/Wood_houses/CabinHouses_set_01.blend" id="1_18i5c"]
+[ext_resource type="Script" path="res://00_SYSTEMS/Active_mask_at_ready.tres.gd" id="1_a7125"]
 [ext_resource type="Shader" uid="uid://cu2uipuy138c6" path="res://00_SHADER/All_Materials/Main_sceneTest_dither_sh.tres" id="2_xr5cj"]
+[ext_resource type="Material" uid="uid://yjoyk6fvrm6q" path="res://00_SHADER/No_light_surface_mat.tres" id="3_q2708"]
 
 [sub_resource type="Gradient" id="Gradient_j8nrs"]
 
@@ -104,6 +106,10 @@ shadow_mesh = SubResource("ArrayMesh_atasb")
 
 [node name="Cabin_set_01" type="Node3D"]
 
+[node name="Active_at_ready" type="Node" parent="." node_paths=PackedStringArray("_active")]
+script = ExtResource("1_a7125")
+_active = [NodePath("../CabinHouses_set_01/Cabin_set_light"), NodePath("../CabinHouses_set_01/Cabin_set_warm")]
+
 [node name="CabinHouses_set_01" parent="." instance=ExtResource("1_18i5c")]
 
 [node name="Cabin_set_01" parent="CabinHouses_set_01" index="0"]
@@ -112,14 +118,20 @@ surface_material_override/1 = SubResource("ShaderMaterial_iw0pn")
 
 [node name="Cabin_set_light" type="MeshInstance3D" parent="CabinHouses_set_01"]
 transform = Transform3D(0.0323842, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+visible = false
 layers = 2
 mesh = SubResource("ArrayMesh_57afx")
 skeleton = NodePath("")
+surface_material_override/0 = ExtResource("3_q2708")
+surface_material_override/1 = ExtResource("3_q2708")
 
 [node name="Cabin_set_warm" type="MeshInstance3D" parent="CabinHouses_set_01"]
 transform = Transform3D(0.0323842, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+visible = false
 layers = 4
 mesh = SubResource("ArrayMesh_57afx")
 skeleton = NodePath("")
+surface_material_override/0 = ExtResource("3_q2708")
+surface_material_override/1 = ExtResource("3_q2708")
 
 [editable path="CabinHouses_set_01"]

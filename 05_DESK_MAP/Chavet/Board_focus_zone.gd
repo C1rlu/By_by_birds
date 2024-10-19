@@ -1,6 +1,6 @@
 extends Node3D
 
-@export var Focus_data : focus_data
+@export var Photo_data : PhotoData
 @onready var col: CollisionShape3D = $Area3D/CollisionShape3D
 
 
@@ -12,6 +12,6 @@ func _ready() -> void:
 func _check_if_onboard(condition):
 	
 	if condition:
-		visible = Focus_data.scene_resolved	
+		visible = Photo_data.discovered
 	
-	col.disabled = !Focus_data.scene_resolved	
+	col.disabled = !Photo_data.discovered

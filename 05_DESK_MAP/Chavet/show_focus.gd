@@ -3,6 +3,6 @@ extends Node
 @onready var root: Node3D = $"../.."
 
 
-func get_focus_data():
+func get_photo_data():
 	
-	return root.Focus_data
+	return root.Photo_data

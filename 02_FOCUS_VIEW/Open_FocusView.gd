@@ -4,8 +4,7 @@ extends Node
 @export var Loader : Node3D
 
 func _ready():
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)	
-	clear_and_instantiate()
+
 	_global_datas._open_menu.connect(_open_menu)
 
 	

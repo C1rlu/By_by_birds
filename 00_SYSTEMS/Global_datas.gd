@@ -25,8 +25,8 @@ signal _check_player_zone
 
 
 # FOCUS VIEW  
-signal _frame_to_close
-signal _frame_to_journal
+var active_focus_view : focus_data
+
 signal _open_focus_view(condition : bool)
 signal _in_transition_start
 var current_focus_data : focus_data

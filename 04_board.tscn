@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://cein0q2eirkay"]
+[gd_scene load_steps=29 format=3 uid="uid://cein0q2eirkay"]
 
 [ext_resource type="Script" path="res://05_DESK_MAP/board_ini.gd" id="1_0e632"]
 [ext_resource type="Script" path="res://13_TOOLS_UI/set_Resolution_viewports.gd" id="1_gf4dn"]
@@ -9,7 +9,6 @@
 [ext_resource type="Script" path="res://05_DESK_MAP/Desk_Camera_state.gd" id="5_0n8j1"]
 [ext_resource type="Script" path="res://05_DESK_MAP/board_raycast_click.gd" id="6_5qb7m"]
 [ext_resource type="Script" path="res://05_DESK_MAP/on_book.gd" id="7_n73fv"]
-[ext_resource type="Script" path="res://05_DESK_MAP/frame_anim_board.gd" id="8_gvph7"]
 [ext_resource type="Texture2D" uid="uid://dafg2qvpi6wmk" path="res://13_TOOLS_UI/Loader_circle/Loader_circle.png" id="11_uqlft"]
 [ext_resource type="Shader" uid="uid://7nanp4dqf4uc" path="res://05_DESK_MAP/00_SHADER/04_board_light.tres" id="41_prh4x"]
 
@@ -154,35 +153,15 @@ nodes/fragment/connections = PackedInt32Array(3, 0, 2, 0, 4, 0, 2, 1, 5, 0, 2, 2
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_blt4p"]
 shader = SubResource("VisualShader_elssd")
 
-[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_1oxnm"]
-parameter_name = "Opacity"
-hint = 1
-
-[sub_resource type="VisualShader" id="VisualShader_fh5ix"]
-code = "shader_type canvas_item;
-render_mode blend_mix;
-
-
-
-"
-graph_offset = Vector2(-634.114, -72.8994)
-mode = 1
-flags/light_only = false
-nodes/fragment/2/node = SubResource("VisualShaderNodeFloatParameter_1oxnm")
-nodes/fragment/2/position = Vector2(-700, 160)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_aaphq"]
-shader = SubResource("VisualShader_fh5ix")
-
 [node name="04_BOARD" type="Node"]
 metadata/_edit_horizontal_guides_ = [-58.0]
+
+[node name="Open_desk" type="Node" parent="."]
+script = ExtResource("1_t26m6")
 
 [node name="set_Resolution_viewports" type="Node" parent="." node_paths=PackedStringArray("viewports")]
 script = ExtResource("1_gf4dn")
 viewports = [NodePath("../SubViewport")]
-
-[node name="Open_desk" type="Node" parent="."]
-script = ExtResource("1_t26m6")
 
 [node name="Board_ini" type="Node" parent="."]
 script = ExtResource("1_0e632")
@@ -195,9 +174,8 @@ Camera3D_Main_Desk = NodePath("../Camera3D_Main_Desk")
 camera_3d_main_Map = NodePath("../Camera3D_Main_Map")
 camera_3d_main_Book = NodePath("../Camera3D_Main_Book")
 
-[node name="Desk_Camera_state" type="Node" parent="." node_paths=PackedStringArray("frame")]
+[node name="Desk_Camera_state" type="Node" parent="."]
 script = ExtResource("5_0n8j1")
-frame = NodePath("../Frame_anim")
 
 [node name="Board_Raycast_click" type="Node" parent="." node_paths=PackedStringArray("Render", "Camera")]
 script = ExtResource("6_5qb7m")
@@ -206,9 +184,6 @@ Camera = NodePath("../SubViewport/Camera3D_follow")
 
 [node name="On_Book" type="Node" parent="."]
 script = ExtResource("7_n73fv")
-
-[node name="Frame_anim" type="Node" parent="."]
-script = ExtResource("8_gvph7")
 
 [node name="Camera3D_Main_Desk" type="Camera3D" parent="."]
 transform = Transform3D(0.978509, -0.0828833, 0.188813, 0, 0.915662, 0.401948, -0.206204, -0.393309, 0.895984, 0.437, 0.701, 1.245)
@@ -292,6 +267,7 @@ mesh = SubResource("PrismMesh_2j3nk")
 surface_material_override/0 = SubResource("StandardMaterial3D_yjabd")
 
 [node name="RENDER" type="TextureRect" parent="."]
+visible = false
 material = SubResource("ShaderMaterial_ktpkr")
 anchors_preset = 15
 anchor_right = 1.0
@@ -336,25 +312,3 @@ grow_vertical = 2
 pivot_offset = Vector2(7.5, 7.5)
 texture = ExtResource("11_uqlft")
 expand_mode = 1
-
-[node name="Frame_blink_top" type="ColorRect" parent="."]
-material = SubResource("ShaderMaterial_aaphq")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -720.0
-offset_bottom = -720.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.0901961, 0.0901961, 0.0901961, 1)
-
-[node name="Frame_blink_bot" type="ColorRect" parent="."]
-material = SubResource("ShaderMaterial_aaphq")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = 720.0
-offset_bottom = 720.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.0901961, 0.0901961, 0.0901961, 1)

@@ -6,9 +6,11 @@ const _02_MAIN_SCENES = preload("res://00_SCENE/02_main_scenes.tscn")
 const _02_FOCUS_VIEW = preload("res://02_FOCUS_VIEW.tscn")
 const _04_BOARD = preload("res://04_board.tscn")
 const JOURNAL_SCENE = preload("res://07_JOURNAL/JOURNAL_SCENE.tscn")
+
 func _ready() -> void:
-	_global_datas._open_focus_view.connect(_add_focus_scene)
-	_global_datas._open_desk.connect(_add_desk_scene)
+
+	#_global_datas._open_focus_view.connect(_add_focus_scene)
+	#_global_datas._open_desk.connect(_add_desk_scene)
 	_global_datas._add_journal.connect(_add_journal)
 	
 	

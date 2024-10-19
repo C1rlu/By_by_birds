@@ -36,8 +36,7 @@ func _check_raycast():
 			
 		var To_Find = raycast.collider.get_node_or_null("To_Find")
 		if To_Find:
-			_global_datas.current_focus_data.scene_resolved = true
-			_global_datas._frame_to_journal.emit()
+			_global_datas._add_journal.emit(true)
 		
 
 		var Destination = raycast.collider.get_node_or_null("Destination")

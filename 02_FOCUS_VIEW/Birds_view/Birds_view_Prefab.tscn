@@ -148,6 +148,7 @@ bird_node = NodePath("Far_birds")
 
 [node name="cam" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.366778, 0)
+visible = false
 fov = 50.0
 
 [node name="Bird_emit_sound_effect" type="Node" parent="." node_paths=PackedStringArray("parent_root")]
@@ -165,6 +166,7 @@ script = ExtResource("5_hfgyk")
 
 [node name="col" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(0.999999, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, -0.055261, 0, 0)
+visible = false
 shape = SubResource("SphereShape3D_ishh4")
 
 [node name="Far_birds" parent="." instance=ExtResource("1_jf0iy")]

@@ -37,11 +37,11 @@
 [sub_resource type="Resource" id="Resource_g8a00"]
 script = ExtResource("11_vlw4y")
 
-[sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_o2jea"]
+[sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_2o3a0"]
 parameter_name = "ColorParameter"
 default_value_enabled = true
 
-[sub_resource type="VisualShader" id="VisualShader_167y5"]
+[sub_resource type="VisualShader" id="VisualShader_6s3eo"]
 code = "shader_type spatial;
 render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx, ambient_light_disabled;
 
@@ -62,14 +62,14 @@ void fragment() {
 "
 flags/ambient_light_disabled = true
 nodes/fragment/0/position = Vector2(440, 140)
-nodes/fragment/2/node = SubResource("VisualShaderNodeColorParameter_o2jea")
+nodes/fragment/2/node = SubResource("VisualShaderNodeColorParameter_2o3a0")
 nodes/fragment/2/position = Vector2(79.9654, 46.8294)
 nodes/fragment/connections = PackedInt32Array(2, 0, 0, 0)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_aoolg"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0gy4t"]
 resource_local_to_scene = true
 render_priority = 0
-shader = SubResource("VisualShader_167y5")
+shader = SubResource("VisualShader_6s3eo")
 shader_parameter/ColorParameter = Color(1, 1, 1, 1)
 
 [sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_cnqkx"]
@@ -547,6 +547,14 @@ light_cull_mask = 4293918724
 shadow_enabled = true
 omni_range = 2.20289
 
+[node name="OmniLight3D6" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.231, 8.44924, -26.4697)
+layers = 4
+light_energy = 1.946
+light_cull_mask = 4293918724
+shadow_enabled = true
+omni_range = 2.20289
+
 [node name="VIEW" type="Node3D" parent="."]
 
 [node name="BirdsView_Prefab_00" parent="VIEW" instance=ExtResource("4_m6m46")]
@@ -850,15 +858,20 @@ transform = Transform3D(0.601815, 0, 0.798635, 0, 1, 0, -0.798635, 0, 0.601815, 
 [node name="Motacilla_bird_msh_01" parent="VIEW/Motacilla_View" index="2"]
 transform = Transform3D(0.018427, 0, -0.0433355, 0, 0.0470905, 0, 0.0433355, 0, 0.018427, 0, 0, 0)
 
+[node name="Motacilla_msh" parent="VIEW/Motacilla_View/Motacilla_bird_msh_01" index="0"]
+surface_material_override/0 = null
+surface_material_override/1 = null
+surface_material_override/2 = null
+
 [node name="Motacilla_msh_light" parent="VIEW/Motacilla_View/Motacilla_bird_msh_01" index="1"]
-surface_material_override/0 = SubResource("ShaderMaterial_aoolg")
-surface_material_override/1 = SubResource("ShaderMaterial_aoolg")
-surface_material_override/2 = SubResource("ShaderMaterial_aoolg")
+surface_material_override/0 = SubResource("ShaderMaterial_0gy4t")
+surface_material_override/1 = SubResource("ShaderMaterial_0gy4t")
+surface_material_override/2 = SubResource("ShaderMaterial_0gy4t")
 
 [node name="Motacilla_msh_warm" parent="VIEW/Motacilla_View/Motacilla_bird_msh_01" index="2"]
-surface_material_override/0 = SubResource("ShaderMaterial_aoolg")
-surface_material_override/1 = SubResource("ShaderMaterial_aoolg")
-surface_material_override/2 = SubResource("ShaderMaterial_aoolg")
+surface_material_override/0 = SubResource("ShaderMaterial_0gy4t")
+surface_material_override/1 = SubResource("ShaderMaterial_0gy4t")
+surface_material_override/2 = SubResource("ShaderMaterial_0gy4t")
 
 [node name="NPC" type="Node3D" parent="."]
 
@@ -882,6 +895,9 @@ transform = Transform3D(0.357454, -0.00648901, 0, 0.00648901, 0.357454, 0, 0, 0,
 
 [node name="Island_f01_scene" parent="." instance=ExtResource("2_ulm1n")]
 transform = Transform3D(-4.27041, 0, 2.46552, 0, 4.93104, 0, -2.46552, 0, -4.27041, 40.8767, 0, -22.4484)
+
+[node name="Island_f01_scene2" parent="." instance=ExtResource("2_ulm1n")]
+transform = Transform3D(2.46552, 0, 4.27041, 0, 4.93104, 0, -4.27041, 0, 2.46552, -4.91946, -3.8147e-06, -42.6377)
 
 [node name="Island_f02_scene" parent="." instance=ExtResource("8_50vbm")]
 transform = Transform3D(-2.48459, 0, -1.43448, 0, 2.86895, 0, 1.43448, 0, -2.48459, 6.39547, 0, -2.11029)
@@ -1194,6 +1210,9 @@ transform = Transform3D(0.803184, 0, -0.803184, 0, 1.13587, 0, 0.803184, 0, 0.80
 
 [node name="Island_f03_scene2" parent="." instance=ExtResource("9_rnrkb")]
 transform = Transform3D(-5.26447, 0, -1.41061, 0, 6.61087, 0, 1.41061, 0, -5.26447, 28.8392, 5.72205e-06, -23.2236)
+
+[node name="Island_f03_scene3" parent="." instance=ExtResource("9_rnrkb")]
+transform = Transform3D(4.56567, 0, 7.90797, 0, 11.076, 0, -7.90797, 0, 4.56567, 32.0074, 5.72205e-06, -51.1527)
 
 [node name="Lighthouse_root" type="Node3D" parent="."]
 transform = Transform3D(0.188803, 0, -1.0612, 0, 1.07787, 0, 1.0612, 0, 0.188803, -0.392425, 10.0331, -1.56132)

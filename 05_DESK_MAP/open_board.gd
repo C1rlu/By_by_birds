@@ -10,4 +10,5 @@ func _input(event: InputEvent) -> void:
 		
 		
 	if event.is_action_pressed("Open_desk"):
-		_global_datas._open_desk.emit(true)
+		_global_datas.player_on_desk =! _global_datas.player_on_desk
+		_global_datas._open_desk.emit(_global_datas.player_on_desk)

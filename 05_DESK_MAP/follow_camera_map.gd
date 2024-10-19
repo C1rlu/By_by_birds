@@ -23,6 +23,8 @@ func _ready() -> void:
 	
 func _process(delta: float) -> void:
 	
+	if !_global_datas.player_on_desk:
+		return
 
 	if _global_datas.camera_state_index == 0:
 		camera_3d_follow.global_position  = lerp(camera_3d_follow.global_position, Camera3D_Main_Desk.global_position , 3.0 * delta)	

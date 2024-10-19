@@ -15,7 +15,11 @@ func _open_menu(condition : bool):
 	
 	if condition:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	
+	else:
+		if _global_datas.player_on_desk:
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+			return
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		
 func _input(event):
 	

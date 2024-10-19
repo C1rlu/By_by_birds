@@ -25,13 +25,21 @@ signal _check_player_zone
 
 
 # FOCUS VIEW  
-var active_focus_view : focus_data
-
 signal _open_focus_view(condition : bool)
-signal _in_transition_start
-var current_focus_data : focus_data
 
+var active_focus_view : focus_data
+var head_player_NodePosition : Node3D
+var transition_target : Vector3
+signal _in_transition_start
+signal _end_of_transition
+var current_focus_data : focus_data
 var previous_bird_hit : Node
+
+signal set_instant_focus(camera : Camera3D)
+signal set_new_focus(camera : Camera3D)
+
+var look_at_sensivity : float 
+
 
 signal hide_all_FocusScene_dialogue
 
@@ -86,11 +94,7 @@ signal turn_right
 var legend_page_index : int
 
 #------ focus view ---
-var transition_target : Vector3
-signal set_instant_focus(camera : Camera3D)
-signal set_new_focus(camera : Camera3D)
-signal _end_of_transition
-var look_at_sensivity : float 
+
 signal subscene_sonar_effect(position : Vector3, color : Color)
 
 

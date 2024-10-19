@@ -4,9 +4,7 @@ extends Node
 @export var Camera_root : Camera3D
 @export var Camera_head : Node3D
 
-
 var previous_cam : Camera3D
-
 
 
 func _ready() -> void:
@@ -25,14 +23,10 @@ func set_instant_focus(n_camera : Camera3D):
 	Camera_head.global_rotation_degrees = n_camera.global_rotation_degrees
 	Camera_root.global_rotation_degrees = n_camera.global_rotation_degrees
 
-	
 	_global_datas._end_of_transition.emit()
 	
 
-				
-	
 func _set_new_focus(n_Camera : Camera3D):
-
 
 	if previous_cam == n_Camera:
 		return
@@ -45,12 +39,8 @@ func _set_new_focus(n_Camera : Camera3D):
 	move_cam = create_tween()
 	move_cam.tween_property(Camera_head,"global_position",_global_datas.transition_target,0.3).set_ease(Tween.EASE_OUT)
 	move_cam.connect("finished",_done)
-
-
-	
 	
 func _done():
-	
 	
 	_global_datas._end_of_transition.emit()
 	Camera_head.global_position = previous_cam.global_position

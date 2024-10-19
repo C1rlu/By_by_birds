@@ -4,6 +4,10 @@ extends Node
 
 func _input(event: InputEvent) -> void:
 	
+	
+	if _global_datas.player_on_desk:
+		return
+	
 	if _global_datas.photo_pause:
 		return
 	

@@ -8,10 +8,13 @@ extends Node
 	
 func active_sonar():
 
+	for m in meshes:
+		m.visible = true
+	
 	var t 
 	t = create_tween()
 	
-	t .tween_method(_change_scale,0.0,2.0,0.5).set_ease(Tween.EASE_OUT)
+	t .tween_method(_change_scale,0.0,5.0,0.5).set_ease(Tween.EASE_OUT)
 	t.connect("finished",_stop)
 
 	var fade
@@ -33,8 +36,8 @@ func _opacity(value : float):
 		mat.set_shader_parameter("Opacity",value)			
 		
 func _stop():
-	pass
-	#$"..".queue_free()
+	for m in meshes:
+		m.visible = false
 
 
 	

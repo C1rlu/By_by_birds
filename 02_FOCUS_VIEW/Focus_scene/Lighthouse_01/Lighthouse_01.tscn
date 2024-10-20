@@ -1,4 +1,4 @@
-[gd_scene load_steps=162 format=4 uid="uid://i7vwntowo6jb"]
+[gd_scene load_steps=171 format=4 uid="uid://i7vwntowo6jb"]
 
 [ext_resource type="PackedScene" uid="uid://bphmc606jqkad" path="res://02_FOCUS_VIEW/Focus_scene/Lighthouse_01/Lighthouse_focus.blend" id="1_h1tuh"]
 [ext_resource type="Script" path="res://02_FOCUS_VIEW/Focus_data/set_focus_data.gd" id="1_rpkd4"]
@@ -16,7 +16,6 @@
 [ext_resource type="PackedScene" uid="uid://bgkexoohxyw5y" path="res://02_FOCUS_VIEW/Assets/Trees/Pine_01/Pine_small_f01_scene.tscn" id="9_u56fs"]
 [ext_resource type="PackedScene" uid="uid://bhf23fmw0km6j" path="res://02_FOCUS_VIEW/Assets/Trees/Pine_02/Pine_medium_f02_scene.tscn" id="10_2qj38"]
 [ext_resource type="Shader" uid="uid://b2vtcihbo73bk" path="res://00_SHADER/Next_pass_selectEffect.tres" id="11_kh1vx"]
-[ext_resource type="Script" path="res://15_GAME_RESSOURCE/02_Birds_ressources/Bird_view_data.gd" id="11_vlw4y"]
 [ext_resource type="PackedScene" uid="uid://dxbbh1u02npiw" path="res://02_FOCUS_VIEW/Assets/Rocks/Rocks_01/Rocks_f01_scene.tscn" id="11_yfjow"]
 [ext_resource type="PackedScene" uid="uid://m6voiuw7ip8o" path="res://02_FOCUS_VIEW/Assets/TinyBoat/Tiny_boat_set.tscn" id="12_16ahm"]
 [ext_resource type="Shader" uid="uid://djg6mbqwagfbr" path="res://00_SHADER/Light_only_sh.tres" id="13_6smgx"]
@@ -33,9 +32,6 @@
 [ext_resource type="Shader" uid="uid://ddgu7ccdrwv38" path="res://02_FOCUS_VIEW/02_FOCUS_VIEW_sky.res" id="37_uc0rx"]
 [ext_resource type="PackedScene" uid="uid://dh5kdswdhdfq6" path="res://04_SCENE_MAIN_MAP/ELEMENTS/Island_set/Island_set_01/Island_set_01_prefab.tscn" id="38_dh1a0"]
 [ext_resource type="PackedScene" uid="uid://bme2k8btnc2jn" path="res://04_SCENE_MAIN_MAP/ELEMENTS/Island_set/island_set_02/Island_set_02_prefab.tscn" id="39_3rap5"]
-
-[sub_resource type="Resource" id="Resource_axfnw"]
-script = ExtResource("11_vlw4y")
 
 [sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_rj57i"]
 parameter_name = "Color"
@@ -264,12 +260,6 @@ shader_parameter/Color = Color(1, 1, 1, 1)
 shader_parameter/Dither_strenght = 0.58
 shader_parameter/Gradient_base = SubResource("GradientTexture2D_ukqr1")
 
-[sub_resource type="Resource" id="Resource_visd3"]
-script = ExtResource("11_vlw4y")
-
-[sub_resource type="Resource" id="Resource_1whq8"]
-script = ExtResource("11_vlw4y")
-
 [sub_resource type="VisualShader" id="VisualShader_g1bob"]
 resource_local_to_scene = true
 code = "shader_type spatial;
@@ -423,9 +413,6 @@ shader_parameter/ColorParameter = Color(0.13, 0.13, 0.13, 1)
 shader_parameter/Color = Color(1, 1, 1, 1)
 shader_parameter/Dither_strenght = 0.58
 shader_parameter/Gradient_base = SubResource("GradientTexture2D_ukqr1")
-
-[sub_resource type="Resource" id="Resource_g1oxi"]
-script = ExtResource("11_vlw4y")
 
 [sub_resource type="VisualShader" id="VisualShader_r3dn0"]
 resource_local_to_scene = true
@@ -581,9 +568,6 @@ shader_parameter/Color = Color(1, 1, 1, 1)
 shader_parameter/Dither_strenght = 0.58
 shader_parameter/Gradient_base = SubResource("GradientTexture2D_ukqr1")
 
-[sub_resource type="Resource" id="Resource_i3mlx"]
-script = ExtResource("11_vlw4y")
-
 [sub_resource type="VisualShader" id="VisualShader_hetad"]
 resource_local_to_scene = true
 code = "shader_type spatial;
@@ -737,9 +721,6 @@ shader_parameter/ColorParameter = Color(0.13, 0.13, 0.13, 1)
 shader_parameter/Color = Color(1, 1, 1, 1)
 shader_parameter/Dither_strenght = 0.58
 shader_parameter/Gradient_base = SubResource("GradientTexture2D_ukqr1")
-
-[sub_resource type="Resource" id="Resource_y5flx"]
-script = ExtResource("11_vlw4y")
 
 [sub_resource type="VisualShader" id="VisualShader_2xnio"]
 resource_local_to_scene = true
@@ -895,9 +876,6 @@ shader_parameter/Color = Color(1, 1, 1, 1)
 shader_parameter/Dither_strenght = 0.58
 shader_parameter/Gradient_base = SubResource("GradientTexture2D_ukqr1")
 
-[sub_resource type="Resource" id="Resource_4a8ng"]
-script = ExtResource("11_vlw4y")
-
 [sub_resource type="VisualShader" id="VisualShader_qydia"]
 resource_local_to_scene = true
 code = "shader_type spatial;
@@ -1052,11 +1030,232 @@ shader_parameter/Color = Color(1, 1, 1, 1)
 shader_parameter/Dither_strenght = 0.58
 shader_parameter/Gradient_base = SubResource("GradientTexture2D_ukqr1")
 
-[sub_resource type="Resource" id="Resource_kptop"]
-script = ExtResource("11_vlw4y")
+[sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_ci0ag"]
+parameter_name = "Color"
 
-[sub_resource type="Resource" id="Resource_md303"]
-script = ExtResource("11_vlw4y")
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_ekgf7"]
+parameter_name = "Dither_strenght"
+default_value_enabled = true
+default_value = 0.5
+
+[sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_sngiw"]
+parameter_name = "ColorParameter"
+
+[sub_resource type="VisualShaderNodeBooleanParameter" id="VisualShaderNodeBooleanParameter_6l46g"]
+parameter_name = "active_Dither"
+qualifier = 1
+
+[sub_resource type="VisualShaderNodeSwitch" id="VisualShaderNodeSwitch_csjgs"]
+
+[sub_resource type="VisualShaderNodeFloatConstant" id="VisualShaderNodeFloatConstant_tk0rj"]
+constant = 1.0
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_rqovo"]
+parameter_name = "Dither_size"
+qualifier = 1
+
+[sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_kwgrn"]
+parameter_name = "Gradient_base"
+texture_filter = 1
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_g44i2"]
+source = 5
+
+[sub_resource type="VisualShaderNodeStep" id="VisualShaderNodeStep_rg3fl"]
+
+[sub_resource type="VisualShaderNodeMix" id="VisualShaderNodeMix_s0mtl"]
+default_input_values = [0, Vector3(0, 0, 0), 1, Vector3(1, 1, 1), 2, Vector3(0.5, 0.5, 0.5)]
+op_type = 3
+
+[sub_resource type="VisualShaderNodeMix" id="VisualShaderNodeMix_vyyyb"]
+default_input_values = [0, Vector3(0, 0, 0), 1, Vector3(1, 1, 1), 2, Vector3(0.5, 0.5, 0.5)]
+op_type = 3
+
+[sub_resource type="VisualShaderNodeExpression" id="VisualShaderNodeExpression_7jyf6"]
+size = Vector2(724.789, 654.559)
+expression = "const float DITHER_THRESHOLDS[16] ={
+		1.0 / 17.0, 9.0 / 17.0, 3.0 / 17.0, 11.0 / 17.0,
+		13.0 / 17.0, 5.0 / 17.0, 15.0 / 17.0, 7.0 / 17.0,
+		4.0 / 17.0, 12.0 / 17.0, 2.0 / 17.0, 10.0 / 17.0,
+		16.0 / 17.0, 8.0 / 17.0, 14.0 / 17.0, 6.0 / 17.0
+	};
+	
+vec2 uv = FRAGCOORD.xy * Size;
+int index = (int(uv.x) % 4) * 4 + int(uv.y) % 4;
+Dither_Node = In - DITHER_THRESHOLDS[index];"
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_bvg3w"]
+parameter_name = "link_opacity2"
+qualifier = 1
+
+[sub_resource type="VisualShaderNodeMix" id="VisualShaderNodeMix_0g47l"]
+default_input_values = [0, Vector3(0, 0, 0), 1, Vector3(1, 1, 1), 2, Vector3(0.5, 0.5, 0.5)]
+op_type = 3
+
+[sub_resource type="VisualShaderNodeExpression" id="VisualShaderNodeExpression_st8l3"]
+size = Vector2(580, 220)
+expression = "float luminance = 0.299 * color.x + 0.587 * color.y + 0.114 * color.z;
+grey_value = luminance;"
+
+[sub_resource type="VisualShader" id="VisualShader_uhe4u"]
+resource_local_to_scene = true
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, cull_disabled, diffuse_lambert, specular_schlick_ggx, unshaded, shadows_disabled, ambient_light_disabled, fog_disabled;
+
+uniform vec4 ColorParameter : source_color;
+uniform vec4 Color : source_color;
+global uniform bool active_Dither;
+global uniform float Dither_size;
+uniform sampler2D Gradient_base : filter_nearest;
+uniform float Dither_strenght = 0.5;
+
+
+
+void fragment() {
+// ColorParameter:12
+	vec4 n_out12p0 = ColorParameter;
+
+
+// ColorParameter:10
+	vec4 n_out10p0 = Color;
+
+
+// BooleanParameter:13
+	bool n_out13p0 = active_Dither;
+
+
+// FloatConstant:2
+	float n_out2p0 = 1.000000;
+
+
+// FloatParameter:3
+	float n_out3p0 = Dither_size;
+
+
+	float n_out9p0;
+// Expression:9
+	n_out9p0 = 0.0;
+	{
+		const float DITHER_THRESHOLDS[16] ={
+				1.0 / 17.0, 9.0 / 17.0, 3.0 / 17.0, 11.0 / 17.0,
+				13.0 / 17.0, 5.0 / 17.0, 15.0 / 17.0, 7.0 / 17.0,
+				4.0 / 17.0, 12.0 / 17.0, 2.0 / 17.0, 10.0 / 17.0,
+				16.0 / 17.0, 8.0 / 17.0, 14.0 / 17.0, 6.0 / 17.0
+			};
+			
+		vec2 uv = FRAGCOORD.xy * n_out3p0;
+		int index = (int(uv.x) % 4) * 4 + int(uv.y) % 4;
+		n_out9p0 = n_out2p0 - DITHER_THRESHOLDS[index];
+	}
+
+
+	vec4 n_out5p0;
+// Texture2D:5
+	n_out5p0 = texture(Gradient_base, UV);
+
+
+// Step:6
+	float n_out6p0 = step(n_out9p0, n_out5p0.x);
+
+
+	float n_out14p0;
+// Switch:14
+	n_out14p0 = mix(n_out5p0.x, n_out6p0, float(n_out13p0));
+
+
+// Mix:7
+	vec3 n_out7p0 = mix(vec3(n_out12p0.xyz), vec3(n_out10p0.xyz), vec3(n_out14p0));
+
+
+// FloatParameter:11
+	float n_out11p0 = Dither_strenght;
+
+
+// Mix:8
+	vec3 n_out8p0 = mix(n_out7p0, vec3(n_out10p0.xyz), vec3(n_out11p0));
+
+
+// Output:0
+	ALBEDO = n_out8p0;
+
+
+}
+"
+modes/cull = 2
+flags/unshaded = true
+flags/shadows_disabled = true
+flags/ambient_light_disabled = true
+flags/fog_disabled = true
+nodes/vertex/0/position = Vector2(400, 160)
+nodes/fragment/0/position = Vector2(1900, -160)
+nodes/fragment/2/node = SubResource("VisualShaderNodeFloatConstant_tk0rj")
+nodes/fragment/2/position = Vector2(-1280, 100)
+nodes/fragment/3/node = SubResource("VisualShaderNodeFloatParameter_rqovo")
+nodes/fragment/3/position = Vector2(-1320, 180)
+nodes/fragment/4/node = SubResource("VisualShaderNodeTexture2DParameter_kwgrn")
+nodes/fragment/4/position = Vector2(-1973.62, -146.014)
+nodes/fragment/5/node = SubResource("VisualShaderNodeTexture_g44i2")
+nodes/fragment/5/position = Vector2(-1473.62, -106.014)
+nodes/fragment/6/node = SubResource("VisualShaderNodeStep_rg3fl")
+nodes/fragment/6/position = Vector2(-920, -280)
+nodes/fragment/7/node = SubResource("VisualShaderNodeMix_s0mtl")
+nodes/fragment/7/position = Vector2(-293.618, -606.014)
+nodes/fragment/8/node = SubResource("VisualShaderNodeMix_vyyyb")
+nodes/fragment/8/position = Vector2(-54.8293, -368.9)
+nodes/fragment/9/node = SubResource("VisualShaderNodeExpression_7jyf6")
+nodes/fragment/9/position = Vector2(-980, 100)
+nodes/fragment/9/size = Vector2(724.789, 654.559)
+nodes/fragment/9/input_ports = "0,0,In;1,0,Size;"
+nodes/fragment/9/output_ports = "0,0,Dither_Node;"
+nodes/fragment/9/expression = "const float DITHER_THRESHOLDS[16] ={
+		1.0 / 17.0, 9.0 / 17.0, 3.0 / 17.0, 11.0 / 17.0,
+		13.0 / 17.0, 5.0 / 17.0, 15.0 / 17.0, 7.0 / 17.0,
+		4.0 / 17.0, 12.0 / 17.0, 2.0 / 17.0, 10.0 / 17.0,
+		16.0 / 17.0, 8.0 / 17.0, 14.0 / 17.0, 6.0 / 17.0
+	};
+	
+vec2 uv = FRAGCOORD.xy * Size;
+int index = (int(uv.x) % 4) * 4 + int(uv.y) % 4;
+Dither_Node = In - DITHER_THRESHOLDS[index];"
+nodes/fragment/10/node = SubResource("VisualShaderNodeColorParameter_ci0ag")
+nodes/fragment/10/position = Vector2(-1120, -800)
+nodes/fragment/11/node = SubResource("VisualShaderNodeFloatParameter_ekgf7")
+nodes/fragment/11/position = Vector2(-380, -200)
+nodes/fragment/12/node = SubResource("VisualShaderNodeColorParameter_sngiw")
+nodes/fragment/12/position = Vector2(-920, -1000)
+nodes/fragment/13/node = SubResource("VisualShaderNodeBooleanParameter_6l46g")
+nodes/fragment/13/position = Vector2(-1200, -500)
+nodes/fragment/14/node = SubResource("VisualShaderNodeSwitch_csjgs")
+nodes/fragment/14/position = Vector2(-820, -500)
+nodes/fragment/connections = PackedInt32Array(2, 0, 9, 0, 9, 0, 6, 0, 3, 0, 9, 1, 4, 0, 5, 2, 10, 0, 7, 1, 5, 0, 6, 1, 7, 0, 8, 0, 10, 0, 8, 1, 11, 0, 8, 2, 12, 0, 7, 0, 13, 0, 14, 0, 6, 0, 14, 1, 5, 0, 14, 2, 14, 0, 7, 2, 8, 0, 0, 0)
+nodes/light/0/position = Vector2(3440, 1960)
+nodes/light/43/node = SubResource("VisualShaderNodeFloatParameter_bvg3w")
+nodes/light/43/position = Vector2(0, 5260)
+nodes/light/44/node = SubResource("VisualShaderNodeMix_0g47l")
+nodes/light/44/position = Vector2(880, 4920)
+nodes/light/45/node = SubResource("VisualShaderNodeExpression_st8l3")
+nodes/light/45/position = Vector2(-340, 4940)
+nodes/light/45/size = Vector2(580, 220)
+nodes/light/45/input_ports = "0,4,color;"
+nodes/light/45/output_ports = "0,0,grey_value;"
+nodes/light/45/expression = "float luminance = 0.299 * color.x + 0.587 * color.y + 0.114 * color.z;
+grey_value = luminance;"
+nodes/light/connections = PackedInt32Array(43, 0, 44, 2, 45, 0, 44, 1)
+
+[sub_resource type="Gradient" id="Gradient_nqxfg"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_cj5ka"]
+gradient = SubResource("Gradient_nqxfg")
+fill_to = Vector2(0.67094, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qpyf3"]
+resource_local_to_scene = true
+render_priority = 1
+shader = SubResource("VisualShader_uhe4u")
+shader_parameter/ColorParameter = Color(0.13, 0.13, 0.13, 1)
+shader_parameter/Color = Color(1, 1, 1, 1)
+shader_parameter/Dither_strenght = 0.58
+shader_parameter/Gradient_base = SubResource("GradientTexture2D_cj5ka")
 
 [sub_resource type="VisualShader" id="VisualShader_pul3y"]
 resource_local_to_scene = true
@@ -1211,9 +1410,6 @@ shader_parameter/ColorParameter = Color(0.13, 0.13, 0.13, 1)
 shader_parameter/Color = Color(1, 1, 1, 1)
 shader_parameter/Dither_strenght = 0.58
 shader_parameter/Gradient_base = SubResource("GradientTexture2D_ukqr1")
-
-[sub_resource type="Resource" id="Resource_ctd78"]
-script = ExtResource("11_vlw4y")
 
 [sub_resource type="VisualShader" id="VisualShader_p7ka6"]
 resource_local_to_scene = true
@@ -2226,7 +2422,6 @@ omni_range = 3.76032
 
 [node name="BirdsView_Prefab_00" parent="VIEW" instance=ExtResource("4_m6m46")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.209, 0.371, -24.692)
-_Bird_view_data = SubResource("Resource_axfnw")
 
 [node name="cam" parent="VIEW/BirdsView_Prefab_00" index="0"]
 transform = Transform3D(-0.85264, -0.0952178, -0.513749, 0, 0.983255, -0.182235, 0.522499, -0.155381, -0.838363, 0, 0.747, 0)
@@ -2237,9 +2432,17 @@ transform = Transform3D(-0.0446018, 0.1421, 0.163344, 0.138442, 0.146942, -0.090
 [node name="seagull_msh" parent="VIEW/BirdsView_Prefab_00/Far_birds" index="0"]
 surface_material_override/0 = SubResource("ShaderMaterial_jd6ai")
 
+[node name="Bird_effect" parent="VIEW/BirdsView_Prefab_00/Far_birds" index="1"]
+transform = Transform3D(-2.44188e-08, 0, -0.558637, 0, 0.558637, 0, 0.558637, 0, -2.44188e-08, 0, 0, 0)
+
+[node name="seagull_msh_light" parent="VIEW/BirdsView_Prefab_00/Far_birds" index="2"]
+surface_material_override/0 = null
+
+[node name="seagull_msh_warm" parent="VIEW/BirdsView_Prefab_00/Far_birds" index="3"]
+surface_material_override/0 = null
+
 [node name="BirdsView_Prefab_02" parent="VIEW" instance=ExtResource("4_m6m46")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -95.4127, 16.324, -17.5857)
-_Bird_view_data = SubResource("Resource_visd3")
 
 [node name="cam" parent="VIEW/BirdsView_Prefab_02" index="0"]
 transform = Transform3D(-0.85264, -0.0952178, -0.513749, 0, 0.983255, -0.182235, 0.522499, -0.155381, -0.838363, 0, 0.747, 0)
@@ -2250,9 +2453,17 @@ transform = Transform3D(-0.0446018, 0.1421, 0.163344, 0.138442, 0.146942, -0.090
 [node name="seagull_msh" parent="VIEW/BirdsView_Prefab_02/Far_birds" index="0"]
 surface_material_override/0 = SubResource("ShaderMaterial_jd6ai")
 
+[node name="Bird_effect" parent="VIEW/BirdsView_Prefab_02/Far_birds" index="1"]
+transform = Transform3D(-2.44188e-08, 0, -0.558637, 0, 0.558637, 0, 0.558637, 0, -2.44188e-08, 0, 0, 0)
+
+[node name="seagull_msh_light" parent="VIEW/BirdsView_Prefab_02/Far_birds" index="2"]
+surface_material_override/0 = null
+
+[node name="seagull_msh_warm" parent="VIEW/BirdsView_Prefab_02/Far_birds" index="3"]
+surface_material_override/0 = null
+
 [node name="BirdsView_Prefab_01" parent="VIEW" instance=ExtResource("4_m6m46")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.43, 4.628, 15.678)
-_Bird_view_data = SubResource("Resource_1whq8")
 
 [node name="cam" parent="VIEW/BirdsView_Prefab_01" index="0"]
 transform = Transform3D(0.97237, 0, -0.233445, 0, 1, 0, 0.233445, 0, 0.97237, 0, 0.366778, 0)
@@ -2263,9 +2474,17 @@ transform = Transform3D(0.172328, -0.118047, 0.0723252, 0.138442, 0.146942, -0.0
 [node name="seagull_msh" parent="VIEW/BirdsView_Prefab_01/Far_birds" index="0"]
 surface_material_override/0 = SubResource("ShaderMaterial_ppwcs")
 
+[node name="Bird_effect" parent="VIEW/BirdsView_Prefab_01/Far_birds" index="1"]
+transform = Transform3D(-2.44188e-08, 0, -0.558637, 0, 0.558637, 0, 0.558637, 0, -2.44188e-08, 0, 0, 0)
+
+[node name="seagull_msh_light" parent="VIEW/BirdsView_Prefab_01/Far_birds" index="2"]
+surface_material_override/0 = null
+
+[node name="seagull_msh_warm" parent="VIEW/BirdsView_Prefab_01/Far_birds" index="3"]
+surface_material_override/0 = null
+
 [node name="BirdsView_Prefab_03" parent="VIEW" instance=ExtResource("4_m6m46")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.119, 11.956, -0.549)
-_Bird_view_data = SubResource("Resource_g1oxi")
 
 [node name="cam" parent="VIEW/BirdsView_Prefab_03" index="0"]
 transform = Transform3D(0.492424, -0.651858, 0.576715, 0, 0.66262, 0.748956, -0.870356, -0.368803, 0.32629, 0, 0.366778, 0)
@@ -2276,9 +2495,17 @@ transform = Transform3D(-0.166456, 0.0841359, -0.118645, 0.111792, 0.189358, -0.
 [node name="seagull_msh" parent="VIEW/BirdsView_Prefab_03/Far_birds" index="0"]
 surface_material_override/0 = SubResource("ShaderMaterial_tlbxs")
 
+[node name="Bird_effect" parent="VIEW/BirdsView_Prefab_03/Far_birds" index="1"]
+transform = Transform3D(-2.44188e-08, 0, -0.558637, 0, 0.558637, 0, 0.558637, 0, -2.44188e-08, 0, 0, 0)
+
+[node name="seagull_msh_light" parent="VIEW/BirdsView_Prefab_03/Far_birds" index="2"]
+surface_material_override/0 = null
+
+[node name="seagull_msh_warm" parent="VIEW/BirdsView_Prefab_03/Far_birds" index="3"]
+surface_material_override/0 = null
+
 [node name="BirdsView_Prefab_04" parent="VIEW" instance=ExtResource("4_m6m46")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.23361, 3.678, -4.14189)
-_Bird_view_data = SubResource("Resource_i3mlx")
 
 [node name="cam" parent="VIEW/BirdsView_Prefab_04" index="0"]
 transform = Transform3D(-0.566406, -0.535227, -0.62667, 0, 0.760406, -0.649448, 0.824127, -0.367851, -0.430699, 0, 0.366778, 0)
@@ -2289,9 +2516,17 @@ transform = Transform3D(-0.197999, 0.0385606, -0.090403, 0.09817, 0.0873538, -0.
 [node name="seagull_msh" parent="VIEW/BirdsView_Prefab_04/Far_birds" index="0"]
 surface_material_override/0 = SubResource("ShaderMaterial_s7mly")
 
+[node name="Bird_effect" parent="VIEW/BirdsView_Prefab_04/Far_birds" index="1"]
+transform = Transform3D(-2.44188e-08, 0, -0.558637, 0, 0.558637, 0, 0.558637, 0, -2.44188e-08, 0, 0, 0)
+
+[node name="seagull_msh_light" parent="VIEW/BirdsView_Prefab_04/Far_birds" index="2"]
+surface_material_override/0 = null
+
+[node name="seagull_msh_warm" parent="VIEW/BirdsView_Prefab_04/Far_birds" index="3"]
+surface_material_override/0 = null
+
 [node name="BirdsView_Prefab_05" parent="VIEW" instance=ExtResource("4_m6m46")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.6385, 9.79107, -25.8657)
-_Bird_view_data = SubResource("Resource_y5flx")
 
 [node name="cam" parent="VIEW/BirdsView_Prefab_05" index="0"]
 transform = Transform3D(-0.987414, -0.0499224, 0.150072, 0, 0.948876, 0.315649, -0.158158, 0.311676, -0.936933, 0, 0.366778, 0)
@@ -2302,9 +2537,17 @@ transform = Transform3D(0.139999, -0.0690528, 0.156509, 0.159407, 0.126043, -0.0
 [node name="seagull_msh" parent="VIEW/BirdsView_Prefab_05/Far_birds" index="0"]
 surface_material_override/0 = SubResource("ShaderMaterial_pg7j3")
 
+[node name="Bird_effect" parent="VIEW/BirdsView_Prefab_05/Far_birds" index="1"]
+transform = Transform3D(-2.44188e-08, 0, -0.558637, 0, 0.558637, 0, 0.558637, 0, -2.44188e-08, 0, 0, 0)
+
+[node name="seagull_msh_light" parent="VIEW/BirdsView_Prefab_05/Far_birds" index="2"]
+surface_material_override/0 = null
+
+[node name="seagull_msh_warm" parent="VIEW/BirdsView_Prefab_05/Far_birds" index="3"]
+surface_material_override/0 = null
+
 [node name="BirdsView_Prefab_06" parent="VIEW" instance=ExtResource("4_m6m46")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.21448, 3.36748, 2.02296)
-_Bird_view_data = SubResource("Resource_4a8ng")
 
 [node name="cam" parent="VIEW/BirdsView_Prefab_06" index="0"]
 transform = Transform3D(0.5373, 0.336302, 0.773441, 0, 0.91706, -0.398749, -0.843392, 0.214248, 0.492736, 0, 0.366778, 0)
@@ -2315,9 +2558,17 @@ transform = Transform3D(0.0466888, 0.18259, 0.115518, 0.09817, 0.0873538, -0.177
 [node name="seagull_msh" parent="VIEW/BirdsView_Prefab_06/Far_birds" index="0"]
 surface_material_override/0 = SubResource("ShaderMaterial_ki1yo")
 
+[node name="Bird_effect" parent="VIEW/BirdsView_Prefab_06/Far_birds" index="1"]
+transform = Transform3D(-2.44188e-08, 0, -0.558637, 0, 0.558637, 0, 0.558637, 0, -2.44188e-08, 0, 0, 0)
+
+[node name="seagull_msh_light" parent="VIEW/BirdsView_Prefab_06/Far_birds" index="2"]
+surface_material_override/0 = null
+
+[node name="seagull_msh_warm" parent="VIEW/BirdsView_Prefab_06/Far_birds" index="3"]
+surface_material_override/0 = null
+
 [node name="BirdsView_Prefab_07" parent="VIEW" instance=ExtResource("4_m6m46")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.164, 1.353, 17.822)
-_Bird_view_data = SubResource("Resource_kptop")
 
 [node name="cam" parent="VIEW/BirdsView_Prefab_07" index="0"]
 transform = Transform3D(0.130526, -0.0432462, 0.990501, 0, 0.999048, 0.0436194, -0.991445, -0.00569348, 0.130402, 2.17313, 0.366778, 0)
@@ -2325,9 +2576,20 @@ transform = Transform3D(0.130526, -0.0432462, 0.990501, 0, 0.999048, 0.0436194, 
 [node name="Far_birds" parent="VIEW/BirdsView_Prefab_07" index="3"]
 transform = Transform3D(0.0466888, 0.18259, 0.115518, 0.09817, 0.0873538, -0.17775, -0.192473, 0.0888456, -0.0626392, 2.926, 0.527313, -0.227625)
 
+[node name="seagull_msh" parent="VIEW/BirdsView_Prefab_07/Far_birds" index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_qpyf3")
+
+[node name="Bird_effect" parent="VIEW/BirdsView_Prefab_07/Far_birds" index="1"]
+transform = Transform3D(-2.44188e-08, 0, -0.558637, 0, 0.558637, 0, 0.558637, 0, -2.44188e-08, 0, 0, 0)
+
+[node name="seagull_msh_light" parent="VIEW/BirdsView_Prefab_07/Far_birds" index="2"]
+surface_material_override/0 = null
+
+[node name="seagull_msh_warm" parent="VIEW/BirdsView_Prefab_07/Far_birds" index="3"]
+surface_material_override/0 = null
+
 [node name="BirdsView_Prefab_08" parent="VIEW" instance=ExtResource("4_m6m46")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.453, 11.9273, -33.442)
-_Bird_view_data = SubResource("Resource_md303")
 
 [node name="cam" parent="VIEW/BirdsView_Prefab_08" index="0"]
 transform = Transform3D(-0.861629, 0.190127, -0.470581, 0, 0.927184, 0.374607, 0.507538, 0.322772, -0.798889, 2.17313, 0.366778, 0)
@@ -2338,9 +2600,17 @@ transform = Transform3D(0.0466888, 0.18259, 0.115518, 0.09817, 0.0873538, -0.177
 [node name="seagull_msh" parent="VIEW/BirdsView_Prefab_08/Far_birds" index="0"]
 surface_material_override/0 = SubResource("ShaderMaterial_px8jd")
 
+[node name="Bird_effect" parent="VIEW/BirdsView_Prefab_08/Far_birds" index="1"]
+transform = Transform3D(-2.44188e-08, 0, -0.558637, 0, 0.558637, 0, 0.558637, 0, -2.44188e-08, 0, 0, 0)
+
+[node name="seagull_msh_light" parent="VIEW/BirdsView_Prefab_08/Far_birds" index="2"]
+surface_material_override/0 = null
+
+[node name="seagull_msh_warm" parent="VIEW/BirdsView_Prefab_08/Far_birds" index="3"]
+surface_material_override/0 = null
+
 [node name="BirdsView_Prefab_09" parent="VIEW" instance=ExtResource("4_m6m46")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.386, 23.661, -65.041)
-_Bird_view_data = SubResource("Resource_ctd78")
 
 [node name="cam" parent="VIEW/BirdsView_Prefab_09" index="0"]
 transform = Transform3D(-0.819152, -0.237858, 0.521932, 0, 0.909961, 0.414693, -0.573576, 0.339697, -0.745397, 2.17313, 0.366778, 0)
@@ -2350,6 +2620,15 @@ transform = Transform3D(0.192473, -0.0888456, 0.0626392, 0.09817, 0.0873538, -0.
 
 [node name="seagull_msh" parent="VIEW/BirdsView_Prefab_09/Far_birds" index="0"]
 surface_material_override/0 = SubResource("ShaderMaterial_5jqyj")
+
+[node name="Bird_effect" parent="VIEW/BirdsView_Prefab_09/Far_birds" index="1"]
+transform = Transform3D(-2.44188e-08, 0, -0.558637, 0, 0.558637, 0, 0.558637, 0, -2.44188e-08, 0, 0, 0)
+
+[node name="seagull_msh_light" parent="VIEW/BirdsView_Prefab_09/Far_birds" index="2"]
+surface_material_override/0 = null
+
+[node name="seagull_msh_warm" parent="VIEW/BirdsView_Prefab_09/Far_birds" index="3"]
+surface_material_override/0 = null
 
 [node name="NPC" type="Node3D" parent="."]
 

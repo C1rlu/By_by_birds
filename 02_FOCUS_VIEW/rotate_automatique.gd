@@ -2,7 +2,7 @@ extends Node
 
 
 @export var rotation_root: Node3D 
-
+@export var camera : Node3D 
 
 
 @onready var timer: Timer = $Timer
@@ -22,16 +22,16 @@ func _ready() -> void:
 	timer.timeout.connect(end_of_time)
 	timer.start()
 	
-
+	adapt_speed()
 func _reset():
 	
-	rotation_root.rotation_degrees = Vector3.ZERO
+	#rotation_root.rotation_degrees = Vector3.ZERO
 	adapt_speed()	
 	
 	
 func adapt_speed():
 	
-	var camera_distance = rotation_root.global_position.distance_to(Vector3.ZERO)
+	var camera_distance = camera.global_position.distance_to(Vector3.ZERO)
 	
 	rotation_speed = 0.8 / camera_distance * 10	
 	

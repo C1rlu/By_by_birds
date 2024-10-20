@@ -5,10 +5,9 @@ extends Node
 @export var Camera : Camera3D
 
 
-
 func _ready() -> void:	
 
-	_global_datas._end_of_transition.connect(_reset_cam)
+	#_global_datas._end_of_transition.connect(_reset_cam)
 	_global_datas.look_at_sensivity = 0.1
 	
 func _reset_cam():

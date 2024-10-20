@@ -1,11 +1,12 @@
 extends Node3D
 
 
-@export var _Bird_view_data : Bird_view_data
+var _Bird_view_data : Bird_view_data
 @export var bird_node : Node3D 
 
 
 func _ready() -> void:
+	_Bird_view_data = Bird_view_data.new()
 	
 	$Area3D/hit_focus.bird_data = _Bird_view_data
 	_Bird_view_data.camera_view = $cam	

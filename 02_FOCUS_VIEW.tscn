@@ -241,9 +241,11 @@ script = ExtResource("5_8dylc")
 Camera_head = NodePath("../Viewport/head")
 Camera = NodePath("../Viewport/head/CAM")
 
-[node name="Rotate_automatique" type="Node" parent="." node_paths=PackedStringArray("rotation_root")]
+[node name="Rotate_automatique" type="Node" parent="." node_paths=PackedStringArray("rotation_root", "camera")]
 script = ExtResource("6_l0ewy")
 rotation_root = NodePath("../All_root")
+camera = NodePath("../Viewport/head")
+disable = false
 
 [node name="Timer" type="Timer" parent="Rotate_automatique"]
 wait_time = 6.0

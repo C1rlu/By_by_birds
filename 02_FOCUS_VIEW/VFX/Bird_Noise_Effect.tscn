@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://02_FOCUS_VIEW/VFX/Bird_Noise_Effect.tres.gd" id="1_6t7df"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_pgy1w"]
+resource_local_to_scene = true
 
 [sub_resource type="VisualShaderNodeFloatFunc" id="VisualShaderNodeFloatFunc_b11ro"]
 function = 31
@@ -46,6 +47,7 @@ constant = 1.0
 default_input_values = [2, true, 3, 1.0]
 
 [sub_resource type="VisualShader" id="VisualShader_cky25"]
+resource_local_to_scene = true
 code = "shader_type spatial;
 render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx, unshaded, shadows_disabled, ambient_light_disabled;
 
@@ -113,7 +115,6 @@ void fragment() {
 
 }
 "
-graph_offset = Vector2(-423.742, -94.822)
 flags/unshaded = true
 flags/shadows_disabled = true
 flags/ambient_light_disabled = true
@@ -154,17 +155,16 @@ nodes/fragment/54/position = Vector2(-120, 0)
 nodes/fragment/connections = PackedInt32Array(44, 0, 0, 0, 46, 0, 45, 1, 51, 0, 45, 0, 45, 0, 52, 1, 45, 0, 48, 0, 43, 0, 53, 1, 49, 0, 53, 2, 53, 0, 48, 1, 48, 0, 0, 1, 54, 0, 43, 0)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0wd51"]
+resource_local_to_scene = true
 render_priority = 1
 shader = SubResource("VisualShader_cky25")
-shader_parameter/Sonar_color = Color(0.333333, 0.643137, 0.54902, 1)
-shader_parameter/Opacity = 1.0
+shader_parameter/Sonar_color = Color(0.783523, 0.783523, 0.783523, 1)
+shader_parameter/Opacity = 0.0
 
-[node name="Bird_effect" type="Node3D"]
+[node name="Bird_effect" type="Node3D" node_paths=PackedStringArray("meshes")]
 transform = Transform3D(-4.37114e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.37114e-09, 0, 0, 0)
-
-[node name="Bird_effect" type="Node" parent="." node_paths=PackedStringArray("meshes")]
 script = ExtResource("1_6t7df")
-meshes = [NodePath("../02/MeshInstance3D")]
+meshes = [NodePath("02/MeshInstance3D")]
 
 [node name="02" type="Node3D" parent="."]
 transform = Transform3D(10.4487, 0, -4.26326e-13, 0, 10.4487, 0, 4.26326e-13, 0, 10.4487, 0, 0, 0)

@@ -68,7 +68,7 @@ func _process(delta: float) -> void:
 func _done():
 	
 	_global_datas.moving_transition = false
-	#_global_datas._end_of_transition.emit()
+	_global_datas._end_of_transition.emit()
 	#Camera_head.global_position = previous_cam.global_position
 	#
 	#Camera_head.rotation.y = previous_cam.rotation.y	

@@ -6,7 +6,7 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sjbfk"]
 render_priority = 3
 shader = ExtResource("1_4or0q")
-shader_parameter/ColorParameter = Color(0.341176, 0.466667, 0.466667, 1)
+shader_parameter/Color = Color(0.650128, 0.650128, 0.650128, 1)
 
 [sub_resource type="Gradient" id="Gradient_lxymc"]
 colors = PackedColorArray(0.310617, 0.310617, 0.310617, 1, 1, 1, 1, 1)

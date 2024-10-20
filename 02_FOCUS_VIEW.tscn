@@ -241,16 +241,11 @@ script = ExtResource("5_8dylc")
 Camera_head = NodePath("../Viewport/head")
 Camera = NodePath("../Viewport/head/CAM")
 
-[node name="Rotate_automatique_camFollow" type="Node" parent="." node_paths=PackedStringArray("rotation_root", "Cam", "Cam_light", "Cam_light_warm", "Cam_ui")]
+[node name="Rotate_automatique" type="Node" parent="." node_paths=PackedStringArray("rotation_root")]
 script = ExtResource("6_l0ewy")
 rotation_root = NodePath("../All_root")
-Cam = NodePath("../Viewport/head/CAM")
-Cam_light = NodePath("../Viewport_light/CAM_light")
-Cam_light_warm = NodePath("../Viewport_warm/CAM_light_warm")
-Cam_ui = NodePath("../Viewport_Dialogue_ui/CAM_dialogue_ui")
-disable = false
 
-[node name="Timer" type="Timer" parent="Rotate_automatique_camFollow"]
+[node name="Timer" type="Timer" parent="Rotate_automatique"]
 wait_time = 6.0
 one_shot = true
 
@@ -258,10 +253,11 @@ one_shot = true
 script = ExtResource("7_fr4tu")
 Camera = NodePath("../Viewport/head/CAM")
 
-[node name="Update_focus" type="Node" parent="." node_paths=PackedStringArray("Camera_root", "Camera_head")]
+[node name="Update_focus&CamFollow" type="Node" parent="." node_paths=PackedStringArray("Camera_root", "Camera_head", "Cam_to_follow")]
 script = ExtResource("8_yrrej")
 Camera_root = NodePath("../Viewport/head/CAM")
 Camera_head = NodePath("../Viewport/head")
+Cam_to_follow = [NodePath("../Viewport_light/CAM_light"), NodePath("../Viewport_warm/CAM_light_warm"), NodePath("../Viewport_Dialogue_ui/CAM_dialogue_ui")]
 
 [node name="BACKDROP_FOCUS" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_v0203")

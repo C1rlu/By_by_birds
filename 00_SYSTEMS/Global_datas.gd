@@ -30,6 +30,7 @@ signal _open_focus_view(condition : bool)
 var active_focus_view : focus_data
 var head_player_NodePosition : Node3D
 var transition_target : Vector3
+var moving_transition : bool
 signal _in_transition_start
 signal _end_of_transition
 var current_focus_data : focus_data

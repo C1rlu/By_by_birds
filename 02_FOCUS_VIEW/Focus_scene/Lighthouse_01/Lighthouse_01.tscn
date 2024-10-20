@@ -1,4 +1,4 @@
-[gd_scene load_steps=126 format=4 uid="uid://i7vwntowo6jb"]
+[gd_scene load_steps=127 format=4 uid="uid://i7vwntowo6jb"]
 
 [ext_resource type="PackedScene" uid="uid://bphmc606jqkad" path="res://02_FOCUS_VIEW/Focus_scene/Lighthouse_01/Lighthouse_focus.blend" id="1_h1tuh"]
 [ext_resource type="Script" path="res://02_FOCUS_VIEW/Focus_data/set_focus_data.gd" id="1_rpkd4"]
@@ -7,31 +7,25 @@
 [ext_resource type="Texture2D" uid="uid://cdnar4v4gpadd" path="res://04_SCENE_MAIN_MAP/ELEMENTS/Lighthouse/Lighthouse_gradient.png" id="3_geh58"]
 [ext_resource type="PackedScene" uid="uid://n7fje3pkvptd" path="res://02_FOCUS_VIEW/Birds_view/Birds_view_Prefab.tscn" id="4_m6m46"]
 [ext_resource type="Material" uid="uid://yjoyk6fvrm6q" path="res://00_SHADER/No_light_surface_mat.tres" id="5_44prs"]
-[ext_resource type="Resource" uid="uid://kqx6qvlj6wmp" path="res://15_GAME_RESSOURCE/02_Birds_ressources/Lighthouse_scene/Bird_01.tres" id="5_qybha"]
 [ext_resource type="Script" path="res://00_SYSTEMS/Active_mask_at_ready.tres.gd" id="6_ukxo0"]
 [ext_resource type="PackedScene" uid="uid://dfl8ypxntwour" path="res://02_FOCUS_VIEW/Npc/Npc_base.tscn" id="6_x88fn"]
-[ext_resource type="Resource" uid="uid://ndsubexooeqe" path="res://15_GAME_RESSOURCE/02_Birds_ressources/Lighthouse_scene/Bird_02.tres" id="6_ywu3b"]
 [ext_resource type="PackedScene" uid="uid://cayj2wqyaod67" path="res://04_SCENE_MAIN_MAP/ELEMENTS/Lighthouse/light_cone.blend" id="7_0b5my"]
-[ext_resource type="Resource" uid="uid://bikhj2oybix06" path="res://15_GAME_RESSOURCE/02_Birds_ressources/Lighthouse_scene/Bird_03.tres" id="7_2gn1f"]
 [ext_resource type="PackedScene" uid="uid://d151bx2ehh7u8" path="res://02_FOCUS_VIEW/Assets/Islands/Island_02/Island_f02_scene.tscn" id="8_50vbm"]
-[ext_resource type="Resource" uid="uid://bg5mke88qauth" path="res://15_GAME_RESSOURCE/02_Birds_ressources/Lighthouse_scene/Bird_04.tres" id="8_aboaw"]
 [ext_resource type="PackedScene" uid="uid://66en3kb6p1k5" path="res://02_FOCUS_VIEW/Assets/Rampe/Rampe_01/Rampe_f01_scene.tscn" id="9_aphgw"]
-[ext_resource type="Resource" uid="uid://cunv56l4ch70k" path="res://15_GAME_RESSOURCE/02_Birds_ressources/Lighthouse_scene/Bird_05.tres" id="9_n7lc2"]
 [ext_resource type="PackedScene" uid="uid://ctrf5fdwo22iv" path="res://02_FOCUS_VIEW/Assets/Islands/Island_03/Island_f03_scene.tscn" id="9_rnrkb"]
 [ext_resource type="PackedScene" uid="uid://bgkexoohxyw5y" path="res://02_FOCUS_VIEW/Assets/Trees/Pine_01/Pine_small_f01_scene.tscn" id="9_u56fs"]
 [ext_resource type="PackedScene" uid="uid://bhf23fmw0km6j" path="res://02_FOCUS_VIEW/Assets/Trees/Pine_02/Pine_medium_f02_scene.tscn" id="10_2qj38"]
-[ext_resource type="Resource" uid="uid://dfl7yia0se22h" path="res://15_GAME_RESSOURCE/02_Birds_ressources/Lighthouse_scene/Bird_06.tres" id="10_81mib"]
-[ext_resource type="Resource" uid="uid://d3m8ph5sebcwv" path="res://15_GAME_RESSOURCE/02_Birds_ressources/Lighthouse_scene/Bird_07.tres" id="10_nmldi"]
 [ext_resource type="Shader" uid="uid://b2vtcihbo73bk" path="res://00_SHADER/Next_pass_selectEffect.tres" id="11_kh1vx"]
-[ext_resource type="PackedScene" uid="uid://bt8ta6k8i6dm5" path="res://02_FOCUS_VIEW/Birds_view/Motacilla/Motacilla_view.tscn" id="11_qh48y"]
 [ext_resource type="Script" path="res://15_GAME_RESSOURCE/02_Birds_ressources/Bird_view_data.gd" id="11_vlw4y"]
 [ext_resource type="PackedScene" uid="uid://dxbbh1u02npiw" path="res://02_FOCUS_VIEW/Assets/Rocks/Rocks_01/Rocks_f01_scene.tscn" id="11_yfjow"]
-[ext_resource type="Resource" uid="uid://c678mil7818q4" path="res://15_GAME_RESSOURCE/02_Birds_ressources/Lighthouse_scene/M_on_tiny_boat.tres" id="12_i2uie"]
+[ext_resource type="PackedScene" uid="uid://m6voiuw7ip8o" path="res://02_FOCUS_VIEW/Assets/TinyBoat/Tiny_boat_set.tscn" id="12_16ahm"]
 [ext_resource type="Shader" uid="uid://djg6mbqwagfbr" path="res://00_SHADER/Light_only_sh.tres" id="13_6smgx"]
 [ext_resource type="Material" uid="uid://cvng1dwrp1vmq" path="res://00_SHADER/Light_pass_lit_mat.tres" id="18_fb46d"]
 [ext_resource type="PackedScene" uid="uid://bgrasw5i1kjw5" path="res://02_FOCUS_VIEW/Focus_scene/Tiny_boat_scene/BoatMan_asset_01.blend" id="27_5eyma"]
 [ext_resource type="Shader" uid="uid://bad52w03qa3g4" path="res://02_FOCUS_VIEW/Shader/Flare_light_sh.tres" id="28_yvsui"]
 [ext_resource type="PackedScene" uid="uid://k8l35ijjolux" path="res://02_FOCUS_VIEW/Assets/Wood_houses/Cabin_set_01.tscn" id="32_fidam"]
+[ext_resource type="PackedScene" uid="uid://bo243u78wdxqv" path="res://02_FOCUS_VIEW/Focus_scene/Big_Boat/Big_Boat_set.tscn" id="32_nkaw5"]
+[ext_resource type="PackedScene" uid="uid://br743xj0dln5y" path="res://04_SCENE_MAIN_MAP/00_PLAYER/Boat/Boat_smoke/VFX_smoke_sphere.tscn" id="33_2nmq3"]
 [ext_resource type="Script" path="res://02_FOCUS_VIEW/sphere_dome_position.gd" id="34_tdwqi"]
 [ext_resource type="Material" uid="uid://coou7bpav3hi4" path="res://02_FOCUS_VIEW/focus_sea_mat.tres" id="35_fy5s3"]
 [ext_resource type="Shader" uid="uid://2anxsstngu6f" path="res://02_FOCUS_VIEW/Shader/Moon_shader.tres" id="36_bnagj"]
@@ -40,10 +34,31 @@
 [ext_resource type="PackedScene" uid="uid://dh5kdswdhdfq6" path="res://04_SCENE_MAIN_MAP/ELEMENTS/Island_set/Island_set_01/Island_set_01_prefab.tscn" id="38_dh1a0"]
 [ext_resource type="PackedScene" uid="uid://bme2k8btnc2jn" path="res://04_SCENE_MAIN_MAP/ELEMENTS/Island_set/island_set_02/Island_set_02_prefab.tscn" id="39_3rap5"]
 
-[sub_resource type="Resource" id="Resource_g8a00"]
+[sub_resource type="Resource" id="Resource_axfnw"]
 script = ExtResource("11_vlw4y")
 
-[sub_resource type="Resource" id="Resource_hglte"]
+[sub_resource type="Resource" id="Resource_1whq8"]
+script = ExtResource("11_vlw4y")
+
+[sub_resource type="Resource" id="Resource_g1oxi"]
+script = ExtResource("11_vlw4y")
+
+[sub_resource type="Resource" id="Resource_i3mlx"]
+script = ExtResource("11_vlw4y")
+
+[sub_resource type="Resource" id="Resource_y5flx"]
+script = ExtResource("11_vlw4y")
+
+[sub_resource type="Resource" id="Resource_4a8ng"]
+script = ExtResource("11_vlw4y")
+
+[sub_resource type="Resource" id="Resource_kptop"]
+script = ExtResource("11_vlw4y")
+
+[sub_resource type="Resource" id="Resource_md303"]
+script = ExtResource("11_vlw4y")
+
+[sub_resource type="Resource" id="Resource_ctd78"]
 script = ExtResource("11_vlw4y")
 
 [sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_cnqkx"]
@@ -419,7 +434,7 @@ fill_to = Vector2(0.0128205, 0.5)
 render_priority = 1
 shader = ExtResource("2_l8yn2")
 shader_parameter/ColorParameter = Color(0, 0, 0, 1)
-shader_parameter/Color = Color(0.76, 0.76, 0.76, 1)
+shader_parameter/Color = Color(0.270222, 0.270222, 0.270222, 1)
 shader_parameter/Dither_strenght = 0.405
 shader_parameter/Gradient_base = SubResource("GradientTexture2D_b7aei")
 
@@ -795,14 +810,6 @@ _first_camera = NodePath("VIEW/BirdsView_Prefab_00/cam")
 script = ExtResource("6_ukxo0")
 _active = [NodePath("../Lighthouse_root/light_cone4/light_cone"), NodePath("../Lighthouse_root/light_cone5/light_cone")]
 
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.799541, 6.45281, -1.68972)
-layers = 4
-light_energy = 1.946
-light_cull_mask = 4293918724
-shadow_enabled = true
-omni_range = 1.14175
-
 [node name="OmniLight3D3" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.58049, 5.18994, 1.68043)
 layers = 4
@@ -836,26 +843,82 @@ shadow_enabled = true
 omni_range = 2.20289
 
 [node name="OmniLight3D6" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.231, 8.44924, -26.4697)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.231, 8.67212, -26.5642)
 layers = 4
 light_energy = 1.946
 light_cull_mask = 4293918724
 shadow_enabled = true
-omni_range = 2.20289
+omni_range = 3.51172
+
+[node name="OmniLight3D13" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.0369, 1.73319, 26.4999)
+layers = 4
+light_energy = 1.946
+light_cull_mask = 4293918724
+shadow_enabled = true
+omni_range = 2.3756
+
+[node name="OmniLight3D14" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.99684, 1.73319, -15.8475)
+layers = 4
+light_energy = 1.946
+light_cull_mask = 4293918724
+shadow_enabled = true
+omni_range = 2.3756
+
+[node name="OmniLight3D8" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.1175, 10.5857, -14.8886)
+layers = 4
+light_energy = 1.946
+light_cull_mask = 4293918724
+shadow_enabled = true
+omni_range = 3.51172
 
 [node name="OmniLight3D7" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.7569, 15.4298, -54.2525)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.7569, 16.2425, -54.2525)
 layers = 4
 light_energy = 1.946
 light_cull_mask = 4293918724
 shadow_enabled = true
-omni_range = 4.74621
+omni_range = 7.93571
+
+[node name="OmniLight3D12" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.1501, 19.2132, -53.4058)
+layers = 4
+light_energy = 1.946
+light_cull_mask = 4293918724
+shadow_enabled = true
+omni_range = 2.87314
+
+[node name="OmniLight3D9" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.7569, 16.2425, -54.2525)
+layers = 4
+light_energy = 1.946
+light_cull_mask = 4293918724
+shadow_enabled = true
+omni_range = 7.93571
+
+[node name="OmniLight3D10" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.2137, 17.2248, -56.7484)
+layers = 4
+light_energy = 1.946
+light_cull_mask = 4293918724
+shadow_enabled = true
+omni_range = 2.57144
+
+[node name="OmniLight3D11" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.3557, 19.398, -64.0239)
+layers = 4
+light_energy = 1.946
+light_cull_mask = 4293918724
+shadow_enabled = true
+omni_range = 3.76032
 
 [node name="VIEW" type="Node3D" parent="."]
 
 [node name="BirdsView_Prefab_00" parent="VIEW" instance=ExtResource("4_m6m46")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.209, 0.371, -24.692)
-_Bird_view_data = ExtResource("5_qybha")
+_Bird_view_data = SubResource("Resource_axfnw")
 
 [node name="cam" parent="VIEW/BirdsView_Prefab_00" index="0"]
 transform = Transform3D(-0.85264, -0.0952178, -0.513749, 0, 0.983255, -0.182235, 0.522499, -0.155381, -0.838363, 0, 0.747, 0)
@@ -901,7 +964,7 @@ surface_material_override/0 = null
 
 [node name="BirdsView_Prefab_01" parent="VIEW" instance=ExtResource("4_m6m46")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.43, 4.628, 15.678)
-_Bird_view_data = ExtResource("6_ywu3b")
+_Bird_view_data = SubResource("Resource_1whq8")
 
 [node name="cam" parent="VIEW/BirdsView_Prefab_01" index="0"]
 transform = Transform3D(0.97237, 0, -0.233445, 0, 1, 0, 0.233445, 0, 0.97237, 0, 0.366778, 0)
@@ -935,7 +998,7 @@ surface_material_override/0 = null
 
 [node name="BirdsView_Prefab_03" parent="VIEW" instance=ExtResource("4_m6m46")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.119, 11.956, -0.549)
-_Bird_view_data = ExtResource("7_2gn1f")
+_Bird_view_data = SubResource("Resource_g1oxi")
 
 [node name="cam" parent="VIEW/BirdsView_Prefab_03" index="0"]
 transform = Transform3D(0.492424, -0.651858, 0.576715, 0, 0.66262, 0.748956, -0.870356, -0.368803, 0.32629, 0, 0.366778, 0)
@@ -969,7 +1032,7 @@ surface_material_override/0 = null
 
 [node name="BirdsView_Prefab_04" parent="VIEW" instance=ExtResource("4_m6m46")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.23361, 3.678, -4.14189)
-_Bird_view_data = ExtResource("8_aboaw")
+_Bird_view_data = SubResource("Resource_i3mlx")
 
 [node name="cam" parent="VIEW/BirdsView_Prefab_04" index="0"]
 transform = Transform3D(-0.566406, -0.535227, -0.62667, 0, 0.760406, -0.649448, 0.824127, -0.367851, -0.430699, 0, 0.366778, 0)
@@ -1010,7 +1073,7 @@ surface_material_override/0 = null
 
 [node name="BirdsView_Prefab_05" parent="VIEW" instance=ExtResource("4_m6m46")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.6385, 9.79107, -25.8657)
-_Bird_view_data = ExtResource("9_n7lc2")
+_Bird_view_data = SubResource("Resource_y5flx")
 
 [node name="cam" parent="VIEW/BirdsView_Prefab_05" index="0"]
 transform = Transform3D(-0.987414, -0.0499224, 0.150072, 0, 0.948876, 0.315649, -0.158158, 0.311676, -0.936933, 0, 0.366778, 0)
@@ -1044,10 +1107,10 @@ surface_material_override/0 = null
 
 [node name="BirdsView_Prefab_06" parent="VIEW" instance=ExtResource("4_m6m46")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.21448, 3.36748, 2.02296)
-_Bird_view_data = ExtResource("10_81mib")
+_Bird_view_data = SubResource("Resource_4a8ng")
 
 [node name="cam" parent="VIEW/BirdsView_Prefab_06" index="0"]
-transform = Transform3D(0.681999, 0.403661, 0.609866, 0, 0.833886, -0.551937, -0.731354, 0.37642, 0.568709, 0, 0.366778, 0)
+transform = Transform3D(0.5373, 0.336302, 0.773441, 0, 0.91706, -0.398749, -0.843392, 0.214248, 0.492736, 0, 0.366778, 0)
 
 [node name="Far_birds" parent="VIEW/BirdsView_Prefab_06" index="3"]
 transform = Transform3D(0.0466888, 0.18259, 0.115518, 0.09817, 0.0873538, -0.17775, -0.192473, 0.0888456, -0.0626392, 0.796137, -0.120271, -0.583147)
@@ -1078,7 +1141,7 @@ surface_material_override/0 = null
 
 [node name="BirdsView_Prefab_07" parent="VIEW" instance=ExtResource("4_m6m46")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.164, 1.353, 17.822)
-_Bird_view_data = ExtResource("10_nmldi")
+_Bird_view_data = SubResource("Resource_kptop")
 
 [node name="cam" parent="VIEW/BirdsView_Prefab_07" index="0"]
 transform = Transform3D(0.130526, -0.0432462, 0.990501, 0, 0.999048, 0.0436194, -0.991445, -0.00569348, 0.130402, 2.17313, 0.366778, 0)
@@ -1111,11 +1174,11 @@ surface_material_override/0 = null
 surface_material_override/0 = null
 
 [node name="BirdsView_Prefab_08" parent="VIEW" instance=ExtResource("4_m6m46")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.453, 9.76562, -33.442)
-_Bird_view_data = SubResource("Resource_g8a00")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.453, 11.9273, -33.442)
+_Bird_view_data = SubResource("Resource_md303")
 
 [node name="cam" parent="VIEW/BirdsView_Prefab_08" index="0"]
-transform = Transform3D(-0.861629, 0.0530522, -0.504758, 0, 0.994522, 0.104528, 0.507538, 0.0900648, -0.856909, 2.17313, 0.366778, 0)
+transform = Transform3D(-0.861629, 0.190127, -0.470581, 0, 0.927184, 0.374607, 0.507538, 0.322772, -0.798889, 2.17313, 0.366778, 0)
 
 [node name="Far_birds" parent="VIEW/BirdsView_Prefab_08" index="3"]
 transform = Transform3D(0.0466888, 0.18259, 0.115518, 0.09817, 0.0873538, -0.17775, -0.192473, 0.0888456, -0.0626392, 2.536, 0.102, -0.828)
@@ -1146,7 +1209,7 @@ surface_material_override/0 = null
 
 [node name="BirdsView_Prefab_09" parent="VIEW" instance=ExtResource("4_m6m46")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.386, 23.661, -65.041)
-_Bird_view_data = SubResource("Resource_hglte")
+_Bird_view_data = SubResource("Resource_ctd78")
 
 [node name="cam" parent="VIEW/BirdsView_Prefab_09" index="0"]
 transform = Transform3D(-0.819152, -0.237858, 0.521932, 0, 0.909961, 0.414693, -0.573576, 0.339697, -0.745397, 2.17313, 0.366778, 0)
@@ -1178,39 +1241,6 @@ surface_material_override/0 = null
 [node name="bec3" parent="VIEW/BirdsView_Prefab_09/Far_birds" index="11"]
 surface_material_override/0 = null
 
-[node name="Motacilla_View" parent="VIEW" instance=ExtResource("11_qh48y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.5387, 0.686799, 20.1225)
-_Bird_view_data = ExtResource("12_i2uie")
-
-[node name="cam" parent="VIEW/Motacilla_View" index="0"]
-transform = Transform3D(0.601815, 0, 0.798635, 0, 1, 0, -0.798635, 0, 0.601815, 0.0316954, 0.246243, -0.0545311)
-
-[node name="Motacilla_bird_msh_01" parent="VIEW/Motacilla_View" index="2"]
-transform = Transform3D(0.018427, 0, -0.0433355, 0, 0.0470905, 0, 0.0433355, 0, 0.018427, 0, 0, 0)
-
-[node name="Motacilla_msh_light" parent="VIEW/Motacilla_View/Motacilla_bird_msh_01" index="1"]
-surface_material_override/0 = null
-surface_material_override/1 = null
-surface_material_override/2 = null
-
-[node name="Motacilla_msh_warm" parent="VIEW/Motacilla_View/Motacilla_bird_msh_01" index="2"]
-surface_material_override/0 = null
-surface_material_override/1 = null
-surface_material_override/2 = null
-
-[node name="MotacillaFlying_bird_msh_01" parent="VIEW/Motacilla_View" index="3"]
-transform = Transform3D(-0.0198544, 0.0128174, -0.0485017, -0.01371, 0.04879, 0.0185059, 0.048257, 0.0191349, -0.0146975, 0, 0, 0)
-
-[node name="Motacilla_msh2" parent="VIEW/Motacilla_View/MotacillaFlying_bird_msh_01" index="1"]
-surface_material_override/0 = null
-surface_material_override/1 = null
-surface_material_override/2 = null
-
-[node name="Motacilla_msh3" parent="VIEW/Motacilla_View/MotacillaFlying_bird_msh_01" index="2"]
-surface_material_override/0 = null
-surface_material_override/1 = null
-surface_material_override/2 = null
-
 [node name="NPC" type="Node3D" parent="."]
 
 [node name="NPC_04" parent="NPC" instance=ExtResource("6_x88fn")]
@@ -1240,6 +1270,39 @@ transform = Transform3D(2.46552, 0, 4.27041, 0, 4.93104, 0, -4.27041, 0, 2.46552
 [node name="Island_f02_scene" parent="." instance=ExtResource("8_50vbm")]
 transform = Transform3D(-2.48459, 0, -1.43448, 0, 2.86895, 0, 1.43448, 0, -2.48459, 6.39547, 0, -2.11029)
 
+[node name="Rampe_f01_scene8" parent="Island_f02_scene" instance=ExtResource("9_aphgw")]
+transform = Transform3D(0.14815, 0, 0.14815, 0, 0.209517, 0, -0.14815, 0, 0.14815, -19.1032, 5.91215, 12.4554)
+
+[node name="Rampe_f01_scene9" parent="Island_f02_scene" instance=ExtResource("9_aphgw")]
+transform = Transform3D(-0.14815, 0, 0.14815, 0, 0.209517, 0, -0.14815, 0, -0.14815, -20.1465, 5.91215, 12.1786)
+
+[node name="Rampe_f01_scene10" parent="Island_f02_scene" instance=ExtResource("9_aphgw")]
+transform = Transform3D(-0.0542265, 0, 0.202377, 0, 0.209517, 0, -0.202377, 0, -0.0542265, -18.0049, 4.83876, 10.3032)
+
+[node name="Rampe_f01_scene11" parent="Island_f02_scene" instance=ExtResource("9_aphgw")]
+transform = Transform3D(0.14236, 0, 0.153723, 0, 0.209517, 0, -0.153723, 0, 0.14236, -17.0485, 5.2359, 12.6574)
+
+[node name="Rampe_f01_scene12" parent="Island_f02_scene" instance=ExtResource("9_aphgw")]
+transform = Transform3D(-0.153723, 0, 0.14236, 0, 0.209517, 0, -0.14236, 0, -0.153723, -13.4233, 4.86006, 15.2271)
+
+[node name="Rampe_f01_scene13" parent="Island_f02_scene" instance=ExtResource("9_aphgw")]
+transform = Transform3D(0.14236, 0, 0.153723, 0, 0.209517, 0, -0.153723, 0, 0.14236, -20.7806, 6.33293, 14.575)
+
+[node name="Rampe_f01_scene15" parent="Island_f02_scene" instance=ExtResource("9_aphgw")]
+transform = Transform3D(0.204308, 0, -0.0464255, 0, 0.209517, 0, 0.0464255, 0, 0.204308, -9.34632, 3.02245, 0.058399)
+
+[node name="Rampe_f01_scene16" parent="Island_f02_scene" instance=ExtResource("9_aphgw")]
+transform = Transform3D(-0.0464255, 0, -0.204308, 0, 0.209517, 0, 0.204308, 0, -0.0464255, -8.67464, 3.02245, -0.648104)
+
+[node name="Rampe_f01_scene17" parent="Island_f02_scene" instance=ExtResource("9_aphgw")]
+transform = Transform3D(-0.0464255, 0, -0.204308, 0, 0.209517, 0, 0.204308, 0, -0.0464255, -8.5414, 3.02245, 0.84961)
+
+[node name="Rampe_f01_scene18" parent="Island_f02_scene" instance=ExtResource("9_aphgw")]
+transform = Transform3D(-0.0535735, 0, -0.202551, 0, 0.209517, 0, 0.202551, 0, -0.0535735, -12.2419, 2.34072, 3.43132)
+
+[node name="Rampe_f01_scene14" parent="Island_f02_scene" instance=ExtResource("9_aphgw")]
+transform = Transform3D(0.153723, 0, -0.14236, 0, 0.209517, 0, 0.14236, 0, 0.153723, -21.8034, 6.26598, 14.92)
+
 [node name="Pine_small_f01_scene" parent="Island_f02_scene" instance=ExtResource("9_u56fs")]
 transform = Transform3D(-0.0707495, 0, 0.0408472, 0, 0.0816945, 0, -0.0408472, 0, -0.0707495, 1.07125, 1.04189, -0.770505)
 
@@ -1266,6 +1329,99 @@ transform = Transform3D(-0.0509154, -0.00318338, -0.0508579, -0.000951381, 0.071
 
 [node name="Pine_small_f01_scene9" parent="Island_f02_scene" instance=ExtResource("9_u56fs")]
 transform = Transform3D(0.0218768, 0.0173002, 0.0974679, 0.0039695, 0.0995861, -0.0185671, -0.0989117, 0.00782292, 0.0208123, 1.09042, 0.955917, -0.162971)
+
+[node name="Pine_small_f01_scene74" parent="Island_f02_scene" instance=ExtResource("9_u56fs")]
+transform = Transform3D(0.0407252, 0.00869732, -0.0702835, -0.0190343, 0.0794371, -0.0011993, 0.0682137, 0.0169736, 0.0416262, -17.5603, 6.29297, 17.5562)
+
+[node name="Pine_small_f01_scene75" parent="Island_f02_scene" instance=ExtResource("9_u56fs")]
+transform = Transform3D(0.055636, 0.0076484, 0.0146847, -0.00341825, 0.0556799, -0.0160496, -0.0162004, 0.0145181, 0.0538171, -17.701, 6.26183, 17.774)
+
+[node name="Pine_small_f01_scene76" parent="Island_f02_scene" instance=ExtResource("9_u56fs")]
+transform = Transform3D(-0.054372, -0.000346438, -0.0609714, -0.00376074, 0.0815566, 0.00289019, 0.0608563, 0.0047305, -0.0542962, -17.3814, 6.24192, 17.8549)
+
+[node name="Pine_small_f01_scene77" parent="Island_f02_scene" instance=ExtResource("9_u56fs")]
+transform = Transform3D(0.0505384, 0.0107931, -0.0872193, -0.0236209, 0.0985786, -0.00148828, 0.0846508, 0.0210636, 0.0516566, -17.1372, 6.32392, 17.2454)
+
+[node name="Pine_small_f01_scene78" parent="Island_f02_scene" instance=ExtResource("9_u56fs")]
+transform = Transform3D(0.0690423, 0.0094914, 0.0182232, -0.00424193, 0.0690968, -0.0199169, -0.0201042, 0.0180165, 0.0667851, -17.3037, 6.35781, 17.5312)
+
+[node name="Pine_small_f01_scene79" parent="Island_f02_scene" instance=ExtResource("9_u56fs")]
+transform = Transform3D(-0.0674737, -0.000429921, -0.0756634, -0.00466696, 0.101209, 0.00358668, 0.0755206, 0.0058703, -0.0673797, -16.9207, 6.22246, 17.6083)
+
+[node name="Pine_small_f01_scene80" parent="Island_f02_scene" instance=ExtResource("9_u56fs")]
+transform = Transform3D(-0.0211756, -0.00661194, -0.0989228, -0.0145541, 0.100266, -0.00358622, 0.0980694, 0.0134524, -0.0218921, -16.9379, 6.36359, 16.9566)
+
+[node name="Pine_small_f01_scene81" parent="Island_f02_scene" instance=ExtResource("9_u56fs")]
+transform = Transform3D(0.0523758, 0.00361068, -0.086727, 0.00186586, 0.101222, 0.00534089, 0.086782, -0.00435527, 0.0522277, -17.6302, 6.64375, 16.9465)
+
+[node name="Pine_small_f01_scene82" parent="Island_f02_scene" instance=ExtResource("9_u56fs")]
+transform = Transform3D(0.0691093, 0.00446125, 0.0198247, -0.00427284, 0.0718968, -0.00128391, -0.0198661, 5.5933e-05, 0.0692413, -17.8006, 6.66165, 17.2214)
+
+[node name="Pine_small_f01_scene83" parent="Island_f02_scene" instance=ExtResource("9_u56fs")]
+transform = Transform3D(-0.0674737, -0.000429921, -0.0756634, -0.00466696, 0.101209, 0.00358668, 0.0755206, 0.0058703, -0.0673797, -17.2612, 6.44971, 17.04)
+
+[node name="Pine_small_f01_scene84" parent="Island_f02_scene" instance=ExtResource("9_u56fs")]
+transform = Transform3D(-0.0562812, -0.0158943, 0.0570416, -0.0174638, 0.0796516, 0.0049634, -0.0565808, -0.00877437, -0.0582715, -18.906, 6.78945, 15.1613)
+
+[node name="Pine_small_f01_scene85" parent="Island_f02_scene" instance=ExtResource("9_u56fs")]
+transform = Transform3D(-0.0501583, 0.000607146, -0.029211, 0.000644116, 0.058044, 0.000100374, 0.0292101, -0.000237387, -0.050162, -18.8257, 6.56057, 14.9131)
+
+[node name="Pine_small_f01_scene94" parent="Island_f02_scene" instance=ExtResource("9_u56fs")]
+transform = Transform3D(-0.0501583, 0.000607146, -0.029211, 0.000644116, 0.058044, 0.000100374, 0.0292101, -0.000237387, -0.050162, -18.2661, 6.58093, 17.796)
+
+[node name="Pine_small_f01_scene95" parent="Island_f02_scene" instance=ExtResource("9_u56fs")]
+transform = Transform3D(0.0761664, 0.0200075, 0.0217333, -0.020778, 0.079008, 8.46334e-05, -0.0209979, -0.00560652, 0.0787503, -14.4235, 5.0405, 15.2614)
+
+[node name="Pine_small_f01_scene96" parent="Island_f02_scene" instance=ExtResource("9_u56fs")]
+transform = Transform3D(-0.00111506, 0.0169594, 0.0555036, -0.00461567, 0.0553122, -0.0169936, -0.0578529, -0.00473983, 0.000286017, -14.2507, 5.01047, 15.4549)
+
+[node name="Pine_small_f01_scene97" parent="Island_f02_scene" instance=ExtResource("9_u56fs")]
+transform = Transform3D(0.0444137, 0.00586061, -0.0683156, -0.00307889, 0.0814839, 0.00498841, 0.0684974, -0.000137342, 0.04452, -14.0893, 4.98178, 15.1682)
+
+[node name="Pine_small_f01_scene98" parent="Island_f02_scene" instance=ExtResource("9_u56fs")]
+transform = Transform3D(0.0945198, 0.0248286, 0.0269702, -0.0257847, 0.0980461, 0.000105034, -0.0260575, -0.00695749, 0.0977263, -14.612, 5.06437, 14.771)
+
+[node name="Pine_small_f01_scene99" parent="Island_f02_scene" instance=ExtResource("9_u56fs")]
+transform = Transform3D(-0.00138375, 0.021046, 0.0688779, -0.00572789, 0.0686405, -0.0210884, -0.0717934, -0.00588197, 0.000354938, -14.3794, 5.09925, 15.0059)
+
+[node name="Pine_small_f01_scene100" parent="Island_f02_scene" instance=ExtResource("9_u56fs")]
+transform = Transform3D(0.0551159, 0.00727274, -0.0847773, -0.00382081, 0.101119, 0.0061905, 0.0850028, -0.000170453, 0.0552479, -14.2069, 4.95364, 14.6595)
+
+[node name="Pine_small_f01_scene101" parent="Island_f02_scene" instance=ExtResource("9_u56fs")]
+transform = Transform3D(0.0888347, 0.0129533, -0.0471006, -0.0150947, 0.100246, -0.000900819, 0.0464586, 0.00780228, 0.0897696, -14.8379, 5.10224, 14.5021)
+
+[node name="Pine_small_f01_scene102" parent="Island_f02_scene" instance=ExtResource("9_u56fs")]
+transform = Transform3D(-0.00113706, 0.00244525, 0.0719844, -0.00576304, 0.0717597, -0.00252854, -0.0717949, -0.00579892, -0.000937084, -14.8032, 5.41864, 15.3977)
+
+[node name="Pine_small_f01_scene103" parent="Island_f02_scene" instance=ExtResource("9_u56fs")]
+transform = Transform3D(0.0551159, 0.00727274, -0.0847773, -0.00382081, 0.101119, 0.0061905, 0.0850028, -0.000170453, 0.0552479, -14.8406, 5.19542, 14.8341)
+
+[node name="Pine_small_f01_scene104" parent="Island_f02_scene" instance=ExtResource("9_u56fs")]
+transform = Transform3D(0.0150563, 0.000916983, -0.0560534, 0.00156528, 0.0580104, 0.00136941, 0.0560389, -0.00186672, 0.015022, -14.3721, 5.35054, 15.9992)
+
+[node name="Pine_small_f01_scene86" parent="Island_f02_scene" instance=ExtResource("9_u56fs")]
+transform = Transform3D(0.0367913, -0.00406904, 0.0728271, 0.00259237, 0.0815887, 0.0032488, -0.0728946, 0.000847787, 0.0368728, -19.1543, 6.74514, 14.9159)
+
+[node name="Pine_small_f01_scene87" parent="Island_f02_scene" instance=ExtResource("9_u56fs")]
+transform = Transform3D(-0.0698429, -0.0197243, 0.0707867, -0.0216719, 0.0988448, 0.00615941, -0.0702149, -0.0108887, -0.0723128, -19.2347, 6.77992, 15.5718)
+
+[node name="Pine_small_f01_scene88" parent="Island_f02_scene" instance=ExtResource("9_u56fs")]
+transform = Transform3D(-0.0612258, -0.0165291, -0.0341645, -0.00913534, 0.0693564, -0.0171839, 0.0368371, -0.0102727, -0.0610452, -19.1496, 6.8386, 15.2558)
+
+[node name="Pine_small_f01_scene89" parent="Island_f02_scene" instance=ExtResource("9_u56fs")]
+transform = Transform3D(0.0456567, -0.00504951, 0.0903759, 0.00321704, 0.101249, 0.00403171, -0.0904597, 0.00105215, 0.0457578, -19.5339, 6.68682, 15.2707)
+
+[node name="Pine_small_f01_scene90" parent="Island_f02_scene" instance=ExtResource("9_u56fs")]
+transform = Transform3D(-0.0044896, -0.00101857, 0.101275, -0.00794716, 0.101066, 0.000664129, -0.100968, -0.0079096, -0.00455557, -19.3535, 6.79259, 15.9041)
+
+[node name="Pine_small_f01_scene91" parent="Island_f02_scene" instance=ExtResource("9_u56fs")]
+transform = Transform3D(-0.0731615, -0.00629107, 0.0698975, 0.00375378, 0.100477, 0.0129722, -0.0700795, 0.0119495, -0.0722765, -18.6938, 6.84056, 15.7549)
+
+[node name="Pine_small_f01_scene92" parent="Island_f02_scene" instance=ExtResource("9_u56fs")]
+transform = Transform3D(-0.0613511, -0.00711696, -0.0370732, -0.00915674, 0.0714362, 0.00143968, 0.0366227, 0.00593865, -0.0617457, -18.6015, 6.7287, 15.4472)
+
+[node name="Pine_small_f01_scene93" parent="Island_f02_scene" instance=ExtResource("9_u56fs")]
+transform = Transform3D(0.0456567, -0.00504951, 0.0903759, 0.00321704, 0.101249, 0.00403171, -0.0904597, 0.00105215, 0.0457578, -19.0666, 6.90084, 15.7464)
 
 [node name="Island_f02_scene2" parent="." instance=ExtResource("8_50vbm")]
 transform = Transform3D(1.19209e-07, 0, 3.90812, 0, 3.90812, 0, -3.90812, 0, 1.19209e-07, 12.024, 0, -16.376)
@@ -1504,11 +1660,17 @@ transform = Transform3D(-0.425137, 0.0152369, -0.424663, -0.00788723, 0.60032, 0
 [node name="Rampe_f01_scene3" parent="." instance=ExtResource("9_aphgw")]
 transform = Transform3D(0.300546, 0, -0.520562, 0, 0.601093, 0, 0.520562, 0, 0.300546, 6.70822, 1.03226, -13.7409)
 
-[node name="Rampe_f01_scene4" parent="." instance=ExtResource("9_aphgw")]
-transform = Transform3D(0.300546, 0, -0.520562, 0, 0.601093, 0, 0.520562, 0, 0.300546, 14.4486, 4.77073, -25.8852)
+[node name="Rampe_f01_scene8" parent="." instance=ExtResource("9_aphgw")]
+transform = Transform3D(-0.300546, -0.219999, 0.471789, 3.10585e-10, 0.544774, 0.254033, -0.520562, 0.127016, -0.272388, 14.659, 5.57985, -26.2018)
 
-[node name="Rampe_f01_scene5" parent="." instance=ExtResource("9_aphgw")]
-transform = Transform3D(0.520562, 0, 0.300546, 0, 0.601092, 0, -0.300546, 0, 0.520562, 15.521, 5.09102, -25.0676)
+[node name="Rampe_f01_scene9" parent="." instance=ExtResource("9_aphgw")]
+transform = Transform3D(-0.520562, 0, 0.300546, 0, 0.601092, 0, -0.300546, 0, -0.520562, 16.8728, 6.20791, -28.5968)
+
+[node name="Rampe_f01_scene10" parent="." instance=ExtResource("9_aphgw")]
+transform = Transform3D(-0.300546, 0, 0.520562, 0, 0.601092, 0, -0.520562, 0, -0.300546, 19.3466, 6.20791, -31.2361)
+
+[node name="Rampe_f01_scene11" parent="." instance=ExtResource("9_aphgw")]
+transform = Transform3D(0.155574, 0, 0.580611, 0, 0.601092, 0, -0.580611, 0, 0.155574, 22.635, 6.20791, -31.8324)
 
 [node name="Island_f02_scene3" parent="." instance=ExtResource("8_50vbm")]
 transform = Transform3D(-1.87479, 0, -0.502349, 0, 1.94093, 0, 0.502349, 0, -1.87479, -0.225704, 0, -2.42744)
@@ -1543,6 +1705,12 @@ transform = Transform3D(0.167742, 0, -0.167742, 0, 0.237223, 0, 0.167742, 0, 0.1
 [node name="Rocks_f01_scene8" parent="Island_f02_scene3" instance=ExtResource("11_yfjow")]
 transform = Transform3D(0.118116, 0, -0.118116, 0, 0.167041, 0, 0.118116, 0, 0.118116, -1.06451, -0.06381, 2.29361)
 
+[node name="Tiny_boat_set" parent="Island_f02_scene3" instance=ExtResource("12_16ahm")]
+transform = Transform3D(0.158567, 0, 0.0915484, 0, 0.183097, 0, -0.0915484, 0, 0.158567, -6.71673, 0.0178875, -0.827034)
+
+[node name="Tiny_boat_set2" parent="Island_f02_scene3" instance=ExtResource("12_16ahm")]
+transform = Transform3D(0.129469, 0, -0.129469, 0, 0.183097, 0, 0.129469, 0, 0.129469, -4.69595, 0.0696216, 0.696731)
+
 [node name="Island_f03_scene" parent="." instance=ExtResource("9_rnrkb")]
 transform = Transform3D(0.803184, 0, -0.803184, 0, 1.13587, 0, 0.803184, 0, 0.803184, 2.88986, 1.90735e-06, -12.437)
 
@@ -1551,6 +1719,24 @@ transform = Transform3D(-5.26447, 0, -1.41061, 0, 6.61087, 0, 1.41061, 0, -5.264
 
 [node name="Island_f03_scene3" parent="." instance=ExtResource("9_rnrkb")]
 transform = Transform3D(4.56567, 0, 7.90797, 0, 11.076, 0, -7.90797, 0, 4.56567, 32.0074, 5.72205e-06, -51.1527)
+
+[node name="Pine_medium_f02_scene6" parent="Island_f03_scene3" instance=ExtResource("10_2qj38")]
+transform = Transform3D(-0.0209576, 0.004493, 0.0235169, 0.000213339, 0.0257999, -0.00473901, -0.0239409, -0.0035948, -0.0206486, 1.52232, 1.79862, -1.23594)
+
+[node name="Pine_medium_f02_scene7" parent="Island_f03_scene3" instance=ExtResource("10_2qj38")]
+transform = Transform3D(0.023998, 0.000579693, 0.0207847, -0.0012007, 0.0264174, 0.00238091, -0.0208588, -0.000729309, 0.0237528, 1.74092, 1.79863, -1.25516)
+
+[node name="Pine_medium_f02_scene8" parent="Island_f03_scene3" instance=ExtResource("10_2qj38")]
+transform = Transform3D(0.0207584, 0.000691116, -0.023844, 0.00218083, 0.0262437, 0.00519593, 0.024016, -0.00308856, 0.0201577, 2.06314, 1.79863, -0.829479)
+
+[node name="Pine_medium_f02_scene9" parent="Island_f03_scene3" instance=ExtResource("10_2qj38")]
+transform = Transform3D(0.0188936, 0.00493503, 0.0251203, -0.0166607, 0.0219481, 0.00804302, -0.0194393, -0.0138808, 0.0174972, 1.7774, 1.79863, -1.04639)
+
+[node name="Pine_medium_f02_scene10" parent="Island_f03_scene3" instance=ExtResource("10_2qj38")]
+transform = Transform3D(0.0188936, 0.00493503, 0.0251203, -0.0166607, 0.0219481, 0.00804302, -0.0194393, -0.0138808, 0.0174972, 1.80549, 1.66098, -0.877297)
+
+[node name="Pine_medium_f02_scene11" parent="Island_f03_scene3" instance=ExtResource("10_2qj38")]
+transform = Transform3D(0.0239361, 0.0109189, -0.0152325, -0.00751058, 0.0236671, 0.0139277, 0.0195727, -0.00440399, 0.0239971, 1.56854, 1.77542, -1.42868)
 
 [node name="Lighthouse_root" type="Node3D" parent="."]
 transform = Transform3D(0.188803, 0, -1.0612, 0, 1.07787, 0, 1.0612, 0, 0.188803, -0.392425, 10.0331, -1.56132)
@@ -1715,6 +1901,12 @@ transform = Transform3D(-0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, -0.965926
 [node name="Cabin_set_04" parent="." instance=ExtResource("32_fidam")]
 transform = Transform3D(0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, 0.258819, 32.5009, 7.21276, -26.8446)
 
+[node name="Cabin_set_10" parent="." instance=ExtResource("32_fidam")]
+transform = Transform3D(0.352201, 0, -0.935924, 0, 1, 0, 0.935924, 0, 0.352201, 20.0016, 7.46024, -30.157)
+
+[node name="Cabin_set_11" parent="." instance=ExtResource("32_fidam")]
+transform = Transform3D(0.986635, 0, -0.162947, 0, 1, 0, 0.162947, 0, 0.986635, 23.135, 6.74449, -29.5148)
+
 [node name="Sphere_sky" type="Node3D" parent="."]
 script = ExtResource("34_tdwqi")
 
@@ -1773,8 +1965,35 @@ transform = Transform3D(0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, 
 [node name="Island_Set01_Prefab" parent="." instance=ExtResource("38_dh1a0")]
 transform = Transform3D(1.30385, 0, 4.86605, 0, 5.0377, 0, -4.86605, 0, 1.30385, 25.4028, 7.13035, -54.6488)
 
+[node name="Island_Set01_Prefab2" parent="." instance=ExtResource("38_dh1a0")]
+transform = Transform3D(0.936898, 0, 1.54731, 0, 1.80885, 0, -1.54731, 0, 0.936898, 23.333, 4.32496, -31.4045)
+
 [node name="Island_Set02_Prefab" parent="." instance=ExtResource("39_3rap5")]
 transform = Transform3D(1.62422, 0, -2.81323, 0, 3.24844, 0, 2.81323, 0, 1.62422, 34.5849, 11.9845, -56.4945)
+
+[node name="Big_Boat_set" parent="." instance=ExtResource("32_nkaw5")]
+transform = Transform3D(-2.50927, 0, -0.672358, 0, 2.59779, 0, 0.672358, 0, -2.50927, -7.42875, -0.104863, -17.4754)
+
+[node name="Node3D2" parent="." instance=ExtResource("32_nkaw5")]
+transform = Transform3D(-0.672358, 0, 2.50927, 0, 2.59779, 0, -2.50927, 0, -0.672358, 34.2167, -0.104863, 25.9454)
+
+[node name="VFX" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.15441, 5.13648, -19.8499)
+
+[node name="VfxSmokeSphere" parent="VFX" instance=ExtResource("33_2nmq3")]
+transform = Transform3D(0.524613, 0, 0, 0, 0.524613, 0, 0, 0, 0.524613, 0, 0.144897, 0.214203)
+
+[node name="VfxSmokeSphere2" parent="VFX" instance=ExtResource("33_2nmq3")]
+transform = Transform3D(-0.817256, 0, 0.218983, 0, 0.846086, 0, -0.218983, 0, -0.817256, 0, 1.28511, -0.487429)
+
+[node name="VfxSmokeSphere3" parent="VFX" instance=ExtResource("33_2nmq3")]
+transform = Transform3D(-1.6533, 0, 0.443001, 0, 1.71162, 0, -0.443001, 0, -1.6533, 0, 3.42508, -2.42828)
+
+[node name="VfxSmokeSphere4" parent="VFX" instance=ExtResource("33_2nmq3")]
+transform = Transform3D(-2.72114, 0, 0.729129, -0.385321, 2.39162, -1.43804, -0.618996, -1.48877, -2.31012, 0, 7.33027, -2.64802)
+
+[node name="VfxSmokeSphere5" parent="VFX" instance=ExtResource("33_2nmq3")]
+transform = Transform3D(-3.92884, 5.14546e-08, 1.05273, -1.00441, 1.21809, -3.74852, -0.315265, -3.88076, -1.17658, 0, 14.4037, -7.09756)
 
 [editable path="VIEW/BirdsView_Prefab_00"]
 [editable path="VIEW/BirdsView_Prefab_00/Far_birds"]
@@ -1794,9 +2013,6 @@ transform = Transform3D(1.62422, 0, -2.81323, 0, 3.24844, 0, 2.81323, 0, 1.62422
 [editable path="VIEW/BirdsView_Prefab_08/Far_birds"]
 [editable path="VIEW/BirdsView_Prefab_09"]
 [editable path="VIEW/BirdsView_Prefab_09/Far_birds"]
-[editable path="VIEW/Motacilla_View"]
-[editable path="VIEW/Motacilla_View/Motacilla_bird_msh_01"]
-[editable path="VIEW/Motacilla_View/MotacillaFlying_bird_msh_01"]
 [editable path="Lighthouse_root/light_cone2"]
 [editable path="Lighthouse_root/light_cone3"]
 [editable path="Lighthouse_root/light_cone4"]

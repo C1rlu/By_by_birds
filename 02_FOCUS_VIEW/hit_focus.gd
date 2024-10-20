@@ -27,5 +27,5 @@ func _set_focus():
 	_global_datas._in_transition_start.emit()
 	
 	var utility = GameUtility.new()
-	var timer_n = utility.create_timer(0.3,_disable,self)
+	var timer_n = utility.create_timer(0.5,_disable,self)
 	timer_n.start()

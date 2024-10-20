@@ -13,7 +13,7 @@ resource_local_to_scene = true
 render_priority = 1
 shader = ExtResource("5_r8wbk")
 shader_parameter/ColorParameter = Color(0.13, 0.13, 0.13, 1)
-shader_parameter/Color = Color(0.415686, 0.415686, 0.415686, 1)
+shader_parameter/Color = Color(0.493545, 0.493546, 0.493545, 1)
 shader_parameter/Dither_strenght = 0.485
 shader_parameter/Gradient_base = ExtResource("9_v0alh")
 

@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://br743xj0dln5y"]
+
+[ext_resource type="PackedScene" uid="uid://dxnm5dg7p3v6t" path="res://04_SCENE_MAIN_MAP/00_PLAYER/Boat/Boat_smoke/smoke_msh.blend" id="1_o4ifl"]
+[ext_resource type="Shader" uid="uid://dnm3gc6k0yqnj" path="res://04_SCENE_MAIN_MAP/00_PLAYER/Boat/Boat_smoke/Boat_smoke_sh.tres" id="2_dprsu"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_unild"]
+render_priority = 1
+shader = ExtResource("2_dprsu")
+shader_parameter/Color = Color(0.703808, 0.703808, 0.703808, 1)
+
+[node name="VfxSmokeSphere" type="Node3D"]
+
+[node name="smoke_msh" parent="." instance=ExtResource("1_o4ifl")]
+
+[node name="msh_smoke" parent="smoke_msh" index="0"]
+layers = 3
+surface_material_override/0 = SubResource("ShaderMaterial_unild")
+
+[editable path="smoke_msh"]

@@ -2,10 +2,8 @@ extends Node
 
 
 @export var rotation_root: Node3D 
-@export var Cam: Camera3D
-@export var Cam_light: Camera3D
-@export var Cam_light_warm: Camera3D
-@export var Cam_ui: Camera3D
+
+
 
 @onready var timer: Timer = $Timer
 var direction_speed : bool
@@ -33,22 +31,14 @@ func _reset():
 	
 func adapt_speed():
 	
-	var camera_distance = Cam.global_position.distance_to(Vector3.ZERO)
+	var camera_distance = rotation_root.global_position.distance_to(Vector3.ZERO)
 	
-
 	rotation_speed = 0.8 / camera_distance * 10	
-	
 	
 func _process(delta: float) -> void:
 	
-	Cam_light.global_position = Cam.global_position 
-	Cam_light.global_rotation_degrees = Cam.global_rotation_degrees
-
-	Cam_light_warm.global_position = Cam.global_position 
-	Cam_light_warm.global_rotation_degrees = Cam.global_rotation_degrees
 	
-	Cam_ui.global_position = Cam.global_position 
-	Cam_ui.global_rotation_degrees = Cam.global_rotation_degrees
+
 	
 	if disable:
 		return

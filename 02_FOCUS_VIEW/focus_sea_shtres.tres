@@ -13,7 +13,7 @@ op_type = 2
 operator = 2
 
 [sub_resource type="VisualShaderNodeProximityFade" id="VisualShaderNodeProximityFade_pw4sl"]
-default_input_values = [0, 2.57]
+default_input_values = [0, 4.34]
 
 [sub_resource type="VisualShaderNodeSmoothStep" id="VisualShaderNodeSmoothStep_3j1nr"]
 default_input_values = [0, -0.13, 1, 1.17, 2, 0.5]
@@ -47,12 +47,11 @@ Dither_Node = In - DITHER_THRESHOLDS[index];"
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_0sqms"]
 noise_type = 3
 seed = 195
-frequency = 0.0254
+frequency = 0.1059
 offset = Vector3(0, 1, 0)
 fractal_type = 0
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_knhc8"]
-height = 256
 seamless = true
 noise = SubResource("FastNoiseLite_0sqms")
 
@@ -203,7 +202,7 @@ void fragment() {
 
 	float n_out13p0;
 // ProximityFade:13
-	float n_in13p0 = 2.57000;
+	float n_in13p0 = 4.34000;
 	{
 		float __depth_tex = texture(depth_tex_frg_13, SCREEN_UV).r;
 		vec4 __depth_world_pos = INV_PROJECTION_MATRIX * vec4(SCREEN_UV * 2.0 - 1.0, __depth_tex, 1.0);
@@ -246,6 +245,7 @@ void fragment() {
 
 }
 "
+graph_offset = Vector2(-1816.92, 428.315)
 modes/depth_draw = 1
 modes/specular = 2
 flags/unshaded = true

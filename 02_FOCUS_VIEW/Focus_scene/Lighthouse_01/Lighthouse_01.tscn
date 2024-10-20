@@ -2432,9 +2432,6 @@ transform = Transform3D(-0.0446018, 0.1421, 0.163344, 0.138442, 0.146942, -0.090
 [node name="seagull_msh" parent="VIEW/BirdsView_Prefab_00/Far_birds" index="0"]
 surface_material_override/0 = SubResource("ShaderMaterial_jd6ai")
 
-[node name="Bird_effect" parent="VIEW/BirdsView_Prefab_00/Far_birds" index="1"]
-transform = Transform3D(-2.44188e-08, 0, -0.558637, 0, 0.558637, 0, 0.558637, 0, -2.44188e-08, 0, 0, 0)
-
 [node name="seagull_msh_light" parent="VIEW/BirdsView_Prefab_00/Far_birds" index="2"]
 surface_material_override/0 = null
 
@@ -2452,9 +2449,6 @@ transform = Transform3D(-0.0446018, 0.1421, 0.163344, 0.138442, 0.146942, -0.090
 
 [node name="seagull_msh" parent="VIEW/BirdsView_Prefab_02/Far_birds" index="0"]
 surface_material_override/0 = SubResource("ShaderMaterial_jd6ai")
-
-[node name="Bird_effect" parent="VIEW/BirdsView_Prefab_02/Far_birds" index="1"]
-transform = Transform3D(-2.44188e-08, 0, -0.558637, 0, 0.558637, 0, 0.558637, 0, -2.44188e-08, 0, 0, 0)
 
 [node name="seagull_msh_light" parent="VIEW/BirdsView_Prefab_02/Far_birds" index="2"]
 surface_material_override/0 = null
@@ -2474,9 +2468,6 @@ transform = Transform3D(0.172328, -0.118047, 0.0723252, 0.138442, 0.146942, -0.0
 [node name="seagull_msh" parent="VIEW/BirdsView_Prefab_01/Far_birds" index="0"]
 surface_material_override/0 = SubResource("ShaderMaterial_ppwcs")
 
-[node name="Bird_effect" parent="VIEW/BirdsView_Prefab_01/Far_birds" index="1"]
-transform = Transform3D(-2.44188e-08, 0, -0.558637, 0, 0.558637, 0, 0.558637, 0, -2.44188e-08, 0, 0, 0)
-
 [node name="seagull_msh_light" parent="VIEW/BirdsView_Prefab_01/Far_birds" index="2"]
 surface_material_override/0 = null
 
@@ -2494,9 +2485,6 @@ transform = Transform3D(-0.166456, 0.0841359, -0.118645, 0.111792, 0.189358, -0.
 
 [node name="seagull_msh" parent="VIEW/BirdsView_Prefab_03/Far_birds" index="0"]
 surface_material_override/0 = SubResource("ShaderMaterial_tlbxs")
-
-[node name="Bird_effect" parent="VIEW/BirdsView_Prefab_03/Far_birds" index="1"]
-transform = Transform3D(-2.44188e-08, 0, -0.558637, 0, 0.558637, 0, 0.558637, 0, -2.44188e-08, 0, 0, 0)
 
 [node name="seagull_msh_light" parent="VIEW/BirdsView_Prefab_03/Far_birds" index="2"]
 surface_material_override/0 = null
@@ -2516,9 +2504,6 @@ transform = Transform3D(-0.197999, 0.0385606, -0.090403, 0.09817, 0.0873538, -0.
 [node name="seagull_msh" parent="VIEW/BirdsView_Prefab_04/Far_birds" index="0"]
 surface_material_override/0 = SubResource("ShaderMaterial_s7mly")
 
-[node name="Bird_effect" parent="VIEW/BirdsView_Prefab_04/Far_birds" index="1"]
-transform = Transform3D(-2.44188e-08, 0, -0.558637, 0, 0.558637, 0, 0.558637, 0, -2.44188e-08, 0, 0, 0)
-
 [node name="seagull_msh_light" parent="VIEW/BirdsView_Prefab_04/Far_birds" index="2"]
 surface_material_override/0 = null
 
@@ -2536,9 +2521,6 @@ transform = Transform3D(0.139999, -0.0690528, 0.156509, 0.159407, 0.126043, -0.0
 
 [node name="seagull_msh" parent="VIEW/BirdsView_Prefab_05/Far_birds" index="0"]
 surface_material_override/0 = SubResource("ShaderMaterial_pg7j3")
-
-[node name="Bird_effect" parent="VIEW/BirdsView_Prefab_05/Far_birds" index="1"]
-transform = Transform3D(-2.44188e-08, 0, -0.558637, 0, 0.558637, 0, 0.558637, 0, -2.44188e-08, 0, 0, 0)
 
 [node name="seagull_msh_light" parent="VIEW/BirdsView_Prefab_05/Far_birds" index="2"]
 surface_material_override/0 = null
@@ -2558,9 +2540,6 @@ transform = Transform3D(0.0466888, 0.18259, 0.115518, 0.09817, 0.0873538, -0.177
 [node name="seagull_msh" parent="VIEW/BirdsView_Prefab_06/Far_birds" index="0"]
 surface_material_override/0 = SubResource("ShaderMaterial_ki1yo")
 
-[node name="Bird_effect" parent="VIEW/BirdsView_Prefab_06/Far_birds" index="1"]
-transform = Transform3D(-2.44188e-08, 0, -0.558637, 0, 0.558637, 0, 0.558637, 0, -2.44188e-08, 0, 0, 0)
-
 [node name="seagull_msh_light" parent="VIEW/BirdsView_Prefab_06/Far_birds" index="2"]
 surface_material_override/0 = null
 
@@ -2578,9 +2557,6 @@ transform = Transform3D(0.0466888, 0.18259, 0.115518, 0.09817, 0.0873538, -0.177
 
 [node name="seagull_msh" parent="VIEW/BirdsView_Prefab_07/Far_birds" index="0"]
 surface_material_override/0 = SubResource("ShaderMaterial_qpyf3")
-
-[node name="Bird_effect" parent="VIEW/BirdsView_Prefab_07/Far_birds" index="1"]
-transform = Transform3D(-2.44188e-08, 0, -0.558637, 0, 0.558637, 0, 0.558637, 0, -2.44188e-08, 0, 0, 0)
 
 [node name="seagull_msh_light" parent="VIEW/BirdsView_Prefab_07/Far_birds" index="2"]
 surface_material_override/0 = null
@@ -2600,9 +2576,6 @@ transform = Transform3D(0.0466888, 0.18259, 0.115518, 0.09817, 0.0873538, -0.177
 [node name="seagull_msh" parent="VIEW/BirdsView_Prefab_08/Far_birds" index="0"]
 surface_material_override/0 = SubResource("ShaderMaterial_px8jd")
 
-[node name="Bird_effect" parent="VIEW/BirdsView_Prefab_08/Far_birds" index="1"]
-transform = Transform3D(-2.44188e-08, 0, -0.558637, 0, 0.558637, 0, 0.558637, 0, -2.44188e-08, 0, 0, 0)
-
 [node name="seagull_msh_light" parent="VIEW/BirdsView_Prefab_08/Far_birds" index="2"]
 surface_material_override/0 = null
 
@@ -2620,9 +2593,6 @@ transform = Transform3D(0.192473, -0.0888456, 0.0626392, 0.09817, 0.0873538, -0.
 
 [node name="seagull_msh" parent="VIEW/BirdsView_Prefab_09/Far_birds" index="0"]
 surface_material_override/0 = SubResource("ShaderMaterial_5jqyj")
-
-[node name="Bird_effect" parent="VIEW/BirdsView_Prefab_09/Far_birds" index="1"]
-transform = Transform3D(-2.44188e-08, 0, -0.558637, 0, 0.558637, 0, 0.558637, 0, -2.44188e-08, 0, 0, 0)
 
 [node name="seagull_msh_light" parent="VIEW/BirdsView_Prefab_09/Far_birds" index="2"]
 surface_material_override/0 = null
@@ -3347,7 +3317,7 @@ skeleton = NodePath("../../..")
 surface_material_override/0 = SubResource("ShaderMaterial_t81f8")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Sphere_sky/MOON"]
-transform = Transform3D(-0.80152, 0.369429, 0.470199, 0.116079, -0.675245, 0.728403, 0.586592, 0.63841, 0.498339, 0, 0, 0)
+transform = Transform3D(-0.0372536, 0.0171706, 0.0218542, 0.0053952, -0.0313845, 0.0338552, 0.027264, 0.0296724, 0.0231622, 0, 0, 0)
 layers = 2
 light_energy = 2.0
 light_bake_mode = 0

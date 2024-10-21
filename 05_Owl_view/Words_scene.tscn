@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://pg3gu15dhmrd"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_l0dvc"]
+viewport_path = NodePath("SubViewport")
+
+[node name="Dialogue" type="Sprite3D"]
+transform = Transform3D(0.0692136, 0, 0, 0, 0.0692136, 0, 0, 0, 0.0692136, 0, 0, 0)
+layers = 33
+cast_shadow = 0
+gi_mode = 0
+billboard = 1
+fixed_size = true
+texture = SubResource("ViewportTexture_l0dvc")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+size = Vector2i(512, 65)
+
+[node name="Label" type="Label" parent="SubViewport"]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 50
+text = "Lighthouse"

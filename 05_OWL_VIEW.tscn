@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=3 uid="uid://cdkof1lgl2una"]
+[gd_scene load_steps=78 format=3 uid="uid://cdkof1lgl2una"]
 
 [ext_resource type="Script" path="res://05_Owl_view/open_owl_view.gd" id="1_ksfmy"]
 [ext_resource type="PackedScene" uid="uid://dkhji76icgbfk" path="res://05_DESK_MAP/Candle/Candle_prefab_02.tscn" id="2_u2be4"]
@@ -16,6 +16,7 @@
 [ext_resource type="Shader" uid="uid://7nanp4dqf4uc" path="res://05_DESK_MAP/00_SHADER/04_board_light.tres" id="10_uuyxy"]
 [ext_resource type="Shader" uid="uid://ddgu7ccdrwv38" path="res://02_FOCUS_VIEW/02_FOCUS_VIEW_sky.res" id="11_2e7nr"]
 [ext_resource type="PackedScene" uid="uid://bqbbtrchoeoe1" path="res://05_DESK_MAP/Lanterne/Lanterne_prefab.tscn" id="12_vva32"]
+[ext_resource type="PackedScene" uid="uid://pg3gu15dhmrd" path="res://05_Owl_view/Words_scene.tscn" id="16_8kf1w"]
 [ext_resource type="Texture2D" uid="uid://dafg2qvpi6wmk" path="res://13_TOOLS_UI/Loader_circle/Loader_circle.png" id="17_58150"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_u2ixv"]
@@ -258,8 +259,8 @@ colors = PackedColorArray(0, 0, 0, 1, 0.419813, 0.419813, 0.419813, 1, 1, 1, 1, 
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_qj7d2"]
 gradient = SubResource("Gradient_c56on")
-fill_from = Vector2(1, 1)
-fill_to = Vector2(1, 0.683761)
+fill_from = Vector2(1, 0.615385)
+fill_to = Vector2(1, 0.320513)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_fc7i1"]
 noise_type = 2
@@ -282,6 +283,9 @@ shader = SubResource("VisualShader_lr2yb")
 shader_parameter/Stars = SubResource("NoiseTexture2D_kkfgb")
 shader_parameter/Stars2 = SubResource("NoiseTexture2D_omccs")
 shader_parameter/Gradient = SubResource("GradientTexture2D_qj7d2")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_oo5xb"]
+viewport_path = NodePath("SubViewport")
 
 [sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_y363p"]
 source = 5
@@ -545,7 +549,6 @@ cull_mask = 32
 fov = 50.0
 
 [node name="Board_scene" type="Node3D" parent="."]
-visible = false
 
 [node name="OmniLight3D2" type="OmniLight3D" parent="Board_scene"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.166, 0.234, -0.101)
@@ -698,6 +701,28 @@ surface_material_override/0 = SubResource("ShaderMaterial_2mmhh")
 
 [node name="Lanterne_prefab" parent="Board_scene" instance=ExtResource("12_vva32")]
 transform = Transform3D(0.914459, 0, -0.404679, 0, 1, 0, 0.404679, 0, 0.914459, 0.15202, 5.96046e-08, -0.131052)
+
+[node name="WORDS" type="Node3D" parent="Board_scene"]
+
+[node name="Words_scene" parent="Board_scene/WORDS" instance=ExtResource("16_8kf1w")]
+transform = Transform3D(0.0692136, 0, 0, 0, 0.0692136, 0, 0, 0, 0.0692136, -1.809, 1.112, -2.659)
+texture = SubResource("ViewportTexture_oo5xb")
+
+[node name="Words_scene2" parent="Board_scene/WORDS" instance=ExtResource("16_8kf1w")]
+transform = Transform3D(0.0692136, 0, 0, 0, 0.0692136, 0, 0, 0, 0.0692136, 1.51146, 1.51256, -2.65866)
+texture = SubResource("ViewportTexture_oo5xb")
+
+[node name="Words_scene3" parent="Board_scene/WORDS" instance=ExtResource("16_8kf1w")]
+transform = Transform3D(0.0692136, 0, 0, 0, 0.0692136, 0, 0, 0, 0.0692136, -1.2403, 2.19136, -2.65866)
+texture = SubResource("ViewportTexture_oo5xb")
+
+[node name="Words_scene4" parent="Board_scene/WORDS" instance=ExtResource("16_8kf1w")]
+transform = Transform3D(0.0692136, 0, 0, 0, 0.0692136, 0, 0, 0, 0.0692136, 2.21007, 1.02761, -2.65866)
+texture = SubResource("ViewportTexture_oo5xb")
+
+[node name="Words_scene5" parent="Board_scene/WORDS" instance=ExtResource("16_8kf1w")]
+transform = Transform3D(0.0692136, 0, 0, 0, 0.0692136, 0, 0, 0, 0.0692136, 2.30759, 2.6679, -2.65866)
+texture = SubResource("ViewportTexture_oo5xb")
 
 [node name="BACKDROP_FOCUS" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_s5pmg")

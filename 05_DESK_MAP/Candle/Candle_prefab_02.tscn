@@ -1,8 +1,10 @@
-[gd_scene load_steps=20 format=3 uid="uid://dkhji76icgbfk"]
+[gd_scene load_steps=13 format=4 uid="uid://dkhji76icgbfk"]
 
 [ext_resource type="Texture2D" uid="uid://n0xc42s1sg48" path="res://05_DESK_MAP/Candle/Candle_set/Candle_gradient.png" id="1_vdo2o"]
 [ext_resource type="PackedScene" uid="uid://ddr1beucre465" path="res://05_DESK_MAP/Candle/Candle_set/Candle_02.blend" id="3_hdmyq"]
 [ext_resource type="Shader" uid="uid://bii47ft606xyy" path="res://05_DESK_MAP/00_SHADER/Element_base_sh.tres" id="4_jpd4x"]
+[ext_resource type="Material" uid="uid://yjoyk6fvrm6q" path="res://00_SHADER/No_light_surface_mat.tres" id="4_vr0ey"]
+[ext_resource type="Material" uid="uid://cvng1dwrp1vmq" path="res://00_SHADER/Light_pass_lit_mat.tres" id="5_b4edb"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1l4lr"]
 render_priority = 0
@@ -17,179 +19,76 @@ shader = ExtResource("4_jpd4x")
 shader_parameter/BaseColor = Color(0.00784314, 0.0588235, 0.0627451, 1)
 shader_parameter/Dither_Opacity = 1.0
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w00mw"]
+resource_name = "Mat_01"
+cull_mode = 2
+albedo_color = Color(0.100316, 0.237606, 0.294111, 1)
+albedo_texture = ExtResource("1_vdo2o")
+roughness = 0.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u4eyf"]
+resource_name = "Material"
+cull_mode = 2
+albedo_color = Color(0.906332, 0.906332, 0.906332, 1)
+roughness = 0.5
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_lv0pl"]
+_surfaces = [{
+"aabb": AABB(-0.10096, -3.57585e-05, -0.11285, 0.20192, 0.404338, 0.21381),
+"format": 34359742465,
+"index_count": 210,
+"index_data": PackedByteArray("GAADAAEAGAAZAAMAGQAFAAMAGQAaAAUAGgAHAAUAGgAbAAcAGwAJAAcAGwAcAAkAHAALAAkAHAAdAAsAHQANAAsAHQAeAA0ACwAUAAkACwAVABQAHgAPAA0AHgAfAA8AHwABAA8AHwAYAAEAEgARABAAEQAWABcAFgAUABUAFAASABMAEgAWABEAFgASABQAAQAXAA8AAQARABcAAwARAAEAAwAQABEABwASAAUABwATABIADQAVAAsADQAWABUACQATAAcACQAUABMADwAWAA0ADwAXABYABQAQAAMABQASABAAJgAYAB8AJgAnABgAJQAfAB4AJQAmAB8AJAAeAB0AJAAlAB4AIwAdABwAIwAkAB0AIgAcABsAIgAjABwAIQAbABoAIQAiABsAIAAaABkAIAAhABoAJwAZABgAJwAgABkAAAAgACcAAAACACAAAgAhACAAAgAEACEABAAiACEABAAGACIABgAjACIABgAIACMACAAkACMACAAKACQACgAlACQACgAMACUADAAmACUADAAOACYADgAnACYADgAAACcA"),
+"lods": [0.032676, PackedByteArray("HAAdABQAHAAUABsACAAdABwACAAKAB0ACgAMAB0ABgAIABwABgAcABsABAAGABsAHQAMAB4ABAAbABoAGwASABoAAgAEABoAGgASABkAAgAaABkAGwAUABIAHQAeABQAHgAXABQAGAARABcAGQASABEAGQARABgAGAACABkAAAACABgAEgAXABEAFwASABQAGAAXAB4ADgAYAB4ADgAAABgADAAOAB4A"), 0.0800278, PackedByteArray("EgAVABEAGAARABUAEgARABgADgAYABUADAAOABUADgAAABgACgAMABUACAAKABUABAAGABIAAgAEABIABgAIABIACAAVABIAAAACABgAGAACABIA")],
+"name": "Mat_01",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 40,
+"vertex_data": PackedByteArray("3w4RO237FbjdHee9AAAAAFGHwD4hxM69qzSSPW37FbirNJK9qzSSPY0huj6rNJK9IcTOPW37FbgAAACAIcTOPa61wz4AAACAqzSSPW37FbirNJI9qzSSPbwRyj6rNJI9AAAAAG37FbghxM49AAAAAFKYyD4hxM49qzSSvW37FbirNJI9qzSSvZr+xj6rNJI9IcTOvW37FbgAAACAIcTOveMfvT4AAACAqzSSvW37FbirNJK9qzSSvbelvT6rNJK9GjFlPYk8wT4aMWW9AAAAANVqxD4lEKK9JRCiPdooyD4AAACAGjFlPYzfzj4aMWU9AAAAALYAzz4lEKI9GjFlvcaOzD4aMWU9JRCivV0Axj4AAACAGjFlvZLfxT4aMWW9AAAAAOAeuj4hxM69qzSSPZXMsj6rNJK9IcTOPX8gvT4AAACAqzSSPRjDwj6rNJI9AAAAAO4twT4hxM49qzSSvYnkvz6rNJI9IcTOvUdttj4AAACAqzSSvc3AtT6rNJK9qzSSPRnKsD2rNJK9IcTOPVMYvj0AAACAqzSSPdq5vz2rNJI9AAAAAAqkvT0hxM49qzSSvdq5vz2rNJI9IcTOvXIHwD0AAACAqzSSvXIHwD2rNJK9AAAAAFMYvj0hxM69")
+}, {
+"aabb": AABB(-0.00621575, 0.384655, -0.00621575, 0.0124315, 0.0474361, 0.0213697),
+"format": 34359742465,
+"index_count": 54,
+"index_data": PackedByteArray("AAADAAEAAAACAAMAAgAFAAMAAgAEAAUABQAIAAMABQAKAAgABAAHAAUABAAGAAcABgABAAcABgAAAAEACAALAAkACAAKAAsAAwAJAAEAAwAIAAkABwAKAAUABwALAAoAAQALAAcAAQAJAAsA"),
+"name": "Material",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 12,
+"vertex_data": PackedByteArray("AAAAAM4pxT59rcu7AAAAAEj80j5fajI7fa3LOzJ6xT4AAACAfa3LO6k50z5WcRI8AAAAAO1CxT59rcs7AAAAADtj0z4VSHg8fa3Lu4/xxD4AAACAfa3Lu6f80j5WcRI8ASF4O9Ym3T7VbsY7AAAAAAAS3T6nvBQ7AAAAABo73T6rPyE8ASF4u9Ym3T7VbsY7")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_3wox5"]
+resource_name = "Candle_02_Cylinder"
+_surfaces = [{
+"aabb": AABB(-0.10096, -3.57585e-05, -0.11285, 0.20192, 0.404338, 0.21381),
+"attribute_data": PackedByteArray("XhInOY/1fz8ZHic5ABAnOQAAAD+P9X8/AQAAPwAQJznWEyc5K/hfPwAAAD8s+F8/TRUnOcj6Pz8AAAA/yPo/P8UWJzlk/R8/AAAAP2T9Hz88GCc5AAAAPwEAAD8AAAA/sxknOTgFwD4BAAA/OAXAPisbJzlwCoA+AQAAP3IKgD6iHCc5VB8APgEAAD9UHwA+dlIhP471fz8AAAA/LPhfP85UUD+O9X8/AAAAP4/1fz8BAAA/ABAnOeUUAD/+t14/AAAAP8j6Pz/lFAA/prUvPwAAAD9k/R8/AQAAPwAAAD91UiE/FHgOPwEAAD84BcA+zVRQPxR4Dj8BAAA/cgqAPl6ScT+ltS8/AQAAP1QfAD5fknE//bdeP3EKgD6P9X8/cwqAPgAQJzlxCoA+K/hfP3IKgD7I+j8/cgqAPmT9Hz9yCoA+AAAAP3IKgD44BcA+cgqAPnIKgD5zCoA+VB8APlQfAD4r+F8/VB8APsj6Pz9VHwA+ZP0fP1UfAD4AAAA/VR8APjgFwD5WHwA+cAqAPlYfAD5UHwA+VB8APo/1fz9XHwA+ABAnORkeJzkAECc51hMnOSv4Xz/FFic5ZP0fPzwYJzkAAAA/PBgnOQAAAD8rGyc5cAqAPqIcJzlUHwA+ohwnOVQfAD4AAAA/yPo/PwAAAD/I+j8/AAAAP8j6Pz8BAAA/OAXAPgEAAD84BcA+AQAAPzgFwD4BAAA/OAXAPnEKgD6P9X8/cQqAPo/1fz9zCoA+ABAnOXMKgD4AECc51hMnOSv4Xz9NFSc5yPo/P8UWJzlk/R8/PBgnOQAAAD+zGSc5OAXAPisbJzlwCoA+ohwnOVQfAD4AAAA/j/V/PwEAAD8AECc5AAAAP8j6Pz8BAAA/AAAAPwEAAD8AAAA/AQAAP1QfAD4BAAA/VB8APnEKgD6P9X8/cwqAPgAQJzlzCoA+ABAnOXEKgD4r+F8/cQqAPiv4Xz9yCoA+yPo/P3IKgD5k/R8/cgqAPmT9Hz9yCoA+ZP0fP3IKgD4AAAA/cgqAPjgFwD5yCoA+OAXAPnIKgD44BcA+cgqAPnIKgD5yCoA+cgqAPg=="),
+"format": 34359742487,
+"index_count": 210,
+"index_data": PackedByteArray("IwAFAAIAIwAlAAUAJQAHAAUAJQAmAAcAJgAJAAcAJgAnAAkAJwALAAkAJwAoAAsAKAANAAsAKAApAA0AKQAPAA0AKQAqAA8ADQAbAAsADQAdABsAKgARAA8AKgArABEAKwADABEAKwAkAAMAFwAUABIAFAAgACIAIAAcAB4AHAAXABkAFwAgABQAIAAXABwAAwAhABEAAwAWACEABQAVAAIABQATABUACQAYAAcACQAaABgADwAdAA0ADwAfAB0ACwAaAAkACwAbABoAEQAfAA8AEQAhAB8ABwATAAUABwAYABMAMgAkACsAMgA0ACQAMQArACoAMQAyACsAMAAqACkAMAAxACoALwApACgALwAwACkALgAoACcALgAvACgALQAnACYALQAuACcALAAmACUALAAtACYAMwAlACMAMwAsACUAAAAsADMAAAAEACwABAAtACwABAAGAC0ABgAuAC0ABgAIAC4ACAAvAC4ACAAKAC8ACgAwAC8ACgAMADAADAAxADAADAAOADEADgAyADEADgAQADIAEAA0ADIAEAABADQA"),
+"lods": [0.032676, PackedByteArray("XwBgAFIAXwBSAF4ASwBgAF8ASwBMAGAATABNAGAASgBLAF8ASgBfAFwASQBKAFwAYgBNACoASQBcAFsAXABRAFsASABJAFsAWwBRAFoASABbAFoAXQBTAFEAYQBjAFMAYwBVAFMAWABQAFUAWQBRAE8AWQBPAFYAVgBIAFkAAABIAFYAFwAiABQAIgAXABwAVwBUAGQATgBXAGQATgABAFcATQBOAGQA"), 0.0800278, PackedByteArray("FwAeABQARgAWAEAAGAAVAEQAOwBHAEEAOgA7AEEAPAA1AEcADAA6AEMAOQAMAEMABgA3AD0ANgAGAD0ANwA4AD8AOABCAD8AAAA2AEUARQA2AD4A")],
+"material": SubResource("StandardMaterial3D_w00mw"),
+"name": "Mat_01",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 101,
+"vertex_data": PackedByteArray("3w4RO237FbjdHee93w4RO237FbjdHee9AAAAAFGHwD4hxM69AAAAAFGHwD4hxM69qzSSPW37FbirNJK9qzSSPY0huj6rNJK9IcTOPW37FbgAAACAIcTOPa61wz4AAACAqzSSPW37FbirNJI9qzSSPbwRyj6rNJI9AAAAAG37FbghxM49AAAAAFKYyD4hxM49qzSSvW37FbirNJI9qzSSvZr+xj6rNJI9IcTOvW37FbgAAACAIcTOveMfvT4AAACAqzSSvW37FbirNJK9qzSSvbelvT6rNJK9GjFlPYk8wT4aMWW9GjFlPYk8wT4aMWW9AAAAANVqxD4lEKK9AAAAANVqxD4lEKK9AAAAANVqxD4lEKK9JRCiPdooyD4AAACAJRCiPdooyD4AAACAGjFlPYzfzj4aMWU9GjFlPYzfzj4aMWU9AAAAALYAzz4lEKI9AAAAALYAzz4lEKI9GjFlvcaOzD4aMWU9GjFlvcaOzD4aMWU9JRCivV0Axj4AAACAJRCivV0Axj4AAACAGjFlvZLfxT4aMWW9GjFlvZLfxT4aMWW9AAAAAOAeuj4hxM69AAAAAOAeuj4hxM69qzSSPZXMsj6rNJK9IcTOPX8gvT4AAACAqzSSPRjDwj6rNJI9AAAAAO4twT4hxM49qzSSvYnkvz6rNJI9IcTOvUdttj4AAACAqzSSvc3AtT6rNJK9qzSSPRnKsD2rNJK9IcTOPVMYvj0AAACAqzSSPdq5vz2rNJI9AAAAAAqkvT0hxM49qzSSvdq5vz2rNJI9IcTOvXIHwD0AAACAqzSSvXIHwD2rNJK9AAAAAFMYvj0hxM69AAAAAFMYvj0hxM693w4RO237FbjdHee9qzSSPW37FbirNJK9qzSSPW37FbirNJI9AAAAAG37FbghxM49AAAAAG37FbghxM49IcTOvW37FbgAAACAqzSSvW37FbirNJK9qzSSvW37FbirNJK9JRCiPdooyD4AAACAJRCiPdooyD4AAACAJRCiPdooyD4AAACAGjFlvcaOzD4aMWU9GjFlvcaOzD4aMWU9GjFlvcaOzD4aMWU9GjFlvcaOzD4aMWU9AAAAAOAeuj4hxM69AAAAAOAeuj4hxM69AAAAAOAeuj4hxM69AAAAAOAeuj4hxM69qzSSPW37FbirNJK9IcTOPW37FbgAAACAqzSSPW37FbirNJI9AAAAAG37FbghxM49qzSSvW37FbirNJI9IcTOvW37FbgAAACAqzSSvW37FbirNJK9AAAAANVqxD4lEKK9AAAAANVqxD4lEKK9JRCiPdooyD4AAACAAAAAALYAzz4lEKI9AAAAALYAzz4lEKI9GjFlvZLfxT4aMWW9GjFlvZLfxT4aMWW9AAAAAOAeuj4hxM69AAAAAOAeuj4hxM69AAAAAOAeuj4hxM69qzSSPZXMsj6rNJK9qzSSPZXMsj6rNJK9IcTOPX8gvT4AAACAqzSSPRjDwj6rNJI9qzSSPRjDwj6rNJI9qzSSPRjDwj6rNJI9AAAAAO4twT4hxM49qzSSvYnkvz6rNJI9qzSSvYnkvz6rNJI9qzSSvYnkvz6rNJI9IcTOvUdttj4AAACAIcTOvUdttj4AAACAPvhe/rx+fPs++F7+Tn3T+qTRbv4Wf0DopNFu/hZ/QOjz/BC/6XwH/UTh7s+CZzfn////f/9///8y1H6yYlPD5/+//3//f///962kpqlEu/D/f/9//3///6Z+Rqw2raH//z//f/9////3TpOjkLdB8QAA/3//f///UCSOp9Ok5+x4AkC/y39L/Q4gSc8Gmlzmm26j/40FHqxrrUXt////v5tuo/+1BYSr1KLX/f///7/Uotf9////v5tuo//MBS2rvKc+6P///7+bbqP//wVpqp2TbeP///8/m32k5f///z+bbqP/3QXrqv5lINz///8/m26j/9AFHKvjUd/c////v5tuo//HBUGreFBj6f///7+bbqP/nAXjq///////f/7///////9///////+//3/+/////3//f////7//f/9/////f/9//3////8//3//f///AAD/f/9///8AAP+//3///1z+f79Sf1z+////f/9/////v/9//3////9//3//f////z//f/9///8AAP9//3///z8Bnr9AgcP+7gPo/59+XP3uA+j/XX+4/TkDiuhOfdP6SP5Yw+l8B/1CzP9//3///yyo/3//f///8Fz/f/9////RDTCA/3///9AAsK3Lf0v99gLD4Mt/S/19/3+E////v23/08D///+/X73/f////783aJf+////P+sAjZr///8/RZv/f////z8XRP9/////Pz24jfb/f/7/Yf4a3f9//v9LSun5/3///9sBCtH/f///Sv6iwOl8B/198lWA/3///yq4/3//f///pHX/f/9///9TQP9//3///4AQJYD/f///PAFZvst/S/05wurr////vxFG6/r///+/6rak0v///78QfSC4////Pyhxwu////8/bw0Nxf///79LTj7x////v9D0rOT/f/7/AgSJ1v9///92PhP5/3////PhNNr/f/7/oPNruP9//v9y79Kb/3///8HJJIj/f///y5p12f9////Fnk+f/3///7yJbpH/f///YVHMif9////mVkfE/3///x0m/3//f///qVBd0v9////UA+St/3///w==")
+}, {
+"aabb": AABB(-0.00621575, 0.384655, -0.00621575, 0.0124315, 0.0474361, 0.0213697),
+"attribute_data": PackedByteArray("AAAAAAAAAD8AAIA/AAAAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AAAAAAAAgD8AAAAAAABAPwAAAD8AAEA/AAAAPwAAQD8AAAAAAABAPwAAAAAAAEA/AAAAAAAAQD8AAAAAAAAAPwAAAD8AAAA/AAAAPwAAAD8AAAAAAAAAPwAAAAAAAAA/AAAAAAAAAD8AAAAAAACAPgAAAD8AAIA+AAAAPwAAgD4AAAAAAACAPgAAAAAAAIA+AAAAAAAAgD4AAAAASOH6PgAAQD8AAEA/AAAAAAAAQD8AAAAAAAAAAAAAAAAAAIA+XI8CPwAAgD8AAAAAAAAAPwAAAAAAAIA+pHB9PwAAAD8AAAAAAACAPgAAAAAAAIA+AAAAABDXIzwAAEA/"),
+"format": 34359742487,
+"index_count": 54,
+"index_data": PackedByteArray("AQAIAAQAAQAGAAgABwAQAAkABwANABAAEQAZAAoAEQAgABkADAAXAA8ADAATABcAEgADABYAEgAAAAMAGAAjABwAGAAfACMACwAdAAUACwAaAB0AFQAeAA4AFQAiAB4AAgAhABQAAgAbACEA"),
+"material": SubResource("StandardMaterial3D_u4eyf"),
+"name": "Material",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 36,
+"vertex_data": PackedByteArray("AAAAAM4pxT59rcu7AAAAAM4pxT59rcu7AAAAAEj80j5fajI7AAAAAEj80j5fajI7AAAAAEj80j5fajI7AAAAAEj80j5fajI7fa3LOzJ6xT4AAACAfa3LOzJ6xT4AAACAfa3LO6k50z5WcRI8fa3LO6k50z5WcRI8fa3LO6k50z5WcRI8fa3LO6k50z5WcRI8AAAAAO1CxT59rcs7AAAAAO1CxT59rcs7AAAAADtj0z4VSHg8AAAAADtj0z4VSHg8AAAAADtj0z4VSHg8AAAAADtj0z4VSHg8fa3Lu4/xxD4AAACAfa3Lu4/xxD4AAACAfa3Lu6f80j5WcRI8fa3Lu6f80j5WcRI8fa3Lu6f80j5WcRI8fa3Lu6f80j5WcRI8ASF4O9Ym3T7VbsY7ASF4O9Ym3T7VbsY7ASF4O9Ym3T7VbsY7AAAAAAAS3T6nvBQ7AAAAAAAS3T6nvBQ7AAAAAAAS3T6nvBQ7AAAAABo73T6rPyE8AAAAABo73T6rPyE8AAAAABo73T6rPyE8ASF4u9Ym3T7VbsY7ASF4u9Ym3T7VbsY7ASF4u9Ym3T7VbsY79xGsyL9B6r2L7QbKtgWJnnMBSD////+/9xGsyKBAl7+L7QbKrwTinon+UD////+/i+0GyvsFcp4Ot/dtUP194IvtBsr0BMueDrf3bf/89Z6luG2P////P4n+UD////+/HErTbeW8LcMOt/dt+vu24OVGOI////8/HErTbRq8xMMOt/dtdv5xn6W4bY////8/9xGsyINBRL4cStNtDr0Pw3MBSD////+/5UY4j////z/3EazIYkD0vxxK021CvKbDF4X//////7+luG2P////P4n+UD////+/cwFIP////78Xhf//////v4n+UD////+/5UY4j////z8Xhf//////v6W4bY////8/cwFIP////7/lRjiP////PxeF//////+/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_lv0pl")
+
 [sub_resource type="SphereMesh" id="SphereMesh_uush8"]
-
-[sub_resource type="VisualShaderNodeBooleanParameter" id="VisualShaderNodeBooleanParameter_5xtlt"]
-parameter_name = "active_Dither"
-qualifier = 1
-
-[sub_resource type="VisualShaderNodeSwitch" id="VisualShaderNodeSwitch_cu553"]
-default_input_values = [0, false, 1, Vector3(1, 1, 1), 2, Vector3(0, 0, 0)]
-op_type = 4
-
-[sub_resource type="VisualShaderNodeFloatFunc" id="VisualShaderNodeFloatFunc_g8r6o"]
-function = 31
-
-[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_ve2i6"]
-parameter_name = "Fresnel_value"
-default_value_enabled = true
-default_value = 1.0
-
-[sub_resource type="VisualShaderNodeFloatFunc" id="VisualShaderNodeFloatFunc_hx41g"]
-function = 31
-
-[sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_jo1fs"]
-parameter_name = "ColorParameter"
-
-[sub_resource type="VisualShaderNodeFresnel" id="VisualShaderNodeFresnel_f3rqb"]
-default_input_values = [2, true, 3, 1.0]
-
-[sub_resource type="VisualShaderNodeExpression" id="VisualShaderNodeExpression_r2khm"]
-size = Vector2(724.789, 654.559)
-expression = "const float DITHER_THRESHOLDS[16] ={
-		1.0 / 17.0, 9.0 / 17.0, 3.0 / 17.0, 11.0 / 17.0,
-		13.0 / 17.0, 5.0 / 17.0, 15.0 / 17.0, 7.0 / 17.0,
-		4.0 / 17.0, 12.0 / 17.0, 2.0 / 17.0, 10.0 / 17.0,
-		16.0 / 17.0, 8.0 / 17.0, 14.0 / 17.0, 6.0 / 17.0
-	};
-	
-vec2 uv = FRAGCOORD.xy * Size;
-int index = (int(uv.x) % 4) * 4 + int(uv.y) % 4;
-Dither_Node = In - DITHER_THRESHOLDS[index];"
-
-[sub_resource type="VisualShaderNodeFloatConstant" id="VisualShaderNodeFloatConstant_v3s1d"]
-constant = 1.0
-
-[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_3psh6"]
-parameter_name = "Dither_size"
-qualifier = 1
-
-[sub_resource type="VisualShaderNodeStep" id="VisualShaderNodeStep_utk6l"]
-
-[sub_resource type="VisualShader" id="VisualShader_egdlo"]
-code = "shader_type spatial;
-render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx, unshaded, shadows_disabled, ambient_light_disabled;
-
-uniform vec4 ColorParameter : source_color;
-global uniform bool active_Dither;
-uniform float Fresnel_value = 1;
-global uniform float Dither_size;
-
-
-
-void fragment() {
-// ColorParameter:2
-	vec4 n_out2p0 = ColorParameter;
-
-
-// BooleanParameter:12
-	bool n_out12p0 = active_Dither;
-
-
-// FloatParameter:15
-	float n_out15p0 = Fresnel_value;
-
-
-// Fresnel:3
-	float n_out3p0 = pow(clamp(dot(NORMAL, VIEW), 0.0, 1.0), n_out15p0);
-
-
-// FloatFunc:16
-	float n_out16p0 = 1.0 - n_out3p0;
-
-
-// FloatConstant:5
-	float n_out5p0 = 1.000000;
-
-
-// FloatParameter:6
-	float n_out6p0 = Dither_size;
-
-
-	float n_out4p0;
-// Expression:4
-	n_out4p0 = 0.0;
-	{
-		const float DITHER_THRESHOLDS[16] ={
-				1.0 / 17.0, 9.0 / 17.0, 3.0 / 17.0, 11.0 / 17.0,
-				13.0 / 17.0, 5.0 / 17.0, 15.0 / 17.0, 7.0 / 17.0,
-				4.0 / 17.0, 12.0 / 17.0, 2.0 / 17.0, 10.0 / 17.0,
-				16.0 / 17.0, 8.0 / 17.0, 14.0 / 17.0, 6.0 / 17.0
-			};
-			
-		vec2 uv = FRAGCOORD.xy * n_out6p0;
-		int index = (int(uv.x) % 4) * 4 + int(uv.y) % 4;
-		n_out4p0 = n_out5p0 - DITHER_THRESHOLDS[index];
-	}
-
-
-// Step:7
-	float n_out7p0 = step(n_out16p0, n_out4p0);
-
-
-// FloatFunc:14
-	float n_out14p0 = 1.0 - n_out3p0;
-
-
-	vec3 n_out13p0;
-// Switch:13
-	n_out13p0 = mix(vec3(n_out14p0), vec3(n_out7p0), float(n_out12p0));
-
-
-// Output:0
-	ALBEDO = vec3(n_out2p0.xyz);
-	ALPHA = n_out13p0.x;
-
-
-}
-"
-graph_offset = Vector2(-547.307, -103.362)
-flags/unshaded = true
-flags/shadows_disabled = true
-flags/ambient_light_disabled = true
-nodes/fragment/0/position = Vector2(1660, 200)
-nodes/fragment/2/node = SubResource("VisualShaderNodeColorParameter_jo1fs")
-nodes/fragment/2/position = Vector2(-140, 40)
-nodes/fragment/3/node = SubResource("VisualShaderNodeFresnel_f3rqb")
-nodes/fragment/3/position = Vector2(-520, 220)
-nodes/fragment/4/node = SubResource("VisualShaderNodeExpression_r2khm")
-nodes/fragment/4/position = Vector2(-540, 440)
-nodes/fragment/4/size = Vector2(724.789, 654.559)
-nodes/fragment/4/input_ports = "0,0,In;1,0,Size;"
-nodes/fragment/4/output_ports = "0,0,Dither_Node;"
-nodes/fragment/4/expression = "const float DITHER_THRESHOLDS[16] ={
-		1.0 / 17.0, 9.0 / 17.0, 3.0 / 17.0, 11.0 / 17.0,
-		13.0 / 17.0, 5.0 / 17.0, 15.0 / 17.0, 7.0 / 17.0,
-		4.0 / 17.0, 12.0 / 17.0, 2.0 / 17.0, 10.0 / 17.0,
-		16.0 / 17.0, 8.0 / 17.0, 14.0 / 17.0, 6.0 / 17.0
-	};
-	
-vec2 uv = FRAGCOORD.xy * Size;
-int index = (int(uv.x) % 4) * 4 + int(uv.y) % 4;
-Dither_Node = In - DITHER_THRESHOLDS[index];"
-nodes/fragment/5/node = SubResource("VisualShaderNodeFloatConstant_v3s1d")
-nodes/fragment/5/position = Vector2(-1060, 440)
-nodes/fragment/6/node = SubResource("VisualShaderNodeFloatParameter_3psh6")
-nodes/fragment/6/position = Vector2(-1280, 680)
-nodes/fragment/7/node = SubResource("VisualShaderNodeStep_utk6l")
-nodes/fragment/7/position = Vector2(280, 220)
-nodes/fragment/12/node = SubResource("VisualShaderNodeBooleanParameter_5xtlt")
-nodes/fragment/12/position = Vector2(740, 340)
-nodes/fragment/13/node = SubResource("VisualShaderNodeSwitch_cu553")
-nodes/fragment/13/position = Vector2(1000.79, 497.375)
-nodes/fragment/14/node = SubResource("VisualShaderNodeFloatFunc_g8r6o")
-nodes/fragment/14/position = Vector2(460, 640)
-nodes/fragment/15/node = SubResource("VisualShaderNodeFloatParameter_ve2i6")
-nodes/fragment/15/position = Vector2(-960, 220)
-nodes/fragment/16/node = SubResource("VisualShaderNodeFloatFunc_hx41g")
-nodes/fragment/16/position = Vector2(-100, 300)
-nodes/fragment/connections = PackedInt32Array(5, 0, 4, 0, 6, 0, 4, 1, 4, 0, 7, 1, 12, 0, 13, 0, 7, 0, 13, 1, 3, 0, 14, 0, 15, 0, 3, 3, 13, 0, 0, 1, 14, 0, 13, 2, 3, 0, 16, 0, 16, 0, 7, 0, 2, 0, 0, 0)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_p744k"]
-render_priority = 0
-shader = SubResource("VisualShader_egdlo")
-shader_parameter/ColorParameter = Color(0.912322, 0.74399, 0.433118, 1)
-shader_parameter/Fresnel_value = 4.795
 
 [node name="CandlePrefab01" type="Node3D"]
 
@@ -197,14 +96,27 @@ shader_parameter/Fresnel_value = 4.795
 transform = Transform3D(0.401, 0, 0, 0, 0.401, 0, 0, 0, 0.401, 0, 0, 0)
 
 [node name="candle_02" parent="Candle_02" index="0"]
-layers = 2
 surface_material_override/0 = SubResource("ShaderMaterial_1l4lr")
 surface_material_override/1 = SubResource("ShaderMaterial_x81jw")
 
-[node name="Flame" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.0344967, 0, 0, 0, 0.0344967, 0, 0, 0, 0.0344967, 0, 0.18182, 0)
-layers = 65538
+[node name="candle_03" type="MeshInstance3D" parent="Candle_02"]
+layers = 2
+mesh = SubResource("ArrayMesh_3wox5")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("4_vr0ey")
+surface_material_override/1 = ExtResource("4_vr0ey")
+
+[node name="candle_04" type="MeshInstance3D" parent="Candle_02"]
+layers = 4
+mesh = SubResource("ArrayMesh_3wox5")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("4_vr0ey")
+surface_material_override/1 = ExtResource("4_vr0ey")
+
+[node name="Flame4" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.0344967, 0, 0, 0, 0.0612548, 0, 0, 0, 0.0344967, 0, 0.200254, 0)
+layers = 7
 mesh = SubResource("SphereMesh_uush8")
-surface_material_override/0 = SubResource("ShaderMaterial_p744k")
+surface_material_override/0 = ExtResource("5_b4edb")
 
 [editable path="Candle_02"]

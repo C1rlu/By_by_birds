@@ -9,6 +9,7 @@ var Player_InMenu : bool
 signal _open_menu(condition : bool)
 signal _open_desk(condition : bool)
 
+
 var player_on_desk : bool
 var camera_state_index : int 
 
@@ -23,6 +24,9 @@ signal _roll_bird
 var player_area : Area3D
 signal _check_player_zone
 
+# OWL VIEW
+signal open_owl_view(condition : bool)
+var player_owl_moment : bool
 
 # FOCUS VIEW  
 signal _open_focus_view(condition : bool)

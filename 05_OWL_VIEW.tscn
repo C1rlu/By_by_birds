@@ -1,0 +1,749 @@
+[gd_scene load_steps=76 format=3 uid="uid://cdkof1lgl2una"]
+
+[ext_resource type="Script" path="res://05_Owl_view/open_owl_view.gd" id="1_ksfmy"]
+[ext_resource type="PackedScene" uid="uid://dkhji76icgbfk" path="res://05_DESK_MAP/Candle/Candle_prefab_02.tscn" id="2_u2be4"]
+[ext_resource type="Script" path="res://13_TOOLS_UI/set_Resolution_viewports.gd" id="2_ul4p6"]
+[ext_resource type="Script" path="res://05_Owl_view/Zoom_owl_view.tres.gd" id="3_2hu0e"]
+[ext_resource type="PackedScene" uid="uid://djffqqvhx1is" path="res://05_DESK_MAP/Candle/Candle_prefab_03.tscn" id="3_50p4v"]
+[ext_resource type="Script" path="res://05_Owl_view/Look_at_locked.tres.gd" id="3_pa68p"]
+[ext_resource type="PackedScene" uid="uid://bcegerjktkbr6" path="res://05_DESK_MAP/Candle/Candle_prefab_01.tscn" id="4_d532e"]
+[ext_resource type="PackedScene" uid="uid://ypiajnwq2wfa" path="res://05_DESK_MAP/Desk/Desk_prefab.tscn" id="5_mn8gb"]
+[ext_resource type="PackedScene" uid="uid://c18stvbutb83o" path="res://05_DESK_MAP/Book/Book_prefab.tscn" id="6_25vcx"]
+[ext_resource type="PackedScene" uid="uid://bbpg8v8b5ko2j" path="res://05_Owl_view/GrandDuc/Owl_King_ch.tscn" id="7_kwjmp"]
+[ext_resource type="Shader" uid="uid://2anxsstngu6f" path="res://02_FOCUS_VIEW/Shader/Moon_shader.tres" id="9_jai1r"]
+[ext_resource type="Script" path="res://00_SYSTEMS/Active_mask_at_ready.tres.gd" id="9_mcryj"]
+[ext_resource type="Shader" uid="uid://brd5lwhrgrtsy" path="res://02_FOCUS_VIEW/Moon/moon_sh.tres" id="10_eh0rh"]
+[ext_resource type="Shader" uid="uid://7nanp4dqf4uc" path="res://05_DESK_MAP/00_SHADER/04_board_light.tres" id="10_uuyxy"]
+[ext_resource type="Shader" uid="uid://ddgu7ccdrwv38" path="res://02_FOCUS_VIEW/02_FOCUS_VIEW_sky.res" id="11_2e7nr"]
+[ext_resource type="PackedScene" uid="uid://bqbbtrchoeoe1" path="res://05_DESK_MAP/Lanterne/Lanterne_prefab.tscn" id="12_vva32"]
+[ext_resource type="Texture2D" uid="uid://dafg2qvpi6wmk" path="res://13_TOOLS_UI/Loader_circle/Loader_circle.png" id="17_58150"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_u2ixv"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jj2yq"]
+render_priority = 0
+shader = ExtResource("9_jai1r")
+shader_parameter/Color_yellow = Color(1, 1, 1, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_0hn8a"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qqo4e"]
+render_priority = 1
+shader = ExtResource("10_eh0rh")
+shader_parameter/ColorParameter = Color(0.0901961, 0.0901961, 0.0901961, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_d6ko2"]
+render_priority = 1
+shader = ExtResource("10_eh0rh")
+shader_parameter/ColorParameter = Color(0, 0, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_ab3v7"]
+
+[sub_resource type="Gradient" id="Gradient_03qt7"]
+offsets = PackedFloat32Array(0.471033, 0.544081, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.419813, 0.419813, 0.419813, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_e6hg2"]
+gradient = SubResource("Gradient_03qt7")
+fill_from = Vector2(1, 0.594017)
+fill_to = Vector2(1, 0.423077)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3vr56"]
+render_priority = 0
+shader = ExtResource("11_2e7nr")
+shader_parameter/Gradient = SubResource("GradientTexture2D_e6hg2")
+
+[sub_resource type="SphereMesh" id="SphereMesh_26nm3"]
+
+[sub_resource type="VisualShaderNodeFloatFunc" id="VisualShaderNodeFloatFunc_r78bf"]
+function = 31
+
+[sub_resource type="VisualShaderNodeFloatConstant" id="VisualShaderNodeFloatConstant_44sfk"]
+constant = 1.8
+
+[sub_resource type="VisualShaderNodeExpression" id="VisualShaderNodeExpression_o5mu1"]
+size = Vector2(896.815, 525.141)
+expression = "const float DITHER_THRESHOLDS[16] ={
+		1.0 / 17.0, 9.0 / 17.0, 3.0 / 17.0, 11.0 / 17.0,
+		13.0 / 17.0, 5.0 / 17.0, 15.0 / 17.0, 7.0 / 17.0,
+		4.0 / 17.0, 12.0 / 17.0, 2.0 / 17.0, 10.0 / 17.0,
+		16.0 / 17.0, 8.0 / 17.0, 14.0 / 17.0, 6.0 / 17.0
+	};
+	
+vec2 uv = FRAGCOORD.xy * Size;
+int index = (int(uv.x) % 4) * 4 + int(uv.y) % 4;
+Dither_Node = In - DITHER_THRESHOLDS[index];"
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_3g8jq"]
+parameter_name = "Dither_size"
+qualifier = 1
+
+[sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_nt8gu"]
+parameter_name = "Stars2"
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_7jnr6"]
+source = 5
+
+[sub_resource type="VisualShaderNodeStep" id="VisualShaderNodeStep_ellfh"]
+
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_i8dae"]
+operator = 2
+
+[sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_87e5a"]
+parameter_name = "Stars"
+texture_repeat = 1
+
+[sub_resource type="VisualShaderNodeColorConstant" id="VisualShaderNodeColorConstant_ogp8p"]
+
+[sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_bumjr"]
+parameter_name = "Gradient"
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_7coj2"]
+source = 5
+
+[sub_resource type="VisualShaderNodeMix" id="VisualShaderNodeMix_m3ijw"]
+
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_ipuh3"]
+default_input_values = [0, 0.0, 1, 5.0]
+operator = 2
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_bkj70"]
+source = 5
+
+[sub_resource type="VisualShaderNodeStep" id="VisualShaderNodeStep_pavlr"]
+
+[sub_resource type="VisualShader" id="VisualShader_lr2yb"]
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, cull_front, diffuse_lambert, specular_schlick_ggx, unshaded;
+
+uniform sampler2D Stars : repeat_enable;
+global uniform float Dither_size;
+uniform sampler2D Stars2;
+uniform sampler2D Gradient;
+
+
+
+void fragment() {
+// ColorConstant:20
+	vec4 n_out20p0 = vec4(1.000000, 1.000000, 1.000000, 1.000000);
+
+
+	vec4 n_out3p0;
+// Texture2D:3
+	n_out3p0 = texture(Stars, UV);
+
+
+// FloatConstant:12
+	float n_out12p0 = 1.800000;
+
+
+// FloatParameter:14
+	float n_out14p0 = Dither_size;
+
+
+	float n_out13p0;
+// Expression:13
+	n_out13p0 = 0.0;
+	{
+		const float DITHER_THRESHOLDS[16] ={
+				1.0 / 17.0, 9.0 / 17.0, 3.0 / 17.0, 11.0 / 17.0,
+				13.0 / 17.0, 5.0 / 17.0, 15.0 / 17.0, 7.0 / 17.0,
+				4.0 / 17.0, 12.0 / 17.0, 2.0 / 17.0, 10.0 / 17.0,
+				16.0 / 17.0, 8.0 / 17.0, 14.0 / 17.0, 6.0 / 17.0
+			};
+			
+		vec2 uv = FRAGCOORD.xy * n_out14p0;
+		int index = (int(uv.x) % 4) * 4 + int(uv.y) % 4;
+		n_out13p0 = n_out12p0 - DITHER_THRESHOLDS[index];
+	}
+
+
+// Step:5
+	float n_out5p0 = step(n_out3p0.x, n_out13p0);
+
+
+	vec4 n_out17p0;
+// Texture2D:17
+	n_out17p0 = texture(Stars2, UV);
+
+
+// Step:18
+	float n_out18p0 = step(n_out17p0.x, n_out13p0);
+
+
+// FloatOp:19
+	float n_out19p0 = n_out5p0 * n_out18p0;
+
+
+// FloatFunc:11
+	float n_out11p0 = 1.0 - n_out19p0;
+
+
+// FloatOp:25
+	float n_in25p1 = 5.00000;
+	float n_out25p0 = n_out11p0 * n_in25p1;
+
+
+	vec4 n_out23p0;
+// Texture2D:23
+	n_out23p0 = texture(Gradient, UV);
+
+
+// Mix:24
+	float n_in24p0 = 0.00000;
+	float n_out24p0 = mix(n_in24p0, n_out25p0, n_out23p0.x);
+
+
+// Output:0
+	ALBEDO = vec3(n_out20p0.xyz);
+	ALPHA = n_out24p0;
+
+
+}
+"
+graph_offset = Vector2(-703.686, 7.93393)
+modes/cull = 1
+flags/unshaded = true
+nodes/fragment/0/position = Vector2(940, 80)
+nodes/fragment/2/node = SubResource("VisualShaderNodeTexture2DParameter_87e5a")
+nodes/fragment/2/position = Vector2(-1740, -160)
+nodes/fragment/3/node = SubResource("VisualShaderNodeTexture_bkj70")
+nodes/fragment/3/position = Vector2(-1260, -40)
+nodes/fragment/5/node = SubResource("VisualShaderNodeStep_pavlr")
+nodes/fragment/5/position = Vector2(-800, 0)
+nodes/fragment/11/node = SubResource("VisualShaderNodeFloatFunc_r78bf")
+nodes/fragment/11/position = Vector2(-180, 160)
+nodes/fragment/12/node = SubResource("VisualShaderNodeFloatConstant_44sfk")
+nodes/fragment/12/position = Vector2(-2340, 740)
+nodes/fragment/13/node = SubResource("VisualShaderNodeExpression_o5mu1")
+nodes/fragment/13/position = Vector2(-1980, 800)
+nodes/fragment/13/size = Vector2(896.815, 525.141)
+nodes/fragment/13/input_ports = "0,4,noise;1,0,In;2,0,Size;"
+nodes/fragment/13/output_ports = "0,0,Dither_Node;"
+nodes/fragment/13/expression = "const float DITHER_THRESHOLDS[16] ={
+		1.0 / 17.0, 9.0 / 17.0, 3.0 / 17.0, 11.0 / 17.0,
+		13.0 / 17.0, 5.0 / 17.0, 15.0 / 17.0, 7.0 / 17.0,
+		4.0 / 17.0, 12.0 / 17.0, 2.0 / 17.0, 10.0 / 17.0,
+		16.0 / 17.0, 8.0 / 17.0, 14.0 / 17.0, 6.0 / 17.0
+	};
+	
+vec2 uv = FRAGCOORD.xy * Size;
+int index = (int(uv.x) % 4) * 4 + int(uv.y) % 4;
+Dither_Node = In - DITHER_THRESHOLDS[index];"
+nodes/fragment/14/node = SubResource("VisualShaderNodeFloatParameter_3g8jq")
+nodes/fragment/14/position = Vector2(-2500, 1060)
+nodes/fragment/16/node = SubResource("VisualShaderNodeTexture2DParameter_nt8gu")
+nodes/fragment/16/position = Vector2(-1740, 200)
+nodes/fragment/17/node = SubResource("VisualShaderNodeTexture_7jnr6")
+nodes/fragment/17/position = Vector2(-1260, 200)
+nodes/fragment/18/node = SubResource("VisualShaderNodeStep_ellfh")
+nodes/fragment/18/position = Vector2(-800, 320)
+nodes/fragment/19/node = SubResource("VisualShaderNodeFloatOp_i8dae")
+nodes/fragment/19/position = Vector2(-560, 140)
+nodes/fragment/20/node = SubResource("VisualShaderNodeColorConstant_ogp8p")
+nodes/fragment/20/position = Vector2(60.0323, -38.6556)
+nodes/fragment/22/node = SubResource("VisualShaderNodeTexture2DParameter_bumjr")
+nodes/fragment/22/position = Vector2(-860, 580)
+nodes/fragment/23/node = SubResource("VisualShaderNodeTexture_7coj2")
+nodes/fragment/23/position = Vector2(-440, 780)
+nodes/fragment/24/node = SubResource("VisualShaderNodeMix_m3ijw")
+nodes/fragment/24/position = Vector2(464.183, 535.198)
+nodes/fragment/25/node = SubResource("VisualShaderNodeFloatOp_ipuh3")
+nodes/fragment/25/position = Vector2(5.04898, 398.591)
+nodes/fragment/connections = PackedInt32Array(2, 0, 3, 2, 3, 0, 5, 0, 12, 0, 13, 1, 14, 0, 13, 2, 13, 0, 5, 1, 16, 0, 17, 2, 17, 0, 18, 0, 13, 0, 18, 1, 5, 0, 19, 0, 18, 0, 19, 1, 19, 0, 11, 0, 20, 0, 0, 0, 22, 0, 23, 2, 24, 0, 0, 1, 23, 0, 24, 2, 11, 0, 25, 0, 25, 0, 24, 1)
+
+[sub_resource type="Gradient" id="Gradient_c56on"]
+offsets = PackedFloat32Array(0.168766, 0.403023, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.419813, 0.419813, 0.419813, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_qj7d2"]
+gradient = SubResource("Gradient_c56on")
+fill_from = Vector2(1, 1)
+fill_to = Vector2(1, 0.683761)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_fc7i1"]
+noise_type = 2
+frequency = 0.1921
+fractal_type = 3
+fractal_weighted_strength = 1.0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_kkfgb"]
+noise = SubResource("FastNoiseLite_fc7i1")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_i1uei"]
+frequency = 0.1
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_omccs"]
+noise = SubResource("FastNoiseLite_i1uei")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2mmhh"]
+render_priority = 0
+shader = SubResource("VisualShader_lr2yb")
+shader_parameter/Stars = SubResource("NoiseTexture2D_kkfgb")
+shader_parameter/Stars2 = SubResource("NoiseTexture2D_omccs")
+shader_parameter/Gradient = SubResource("GradientTexture2D_qj7d2")
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_y363p"]
+source = 5
+
+[sub_resource type="VisualShaderNodeUVFunc" id="VisualShaderNodeUVFunc_mfeeg"]
+function = 1
+
+[sub_resource type="VisualShaderNodeUVFunc" id="VisualShaderNodeUVFunc_dq2hy"]
+default_input_values = [1, Vector2(1, 0.5), 2, Vector2(0, 0)]
+function = 1
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_kvjfc"]
+input_name = "time"
+
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_5hys7"]
+default_input_values = [0, 0.0, 1, 0.001]
+operator = 2
+
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_01l71"]
+default_input_values = [0, 0.0, 1, 0.1]
+operator = 2
+
+[sub_resource type="VisualShaderNodeStep" id="VisualShaderNodeStep_4an0b"]
+
+[sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_2oiag"]
+parameter_name = "BlueNoise"
+qualifier = 1
+texture_repeat = 1
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_tusqw"]
+parameter_name = "Dither_blue_noise_size"
+qualifier = 1
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_46u1j"]
+parameter_name = "Opacity"
+hint = 1
+default_value_enabled = true
+default_value = 0.5
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_uj47t"]
+input_name = "color"
+
+[sub_resource type="VisualShader" id="VisualShader_rthcl"]
+code = "shader_type canvas_item;
+render_mode blend_mix;
+
+global uniform float Dither_blue_noise_size;
+global uniform sampler2D BlueNoise : repeat_enable;
+uniform float Opacity : hint_range(0, 1) = 0.5;
+
+
+
+void fragment() {
+// Input:9
+	vec4 n_out9p0 = COLOR;
+
+
+// UVFunc:16
+	vec2 n_in16p1 = vec2(1.00000, 0.50000);
+	vec2 n_in16p2 = vec2(0.00000, 0.00000);
+	vec2 n_out16p0 = (UV - n_in16p2) * n_in16p1 + n_in16p2;
+
+
+// FloatParameter:30
+	float n_out30p0 = Dither_blue_noise_size;
+
+
+// Input:17
+	float n_out17p0 = TIME;
+
+
+// FloatOp:18
+	float n_in18p1 = 0.00100;
+	float n_out18p0 = n_out17p0 * n_in18p1;
+
+
+// FloatOp:19
+	float n_in19p1 = 0.10000;
+	float n_out19p0 = n_out18p0 * n_in19p1;
+
+
+// UVFunc:15
+	vec2 n_out15p0 = (n_out16p0 - vec2(n_out19p0)) * vec2(n_out30p0) + vec2(n_out19p0);
+
+
+	vec4 n_out13p0;
+// Texture2D:13
+	n_out13p0 = texture(BlueNoise, n_out15p0);
+
+
+// FloatParameter:5
+	float n_out5p0 = Opacity;
+
+
+// Step:2
+	float n_out2p0 = step(n_out13p0.x, n_out5p0);
+
+
+// Output:0
+	COLOR.rgb = vec3(n_out9p0.xyz);
+	COLOR.a = n_out2p0;
+
+
+}
+"
+graph_offset = Vector2(-312.212, -28.4908)
+mode = 1
+flags/light_only = false
+nodes/fragment/0/position = Vector2(680, 140)
+nodes/fragment/2/node = SubResource("VisualShaderNodeStep_4an0b")
+nodes/fragment/2/position = Vector2(260, 200)
+nodes/fragment/5/node = SubResource("VisualShaderNodeFloatParameter_46u1j")
+nodes/fragment/5/position = Vector2(-200, 380)
+nodes/fragment/9/node = SubResource("VisualShaderNodeInput_uj47t")
+nodes/fragment/9/position = Vector2(740, -640)
+nodes/fragment/13/node = SubResource("VisualShaderNodeTexture_y363p")
+nodes/fragment/13/position = Vector2(-820, -580)
+nodes/fragment/15/node = SubResource("VisualShaderNodeUVFunc_mfeeg")
+nodes/fragment/15/position = Vector2(-1420, -460)
+nodes/fragment/16/node = SubResource("VisualShaderNodeUVFunc_dq2hy")
+nodes/fragment/16/position = Vector2(-1740, -580)
+nodes/fragment/17/node = SubResource("VisualShaderNodeInput_kvjfc")
+nodes/fragment/17/position = Vector2(-2020, -200)
+nodes/fragment/18/node = SubResource("VisualShaderNodeFloatOp_5hys7")
+nodes/fragment/18/position = Vector2(-1700, -220)
+nodes/fragment/19/node = SubResource("VisualShaderNodeFloatOp_01l71")
+nodes/fragment/19/position = Vector2(-1640, -20)
+nodes/fragment/21/node = SubResource("VisualShaderNodeTexture2DParameter_2oiag")
+nodes/fragment/21/position = Vector2(-1180, -300)
+nodes/fragment/30/node = SubResource("VisualShaderNodeFloatParameter_tusqw")
+nodes/fragment/30/position = Vector2(-2140, -440)
+nodes/fragment/connections = PackedInt32Array(9, 0, 0, 0, 17, 0, 18, 0, 18, 0, 19, 0, 16, 0, 15, 0, 19, 0, 15, 2, 15, 0, 13, 0, 21, 0, 13, 2, 13, 0, 2, 0, 5, 0, 2, 1, 30, 0, 15, 1, 2, 0, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s5pmg"]
+shader = SubResource("VisualShader_rthcl")
+shader_parameter/Opacity = 1.0
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_3isry"]
+viewport_path = NodePath("Main_pass")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_ptpk1"]
+viewport_path = NodePath("Ui_pass")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_f27oi"]
+viewport_path = NodePath("Light_pass")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_w0tn6"]
+viewport_path = NodePath("Warm_pass")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ktpkr"]
+resource_local_to_scene = true
+shader = ExtResource("10_uuyxy")
+shader_parameter/Shadow_color = Color(0.0901961, 0.0901961, 0.0901961, 1)
+shader_parameter/Warm_color = Color(1, 0.713726, 0.396078, 1)
+shader_parameter/Flat_viewport = SubResource("ViewportTexture_3isry")
+shader_parameter/light = SubResource("ViewportTexture_f27oi")
+shader_parameter/light_warm = SubResource("ViewportTexture_w0tn6")
+shader_parameter/Ui_pass = SubResource("ViewportTexture_ptpk1")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_56tra"]
+viewport_path = NodePath("Main_pass")
+
+[sub_resource type="Gradient" id="Gradient_k4uuq"]
+offsets = PackedFloat32Array(0.740331, 1)
+colors = PackedColorArray(0.0473934, 0.0473934, 0.0473934, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_4jbl6"]
+gradient = SubResource("Gradient_k4uuq")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_b6n3w"]
+texture = SubResource("GradientTexture2D_4jbl6")
+
+[sub_resource type="VisualShader" id="VisualShader_bjkyn"]
+code = "shader_type canvas_item;
+render_mode blend_mix;
+
+uniform sampler2D tex_frg_2;
+
+
+
+void fragment() {
+// Texture2D:2
+	vec4 n_out2p0 = texture(tex_frg_2, UV);
+
+
+// Output:0
+	COLOR.a = n_out2p0.x;
+
+
+}
+"
+mode = 1
+flags/light_only = false
+nodes/fragment/0/position = Vector2(520, 120)
+nodes/fragment/2/node = SubResource("VisualShaderNodeTexture_b6n3w")
+nodes/fragment/2/position = Vector2(-640, 100)
+nodes/fragment/connections = PackedInt32Array(2, 0, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_to56l"]
+shader = SubResource("VisualShader_bjkyn")
+
+[node name="05_OWL_VIEW" type="Node"]
+metadata/_edit_horizontal_guides_ = [-58.0]
+
+[node name="Open_owl_view" type="Node" parent="."]
+script = ExtResource("1_ksfmy")
+
+[node name="set_Resolution" type="Node" parent="." node_paths=PackedStringArray("viewports")]
+script = ExtResource("2_ul4p6")
+viewports = [NodePath("../Main_pass"), NodePath("../Light_pass"), NodePath("../Warm_pass"), NodePath("../Ui_pass")]
+
+[node name="Look_at_loked" type="Node" parent="." node_paths=PackedStringArray("Camera_head", "Camera", "all_cam")]
+script = ExtResource("3_pa68p")
+Camera_head = NodePath("../Main_pass/head")
+Camera = NodePath("../Main_pass/head/CAM")
+all_cam = [NodePath("../Light_pass/CAM_light"), NodePath("../Warm_pass/CAM_warm"), NodePath("../Ui_pass/CAM_ui")]
+
+[node name="Zoom" type="Node" parent="." node_paths=PackedStringArray("Camera", "Cam_")]
+script = ExtResource("3_2hu0e")
+Camera = NodePath("../Main_pass/head/CAM")
+Cam_ = [NodePath("../Light_pass/CAM_light"), NodePath("../Warm_pass/CAM_warm"), NodePath("../Ui_pass/CAM_ui")]
+
+[node name="Main_pass" type="SubViewport" parent="."]
+transparent_bg = true
+size = Vector2i(1280, 720)
+
+[node name="head" type="Node3D" parent="Main_pass"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.365, 0.99)
+
+[node name="CAM" type="Camera3D" parent="Main_pass/head"]
+cull_mask = 1
+fov = 50.0
+
+[node name="Light_pass" type="SubViewport" parent="."]
+transparent_bg = true
+size = Vector2i(1280, 720)
+
+[node name="CAM_light" type="Camera3D" parent="Light_pass"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.365, 0.99)
+cull_mask = 2
+fov = 50.0
+
+[node name="Warm_pass" type="SubViewport" parent="."]
+transparent_bg = true
+size = Vector2i(1280, 720)
+
+[node name="CAM_warm" type="Camera3D" parent="Warm_pass"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.365, 0.99)
+cull_mask = 4
+fov = 50.0
+
+[node name="Ui_pass" type="SubViewport" parent="."]
+transparent_bg = true
+size = Vector2i(1280, 720)
+
+[node name="CAM_ui" type="Camera3D" parent="Ui_pass"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.365, 0.99)
+cull_mask = 32
+fov = 50.0
+
+[node name="Board_scene" type="Node3D" parent="."]
+visible = false
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="Board_scene"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.166, 0.234, -0.101)
+layers = 4
+light_cull_mask = 4293918724
+shadow_enabled = true
+omni_range = 0.36
+omni_attenuation = -0.842
+
+[node name="OmniLight3D5" type="OmniLight3D" parent="Board_scene"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0421957, 0.784246, 0.116333)
+layers = 2
+light_cull_mask = 4293918722
+omni_range = 0.296402
+omni_attenuation = -2.576
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="Board_scene"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.387, 0.244, -0.161)
+layers = 4
+light_cull_mask = 4293918724
+shadow_enabled = true
+omni_range = 0.323
+omni_attenuation = -0.172
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="Board_scene"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.096, 1.117, -0.167)
+layers = 4
+light_cull_mask = 4293918724
+omni_range = 0.36
+omni_attenuation = -0.056
+
+[node name="Movable" type="Node3D" parent="Board_scene"]
+
+[node name="CandlePrefab02" parent="Board_scene/Movable" instance=ExtResource("2_u2be4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.430788, 0.133144, -0.307268)
+
+[node name="CandlePrefab09" parent="Board_scene/Movable" instance=ExtResource("2_u2be4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.386529, 0.00382239, -0.166243)
+
+[node name="CandlePrefab06" parent="Board_scene/Movable" instance=ExtResource("2_u2be4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.38114, -0.00108396, -0.412858)
+
+[node name="CandlePrefab07" parent="Board_scene/Movable" instance=ExtResource("2_u2be4")]
+transform = Transform3D(0.840338, 0, 0, 0, 0.840338, 0, 0, 0, 0.840338, 0.307052, -0.00108401, -0.370828)
+
+[node name="CandlePrefab03" parent="Board_scene/Movable" instance=ExtResource("3_50p4v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.175457, 0.0880337, -0.291444)
+
+[node name="CandlePrefab08" parent="Board_scene/Movable" instance=ExtResource("3_50p4v")]
+transform = Transform3D(0.915055, 0, 0, 0, 0.915055, 0, 0, 0, 0.915055, 0.386001, -0.000126109, -0.318977)
+
+[node name="CandlePrefab01" parent="Board_scene/Movable" instance=ExtResource("4_d532e")]
+transform = Transform3D(-0.508155, 0, -0.861265, 0, 1, 0, 0.861265, 0, -0.508155, -0.344076, 0.00339008, -0.0940592)
+
+[node name="CandlePrefab04" parent="Board_scene/Movable" instance=ExtResource("4_d532e")]
+transform = Transform3D(0.707106, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707106, -0.437168, 0.00217248, -0.100272)
+
+[node name="CandlePrefab05" parent="Board_scene/Movable" instance=ExtResource("4_d532e")]
+transform = Transform3D(-0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, -0.5, 0.0205316, 0.00217248, -0.0754344)
+
+[node name="Static" type="Node3D" parent="Board_scene"]
+
+[node name="Desk_prefab" parent="Board_scene/Static" instance=ExtResource("5_mn8gb")]
+transform = Transform3D(-2.07016e-08, 0, -0.473598, 0, 0.473598, 0, 0.473598, 0, -2.07016e-08, 0, -0.711, -0.258496)
+
+[node name="BookPrefab3" parent="Board_scene/Static" instance=ExtResource("6_25vcx")]
+transform = Transform3D(-0.035531, 0, -1.13821, 0, 1.13877, 0, 1.13821, 0, -0.035531, -0.116493, 0.18994, -0.229364)
+
+[node name="BookPrefab7" parent="Board_scene/Static" instance=ExtResource("6_25vcx")]
+transform = Transform3D(4.37114e-08, 0, 1, 0, 1, 0, -1, 0, 4.37114e-08, 0.208646, 0.00145459, -0.242087)
+
+[node name="BookPrefab8" parent="Board_scene/Static" instance=ExtResource("6_25vcx")]
+transform = Transform3D(0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, 0.203968, 0.0450706, -0.258576)
+
+[node name="BookPrefab4" parent="Board_scene/Static" instance=ExtResource("6_25vcx")]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, -0.440329, 0, -0.341479)
+
+[node name="BookPrefab21" parent="Board_scene/Static" instance=ExtResource("6_25vcx")]
+transform = Transform3D(-0.9989, 0, -0.0468801, 0, 1, 0, 0.0468801, 0, -0.9989, -0.68593, 0, -0.335659)
+
+[node name="BookPrefab5" parent="Board_scene/Static" instance=ExtResource("6_25vcx")]
+transform = Transform3D(-0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, -0.866025, -0.440329, 0.0458647, -0.341479)
+
+[node name="BookPrefab6" parent="Board_scene/Static" instance=ExtResource("6_25vcx")]
+transform = Transform3D(-0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, -0.965926, -0.440329, 0.0896486, -0.341479)
+
+[node name="BookPrefab16" parent="Board_scene/Static" instance=ExtResource("6_25vcx")]
+transform = Transform3D(0.0307032, 0, -1.69295, 0, 1.69323, 0, 1.69295, 0, 0.0307032, -0.12786, 0, -0.234845)
+
+[node name="BookPrefab17" parent="Board_scene/Static" instance=ExtResource("6_25vcx")]
+transform = Transform3D(-0.422256, 0, -1.1703, 0, 1.24414, 0, 1.1703, 0, -0.422256, -0.12786, 0.0796012, -0.234845)
+
+[node name="BookPrefab18" parent="Board_scene/Static" instance=ExtResource("6_25vcx")]
+transform = Transform3D(-0.378067, 0, -1.11069, 0, 1.17327, 0, 1.11069, 0, -0.378067, -0.12786, 0.137187, -0.234845)
+
+[node name="Owl_King_ch" parent="Board_scene" instance=ExtResource("7_kwjmp")]
+transform = Transform3D(0.0378786, 0, -0.105212, 0, 0.111823, 0, 0.105212, 0, 0.0378786, -0.118039, 0.243409, -0.191538)
+
+[node name="Sphere_sky" type="Node3D" parent="Board_scene"]
+
+[node name="Active_at_ready" type="Node" parent="Board_scene/Sphere_sky"]
+script = ExtResource("9_mcryj")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Board_scene/Sphere_sky"]
+transform = Transform3D(0.965968, -0.0939224, -0.241006, 0.116079, -0.675244, 0.728403, -0.231151, -0.73159, -0.641362, -30.2613, 62.5339, -80.5046)
+layers = 2
+light_energy = 2.0
+light_bake_mode = 0
+light_cull_mask = 4293918722
+shadow_enabled = true
+directional_shadow_mode = 1
+directional_shadow_split_1 = 0.155
+sky_mode = 1
+
+[node name="Moon_Set" type="Node3D" parent="Board_scene/Sphere_sky"]
+transform = Transform3D(0.710268, 0.0543702, 0.210234, 0, 0.719064, -0.185963, -0.217151, 0.177837, 0.687644, -16.306, 82.4867, -97.855)
+
+[node name="SUN" type="MeshInstance3D" parent="Board_scene/Sphere_sky/Moon_Set"]
+transform = Transform3D(58.7841, 0, 0, 0, 58.784, 0, 0, 0, 58.7841, 0, 0, 0)
+layers = 7
+mesh = SubResource("SphereMesh_u2ixv")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("ShaderMaterial_jj2yq")
+
+[node name="MOON" type="MeshInstance3D" parent="Board_scene/Sphere_sky/Moon_Set"]
+transform = Transform3D(36.2978, -4.76837e-07, -9.53674e-07, 0, 36.2977, 0, 0, 0, 36.2978, 3, -13.608, 45.28)
+mesh = SubResource("SphereMesh_0hn8a")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("ShaderMaterial_qqo4e")
+
+[node name="MOON2" type="MeshInstance3D" parent="Board_scene/Sphere_sky/Moon_Set/MOON"]
+transform = Transform3D(1, -7.45058e-09, 0, -7.45058e-09, 1, 0, 0, 1.49012e-08, 1, 0, 0, 0)
+layers = 6
+mesh = SubResource("SphereMesh_0hn8a")
+skeleton = NodePath("../../../..")
+surface_material_override/0 = SubResource("ShaderMaterial_d6ko2")
+
+[node name="Horizon" type="MeshInstance3D" parent="Board_scene/Sphere_sky"]
+transform = Transform3D(1102.26, 0, 0, 0, 1102.26, 0, 0, 0, 1102.26, 0, 0, 0)
+layers = 3
+mesh = SubResource("SphereMesh_ab3v7")
+surface_material_override/0 = SubResource("ShaderMaterial_3vr56")
+
+[node name="Stars" type="MeshInstance3D" parent="Board_scene/Sphere_sky/Horizon"]
+transform = Transform3D(1, 4.75537e-09, 1.90215e-08, -4.75537e-09, 1, 0, 1.90215e-08, 0, 1, 0, -6.70552e-08, 7.6086e-08)
+layers = 3
+mesh = SubResource("SphereMesh_26nm3")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("ShaderMaterial_2mmhh")
+
+[node name="Lanterne_prefab" parent="Board_scene" instance=ExtResource("12_vva32")]
+transform = Transform3D(0.914459, 0, -0.404679, 0, 1, 0, 0.404679, 0, 0.914459, 0.15202, 5.96046e-08, -0.131052)
+
+[node name="BACKDROP_FOCUS" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_s5pmg")
+clip_contents = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.0885598, 0.08856, 0.0885598, 1)
+
+[node name="RENDER" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_ktpkr")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("ViewportTexture_56tra")
+expand_mode = 3
+
+[node name="Fade" type="ColorRect" parent="RENDER"]
+material = SubResource("ShaderMaterial_to56l")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.0901961, 0.0901961, 0.0901961, 1)
+
+[node name="Target" type="TextureRect" parent="RENDER"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -7.5
+offset_top = -7.5
+offset_right = 7.5
+offset_bottom = 7.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("17_58150")
+expand_mode = 1

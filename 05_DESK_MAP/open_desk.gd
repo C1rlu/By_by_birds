@@ -3,8 +3,8 @@ extends Node
 @onready var render: TextureRect = $"../RENDER"
 
 func _ready() -> void:
-	
-	_global_datas._open_desk.connect(open_desk)
+	pass
+	#_global_datas._open_desk.connect(open_desk)
 	
 			
 	#_global_datas._open_menu.connect(_close_menu)

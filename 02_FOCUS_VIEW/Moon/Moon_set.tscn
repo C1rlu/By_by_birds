@@ -1,0 +1,34 @@
+[gd_scene load_steps=7 format=3 uid="uid://c4ru1fixkr6wx"]
+
+[ext_resource type="Shader" uid="uid://2anxsstngu6f" path="res://02_FOCUS_VIEW/Shader/Moon_shader.tres" id="1_2m3nj"]
+[ext_resource type="Shader" uid="uid://brd5lwhrgrtsy" path="res://02_FOCUS_VIEW/Moon/moon_sh.tres" id="2_qe0vf"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_u2ixv"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jj2yq"]
+render_priority = 0
+shader = ExtResource("1_2m3nj")
+shader_parameter/Color_yellow = Color(0.99, 0.84117, 0.5841, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_0hn8a"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qqo4e"]
+render_priority = 0
+shader = ExtResource("2_qe0vf")
+shader_parameter/ColorParameter = Color(0.0901961, 0.0901961, 0.0901961, 1)
+
+[node name="Moon_Set" type="Node3D"]
+
+[node name="SUN" type="MeshInstance3D" parent="."]
+transform = Transform3D(58.7841, 0, 0, 0, 58.784, 0, 0, 0, 58.7841, 0, 0, 0)
+layers = 3
+mesh = SubResource("SphereMesh_u2ixv")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("ShaderMaterial_jj2yq")
+
+[node name="MOON" type="MeshInstance3D" parent="."]
+transform = Transform3D(35.1405, 0, 0, 0, 35.1404, 0, 0, 0, 35.1405, 0, 0, 47.3618)
+layers = 3
+mesh = SubResource("SphereMesh_0hn8a")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("ShaderMaterial_qqo4e")

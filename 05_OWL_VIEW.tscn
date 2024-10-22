@@ -48,21 +48,21 @@ render_priority = 1
 shader = ExtResource("10_eh0rh")
 shader_parameter/ColorParameter = Color(0, 0, 0, 1)
 
-[sub_resource type="SphereMesh" id="SphereMesh_6st3j"]
+[sub_resource type="SphereMesh" id="SphereMesh_kqlxw"]
 
 [sub_resource type="Gradient" id="Gradient_c4u0i"]
-offsets = PackedFloat32Array(0.471033, 0.544081, 1)
+offsets = PackedFloat32Array(0.324921, 0.544081, 1)
 colors = PackedColorArray(0, 0, 0, 1, 0.419813, 0.419813, 0.419813, 1, 0, 0, 0, 1)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_uu014"]
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_pci8j"]
 gradient = SubResource("Gradient_c4u0i")
-fill_from = Vector2(1, 0.58547)
-fill_to = Vector2(1, 0.380342)
+fill_from = Vector2(1, 0.675214)
+fill_to = Vector2(1, 0.358974)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_iucl0"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_juxu4"]
 render_priority = 0
 shader = ExtResource("11_2e7nr")
-shader_parameter/Gradient = SubResource("GradientTexture2D_uu014")
+shader_parameter/Gradient = SubResource("GradientTexture2D_pci8j")
 
 [sub_resource type="SphereMesh" id="SphereMesh_c4nfw"]
 
@@ -694,7 +694,7 @@ texture = SubResource("ViewportTexture_vwe2a")
 script = ExtResource("9_mcryj")
 
 [node name="Moon_Set" type="Node3D" parent="Owl_scene/Sphere_sky"]
-transform = Transform3D(4.00588, -0.145838, -0.56391, 3.58359e-08, 3.91906, -1.01354, 0.582463, 1.00299, 3.87828, -197.11, 609.51, -718.303)
+transform = Transform3D(5.74769, -0.20925, -0.809107, 5.14179e-08, 5.62313, -1.45424, 0.835727, 1.43911, 5.56461, -197.11, 661.775, -718.303)
 
 [node name="SUN" type="MeshInstance3D" parent="Owl_scene/Sphere_sky/Moon_Set"]
 transform = Transform3D(58.7841, 0, 0, 0, 58.784, 0, 0, 0, 58.7841, 0, 0, 0)
@@ -719,8 +719,8 @@ surface_material_override/0 = SubResource("ShaderMaterial_l6khw")
 [node name="Horizon" type="MeshInstance3D" parent="Owl_scene/Sphere_sky"]
 transform = Transform3D(1102.26, 0, 0, 0, 1102.26, 0, 0, 0, 1102.26, 0, 0, 0)
 layers = 3
-mesh = SubResource("SphereMesh_6st3j")
-surface_material_override/0 = SubResource("ShaderMaterial_iucl0")
+mesh = SubResource("SphereMesh_kqlxw")
+surface_material_override/0 = SubResource("ShaderMaterial_juxu4")
 
 [node name="Stars" type="MeshInstance3D" parent="Owl_scene/Sphere_sky/Horizon"]
 transform = Transform3D(1, 4.75537e-09, 1.90215e-08, -4.75537e-09, 1, 0, 1.90215e-08, 0, 1, 0, -6.70552e-08, 7.6086e-08)

@@ -789,7 +789,7 @@ script = ExtResource("6_ukxo0")
 _active = [NodePath("../Lighthouse_root/light_cone4/light_cone"), NodePath("../Lighthouse_root/light_cone5/light_cone")]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.801521, 0.369428, 0.470199, 0.116079, -0.675245, 0.728402, 0.586592, 0.63841, 0.49834, 534.582, 178.538, 397.147)
+transform = Transform3D(-0.685255, 0.24485, 0.685911, 0.305035, -0.758721, 0.575584, 0.661347, 0.603648, 0.44523, 534.582, 178.538, 397.147)
 layers = 2
 light_energy = 3.0
 light_bake_mode = 0
@@ -1629,7 +1629,7 @@ skeleton = NodePath("")
 surface_material_override/0 = SubResource("ShaderMaterial_bdeyd")
 
 [node name="Moon_Set" type="Node3D" parent="Sphere_sky"]
-transform = Transform3D(-1.11194, -0.52361, -2.02465, 1.99796e-08, 2.29305, -0.593026, 2.09126, -0.278408, -1.07652, 597.694, 275.67, 293.457)
+transform = Transform3D(-2.3156, -0.69763, -2.69754, 5.59057e-08, 3.50749, -0.907103, 2.78628, -0.57978, -2.24184, 588.534, 325.129, 497.699)
 
 [node name="SUN" type="MeshInstance3D" parent="Sphere_sky/Moon_Set"]
 transform = Transform3D(58.7841, 0, 0, 0, 58.784, 0, 0, 0, 58.7841, 0, 0, 0)

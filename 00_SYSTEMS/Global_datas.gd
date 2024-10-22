@@ -36,6 +36,8 @@ var selected_clue_data : clue_data
 signal _add_next_clues
 signal _reset_clues
 
+
+
 # FOCUS VIEW  
 signal _open_focus_view(condition : bool)
 

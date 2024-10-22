@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=4 uid="uid://m6voiuw7ip8o"]
+[gd_scene load_steps=11 format=4 uid="uid://m6voiuw7ip8o"]
 
 [ext_resource type="PackedScene" uid="uid://ekr06t27jrfe" path="res://02_FOCUS_VIEW/Assets/TinyBoat/Tony_Boat.blend" id="1_7rxme"]
+[ext_resource type="Script" path="res://00_SYSTEMS/Set_fog_pass.gd" id="1_ro6qa"]
 [ext_resource type="Shader" uid="uid://cu2uipuy138c6" path="res://00_SHADER/All_Materials/Main_sceneTest_dither_sh.tres" id="2_3fxfm"]
 [ext_resource type="Material" uid="uid://yjoyk6fvrm6q" path="res://00_SHADER/No_light_surface_mat.tres" id="3_jyths"]
 
@@ -16,7 +17,6 @@ render_priority = 1
 shader = ExtResource("2_3fxfm")
 shader_parameter/ColorParameter = Color(0, 0, 0, 1)
 shader_parameter/Color = Color(0.270222, 0.270222, 0.270222, 1)
-shader_parameter/Dither_strenght = 0.405
 shader_parameter/Gradient_base = SubResource("GradientTexture2D_x68m1")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p2bbs"]
@@ -54,6 +54,10 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_vwnfk")
 
 [node name="Tiny_boat_set" type="Node3D"]
+
+[node name="Set_fog_pass" type="Node" parent="." node_paths=PackedStringArray("mesh_to_fog")]
+script = ExtResource("1_ro6qa")
+mesh_to_fog = [NodePath("../Tony_Boat/Tiny_boat")]
 
 [node name="Tony_Boat" parent="." instance=ExtResource("1_7rxme")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.983038, 0)

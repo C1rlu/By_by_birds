@@ -1,18 +1,15 @@
 extends Node
 
-
 @export var Loader : Node3D
-
 
 func _ready():
 
 	_global_datas._open_menu.connect(_open_menu)
 	_global_datas.open_owl_view.connect(_open)
 	_global_datas._open_scene.connect(_open_scene)
-	
 	_global_datas.start_prologue.connect(start_prologue)
 	
-	
+
 func start_prologue():
 	
 	_global_datas.player_owl_moment = true

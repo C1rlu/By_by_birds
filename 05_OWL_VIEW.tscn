@@ -1,4 +1,4 @@
-[gd_scene load_steps=83 format=3 uid="uid://cdkof1lgl2una"]
+[gd_scene load_steps=86 format=3 uid="uid://cdkof1lgl2una"]
 
 [ext_resource type="Script" path="res://05_Owl_view/open_owl_view.gd" id="1_ksfmy"]
 [ext_resource type="Script" path="res://05_Owl_view/dialogue_state.gd" id="2_rfcgn"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://ypiajnwq2wfa" path="res://05_DESK_MAP/Desk/Desk_prefab.tscn" id="5_mn8gb"]
 [ext_resource type="PackedScene" uid="uid://c18stvbutb83o" path="res://05_DESK_MAP/Book/Book_prefab.tscn" id="6_25vcx"]
 [ext_resource type="PackedScene" uid="uid://bbpg8v8b5ko2j" path="res://05_Owl_view/GrandDuc/Owl_King_ch.tscn" id="7_kwjmp"]
+[ext_resource type="Script" path="res://05_DESK_MAP/board_raycast_click.gd" id="7_nscnl"]
 [ext_resource type="Shader" uid="uid://2anxsstngu6f" path="res://02_FOCUS_VIEW/Shader/Moon_shader.tres" id="9_jai1r"]
 [ext_resource type="Script" path="res://00_SYSTEMS/Active_mask_at_ready.tres.gd" id="9_mcryj"]
 [ext_resource type="Shader" uid="uid://brd5lwhrgrtsy" path="res://02_FOCUS_VIEW/Moon/moon_sh.tres" id="10_eh0rh"]
@@ -20,6 +21,10 @@
 [ext_resource type="PackedScene" uid="uid://bqbbtrchoeoe1" path="res://05_DESK_MAP/Lanterne/Lanterne_prefab.tscn" id="12_vva32"]
 [ext_resource type="PackedScene" uid="uid://pg3gu15dhmrd" path="res://05_Owl_view/Words_scene.tscn" id="16_8kf1w"]
 [ext_resource type="Texture2D" uid="uid://dafg2qvpi6wmk" path="res://13_TOOLS_UI/Loader_circle/Loader_circle.png" id="17_58150"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_psklq"]
+radius = 1.85879
+height = 6.60556
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_oo5xb"]
 viewport_path = NodePath("SubViewport")
@@ -36,6 +41,8 @@ viewport_path = NodePath("SubViewport")
 render_priority = 0
 shader = ExtResource("9_jai1r")
 shader_parameter/Color_yellow = Color(1, 1, 1, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_4prwk"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_p5h4a"]
 
@@ -560,7 +567,7 @@ script = ExtResource("1_ksfmy")
 
 [node name="Dialogue_state" type="Node" parent="."]
 script = ExtResource("2_rfcgn")
-dialogue_start = Array[String](["Hello lost traveler", "there is a malediction in the north", "You have to help me to find the cursed think", "before the eclispe is full", "I can see some clues through my eyes", "...", "...", "...", "from that clues", "find the lost spirit", "Travel with the birds"])
+dialogue_start = Array[String](["Hello lost spirit", "i'm the guardian of the north", "a malediction is rising in my land ", "you have to help me to find the cursed ", "I can feel them and i will share you some clues", "...", "...", "...", "find the first cursed", "Follow the moon when you are ready"])
 
 [node name="set_Resolution" type="Node" parent="." node_paths=PackedStringArray("viewports")]
 script = ExtResource("2_ul4p6")
@@ -582,6 +589,11 @@ enable = true
 [node name="Words_list_managers" type="Node" parent="." node_paths=PackedStringArray("List_of_words")]
 script = ExtResource("5_hb14o")
 List_of_words = [NodePath("../Owl_scene/WORDS/Words_scene"), NodePath("../Owl_scene/WORDS/Words_scene2"), NodePath("../Owl_scene/WORDS/Words_scene3")]
+
+[node name="Raycast_click" type="Node" parent="." node_paths=PackedStringArray("Camera", "Dialogue_state")]
+script = ExtResource("7_nscnl")
+Camera = NodePath("../Main_pass/head/CAM")
+Dialogue_state = NodePath("../Dialogue_state")
 
 [node name="Main_pass" type="SubViewport" parent="."]
 transparent_bg = true
@@ -627,13 +639,14 @@ fov = 70.0
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Owl_scene"]
 transform = Transform3D(0.99093, 0.12872, -0.0385894, 0.116079, -0.675245, 0.728402, 0.0677026, -0.726275, -0.684062, 534.582, 178.538, 397.147)
 layers = 2
-light_energy = 3.0
 light_bake_mode = 0
 light_cull_mask = 4293918722
 shadow_enabled = true
 sky_mode = 1
 
-[node name="OmniLight3D2" type="OmniLight3D" parent="Owl_scene"]
+[node name="DESK" type="Node3D" parent="Owl_scene"]
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="Owl_scene/DESK"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.206, 0.232796, -0.240342)
 layers = 4
 light_cull_mask = 4293918724
@@ -641,14 +654,14 @@ shadow_enabled = true
 omni_range = 0.325
 omni_attenuation = -0.021
 
-[node name="OmniLight3D5" type="OmniLight3D" parent="Owl_scene"]
+[node name="OmniLight3D5" type="OmniLight3D" parent="Owl_scene/DESK"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0421957, 0.784246, 0.116333)
 layers = 2
 light_cull_mask = 4293918722
 omni_range = 0.296402
 omni_attenuation = -2.576
 
-[node name="OmniLight3D4" type="OmniLight3D" parent="Owl_scene"]
+[node name="OmniLight3D4" type="OmniLight3D" parent="Owl_scene/DESK"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.387, 0.244, -0.161)
 layers = 6
 light_cull_mask = 4293918726
@@ -656,14 +669,12 @@ shadow_enabled = true
 omni_range = 0.323
 omni_attenuation = -0.172
 
-[node name="OmniLight3D3" type="OmniLight3D" parent="Owl_scene"]
+[node name="OmniLight3D3" type="OmniLight3D" parent="Owl_scene/DESK"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.031, 1.092, 0.173)
 layers = 6
 light_cull_mask = 4293918726
 omni_range = 0.36
 omni_attenuation = -0.056
-
-[node name="DESK" type="Node3D" parent="Owl_scene"]
 
 [node name="CandlePrefab02" parent="Owl_scene/DESK" instance=ExtResource("2_u2be4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.430788, 0.133144, -0.307268)
@@ -725,6 +736,14 @@ transform = Transform3D(-0.422256, 0, -1.1703, 0, 1.24414, 0, 1.1703, 0, -0.4222
 [node name="Owl_King_ch" parent="Owl_scene/DESK" instance=ExtResource("7_kwjmp")]
 transform = Transform3D(0.0285646, 0, -0.108113, 0, 0.111823, 0, 0.108113, 0, 0.0285646, -0.118039, 0.243409, -0.0678688)
 
+[node name="Area3D" type="Area3D" parent="Owl_scene/DESK/Owl_King_ch"]
+
+[node name="Bird_order" type="Node" parent="Owl_scene/DESK/Owl_King_ch/Area3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Owl_scene/DESK/Owl_King_ch/Area3D"]
+transform = Transform3D(0.993129, 0.117005, -0.00181523, -0.117005, 0.992649, -0.0309141, -0.00181523, 0.0309141, 0.99952, -0.189002, 2.84036, -0.0605259)
+shape = SubResource("CapsuleShape3D_psklq")
+
 [node name="Lanterne_prefab" parent="Owl_scene/DESK" instance=ExtResource("12_vva32")]
 transform = Transform3D(0.914459, 0, -0.404679, 0, 1, 0, 0.404679, 0, 0.914459, 0.198701, 0.0866206, -0.24906)
 
@@ -762,6 +781,13 @@ layers = 3
 mesh = SubResource("SphereMesh_fof3h")
 skeleton = NodePath("../../..")
 surface_material_override/0 = SubResource("ShaderMaterial_gdu24")
+
+[node name="Area3D" type="Area3D" parent="Owl_scene/Sphere_sky/Moon_Set/SUN"]
+
+[node name="Moon" type="Node" parent="Owl_scene/Sphere_sky/Moon_Set/SUN/Area3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Owl_scene/Sphere_sky/Moon_Set/SUN/Area3D"]
+shape = SubResource("SphereShape3D_4prwk")
 
 [node name="MOON" type="MeshInstance3D" parent="Owl_scene/Sphere_sky/Moon_Set"]
 transform = Transform3D(43.7481, 1.90735e-06, -3.8147e-06, -1.90735e-06, 43.748, -1.43051e-06, 3.8147e-06, 1.43051e-06, 43.7481, 21.617, -9.439, 29.581)

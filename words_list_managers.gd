@@ -7,6 +7,7 @@ var index : int = -1
 var ls_state : int = 0 
 
 
+
 func _ready() -> void:
 	
 	_global_datas._add_next_clues.connect(next_clues)
@@ -33,6 +34,8 @@ func next_clues():
 	
 	List_of_words[index]._set_word(select_ls)	
 	List_of_words[index].visible = true	
+
+
 	
 func reset_ls(_ls_state : int):
 	
@@ -42,7 +45,6 @@ func reset_ls(_ls_state : int):
 	var extractor = dialogue_info_reader.new()
 	
 	for i in range(index+1):
-		print(i)
 		var select_ls = extractor.extract_ls(selected_clue.Clues[i],_ls_state)	
 		List_of_words[i]._set_word(select_ls)
 		

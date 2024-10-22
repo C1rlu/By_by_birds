@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=4 uid="uid://d151bx2ehh7u8"]
+[gd_scene load_steps=14 format=4 uid="uid://d151bx2ehh7u8"]
 
 [ext_resource type="Script" path="res://00_SYSTEMS/Active_mask_at_ready.tres.gd" id="1_5b3sj"]
 [ext_resource type="PackedScene" uid="uid://b21d1ei4cjrqo" path="res://02_FOCUS_VIEW/Assets/Islands/Island_02/Island_02_msh.blend" id="1_li1yj"]
+[ext_resource type="Script" path="res://00_SYSTEMS/Set_fog_pass.gd" id="2_u1ox5"]
 [ext_resource type="Texture2D" uid="uid://bssdfd21mpsca" path="res://02_FOCUS_VIEW/Assets/Islands/Island_02/island_f02_grandient.png" id="2_ux7f2"]
 [ext_resource type="Material" uid="uid://yjoyk6fvrm6q" path="res://00_SHADER/No_light_surface_mat.tres" id="3_pt2le"]
 [ext_resource type="Shader" uid="uid://cu2uipuy138c6" path="res://00_SHADER/All_Materials/Main_sceneTest_dither_sh.tres" id="5_75hc7"]
@@ -76,7 +77,6 @@ render_priority = 1
 shader = ExtResource("5_75hc7")
 shader_parameter/ColorParameter = Color(0.13, 0.13, 0.13, 1)
 shader_parameter/Color = Color(0.490196, 0.490196, 0.490196, 1)
-shader_parameter/Dither_strenght = 0.58
 shader_parameter/Gradient_base = ExtResource("6_aafjt")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_otx33"]
@@ -85,7 +85,6 @@ render_priority = 1
 shader = ExtResource("5_75hc7")
 shader_parameter/ColorParameter = Color(0.13, 0.13, 0.13, 1)
 shader_parameter/Color = Color(0.2, 0.2, 0.2, 1)
-shader_parameter/Dither_strenght = 0.215
 shader_parameter/Gradient_base = ExtResource("6_aafjt")
 
 [node name="Island_f02_scene" type="Node3D"]
@@ -93,6 +92,10 @@ shader_parameter/Gradient_base = ExtResource("6_aafjt")
 [node name="Active_at_ready" type="Node" parent="." node_paths=PackedStringArray("_active")]
 script = ExtResource("1_5b3sj")
 _active = [NodePath("../Island_f_02_light"), NodePath("../Island_f_02_warm")]
+
+[node name="Set_fog_pass" type="Node" parent="." node_paths=PackedStringArray("mesh_to_fog")]
+script = ExtResource("2_u1ox5")
+mesh_to_fog = [NodePath("../Island_02_msh/Island_f_02")]
 
 [node name="Island_f_02_light" type="MeshInstance3D" parent="."]
 visible = false

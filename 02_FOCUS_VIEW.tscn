@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://h2wepwtms1pe"]
+[gd_scene load_steps=39 format=3 uid="uid://h2wepwtms1pe"]
 
 [ext_resource type="Script" path="res://13_TOOLS_UI/set_Resolution_viewports.gd" id="1_3ana1"]
 [ext_resource type="Script" path="res://02_FOCUS_VIEW/Open_FocusView.gd" id="1_ttndn"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://02_FOCUS_VIEW/raycast_on_npc.gd" id="7_fr4tu"]
 [ext_resource type="Script" path="res://02_FOCUS_VIEW/head_position.gd" id="8_xhhco"]
 [ext_resource type="Script" path="res://02_FOCUS_VIEW/update_focus.gd" id="8_yrrej"]
+[ext_resource type="PackedScene" uid="uid://cnimyy5oh85xr" path="res://02_FOCUS_VIEW/VFX/Bird_Noise_Effect.tscn" id="9_88fci"]
 [ext_resource type="Texture2D" uid="uid://dafg2qvpi6wmk" path="res://13_TOOLS_UI/Loader_circle/Loader_circle.png" id="10_s3pi3"]
 [ext_resource type="Shader" uid="uid://clx3d2k1ngnqc" path="res://02_FOCUS_VIEW/Blink_effect_sh.tres" id="11_5x6sk"]
 [ext_resource type="PackedScene" uid="uid://i7vwntowo6jb" path="res://02_FOCUS_VIEW/Focus_scene/Lighthouse_01/Lighthouse_01.tscn" id="11_rwa6u"]
@@ -251,9 +252,10 @@ disable = false
 wait_time = 6.0
 one_shot = true
 
-[node name="Raycast_on_npc" type="Node" parent="." node_paths=PackedStringArray("Camera")]
+[node name="Raycast_on_npc" type="Node" parent="." node_paths=PackedStringArray("Camera", "Bird_select_effect")]
 script = ExtResource("7_fr4tu")
 Camera = NodePath("../Viewport/head/CAM")
+Bird_select_effect = NodePath("../All_root/Bird_Select_effect")
 
 [node name="Update_focus&CamFollow" type="Node" parent="." node_paths=PackedStringArray("Camera_root", "Camera_head", "Cam_to_follow")]
 script = ExtResource("8_yrrej")
@@ -277,7 +279,6 @@ transparent_bg = true
 size = Vector2i(1280, 720)
 
 [node name="head" type="Node3D" parent="Viewport"]
-transform = Transform3D(-0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, -0.965926, 0, 2.9301, -67.9036)
 script = ExtResource("8_xhhco")
 
 [node name="CAM" type="Camera3D" parent="Viewport/head"]
@@ -309,6 +310,10 @@ cull_mask = 32
 fov = 50.0
 
 [node name="All_root" type="Node3D" parent="."]
+
+[node name="Bird_Select_effect" parent="All_root" instance=ExtResource("9_88fci")]
+transform = Transform3D(-8.74228e-09, 0, -0.2, 0, 0.2, 0, 0.2, 0, -8.74228e-09, 0, 0, 6.42519)
+visible = false
 
 [node name="Loader" type="Node3D" parent="All_root"]
 
@@ -345,17 +350,17 @@ mouse_filter = 2
 color = Color(0.0901961, 0.0901961, 0.0901961, 1)
 
 [node name="Target" type="TextureRect" parent="Render"]
-custom_minimum_size = Vector2(10, 10)
+custom_minimum_size = Vector2(8, 8)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -7.5
-offset_top = -7.5
-offset_right = 7.5
-offset_bottom = 7.5
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("10_s3pi3")

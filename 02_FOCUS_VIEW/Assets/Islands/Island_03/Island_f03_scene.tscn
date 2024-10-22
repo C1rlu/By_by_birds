@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://c25ya6gj4v67v" path="res://02_FOCUS_VIEW/Assets/Islands/Island_03/Island_03_msh.blend" id="1_ohvu4"]
 [ext_resource type="Script" path="res://00_SYSTEMS/Active_mask_at_ready.tres.gd" id="1_toi6b"]
-[ext_resource type="Script" path="res://00_SHADER/add_pass.gd" id="2_nv2ct"]
+[ext_resource type="Script" path="res://00_SYSTEMS/Set_fog_pass.gd" id="2_pyxe7"]
 [ext_resource type="Shader" uid="uid://cu2uipuy138c6" path="res://00_SHADER/All_Materials/Main_sceneTest_dither_sh.tres" id="3_bhfox"]
 [ext_resource type="Material" uid="uid://yjoyk6fvrm6q" path="res://00_SHADER/No_light_surface_mat.tres" id="3_yc5db"]
 [ext_resource type="Texture2D" uid="uid://fy87xoj5enwi" path="res://02_FOCUS_VIEW/Assets/Islands/Island_03/island_f03_grandient.png" id="4_7jiec"]
@@ -76,7 +76,6 @@ render_priority = 1
 shader = ExtResource("3_bhfox")
 shader_parameter/ColorParameter = Color(0.13, 0.13, 0.13, 1)
 shader_parameter/Color = Color(0.490196, 0.490196, 0.490196, 1)
-shader_parameter/Dither_strenght = 0.58
 shader_parameter/Gradient_base = ExtResource("4_7jiec")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sr4lw"]
@@ -85,7 +84,6 @@ render_priority = 1
 shader = ExtResource("3_bhfox")
 shader_parameter/ColorParameter = Color(0.13, 0.13, 0.13, 1)
 shader_parameter/Color = Color(0.2, 0.2, 0.2, 1)
-shader_parameter/Dither_strenght = 0.215
 shader_parameter/Gradient_base = ExtResource("4_7jiec")
 
 [node name="Island_f03_scene" type="Node3D"]
@@ -94,8 +92,9 @@ shader_parameter/Gradient_base = ExtResource("4_7jiec")
 script = ExtResource("1_toi6b")
 _active = [NodePath("../Island_f_03_light"), NodePath("../Island_f_03_warm")]
 
-[node name="Add_pass" type="Node" parent="."]
-script = ExtResource("2_nv2ct")
+[node name="Set_fog_pass" type="Node" parent="." node_paths=PackedStringArray("mesh_to_fog")]
+script = ExtResource("2_pyxe7")
+mesh_to_fog = [NodePath("../Island_03_msh/Island_f_03")]
 
 [node name="Island_f_03_light" type="MeshInstance3D" parent="."]
 visible = false

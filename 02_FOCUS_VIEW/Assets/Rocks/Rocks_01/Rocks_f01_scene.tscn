@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=4 uid="uid://dxbbh1u02npiw"]
+[gd_scene load_steps=11 format=4 uid="uid://dxbbh1u02npiw"]
 
 [ext_resource type="Script" path="res://00_SYSTEMS/Active_mask_at_ready.tres.gd" id="1_cpudv"]
 [ext_resource type="PackedScene" uid="uid://d25xcu0ak873h" path="res://02_FOCUS_VIEW/Assets/Rocks/Rocks_01/Rocks_01_msh.blend" id="1_y0muu"]
+[ext_resource type="Script" path="res://00_SYSTEMS/Set_fog_pass.gd" id="2_5p6oa"]
 [ext_resource type="Texture2D" uid="uid://cnx7mrj84kubh" path="res://02_FOCUS_VIEW/Assets/Rocks/Rocks_01/Rocks_01_gradient.png" id="2_kxbb1"]
 [ext_resource type="Material" uid="uid://yjoyk6fvrm6q" path="res://00_SHADER/No_light_surface_mat.tres" id="3_qn5b5"]
 [ext_resource type="Shader" uid="uid://cu2uipuy138c6" path="res://00_SHADER/All_Materials/Main_sceneTest_dither_sh.tres" id="5_6vbfg"]
@@ -52,7 +53,6 @@ render_priority = 0
 shader = ExtResource("5_6vbfg")
 shader_parameter/ColorParameter = Color(0.0430392, 0.0430392, 0.0430391, 1)
 shader_parameter/Color = Color(0.273873, 0.273873, 0.273873, 1)
-shader_parameter/Dither_strenght = 0.43
 shader_parameter/Gradient_base = ExtResource("2_kxbb1")
 
 [node name="Rocks_f01_scene" type="Node3D"]
@@ -60,6 +60,10 @@ shader_parameter/Gradient_base = ExtResource("2_kxbb1")
 [node name="Active_at_ready" type="Node" parent="." node_paths=PackedStringArray("_active")]
 script = ExtResource("1_cpudv")
 _active = [NodePath("../rocks_02_light"), NodePath("../rocks_03_warm")]
+
+[node name="Set_fog_pass" type="Node" parent="." node_paths=PackedStringArray("mesh_to_fog")]
+script = ExtResource("2_5p6oa")
+mesh_to_fog = [NodePath("../Rocks_01_msh/rocks_01")]
 
 [node name="rocks_02_light" type="MeshInstance3D" parent="."]
 visible = false

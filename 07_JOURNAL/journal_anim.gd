@@ -1,10 +1,11 @@
 extends Node
 
 
+
 func _ready() -> void:
-	anim()
-	
-	
+	pass
+
+
 func anim():
 	
 	$"../Journnal_root".rotation_degrees = -1060.0
@@ -18,8 +19,13 @@ func anim():
 	var s
 	s = create_tween()
 	
-	s.tween_method(scale,0.1,2.0,1.0).set_ease(Tween.EASE_OUT)
-
+	s.tween_method(scale,0.1,1.8,1.0).set_ease(Tween.EASE_OUT)
+	s.connect("finished",_done)
+	
+func _done():
+	print("DONE")
+	$"../Journnal_root".scale = Vector2(2.0,2.0)				
+		
 func scale(value : float):
 	$"../Journnal_root".scale = Vector2(value,value)		
 	

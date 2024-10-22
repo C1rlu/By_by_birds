@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=4 uid="uid://66en3kb6p1k5"]
+[gd_scene load_steps=11 format=4 uid="uid://66en3kb6p1k5"]
 
 [ext_resource type="Script" path="res://00_SYSTEMS/Active_mask_at_ready.tres.gd" id="1_wim56"]
+[ext_resource type="Script" path="res://00_SYSTEMS/Set_fog_pass.gd" id="2_ku6nt"]
 [ext_resource type="Texture2D" uid="uid://ia1g0dxn0vrb" path="res://02_FOCUS_VIEW/Assets/Rampe/Rampe_01/Rampe_f01_gradient.png" id="2_tcegk"]
 [ext_resource type="Material" uid="uid://yjoyk6fvrm6q" path="res://00_SHADER/No_light_surface_mat.tres" id="3_mudk4"]
 [ext_resource type="PackedScene" uid="uid://dt6yaog42cdu7" path="res://02_FOCUS_VIEW/Assets/Rampe/Rampe_01/Rampe_01.blend" id="4_g8swa"]
@@ -52,7 +53,6 @@ render_priority = 1
 shader = ExtResource("5_hlnb2")
 shader_parameter/ColorParameter = Color(0.0430392, 0.0430392, 0.0430391, 1)
 shader_parameter/Color = Color(0.162066, 0.162066, 0.162066, 1)
-shader_parameter/Dither_strenght = 0.03
 shader_parameter/Gradient_base = ExtResource("2_tcegk")
 
 [node name="Rampe_f01_scene" type="Node3D"]
@@ -60,6 +60,10 @@ shader_parameter/Gradient_base = ExtResource("2_tcegk")
 [node name="Active_at_ready" type="Node" parent="." node_paths=PackedStringArray("_active")]
 script = ExtResource("1_wim56")
 _active = [NodePath("../Rampe_02"), NodePath("../Rampe_03")]
+
+[node name="Set_fog_pass" type="Node" parent="." node_paths=PackedStringArray("mesh_to_fog")]
+script = ExtResource("2_ku6nt")
+mesh_to_fog = [NodePath("../Rampe_012/Rampe_01")]
 
 [node name="Rampe_02" type="MeshInstance3D" parent="."]
 visible = false

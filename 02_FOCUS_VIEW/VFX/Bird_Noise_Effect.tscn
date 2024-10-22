@@ -159,7 +159,7 @@ resource_local_to_scene = true
 render_priority = 1
 shader = SubResource("VisualShader_cky25")
 shader_parameter/Sonar_color = Color(0.783523, 0.783523, 0.783523, 1)
-shader_parameter/Opacity = 0.0
+shader_parameter/Opacity = 0.4
 
 [node name="Bird_effect" type="Node3D" node_paths=PackedStringArray("meshes")]
 transform = Transform3D(-4.37114e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.37114e-09, 0, 0, 0)

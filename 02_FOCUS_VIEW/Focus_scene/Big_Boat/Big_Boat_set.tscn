@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=4 uid="uid://bo243u78wdxqv"]
+[gd_scene load_steps=10 format=4 uid="uid://bo243u78wdxqv"]
 
 [ext_resource type="PackedScene" uid="uid://dfonf8dcbrwpw" path="res://04_SCENE_MAIN_MAP/00_PLAYER/Boat/Player_Boat_render.blend" id="1_bp0hj"]
+[ext_resource type="Script" path="res://00_SYSTEMS/Set_fog_pass.gd" id="1_pvs3b"]
 [ext_resource type="Texture2D" uid="uid://biuqncbwkpu1v" path="res://04_SCENE_MAIN_MAP/00_PLAYER/Boat/Base_gradient.png" id="2_e6kne"]
 [ext_resource type="Shader" uid="uid://cu2uipuy138c6" path="res://00_SHADER/All_Materials/Main_sceneTest_dither_sh.tres" id="2_wuvim"]
 [ext_resource type="Material" uid="uid://yjoyk6fvrm6q" path="res://00_SHADER/No_light_surface_mat.tres" id="3_grcxy"]
@@ -10,8 +11,7 @@ resource_local_to_scene = true
 render_priority = 1
 shader = ExtResource("2_wuvim")
 shader_parameter/ColorParameter = Color(0.114897, 0.114897, 0.114897, 1)
-shader_parameter/Color = Color(0.2, 0.2, 0.2, 1)
-shader_parameter/Dither_strenght = 0.215
+shader_parameter/Color = Color(0.125911, 0.125911, 0.125911, 1)
 shader_parameter/Gradient_base = ExtResource("2_e6kne")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h6gwr"]
@@ -56,6 +56,10 @@ shadow_mesh = SubResource("ArrayMesh_d65ir")
 
 [node name="Big_Boat_set" type="Node3D"]
 
+[node name="Set_fog_pass" type="Node" parent="." node_paths=PackedStringArray("mesh_to_fog")]
+script = ExtResource("1_pvs3b")
+mesh_to_fog = [NodePath("../Player_Boat_render/Msh_boat__base")]
+
 [node name="Player_Boat_render" parent="." instance=ExtResource("1_bp0hj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.265448, 0.808089)
 
@@ -64,6 +68,9 @@ visible = false
 
 [node name="Msh_boat__base" parent="Player_Boat_render" index="1"]
 surface_material_override/0 = SubResource("ShaderMaterial_3xbc7")
+
+[node name="Msh_boat_mask" parent="Player_Boat_render" index="2"]
+visible = false
 
 [node name="Msh_boat__base2" type="MeshInstance3D" parent="Player_Boat_render"]
 layers = 2
@@ -76,8 +83,5 @@ layers = 4
 mesh = SubResource("ArrayMesh_fsuf3")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("3_grcxy")
-
-[node name="Msh_boat_mask" parent="Player_Boat_render" index="4"]
-visible = false
 
 [editable path="Player_Boat_render"]

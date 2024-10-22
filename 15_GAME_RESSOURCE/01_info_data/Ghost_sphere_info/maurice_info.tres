@@ -1,8 +1,0 @@
-[gd_resource type="Resource" script_class="info_data" load_steps=2 format=3 uid="uid://cayt8retd4a8c"]
-
-[ext_resource type="Script" path="res://15_GAME_RESSOURCE/01_info_data/Book_info_data.gd" id="1_vvm8h"]
-
-[resource]
-script = ExtResource("1_vvm8h")
-info_node_name = "maurice_info"
-is_discovered = true

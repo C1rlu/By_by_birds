@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="clue_data" load_steps=2 format=3 uid="uid://cm72v16wsm4vm"]
+
+[ext_resource type="Script" path="res://05_Owl_view/Clue_data/Clue_data.gd" id="1_nb0gx"]
+
+[resource]
+script = ExtResource("1_nb0gx")
+Clues = Array[String](["Hunter / Chasseur", "Animal / Animal", "Church / Eglise"])

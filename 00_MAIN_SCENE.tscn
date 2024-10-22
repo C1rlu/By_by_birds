@@ -1,15 +1,17 @@
-[gd_scene load_steps=15 format=3 uid="uid://cb8k68mtsigvd"]
+[gd_scene load_steps=17 format=3 uid="uid://cb8k68mtsigvd"]
 
 [ext_resource type="Resource" uid="uid://bmdkj4ktpvfca" path="res://02_FOCUS_VIEW/Focus_data/Lighthouse_01_focus_data.tres" id="1_sgkwb"]
 [ext_resource type="Script" path="res://05_DESK_MAP/open_board.gd" id="2_dfh13"]
-[ext_resource type="Script" path="res://00_SYSTEMS/scene_state.gd" id="3_b0tpt"]
 [ext_resource type="Script" path="res://00_SYSTEMS/Global_datas.gd" id="3_qrxv3"]
+[ext_resource type="Script" path="res://05_Owl_view/ClueManager.gd" id="4_lr71f"]
+[ext_resource type="Resource" uid="uid://cm72v16wsm4vm" path="res://15_GAME_RESSOURCE/Clues_ressources/ThePriest_clues.tres" id="5_0jqfq"]
 [ext_resource type="Script" path="res://13_TOOLS_UI/Hide_cursor.gd" id="6_q33qh"]
 [ext_resource type="Script" path="res://00_SYSTEMS/KeyOrPad/Controllers_inputs_Type.gd" id="7_1x7hl"]
 [ext_resource type="PackedScene" uid="uid://h2wepwtms1pe" path="res://02_FOCUS_VIEW.tscn" id="7_hlrec"]
 [ext_resource type="PackedScene" uid="uid://betillijib3ln" path="res://08_PHOTO_SYSTEMS/Photo_systems.tscn" id="8_ceqxc"]
 [ext_resource type="Script" path="res://100_GAME_MENU/Set_Resolution.gd" id="9_i5bih"]
 [ext_resource type="PackedScene" uid="uid://cdkof1lgl2una" path="res://05_OWL_VIEW.tscn" id="9_s1f7p"]
+[ext_resource type="PackedScene" uid="uid://wgeoup6f2egn" path="res://07_JOURNAL/JOURNAL_SCENE.tscn" id="10_67n65"]
 [ext_resource type="PackedScene" uid="uid://bemddl0bqqfwo" path="res://100_GAME_MENU/08_game_menu.tscn" id="16_5y5wa"]
 
 [sub_resource type="GDScript" id="GDScript_c11gh"]
@@ -24,10 +26,9 @@ func _ready() -> void:
 func _input(event):
 	
 	if event.is_action_pressed(\"debug_1\"):
-		_global_datas._open_focus_view.emit(true)
-
-	if event.is_action_pressed(\"debug_2\"):
-		_global_datas._open_desk.emit(true)
+		_global_datas.player_owl_moment = true
+		_global_datas.open_owl_view.emit(true)
+		_global_datas._add_next_clues.emit()
 	
 
 		
@@ -70,11 +71,19 @@ _focus_data = ExtResource("1_sgkwb")
 
 [node name="01_GAME_MANAGERS" type="Node" parent="."]
 
-[node name="Open_Board" type="Node" parent="01_GAME_MANAGERS"]
-script = ExtResource("2_dfh13")
-
 [node name="Global_datas" type="Node" parent="01_GAME_MANAGERS"]
 script = ExtResource("3_qrxv3")
+
+[node name="Open_ClueVIew" type="Node" parent="01_GAME_MANAGERS"]
+script = ExtResource("2_dfh13")
+
+[node name="Clue_manager" type="Node" parent="01_GAME_MANAGERS"]
+script = ExtResource("4_lr71f")
+debug_clue_data = ExtResource("5_0jqfq")
+
+[node name="CLue_timer" type="Timer" parent="01_GAME_MANAGERS/Clue_manager"]
+wait_time = 6.0
+one_shot = true
 
 [node name="GAME_STATES" type="Node" parent="01_GAME_MANAGERS"]
 
@@ -99,14 +108,13 @@ script = ExtResource("9_i5bih")
 [node name="Fps_locker" type="Node" parent="01_GAME_MANAGERS/Options"]
 script = SubResource("GDScript_gl82p")
 
-[node name="GAME_SCENE" type="Node" parent="."]
-script = ExtResource("3_b0tpt")
+[node name="02_FOCUS_VIEW" parent="." instance=ExtResource("7_hlrec")]
 
-[node name="02_FOCUS_VIEW" parent="GAME_SCENE" instance=ExtResource("7_hlrec")]
-
-[node name="05_OWL_VIEW" parent="GAME_SCENE" instance=ExtResource("9_s1f7p")]
+[node name="05_OWL_VIEW" parent="." instance=ExtResource("9_s1f7p")]
 
 [node name="PHOTO_SYSTEMS" parent="." instance=ExtResource("8_ceqxc")]
+
+[node name="JOURNAL_SYSTEM" parent="." instance=ExtResource("10_67n65")]
 
 [node name="08_GAME_MENU" parent="." instance=ExtResource("16_5y5wa")]
 

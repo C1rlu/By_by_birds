@@ -1,8 +1,9 @@
-[gd_scene load_steps=15 format=4 uid="uid://bhf23fmw0km6j"]
+[gd_scene load_steps=16 format=4 uid="uid://bhf23fmw0km6j"]
 
 [ext_resource type="Texture2D" uid="uid://cut8mkc5smyp6" path="res://02_FOCUS_VIEW/Assets/Trees/Pine_01/Pine_f01_gradient.png" id="1_eeekm"]
 [ext_resource type="Script" path="res://00_SYSTEMS/Active_mask_at_ready.tres.gd" id="1_u0edq"]
 [ext_resource type="Material" uid="uid://yjoyk6fvrm6q" path="res://00_SHADER/No_light_surface_mat.tres" id="2_0o248"]
+[ext_resource type="Script" path="res://00_SYSTEMS/Set_fog_pass.gd" id="2_vs0g5"]
 [ext_resource type="PackedScene" uid="uid://di3yp3s7vrtos" path="res://02_FOCUS_VIEW/Assets/Trees/Pine_02/Pine_medium_01.blend" id="3_0v5qe"]
 [ext_resource type="Shader" uid="uid://cu2uipuy138c6" path="res://00_SHADER/All_Materials/Main_sceneTest_dither_sh.tres" id="4_fkj44"]
 
@@ -116,7 +117,6 @@ render_priority = 1
 shader = ExtResource("4_fkj44")
 shader_parameter/ColorParameter = Color(0.0430392, 0.0430392, 0.0430391, 1)
 shader_parameter/Color = Color(0.162066, 0.162066, 0.162066, 1)
-shader_parameter/Dither_strenght = 0.41
 shader_parameter/Gradient_base = ExtResource("1_eeekm")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_v6xtt"]
@@ -125,7 +125,6 @@ render_priority = 1
 shader = ExtResource("4_fkj44")
 shader_parameter/ColorParameter = Color(0.13, 0.13, 0.13, 1)
 shader_parameter/Color = Color(0.490196, 0.490196, 0.490196, 1)
-shader_parameter/Dither_strenght = 0.58
 shader_parameter/Gradient_base = ExtResource("1_eeekm")
 
 [node name="Pine_medium_f02_scene" type="Node3D"]
@@ -133,6 +132,10 @@ shader_parameter/Gradient_base = ExtResource("1_eeekm")
 [node name="Active_at_ready" type="Node" parent="." node_paths=PackedStringArray("_active")]
 script = ExtResource("1_u0edq")
 _active = [NodePath("../Pine_f02_light"), NodePath("../Pine_f03_warm")]
+
+[node name="Set_fog_pass" type="Node" parent="." node_paths=PackedStringArray("mesh_to_fog")]
+script = ExtResource("2_vs0g5")
+mesh_to_fog = [NodePath("../Pine_medium_01/Pine_f01")]
 
 [node name="Pine_f02_light" type="MeshInstance3D" parent="."]
 transform = Transform3D(-0.102628, 0.00114895, 0.139322, -0.0125292, 0.172262, -0.0106499, -0.138762, -0.0164037, -0.102081, -0.395883, 3.75528, 0.068255)

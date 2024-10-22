@@ -1,7 +1,8 @@
-[gd_scene load_steps=15 format=4 uid="uid://k8l35ijjolux"]
+[gd_scene load_steps=16 format=4 uid="uid://k8l35ijjolux"]
 
 [ext_resource type="PackedScene" uid="uid://b37y0vsmlfg07" path="res://02_FOCUS_VIEW/Assets/Wood_houses/CabinHouses_set_01.blend" id="1_18i5c"]
 [ext_resource type="Script" path="res://00_SYSTEMS/Active_mask_at_ready.tres.gd" id="1_a7125"]
+[ext_resource type="Script" path="res://00_SYSTEMS/Set_fog_pass.gd" id="2_orkfh"]
 [ext_resource type="Shader" uid="uid://cu2uipuy138c6" path="res://00_SHADER/All_Materials/Main_sceneTest_dither_sh.tres" id="2_xr5cj"]
 [ext_resource type="Material" uid="uid://yjoyk6fvrm6q" path="res://00_SHADER/No_light_surface_mat.tres" id="3_q2708"]
 
@@ -18,7 +19,6 @@ render_priority = 1
 shader = ExtResource("2_xr5cj")
 shader_parameter/ColorParameter = Color(0, 0, 0, 1)
 shader_parameter/Color = Color(0.147672, 0.147672, 0.147672, 1)
-shader_parameter/Dither_strenght = 0.8
 shader_parameter/Gradient_base = SubResource("GradientTexture2D_bs4i7")
 
 [sub_resource type="Gradient" id="Gradient_j0acw"]
@@ -33,7 +33,6 @@ render_priority = 1
 shader = ExtResource("2_xr5cj")
 shader_parameter/ColorParameter = Color(0.13, 0.13, 0.13, 1)
 shader_parameter/Color = Color(0.490196, 0.490196, 0.490196, 1)
-shader_parameter/Dither_strenght = 0.61
 shader_parameter/Gradient_base = SubResource("GradientTexture2D_5vhy5")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ww6uh"]
@@ -109,6 +108,10 @@ shadow_mesh = SubResource("ArrayMesh_atasb")
 [node name="Active_at_ready" type="Node" parent="." node_paths=PackedStringArray("_active")]
 script = ExtResource("1_a7125")
 _active = [NodePath("../CabinHouses_set_01/Cabin_set_light"), NodePath("../CabinHouses_set_01/Cabin_set_warm")]
+
+[node name="Set_fog_pass" type="Node" parent="." node_paths=PackedStringArray("mesh_to_fog")]
+script = ExtResource("2_orkfh")
+mesh_to_fog = [NodePath("../CabinHouses_set_01/Cabin_set_01")]
 
 [node name="CabinHouses_set_01" parent="." instance=ExtResource("1_18i5c")]
 

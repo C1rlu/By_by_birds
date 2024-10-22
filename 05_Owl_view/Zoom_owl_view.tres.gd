@@ -9,19 +9,13 @@ var t
 var zoomed : bool = false
 
 	
-func _in_condition(condition):
-	
-	if condition:
-		_zoom_in()
-	else:		
-		_zoom_out()	
-	
-func _reset(condition):
-	
-	if condition:
-		Camera.fov = 50.0
-		
+@export var enable : bool = false
+
 func _input(event):
+	
+	
+	if !enable:
+		return	
 	
 	if !_global_datas.player_owl_moment:
 		return
@@ -34,7 +28,7 @@ func _input(event):
 
 func _zoom_in():	
 	
-	var target = 20.0
+	var target = 30.0
 	if t:
 		t.kill()
 	t = create_tween()
@@ -44,7 +38,7 @@ func _zoom_in():
 	
 func _zoom_out():	
 	
-	var target = 50.0
+	var target = 70.0
 	if t:
 		t.kill()
 	t = create_tween()

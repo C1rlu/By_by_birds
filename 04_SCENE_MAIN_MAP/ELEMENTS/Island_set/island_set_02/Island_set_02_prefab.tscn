@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=4 uid="uid://bme2k8btnc2jn"]
+[gd_scene load_steps=13 format=4 uid="uid://bme2k8btnc2jn"]
 
 [ext_resource type="Script" path="res://00_SYSTEMS/Active_mask_at_ready.tres.gd" id="1_p4q8b"]
+[ext_resource type="Script" path="res://00_SYSTEMS/Set_fog_pass.gd" id="2_kr3u3"]
 [ext_resource type="Material" uid="uid://yjoyk6fvrm6q" path="res://00_SHADER/No_light_surface_mat.tres" id="2_qwpko"]
 [ext_resource type="Shader" uid="uid://cu2uipuy138c6" path="res://00_SHADER/All_Materials/Main_sceneTest_dither_sh.tres" id="5_r8wbk"]
 [ext_resource type="PackedScene" uid="uid://b6howimswkags" path="res://04_SCENE_MAIN_MAP/ELEMENTS/Island_set/island_set_02/Island_set_02.blend" id="7_pf2mo"]
@@ -14,7 +15,6 @@ render_priority = 1
 shader = ExtResource("5_r8wbk")
 shader_parameter/ColorParameter = Color(0.13, 0.13, 0.13, 1)
 shader_parameter/Color = Color(0.493545, 0.493546, 0.493545, 1)
-shader_parameter/Dither_strenght = 0.485
 shader_parameter/Gradient_base = ExtResource("9_v0alh")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q6t14"]
@@ -60,6 +60,10 @@ shadow_mesh = SubResource("ArrayMesh_n017b")
 [node name="Active_at_ready" type="Node" parent="." node_paths=PackedStringArray("_active")]
 script = ExtResource("1_p4q8b")
 _active = [NodePath("../Island_set_02/Island_set_light"), NodePath("../Island_set_02/Island_set_light2")]
+
+[node name="Set_fog_pass" type="Node" parent="." node_paths=PackedStringArray("mesh_to_fog")]
+script = ExtResource("2_kr3u3")
+mesh_to_fog = [NodePath("../Island_set_02/Island_set_02")]
 
 [node name="Island_set_02" parent="." instance=ExtResource("7_pf2mo")]
 

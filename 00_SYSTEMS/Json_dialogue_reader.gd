@@ -14,3 +14,11 @@ func extract_dialogue(node_name: String, ls : int, all_ls_info) -> String:
 		if all_info["gnode_name"] == node_name:
 			return all_info["commands_raw"].split("\n/\n")[ls] # here to select localisation note
 	return "info not found"
+
+
+func extract_ls(node_name: String, ls: int) -> String:
+	var parts = node_name.split(" / ")  # Split by " / " delimiter
+	if ls >= 0 and ls < parts.size():   # Check if index is within range
+		return parts[ls]
+	else:
+		return ""  # Return empty string if index is out of range

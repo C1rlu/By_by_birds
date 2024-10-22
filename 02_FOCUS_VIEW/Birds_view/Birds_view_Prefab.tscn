@@ -23,7 +23,6 @@ render_priority = 1
 shader = ExtResource("5_hldsy")
 shader_parameter/ColorParameter = Color(0.13, 0.13, 0.13, 1)
 shader_parameter/Color = Color(1, 1, 1, 1)
-shader_parameter/Dither_strenght = 0.58
 shader_parameter/Gradient_base = SubResource("GradientTexture2D_cj5ka")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_adeyp"]
@@ -64,15 +63,14 @@ shadow_mesh = SubResource("ArrayMesh_k7hh1")
 script = ExtResource("1_hgwdi")
 bird_node = NodePath("Far_birds")
 
-[node name="cam" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.366778, 0)
+[node name="Bird_effect" parent="." instance=ExtResource("7_kntqf")]
+transform = Transform3D(-4.37114e-09, 0, -0.0999999, 0, 0.0999999, 0, 0.0999999, 0, -4.37114e-09, 0, 0, 0)
 visible = false
-fov = 50.0
 
 [node name="Bird_emit_sound_effect" type="Node" parent="." node_paths=PackedStringArray("parent_root", "bird_efect")]
 script = ExtResource("2_tw303")
 parent_root = NodePath("../Far_birds")
-bird_efect = NodePath("../Far_birds/Bird_effect")
+bird_efect = NodePath("../Bird_effect")
 
 [node name="Timer" type="Timer" parent="Bird_emit_sound_effect"]
 one_shot = true
@@ -91,18 +89,18 @@ shape = SubResource("SphereShape3D_ishh4")
 transform = Transform3D(0.179007, 0, 0, 0, 0.179007, 0, 0, 0, 0.179007, 0, 0, 0)
 
 [node name="seagull_msh" parent="Far_birds" index="0"]
+layers = 3
 surface_material_override/0 = SubResource("ShaderMaterial_3drka")
 
-[node name="Bird_effect" parent="Far_birds" instance=ExtResource("7_kntqf")]
-transform = Transform3D(-2.44188e-08, 0, -0.558637, 0, 0.558637, 0, 0.558637, 0, -2.44188e-08, 0, 0, 0)
-
 [node name="seagull_msh_light" type="MeshInstance3D" parent="Far_birds"]
+visible = false
 layers = 2
 mesh = SubResource("ArrayMesh_rwk6x")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("4_sa6ij")
 
 [node name="seagull_msh_warm" type="MeshInstance3D" parent="Far_birds"]
+visible = false
 layers = 4
 mesh = SubResource("ArrayMesh_rwk6x")
 skeleton = NodePath("")

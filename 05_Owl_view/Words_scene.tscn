@@ -1,4 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://pg3gu15dhmrd"]
+[gd_scene load_steps=3 format=3 uid="uid://pg3gu15dhmrd"]
+
+[ext_resource type="Script" path="res://05_Owl_view/set_word.gd" id="1_00h17"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_l0dvc"]
 viewport_path = NodePath("SubViewport")
@@ -11,6 +13,7 @@ gi_mode = 0
 billboard = 1
 fixed_size = true
 texture = SubResource("ViewportTexture_l0dvc")
+script = ExtResource("1_00h17")
 
 [node name="SubViewport" type="SubViewport" parent="."]
 transparent_bg = true

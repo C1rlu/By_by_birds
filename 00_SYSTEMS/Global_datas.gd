@@ -24,9 +24,14 @@ signal _roll_bird
 var player_area : Area3D
 signal _check_player_zone
 
+
+signal _open_scene(scene : PackedScene)
+
 # OWL VIEW
 signal open_owl_view(condition : bool)
 var player_owl_moment : bool
+var selected_clue_data : clue_data
+signal _add_next_clues
 
 # FOCUS VIEW  
 signal _open_focus_view(condition : bool)
@@ -40,8 +45,8 @@ signal _end_of_transition
 var current_focus_data : focus_data
 var previous_bird_hit : Node
 
-signal set_instant_focus(camera : Camera3D)
-signal set_new_focus(camera : Camera3D)
+signal set_instant_focus(Camera : Camera3D)
+signal set_new_focus(node : Node3D)
 
 var look_at_sensivity : float 
 
@@ -101,9 +106,5 @@ var legend_page_index : int
 #------ focus view ---
 
 signal subscene_sonar_effect(position : Vector3, color : Color)
-
-
-var Npc_Dialogue : Npc_datas
-
 
 signal active_prologue_demo

@@ -6,11 +6,11 @@ const BIRD_NOISE_EFFECT = preload("res://02_FOCUS_VIEW/VFX/Bird_Noise_Effect.tsc
 
 
 func _ready() -> void:
-	
+	pass
 	#_global_datas._end_of_transition.connect(play)
-	$Timer.timeout.connect(play)
-	$Timer.wait_time = randf_range(2.0,5.0)
-	$Timer.start()
+	#$Timer.timeout.connect(play)
+	#$Timer.wait_time = randf_range(2.0,5.0)
+	#$Timer.start()
 	
 	
 	

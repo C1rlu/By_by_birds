@@ -1,10 +1,11 @@
-[gd_scene load_steps=14 format=4 uid="uid://dh5kdswdhdfq6"]
+[gd_scene load_steps=15 format=4 uid="uid://dh5kdswdhdfq6"]
 
 [ext_resource type="Script" path="res://04_SCENE_MAIN_MAP/set_revealed.gd" id="1_kpc5v"]
 [ext_resource type="PackedScene" uid="uid://cxxpdk6uunjjo" path="res://04_SCENE_MAIN_MAP/ELEMENTS/Island_set/Island_set_01/Island_set_01.blend" id="1_umt6k"]
 [ext_resource type="Script" path="res://00_SYSTEMS/Active_mask_at_ready.tres.gd" id="2_oiy7t"]
 [ext_resource type="Material" uid="uid://yjoyk6fvrm6q" path="res://00_SHADER/No_light_surface_mat.tres" id="3_alele"]
 [ext_resource type="Texture2D" uid="uid://5hamxlsfnogh" path="res://04_SCENE_MAIN_MAP/ELEMENTS/Island_set/Island_set_01/Island_gradient_01.png" id="4_y3vfy"]
+[ext_resource type="Script" path="res://00_SYSTEMS/Set_fog_pass.gd" id="5_y13t4"]
 [ext_resource type="Shader" uid="uid://cu2uipuy138c6" path="res://00_SHADER/All_Materials/Main_sceneTest_dither_sh.tres" id="6_dixv0"]
 [ext_resource type="Material" uid="uid://ctnqf5d3uj1g7" path="res://00_SHADER/All_Materials/dark_mask.tres" id="7_upc2r"]
 
@@ -84,7 +85,6 @@ render_priority = 1
 shader = ExtResource("6_dixv0")
 shader_parameter/ColorParameter = Color(0.114897, 0.114897, 0.114897, 1)
 shader_parameter/Color = Color(0.190762, 0.190762, 0.190762, 1)
-shader_parameter/Dither_strenght = 0.115
 shader_parameter/Gradient_base = ExtResource("4_y3vfy")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wutwc"]
@@ -93,7 +93,6 @@ render_priority = 1
 shader = ExtResource("6_dixv0")
 shader_parameter/ColorParameter = Color(0.13, 0.13, 0.13, 1)
 shader_parameter/Color = Color(0.47788, 0.47788, 0.47788, 1)
-shader_parameter/Dither_strenght = 0.56
 shader_parameter/Gradient_base = ExtResource("4_y3vfy")
 
 [node name="Island_Set01_Prefab" type="Node3D" node_paths=PackedStringArray("element_to_revealed")]
@@ -121,6 +120,10 @@ mesh = SubResource("ArrayMesh_e2d2o")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("3_alele")
 surface_material_override/1 = ExtResource("3_alele")
+
+[node name="Set_fog_pass" type="Node" parent="." node_paths=PackedStringArray("mesh_to_fog")]
+script = ExtResource("5_y13t4")
+mesh_to_fog = [NodePath("../Island_set_012/Island_set_01")]
 
 [node name="Island_set_012" parent="." instance=ExtResource("1_umt6k")]
 

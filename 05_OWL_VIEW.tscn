@@ -567,7 +567,7 @@ script = ExtResource("1_ksfmy")
 
 [node name="Dialogue_state" type="Node" parent="."]
 script = ExtResource("2_rfcgn")
-dialogue_start = Array[String](["Hello lost spirit", "i'm the guardian of the north", "a malediction is rising in my land ", "you have to help me to find the cursed ", "I can feel them and i will share you some clues", "...", "...", "...", "find the first cursed", "Follow the moon when you are ready"])
+dialogue_start = Array[String](["Hello lost spirit", "i'm the guardian of the north", "a disease i rising in my land  ", "tonight, you will be my messenger ", "and choose the good one", "...", "...", "...", "choose well", "Follow the moon when you are ready"])
 
 [node name="set_Resolution" type="Node" parent="." node_paths=PackedStringArray("viewports")]
 script = ExtResource("2_ul4p6")

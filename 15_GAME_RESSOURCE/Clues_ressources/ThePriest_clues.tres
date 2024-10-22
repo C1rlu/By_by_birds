@@ -4,4 +4,4 @@
 
 [resource]
 script = ExtResource("1_nb0gx")
-Clues = Array[String](["Hunter / Chasseur", "Animal / Animal", "Church / Eglise"])
+Clues = Array[String](["He tell / Il raconte ", "Stories / des fables", "to manipulate the porest / pour manipuler les plus pauvres"])

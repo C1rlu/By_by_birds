@@ -10,8 +10,16 @@ var ls_state : int = 0
 func _ready() -> void:
 	
 	_global_datas._add_next_clues.connect(next_clues)
+	_global_datas._reset_clues.connect(_reset)
 	_global_datas._change_language_state.connect(reset_ls)
+	_reset()
 	
+	
+func _reset():
+	index = -1	
+	for w in List_of_words:
+		w.visible = false	
+		w._set_word("")
 	
 func next_clues():
 	

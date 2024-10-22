@@ -1,6 +1,7 @@
-[gd_scene load_steps=81 format=3 uid="uid://cdkof1lgl2una"]
+[gd_scene load_steps=83 format=3 uid="uid://cdkof1lgl2una"]
 
 [ext_resource type="Script" path="res://05_Owl_view/open_owl_view.gd" id="1_ksfmy"]
+[ext_resource type="Script" path="res://05_Owl_view/dialogue_state.gd" id="2_rfcgn"]
 [ext_resource type="PackedScene" uid="uid://dkhji76icgbfk" path="res://05_DESK_MAP/Candle/Candle_prefab_02.tscn" id="2_u2be4"]
 [ext_resource type="Script" path="res://13_TOOLS_UI/set_Resolution_viewports.gd" id="2_ul4p6"]
 [ext_resource type="Script" path="res://05_Owl_view/Zoom_owl_view.tres.gd" id="3_2hu0e"]
@@ -496,11 +497,70 @@ nodes/fragment/connections = PackedInt32Array(2, 0, 0, 1)
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_to56l"]
 shader = SubResource("VisualShader_bjkyn")
 
+[sub_resource type="GDScript" id="GDScript_dmou4"]
+script/source = "extends Node
+
+
+@onready var description_text = $\"../../Description_Text\"
+
+var t 
+var _is_typing : bool = false
+
+var ls_index : int = 0 
+@onready var timer = $Timer
+
+var _previous_legend : String
+func _ready():
+
+	_global_datas._show_object_legend.connect(_update_text)
+
+func _update_text(condition : bool, _legend: String):
+	
+	if !condition:
+		description_text.visible = false
+		return
+	
+	description_text.visible = condition
+	description_text.text = _legend
+	
+	var text_count = _legend.length()
+	
+	if _previous_legend == _legend:
+		return
+	_previous_legend = _legend
+	
+	type_text(text_count)
+
+func type_text(count : int):
+	
+
+	description_text.visible_ratio = 0.0
+	var speed = 0.01 * count
+	_is_typing = true
+
+	if t:
+		t.kill()
+	t = create_tween()
+	
+	t .tween_method(change_ration,0.0,1.0,speed)
+	await create_tween().tween_interval(speed).finished
+
+	_is_typing = false
+	
+func change_ration(value : float):
+	description_text.visible_ratio = value
+	
+"
+
 [node name="05_OWL_VIEW" type="Node"]
 metadata/_edit_horizontal_guides_ = [-58.0]
 
 [node name="Open_owl_view" type="Node" parent="."]
 script = ExtResource("1_ksfmy")
+
+[node name="Dialogue_state" type="Node" parent="."]
+script = ExtResource("2_rfcgn")
+dialogue_start = Array[String](["Hello lost traveler", "there is a malediction in the north", "You have to help me to find the cursed think", "before the eclispe is full", "I can see some clues through my eyes", "...", "...", "...", "from that clues", "find the lost spirit", "Travel with the birds"])
 
 [node name="set_Resolution" type="Node" parent="." node_paths=PackedStringArray("viewports")]
 script = ExtResource("2_ul4p6")
@@ -777,3 +837,37 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("17_58150")
 expand_mode = 1
+
+[node name="Description" type="Node2D" parent="."]
+position = Vector2(989, 752)
+
+[node name="Update_description" type="Node" parent="Description"]
+script = SubResource("GDScript_dmou4")
+
+[node name="Timer" type="Timer" parent="Description/Update_description"]
+wait_time = 2.5
+one_shot = true
+
+[node name="Description_Text" type="Label" parent="."]
+visible = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -300.0
+offset_top = -117.0
+offset_right = 300.0
+offset_bottom = -17.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0.0901961, 0.0901961, 0.0901961, 1)
+theme_override_constants/outline_size = 60
+theme_override_font_sizes/font_size = 30
+text = "Lorem ipsum "
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[connection signal="timeout" from="Description/Update_description/Timer" to="Description/Update_description" method="_on_timer_timeout"]

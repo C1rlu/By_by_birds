@@ -25,10 +25,13 @@ func _ready() -> void:
 
 func _input(event):
 	
+
 	if event.is_action_pressed(\"debug_1\"):
-		_global_datas.player_owl_moment = true
-		_global_datas.open_owl_view.emit(true)
-		_global_datas._add_next_clues.emit()
+		
+		_global_datas.start_prologue.emit()
+		#_global_datas.player_owl_moment = true
+		#_global_datas.open_owl_view.emit(true)
+		#_global_datas._add_next_clues.emit()
 	
 
 		

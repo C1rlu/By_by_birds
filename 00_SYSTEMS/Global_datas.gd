@@ -28,10 +28,13 @@ signal _check_player_zone
 signal _open_scene(scene : PackedScene)
 
 # OWL VIEW
+signal start_prologue
+
 signal open_owl_view(condition : bool)
 var player_owl_moment : bool
 var selected_clue_data : clue_data
 signal _add_next_clues
+signal _reset_clues
 
 # FOCUS VIEW  
 signal _open_focus_view(condition : bool)
@@ -79,7 +82,7 @@ var photo_archives : Array[PhotoData]
 
 #UI VAR 
 signal set_resolution(resolution : Vector2i)
-signal _show_object_legend(legend : String)
+signal _show_object_legend(condition : bool,legend : String)
 
 var player_rg : RigidBody3D
 

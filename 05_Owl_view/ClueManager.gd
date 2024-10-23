@@ -4,8 +4,6 @@ extends Node
 
 func _ready() -> void:
 	$CLue_timer.timeout.connect(_open_owl_view)
-	#$CLue_timer.start()
-
 	
 	_global_datas.selected_clue_data = debug_clue_data
 	

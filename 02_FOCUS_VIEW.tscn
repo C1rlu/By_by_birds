@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://h2wepwtms1pe"]
+[gd_scene load_steps=54 format=3 uid="uid://h2wepwtms1pe"]
 
 [ext_resource type="Script" path="res://13_TOOLS_UI/set_Resolution_viewports.gd" id="1_3ana1"]
 [ext_resource type="Script" path="res://02_FOCUS_VIEW/Open_FocusView.gd" id="1_ttndn"]
@@ -6,12 +6,16 @@
 [ext_resource type="Script" path="res://02_FOCUS_VIEW/look_at.gd" id="5_8dylc"]
 [ext_resource type="Script" path="res://02_FOCUS_VIEW/rotate_automatique.gd" id="6_l0ewy"]
 [ext_resource type="Script" path="res://02_FOCUS_VIEW/raycast_on_npc.gd" id="7_fr4tu"]
+[ext_resource type="Script" path="res://05_Owl_view/ClueManager.gd" id="8_5uw5c"]
 [ext_resource type="Script" path="res://02_FOCUS_VIEW/head_position.gd" id="8_xhhco"]
 [ext_resource type="Script" path="res://02_FOCUS_VIEW/update_focus.gd" id="8_yrrej"]
+[ext_resource type="Resource" uid="uid://cm72v16wsm4vm" path="res://15_GAME_RESSOURCE/Clues_ressources/ThePriest_clues.tres" id="9_2rhuh"]
 [ext_resource type="PackedScene" uid="uid://cnimyy5oh85xr" path="res://02_FOCUS_VIEW/VFX/Bird_Noise_Effect.tscn" id="9_88fci"]
+[ext_resource type="Script" path="res://words_list_managers.gd" id="10_a2tui"]
 [ext_resource type="Texture2D" uid="uid://dafg2qvpi6wmk" path="res://13_TOOLS_UI/Loader_circle/Loader_circle.png" id="10_s3pi3"]
 [ext_resource type="Shader" uid="uid://clx3d2k1ngnqc" path="res://02_FOCUS_VIEW/Blink_effect_sh.tres" id="11_5x6sk"]
 [ext_resource type="PackedScene" uid="uid://i7vwntowo6jb" path="res://02_FOCUS_VIEW/Focus_scene/Lighthouse_01/Lighthouse_01.tscn" id="11_rwa6u"]
+[ext_resource type="PackedScene" uid="uid://pg3gu15dhmrd" path="res://05_Owl_view/Words_scene.tscn" id="13_tsn3f"]
 [ext_resource type="Shader" uid="uid://cp4mr3xx4kfgi" path="res://00_SHADER/Sonor_view_sh.tres" id="17_wlwsl"]
 
 [sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_mimwe"]
@@ -150,6 +154,39 @@ nodes/fragment/connections = PackedInt32Array(9, 0, 0, 0, 17, 0, 18, 0, 18, 0, 1
 shader = SubResource("VisualShader_o371p")
 shader_parameter/Opacity = 1.0
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_7e7wx"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_yg0wm"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_a78ah"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_jbywg"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_pfyi7"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_1ac4j"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_amink"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_oe3fk"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_ibvdx"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_enq38"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_y8n22"]
+viewport_path = NodePath("SubViewport")
+
 [sub_resource type="ViewportTexture" id="ViewportTexture_phkus"]
 viewport_path = NodePath("Viewport")
 
@@ -263,6 +300,14 @@ Camera_root = NodePath("../Viewport/head/CAM")
 Camera_head = NodePath("../Viewport/head")
 Cam_to_follow = [NodePath("../Viewport_light/CAM_light"), NodePath("../Viewport_warm/CAM_light_warm"), NodePath("../Viewport_Dialogue_ui/CAM_dialogue_ui")]
 
+[node name="Clue_manager" type="Node" parent="."]
+script = ExtResource("8_5uw5c")
+debug_clue_data = ExtResource("9_2rhuh")
+
+[node name="Words_list_managers" type="Node" parent="." node_paths=PackedStringArray("List_of_words")]
+script = ExtResource("10_a2tui")
+List_of_words = [NodePath(""), NodePath(""), NodePath("")]
+
 [node name="BACKDROP_FOCUS" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_v0203")
 clip_contents = true
@@ -314,6 +359,53 @@ fov = 50.0
 [node name="Bird_Select_effect" parent="All_root" instance=ExtResource("9_88fci")]
 transform = Transform3D(-8.74228e-09, 0, -0.2, 0, 0.2, 0, 0.2, 0, -8.74228e-09, 0, 0, 6.42519)
 visible = false
+
+[node name="WORDS" type="Node3D" parent="All_root"]
+visible = false
+
+[node name="Words_scene" parent="All_root/WORDS" instance=ExtResource("13_tsn3f")]
+transform = Transform3D(0.135075, 0, 0, 0, 0.135075, 0, 0, 0, 0.135075, 6.83931, 9.10538, -2.659)
+texture = SubResource("ViewportTexture_7e7wx")
+
+[node name="Words_scene2" parent="All_root/WORDS" instance=ExtResource("13_tsn3f")]
+transform = Transform3D(0.134877, 0.0057615, 0, -0.0057615, 0.134877, 0, 0, 0, 0.135, 6.0586, 2.098, -2.659)
+texture = SubResource("ViewportTexture_yg0wm")
+
+[node name="Words_scene3" parent="All_root/WORDS" instance=ExtResource("13_tsn3f")]
+transform = Transform3D(0.135, 0, 0, 0, 0.135, 0, 0, 0, 0.135, -8.15836, 9.60536, -2.659)
+texture = SubResource("ViewportTexture_a78ah")
+
+[node name="Words_scene4" parent="All_root/WORDS" instance=ExtResource("13_tsn3f")]
+transform = Transform3D(0.135, 0, 0, 0, 0.135, 0, 0, 0, 0.135, -1.91719, 5.92619, -2.659)
+texture = SubResource("ViewportTexture_jbywg")
+
+[node name="Words_scene5" parent="All_root/WORDS" instance=ExtResource("13_tsn3f")]
+transform = Transform3D(0.135, 0, 0, 0, 0.135, 0, 0, 0, 0.135, -9.05031, 5.92619, 1.38466)
+texture = SubResource("ViewportTexture_pfyi7")
+
+[node name="Words_scene6" parent="All_root/WORDS" instance=ExtResource("13_tsn3f")]
+transform = Transform3D(0.135, 0, 0, 0, 0.135, 0, 0, 0, 0.135, -8.50542, 5.92619, 10.29)
+texture = SubResource("ViewportTexture_1ac4j")
+
+[node name="Words_scene7" parent="All_root/WORDS" instance=ExtResource("13_tsn3f")]
+transform = Transform3D(0.135, 0, 0, 0, 0.135, 0, 0, 0, 0.135, 0.0960245, 5.92619, 12.2692)
+texture = SubResource("ViewportTexture_amink")
+
+[node name="Words_scene8" parent="All_root/WORDS" instance=ExtResource("13_tsn3f")]
+transform = Transform3D(0.135, 0, 0, 0, 0.135, 0, 0, 0, 0.135, 9.54131, 5.92619, 8.98897)
+texture = SubResource("ViewportTexture_oe3fk")
+
+[node name="Words_scene9" parent="All_root/WORDS" instance=ExtResource("13_tsn3f")]
+transform = Transform3D(0.135, 0, 0, 0, 0.135, 0, 0, 0, 0.135, 15.2384, 5.92619, 2.89838)
+texture = SubResource("ViewportTexture_ibvdx")
+
+[node name="Words_scene10" parent="All_root/WORDS" instance=ExtResource("13_tsn3f")]
+transform = Transform3D(0.135, 0, 0, 0, 0.135, 0, 0, 0, 0.135, -11.0074, 5.92619, 5.56436)
+texture = SubResource("ViewportTexture_enq38")
+
+[node name="Words_scene11" parent="All_root/WORDS" instance=ExtResource("13_tsn3f")]
+transform = Transform3D(0.135, 0, 0, 0, 0.135, 0, 0, 0, 0.135, 11.9926, 5.92619, -3.43564)
+texture = SubResource("ViewportTexture_y8n22")
 
 [node name="Loader" type="Node3D" parent="All_root"]
 

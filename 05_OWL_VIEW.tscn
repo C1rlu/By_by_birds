@@ -1,4 +1,4 @@
-[gd_scene load_steps=121 format=3 uid="uid://cdkof1lgl2una"]
+[gd_scene load_steps=108 format=3 uid="uid://cdkof1lgl2una"]
 
 [ext_resource type="Script" path="res://05_Owl_view/open_owl_view.gd" id="1_ksfmy"]
 [ext_resource type="Script" path="res://05_Owl_view/dialogue_state.gd" id="2_rfcgn"]
@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://djffqqvhx1is" path="res://05_DESK_MAP/Candle/Candle_prefab_03.tscn" id="3_50p4v"]
 [ext_resource type="Script" path="res://05_Owl_view/Look_at_locked.tres.gd" id="3_pa68p"]
 [ext_resource type="PackedScene" uid="uid://bcegerjktkbr6" path="res://05_DESK_MAP/Candle/Candle_prefab_01.tscn" id="4_d532e"]
-[ext_resource type="Script" path="res://words_list_managers.gd" id="5_hb14o"]
 [ext_resource type="PackedScene" uid="uid://ypiajnwq2wfa" path="res://05_DESK_MAP/Desk/Desk_prefab.tscn" id="5_mn8gb"]
 [ext_resource type="PackedScene" uid="uid://c18stvbutb83o" path="res://05_DESK_MAP/Book/Book_prefab.tscn" id="6_25vcx"]
 [ext_resource type="PackedScene" uid="uid://bbpg8v8b5ko2j" path="res://05_Owl_view/GrandDuc/Owl_King_ch.tscn" id="7_kwjmp"]
@@ -19,7 +18,6 @@
 [ext_resource type="Shader" uid="uid://7nanp4dqf4uc" path="res://05_DESK_MAP/00_SHADER/04_board_light.tres" id="10_uuyxy"]
 [ext_resource type="Shader" uid="uid://ddgu7ccdrwv38" path="res://02_FOCUS_VIEW/02_FOCUS_VIEW_sky.res" id="11_2e7nr"]
 [ext_resource type="PackedScene" uid="uid://bqbbtrchoeoe1" path="res://05_DESK_MAP/Lanterne/Lanterne_prefab.tscn" id="12_vva32"]
-[ext_resource type="PackedScene" uid="uid://pg3gu15dhmrd" path="res://05_Owl_view/Words_scene.tscn" id="16_8kf1w"]
 [ext_resource type="Texture2D" uid="uid://dafg2qvpi6wmk" path="res://13_TOOLS_UI/Loader_circle/Loader_circle.png" id="17_58150"]
 [ext_resource type="Shader" uid="uid://8ll6evus625p" path="res://05_DESK_MAP/00_SHADER/Gradient_surface.tres" id="19_6rtaq"]
 [ext_resource type="Shader" uid="uid://cw0x3o7tvvdcv" path="res://13_TOOLS_UI/Map/Map_board_sh.tres" id="20_7cuby"]
@@ -43,39 +41,6 @@
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_psklq"]
 radius = 1.85879
 height = 6.60556
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_oo5xb"]
-viewport_path = NodePath("SubViewport")
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_r0oru"]
-viewport_path = NodePath("SubViewport")
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_vwe2a"]
-viewport_path = NodePath("SubViewport")
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_4ox4s"]
-viewport_path = NodePath("SubViewport")
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_w8usn"]
-viewport_path = NodePath("SubViewport")
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_n7wih"]
-viewport_path = NodePath("SubViewport")
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_5bf3p"]
-viewport_path = NodePath("SubViewport")
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_4kewx"]
-viewport_path = NodePath("SubViewport")
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_bn7oy"]
-viewport_path = NodePath("SubViewport")
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_wv46g"]
-viewport_path = NodePath("SubViewport")
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_ws7g0"]
-viewport_path = NodePath("SubViewport")
 
 [sub_resource type="SphereMesh" id="SphereMesh_fof3h"]
 
@@ -653,10 +618,11 @@ metadata/_edit_horizontal_guides_ = [-58.0]
 
 [node name="Open_owl_view" type="Node" parent="."]
 script = ExtResource("1_ksfmy")
+_debug_test = true
 
 [node name="Dialogue_state" type="Node" parent="."]
 script = ExtResource("2_rfcgn")
-dialogue_start = Array[String](["Hello lost spirit", "i'm the winged inquisitor", "something is happening tonight", "and i need you to check what's happening in my land", "you will be my eyes", "and you will solved many questions", "\"Click on the moon to start\""])
+dialogue_start = Array[String](["Hello lost spirit", "i'm the winged inquisitor", "something is happening tonight", "and i need you to check what's happening in my land", "you will be my eyes", "and you will solved many questions", "Select a destination on the map", "To come back here, select the moon"])
 
 [node name="set_Resolution" type="Node" parent="." node_paths=PackedStringArray("viewports")]
 script = ExtResource("2_ul4p6")
@@ -674,10 +640,6 @@ script = ExtResource("3_2hu0e")
 Camera = NodePath("../Main_pass/head/CAM")
 Cam_ = [NodePath("../Light_pass/CAM_light"), NodePath("../Warm_pass/CAM_warm"), NodePath("../Ui_pass/CAM_ui")]
 enable = true
-
-[node name="Words_list_managers" type="Node" parent="." node_paths=PackedStringArray("List_of_words")]
-script = ExtResource("5_hb14o")
-List_of_words = [NodePath("../Owl_scene/WORDS/Words_scene"), NodePath("../Owl_scene/WORDS/Words_scene2"), NodePath("../Owl_scene/WORDS/Words_scene3")]
 
 [node name="Raycast_click" type="Node" parent="." node_paths=PackedStringArray("Camera", "Dialogue_state")]
 script = ExtResource("7_nscnl")
@@ -778,7 +740,7 @@ omni_attenuation = -0.056
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.575756, 0.133144, -0.0825128)
 
 [node name="CandlePrefab09" parent="Owl_scene/DESK" instance=ExtResource("2_u2be4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.386529, 0.00382239, -0.166243)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.420113, 0.00382239, -0.173193)
 
 [node name="CandlePrefab06" parent="Owl_scene/DESK" instance=ExtResource("2_u2be4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.418768, 0.0915974, -0.0999489)
@@ -793,10 +755,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.387105, 0.00277669, 0.11903
 transform = Transform3D(0.915055, 0, 0, 0, 0.915055, 0, 0, 0, 0.915055, 0.423629, 0.0925553, -0.00606787)
 
 [node name="CandlePrefab01" parent="Owl_scene/DESK" instance=ExtResource("4_d532e")]
-transform = Transform3D(-0.508155, 0, -0.861265, 0, 1, 0, 0.861265, 0, -0.508155, -0.344076, 0.00339008, -0.0940592)
+transform = Transform3D(-0.508155, 0, -0.861265, 0, 1, 0, 0.861265, 0, -0.508155, -0.377722, 0.00339008, -0.0618888)
 
 [node name="CandlePrefab04" parent="Owl_scene/DESK" instance=ExtResource("4_d532e")]
-transform = Transform3D(0.707106, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707106, -0.437168, 0.00217248, -0.100272)
+transform = Transform3D(0.707106, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707106, -0.478078, 0.00217248, -0.0489044)
 
 [node name="CandlePrefab05" parent="Owl_scene/DESK" instance=ExtResource("4_d532e")]
 transform = Transform3D(-0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, -0.5, 0.121302, 0.00217248, -0.0381631)
@@ -844,53 +806,6 @@ transform = Transform3D(0.914459, 0, -0.404679, 0, 1, 0, 0.404679, 0, 0.914459, 
 
 [node name="BookPrefab18" parent="Owl_scene/DESK" instance=ExtResource("6_25vcx")]
 transform = Transform3D(-0.378067, 0, -1.11069, 0, 1.17327, 0, 1.11069, 0, -0.378067, -0.12786, 0.137187, -0.111176)
-
-[node name="WORDS" type="Node3D" parent="Owl_scene"]
-visible = false
-
-[node name="Words_scene" parent="Owl_scene/WORDS" instance=ExtResource("16_8kf1w")]
-transform = Transform3D(0.135075, 0, 0, 0, 0.135075, 0, 0, 0, 0.135075, 6.83931, 9.10538, -2.659)
-texture = SubResource("ViewportTexture_oo5xb")
-
-[node name="Words_scene2" parent="Owl_scene/WORDS" instance=ExtResource("16_8kf1w")]
-transform = Transform3D(0.134877, 0.0057615, 0, -0.0057615, 0.134877, 0, 0, 0, 0.135, 6.0586, 2.098, -2.659)
-texture = SubResource("ViewportTexture_r0oru")
-
-[node name="Words_scene3" parent="Owl_scene/WORDS" instance=ExtResource("16_8kf1w")]
-transform = Transform3D(0.135, 0, 0, 0, 0.135, 0, 0, 0, 0.135, -8.15836, 9.60536, -2.659)
-texture = SubResource("ViewportTexture_vwe2a")
-
-[node name="Words_scene4" parent="Owl_scene/WORDS" instance=ExtResource("16_8kf1w")]
-transform = Transform3D(0.135, 0, 0, 0, 0.135, 0, 0, 0, 0.135, -1.91719, 5.92619, -2.659)
-texture = SubResource("ViewportTexture_4ox4s")
-
-[node name="Words_scene5" parent="Owl_scene/WORDS" instance=ExtResource("16_8kf1w")]
-transform = Transform3D(0.135, 0, 0, 0, 0.135, 0, 0, 0, 0.135, -9.05031, 5.92619, 1.38466)
-texture = SubResource("ViewportTexture_w8usn")
-
-[node name="Words_scene6" parent="Owl_scene/WORDS" instance=ExtResource("16_8kf1w")]
-transform = Transform3D(0.135, 0, 0, 0, 0.135, 0, 0, 0, 0.135, -8.50542, 5.92619, 10.29)
-texture = SubResource("ViewportTexture_n7wih")
-
-[node name="Words_scene7" parent="Owl_scene/WORDS" instance=ExtResource("16_8kf1w")]
-transform = Transform3D(0.135, 0, 0, 0, 0.135, 0, 0, 0, 0.135, 0.0960245, 5.92619, 12.2692)
-texture = SubResource("ViewportTexture_5bf3p")
-
-[node name="Words_scene8" parent="Owl_scene/WORDS" instance=ExtResource("16_8kf1w")]
-transform = Transform3D(0.135, 0, 0, 0, 0.135, 0, 0, 0, 0.135, 9.54131, 5.92619, 8.98897)
-texture = SubResource("ViewportTexture_4kewx")
-
-[node name="Words_scene9" parent="Owl_scene/WORDS" instance=ExtResource("16_8kf1w")]
-transform = Transform3D(0.135, 0, 0, 0, 0.135, 0, 0, 0, 0.135, 15.2384, 5.92619, 2.89838)
-texture = SubResource("ViewportTexture_bn7oy")
-
-[node name="Words_scene10" parent="Owl_scene/WORDS" instance=ExtResource("16_8kf1w")]
-transform = Transform3D(0.135, 0, 0, 0, 0.135, 0, 0, 0, 0.135, -11.0074, 5.92619, 5.56436)
-texture = SubResource("ViewportTexture_wv46g")
-
-[node name="Words_scene11" parent="Owl_scene/WORDS" instance=ExtResource("16_8kf1w")]
-transform = Transform3D(0.135, 0, 0, 0, 0.135, 0, 0, 0, 0.135, 11.9926, 5.92619, -3.43564)
-texture = SubResource("ViewportTexture_ws7g0")
 
 [node name="Sphere_sky" type="Node3D" parent="Owl_scene"]
 
@@ -1110,6 +1025,14 @@ collision_mask = 2
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Owl_scene/Board_scene/BookPrefab12/Book/Book_01/Book_area"]
 transform = Transform3D(1.12819, 0, 0, 0, 1.12819, 0, 0, 0, 1.12819, -0.00357127, 1.62489e-07, 0.00028801)
 shape = SubResource("ConvexPolygonShape3D_0n5oh")
+
+[node name="Book_02" parent="Owl_scene/Board_scene/BookPrefab12/Book" index="1"]
+surface_material_override/0 = null
+surface_material_override/1 = null
+
+[node name="Book_03" parent="Owl_scene/Board_scene/BookPrefab12/Book" index="2"]
+surface_material_override/0 = null
+surface_material_override/1 = null
 
 [node name="BOOK" parent="Owl_scene/Board_scene" instance=ExtResource("31_c4ote")]
 transform = Transform3D(-0.0136706, -0.000429615, -0.0684918, -0.00219385, 0.0698096, -1.37879e-10, 0.068458, 0.00215138, -0.0136773, 0.188323, 0.0115134, 0.361104)

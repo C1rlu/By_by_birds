@@ -1,5 +1,6 @@
-[gd_scene load_steps=20 format=4 uid="uid://b3i04ha2iqr4l"]
+[gd_scene load_steps=21 format=4 uid="uid://b3i04ha2iqr4l"]
 
+[ext_resource type="Material" uid="uid://yjoyk6fvrm6q" path="res://00_SHADER/No_light_surface_mat.tres" id="2_fa72e"]
 [ext_resource type="Shader" uid="uid://8ll6evus625p" path="res://05_DESK_MAP/00_SHADER/Gradient_surface.tres" id="4_3sk7y"]
 
 [sub_resource type="Gradient" id="Gradient_andc3"]
@@ -174,6 +175,20 @@ shader = SubResource("VisualShader_5uvms")
 transform = Transform3D(0.244162, 0, 0, 0, 0.244162, 0, 0, 0, 0.244162, 0.0368108, 0.0161147, 0)
 mesh = SubResource("ArrayMesh_mltrs")
 skeleton = NodePath("")
+
+[node name="Loupe2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.244162, 0, 0, 0, 0.244162, 0, 0, 0, 0.244162, 0.0368108, 0.0161147, 0)
+layers = 2
+mesh = SubResource("ArrayMesh_mltrs")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_fa72e")
+
+[node name="Loupe3" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.244162, 0, 0, 0, 0.244162, 0, 0, 0, 0.244162, 0.0368108, 0.0161147, 0)
+layers = 4
+mesh = SubResource("ArrayMesh_mltrs")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_fa72e")
 
 [node name="Loupe_glass" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.226783, 0, 0.226783, 0, 0.32072, 0, -0.226783, 0, 0.226783, -0.114311, 0.0133938, 0)

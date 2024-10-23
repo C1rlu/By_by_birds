@@ -22,10 +22,15 @@ func _check_raycast():
 
 	if raycast:
 	
-		var Open_scene = raycast.collider.get_node_or_null("Open_scene")
+		var Bird_order = raycast.collider.get_node_or_null("Bird_order")
+		if Bird_order:
+			Dialogue_state._next_dialogue_state()	
+	
+		var Open_scene = raycast.collider.get_node_or_null("Open_level")
 		
 		if Open_scene:
-			Open_scene._open_scene()
+			_global_datas.open_owl_view.emit(false)
+			_global_datas.player_owl_moment = false
 			
 		var Moon = raycast.collider.get_node_or_null("Moon")
 

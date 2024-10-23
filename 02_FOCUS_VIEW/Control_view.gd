@@ -28,13 +28,22 @@ func _reset(condition):
 		
 func _input(event):
 	
+	if Input.is_action_just_released("right_click"):
+		_zoom_out()
+	
 	if _global_datas.photo_pause:
+		return
+		
+	if _global_datas.player_owl_moment:
+		return
+		
+	if _global_datas.in_journal_mode:
 		return
 	
 	if Input.is_action_pressed("right_click"):
 		_zoom_in()
-	if Input.is_action_just_released("right_click"):
-		_zoom_out()
+		
+	
 
 
 func _zoom_in():	

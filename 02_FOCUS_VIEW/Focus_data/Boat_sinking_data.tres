@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="focus_data" load_steps=3 format=3 uid="uid://dd2tot3fhgsd6"]
+
+[ext_resource type="PackedScene" uid="uid://3xtpvfoi3xkd" path="res://02_FOCUS_VIEW/Focus_scene/Sinking_boat_scene/Siking_boat_scene.tscn" id="1_k2j4p"]
+[ext_resource type="Script" path="res://02_FOCUS_VIEW/Focus_data/Focus_data.gd" id="2_c62t1"]
+
+[resource]
+script = ExtResource("2_c62t1")
+focus_scene = ExtResource("1_k2j4p")
+book_page_index = 2
+scene_clues = Array[String](["Find something that's no human and hurted", "look for the captain", "the main reason of the disaster"])

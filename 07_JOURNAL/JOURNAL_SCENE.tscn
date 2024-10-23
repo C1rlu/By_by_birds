@@ -1,33 +1,19 @@
-[gd_scene load_steps=13 format=3 uid="uid://wgeoup6f2egn"]
+[gd_scene load_steps=8 format=3 uid="uid://wgeoup6f2egn"]
 
-[ext_resource type="Shader" uid="uid://chrnjykjq63wr" path="res://06_BOOK/Photo_2d_book/Photo_2D.tres" id="1_gehiu"]
-[ext_resource type="Script" path="res://07_JOURNAL/journal_anim.gd" id="1_ipkyj"]
-[ext_resource type="Texture2D" uid="uid://dvlnqtm1lcg0r" path="res://08_PHOTO_SYSTEMS/Photo/IMG/Birds_photo.png" id="2_rpmdr"]
-[ext_resource type="Shader" uid="uid://cvoap2k5dfte8" path="res://07_JOURNAL/Journal_paper_sh.tres" id="2_vn6ii"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_wx2ps"]
-shader = ExtResource("2_vn6ii")
-shader_parameter/FloatParameter = 0.02
-
-[sub_resource type="StyleBoxLine" id="StyleBoxLine_ukl6q"]
-color = Color(0.28, 0.28, 0.28, 0.713726)
-thickness = 2
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_22qam"]
-shader = ExtResource("1_gehiu")
-shader_parameter/Main_color = Color(0.26, 0.26, 0.26, 1)
+[ext_resource type="PackedScene" uid="uid://bhpxqx1pmqial" path="res://07_JOURNAL/Sinking_journal/Sinking_journal.tscn" id="1_71ppk"]
+[ext_resource type="Script" path="res://07_JOURNAL/open_journal.gd" id="1_ndq3l"]
 
 [sub_resource type="Gradient" id="Gradient_r7gnx"]
 offsets = PackedFloat32Array(0.484163, 1)
 colors = PackedColorArray(0.0473934, 0.0473934, 0.0473934, 1, 1, 1, 1, 1)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_iy627"]
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_tx325"]
 gradient = SubResource("Gradient_r7gnx")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
 [sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_q36fo"]
-texture = SubResource("GradientTexture2D_iy627")
+texture = SubResource("GradientTexture2D_tx325")
 
 [sub_resource type="VisualShader" id="VisualShader_aos2h"]
 code = "shader_type canvas_item;
@@ -55,247 +41,17 @@ nodes/fragment/2/node = SubResource("VisualShaderNodeTexture_q36fo")
 nodes/fragment/2/position = Vector2(-160, 100)
 nodes/fragment/connections = PackedInt32Array(2, 0, 0, 1)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_b1ay0"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xqsr3"]
 shader = SubResource("VisualShader_aos2h")
 
 [node name="JOURNAL_SYSTEM" type="Node"]
 
-[node name="JournalScene" type="Control" parent="."]
+[node name="Open_journal" type="Node" parent="."]
+script = ExtResource("1_ndq3l")
+
+[node name="Fade" type="ColorRect" parent="."]
 visible = false
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Journal_anim" type="Node" parent="JournalScene"]
-script = ExtResource("1_ipkyj")
-
-[node name="ColorRect4" type="ColorRect" parent="JournalScene"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.0901961, 0.0901961, 0.0901961, 1)
-
-[node name="Journnal_root" type="Control" parent="JournalScene"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -231.0
-offset_top = -170.0
-offset_right = 231.0
-offset_bottom = 210.0
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset = Vector2(231, 221.245)
-
-[node name="ColorRect" type="ColorRect" parent="JournalScene/Journnal_root"]
-material = SubResource("ShaderMaterial_wx2ps")
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.57, 0.55803, 0.5301, 1)
-
-[node name="Label" type="Label" parent="JournalScene/Journnal_root"]
-layout_mode = 0
-offset_top = 17.0
-offset_right = 462.0
-offset_bottom = 80.0
-theme_override_colors/font_color = Color(0.266575, 0.266575, 0.266575, 1)
-theme_override_font_sizes/font_size = 25
-text = "THE GRANDVILLE NEWS"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label6" type="Label" parent="JournalScene/Journnal_root"]
-layout_mode = 0
-offset_left = 91.0
-offset_top = 52.0
-offset_right = 358.0
-offset_bottom = 87.0
-theme_override_colors/font_color = Color(0.266575, 0.266575, 0.266575, 1)
-theme_override_font_sizes/font_size = 14
-text = "MADE BY THE PEOPLE, FOR THE PEOPLE"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="HSeparator" type="HSeparator" parent="JournalScene/Journnal_root"]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_left = 13.0
-offset_top = 83.0
-offset_right = -13.0
-offset_bottom = 90.0
-grow_horizontal = 2
-theme_override_styles/separator = SubResource("StyleBoxLine_ukl6q")
-
-[node name="HSeparator2" type="HSeparator" parent="JournalScene/Journnal_root"]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_left = 13.0
-offset_top = 7.0
-offset_right = -13.0
-offset_bottom = 14.0
-grow_horizontal = 2
-theme_override_styles/separator = SubResource("StyleBoxLine_ukl6q")
-
-[node name="Label2" type="Label" parent="JournalScene/Journnal_root"]
-layout_mode = 0
-offset_left = 22.0
-offset_top = 103.0
-offset_right = 300.0
-offset_bottom = 138.0
-theme_override_colors/font_color = Color(0.266667, 0.266667, 0.266667, 1)
-theme_override_font_sizes/font_size = 25
-text = "A STOLEN BIRD FREED"
-autowrap_mode = 2
-
-[node name="Label7" type="Label" parent="JournalScene/Journnal_root"]
-layout_mode = 0
-offset_left = 21.0
-offset_top = 147.0
-offset_right = 316.0
-offset_bottom = 195.0
-theme_override_colors/font_color = Color(0.266667, 0.266667, 0.266667, 1)
-theme_override_font_sizes/font_size = 10
-text = " Phasellus pharetra vel tellus a congue. Aliquam id vulputate dui, luctus consectetur ligula. Ut molestie lacus vitae odio tincidunt"
-autowrap_mode = 2
-
-[node name="Label8" type="Label" parent="JournalScene/Journnal_root"]
-layout_mode = 0
-offset_left = 21.0
-offset_top = 205.0
-offset_right = 144.0
-offset_bottom = 372.0
-theme_override_colors/font_color = Color(0.266667, 0.266667, 0.266667, 1)
-theme_override_font_sizes/font_size = 10
-text = " Phasellus pharetra vel tellus a congue. Aliquam id vulputate dui, luctus consectetur ligula. Ut molestie lacus vitae odio tincidunt
-Qluctus consectetur ligula. Ut molestie lacus vitae odio tincidunt"
-autowrap_mode = 2
-
-[node name="Label11" type="Label" parent="JournalScene/Journnal_root"]
-layout_mode = 0
-offset_left = 150.0
-offset_top = 343.0
-offset_right = 306.0
-offset_bottom = 374.0
-theme_override_colors/font_color = Color(0.266667, 0.266667, 0.266667, 1)
-theme_override_font_sizes/font_size = 10
-text = " Phasellus pharetra vel tellus a congue"
-autowrap_mode = 2
-
-[node name="Label9" type="Label" parent="JournalScene/Journnal_root"]
-layout_mode = 0
-offset_left = 330.0
-offset_top = 181.0
-offset_right = 453.0
-offset_bottom = 232.0
-theme_override_colors/font_color = Color(0.266667, 0.266667, 0.266667, 1)
-theme_override_font_sizes/font_size = 10
-text = " Phasellus pharetra vel tellus a congue. Aliquam id vulputate dui,"
-autowrap_mode = 2
-
-[node name="Label10" type="Label" parent="JournalScene/Journnal_root"]
-layout_mode = 0
-offset_left = 330.0
-offset_top = 264.0
-offset_right = 453.0
-offset_bottom = 320.0
-theme_override_colors/font_color = Color(0.266667, 0.266667, 0.266667, 1)
-theme_override_font_sizes/font_size = 10
-text = " Phasellus pharetra vel tellus a congue. Aliquam id vulputate dui,"
-autowrap_mode = 2
-
-[node name="Label4" type="Label" parent="JournalScene/Journnal_root"]
-layout_mode = 0
-offset_left = 330.0
-offset_top = 143.5
-offset_right = 500.0
-offset_bottom = 170.5
-theme_override_colors/font_color = Color(0.266667, 0.266667, 0.266667, 1)
-text = "LOREM IPSUM"
-
-[node name="Label5" type="Label" parent="JournalScene/Journnal_root"]
-layout_mode = 0
-offset_left = 330.0
-offset_top = 235.0
-offset_right = 500.0
-offset_bottom = 262.0
-theme_override_colors/font_color = Color(0.266667, 0.266667, 0.266667, 1)
-text = "LOREM IPSUM"
-
-[node name="q" type="VSeparator" parent="JournalScene/Journnal_root"]
-layout_mode = 0
-offset_left = 311.0
-offset_top = 139.0
-offset_right = 324.0
-offset_bottom = 367.0
-
-[node name="Photo2d" type="Control" parent="JournalScene/Journnal_root"]
-custom_minimum_size = Vector2(150, 150)
-layout_mode = 3
-anchors_preset = 0
-offset_left = 148.0
-offset_top = 183.0
-offset_right = 308.0
-offset_bottom = 343.0
-
-[node name="ColorRect" type="ColorRect" parent="JournalScene/Journnal_root/Photo2d"]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.472933, 0.461756, 0.435688, 1)
-
-[node name="TextureRect" type="TextureRect" parent="JournalScene/Journnal_root/Photo2d"]
-material = SubResource("ShaderMaterial_22qam")
-custom_minimum_size = Vector2(130, 130)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = -2.0
-offset_bottom = -2.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("2_rpmdr")
-expand_mode = 1
-stretch_mode = 6
-
-[node name="ColorRect2" type="ColorRect" parent="JournalScene/Journnal_root"]
-layout_mode = 0
-offset_left = 16.0
-offset_top = 39.0
-offset_right = 80.0
-offset_bottom = 58.0
-color = Color(0.360784, 0.356863, 0.34902, 1)
-
-[node name="ColorRect3" type="ColorRect" parent="JournalScene/Journnal_root"]
-layout_mode = 0
-offset_left = 385.0
-offset_top = 39.0
-offset_right = 451.0
-offset_bottom = 58.0
-color = Color(0.360784, 0.356863, 0.34902, 1)
-
-[node name="Fade" type="ColorRect" parent="JournalScene"]
-material = SubResource("ShaderMaterial_b1ay0")
-layout_mode = 1
+material = SubResource("ShaderMaterial_xqsr3")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -303,3 +59,6 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 color = Color(0.0901961, 0.0901961, 0.0901961, 1)
+
+[node name="JournalScene" parent="." instance=ExtResource("1_71ppk")]
+visible = false

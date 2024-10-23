@@ -9,6 +9,10 @@ func _input(event: InputEvent) -> void:
 	if _global_datas.player_owl_moment:
 		return
 
+	if _global_datas.in_journal_mode:
+		return
+
+
 	_on_over()
 	
 	

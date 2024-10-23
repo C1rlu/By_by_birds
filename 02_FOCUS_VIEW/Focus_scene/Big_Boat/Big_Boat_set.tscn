@@ -10,8 +10,8 @@
 resource_local_to_scene = true
 render_priority = 1
 shader = ExtResource("2_wuvim")
-shader_parameter/ColorParameter = Color(0.114897, 0.114897, 0.114897, 1)
-shader_parameter/Color = Color(0.125911, 0.125911, 0.125911, 1)
+shader_parameter/ColorParameter = Color(0, 0, 0, 1)
+shader_parameter/Color = Color(0.366595, 0.366595, 0.366595, 1)
 shader_parameter/Gradient_base = ExtResource("2_e6kne")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h6gwr"]

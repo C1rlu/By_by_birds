@@ -8,6 +8,7 @@ var t
 func _ready() -> void:
 	
 	_global_datas.hide_all_FocusScene_dialogue.connect(_hide_dialogue)
+	_global_datas.show_all_dialogue.connect(_show_dialogue)
 	label.visible_ratio = 0.0
 	
 func _show_dialogue():

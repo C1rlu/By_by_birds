@@ -18,11 +18,7 @@ func _ready() -> void:
 func _npc_revealed():
 
 	if !is_revealed:
-		#material_pass.set_shader_parameter("Opacity",1.0)
-		#_global_datas.check_focus_count.emit()
+		material_pass.set_shader_parameter("Opacity",1.0)
 		is_revealed = true
 		
-	#_global_datas.hide_all_FocusScene_dialogue.emit()
-	#show_FocusScene_dialogue._show_dialogue()
-	
-	_global_datas._take_photo.emit()
+	#_global_datas._take_photo.emit()

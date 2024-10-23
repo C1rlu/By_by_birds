@@ -1,9 +1,8 @@
-[gd_scene load_steps=18 format=4 uid="uid://dm5d272iur25u"]
+[gd_scene load_steps=17 format=4 uid="uid://dm5d272iur25u"]
 
 [ext_resource type="PackedScene" uid="uid://dgvsf84egy43d" path="res://05_DESK_MAP/Chavet/Chavet_part.blend" id="1_sfss7"]
 [ext_resource type="Script" path="res://05_DESK_MAP/Chavet/Board_focus_zone.gd" id="1_wpfir"]
 [ext_resource type="Shader" uid="uid://bii47ft606xyy" path="res://05_DESK_MAP/00_SHADER/Element_base_sh.tres" id="2_hmx5r"]
-[ext_resource type="Resource" uid="uid://bmdkj4ktpvfca" path="res://02_FOCUS_VIEW/Focus_data/Lighthouse_01_focus_data.tres" id="2_on16b"]
 [ext_resource type="Shader" uid="uid://ceec4w3amlx7t" path="res://05_DESK_MAP/00_SHADER/photo_area_legend_sh.tres" id="3_0xh52"]
 [ext_resource type="Material" uid="uid://yjoyk6fvrm6q" path="res://00_SHADER/No_light_surface_mat.tres" id="4_pv43w"]
 [ext_resource type="Script" path="res://05_DESK_MAP/Chavet/show_focus.gd" id="5_13h2f"]
@@ -69,7 +68,6 @@ radius = 0.254574
 
 [node name="ChavetPrefab" type="Node3D"]
 script = ExtResource("1_wpfir")
-_scene_focus_data = ExtResource("2_on16b")
 
 [node name="Chavet_part" parent="." instance=ExtResource("1_sfss7")]
 transform = Transform3D(0.588991, 0, 0, 0, 0.588991, 0, 0, 0, 0.588991, 0, 0, 0)

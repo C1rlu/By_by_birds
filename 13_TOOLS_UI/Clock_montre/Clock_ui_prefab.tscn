@@ -13,13 +13,6 @@ var t
 func _ready():
 	#_check_fade()	
 	_stop()
-func _check_fade():
-	
-	if _global_datas.current_focus_data.scene_resolved:
-		_stop()
-	else:
-		_start_clock()
-	
 
 	
 func _start_clock():

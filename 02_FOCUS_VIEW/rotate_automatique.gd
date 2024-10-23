@@ -17,15 +17,26 @@ func _ready() -> void:
 	
 	if disable:
 		return
-		
+
 	_global_datas._end_of_transition.connect(_reset)
+
+	_global_datas.open_owl_view.connect(_start)
+	
+	
+	
 	timer.timeout.connect(end_of_time)
-	timer.start()
-	
 	adapt_speed()
-func _reset():
 	
-	#rotation_root.rotation_degrees = Vector3.ZERO
+func _start(condition):
+	
+	if condition:
+		timer.stop()
+	else:
+		adapt_speed()		
+		timer.start()
+	
+func _reset():
+
 	adapt_speed()	
 	
 	
@@ -37,7 +48,8 @@ func adapt_speed():
 	
 func _process(delta: float) -> void:
 	
-	
+	if timer.is_stopped():
+		return
 
 	
 	if disable:

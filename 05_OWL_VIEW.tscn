@@ -1,4 +1,4 @@
-[gd_scene load_steps=108 format=3 uid="uid://cdkof1lgl2una"]
+[gd_scene load_steps=112 format=3 uid="uid://cdkof1lgl2una"]
 
 [ext_resource type="Script" path="res://05_Owl_view/open_owl_view.gd" id="1_ksfmy"]
 [ext_resource type="Script" path="res://05_Owl_view/dialogue_state.gd" id="2_rfcgn"]
@@ -26,6 +26,7 @@
 [ext_resource type="PackedScene" uid="uid://uwg2qc3svu11" path="res://05_DESK_MAP/Photo/photo_area.tscn" id="23_fvw15"]
 [ext_resource type="PackedScene" uid="uid://bn54mxsafetjv" path="res://05_DESK_MAP/Globe/globe_prefab.tscn" id="24_wf8we"]
 [ext_resource type="PackedScene" uid="uid://cx2rmplug5w4e" path="res://05_DESK_MAP/Decor/Plume_pot_prefab.tscn" id="26_g0oad"]
+[ext_resource type="Resource" uid="uid://dd2tot3fhgsd6" path="res://02_FOCUS_VIEW/Focus_data/Boat_sinking_data.tres" id="27_j2sje"]
 [ext_resource type="PackedScene" uid="uid://b3i04ha2iqr4l" path="res://05_DESK_MAP/Loupe/loupe_rg.tscn" id="27_npnla"]
 [ext_resource type="PackedScene" uid="uid://dm5d272iur25u" path="res://05_DESK_MAP/Chavet/Chavet_prefab.tscn" id="28_561rh"]
 [ext_resource type="Shader" uid="uid://bii47ft606xyy" path="res://05_DESK_MAP/00_SHADER/Element_base_sh.tres" id="29_6vlw2"]
@@ -36,6 +37,7 @@
 [ext_resource type="Resource" uid="uid://3vhuoia0jfuv" path="res://06_BOOK/Page_ressource/Page_02.tres" id="34_a20q1"]
 [ext_resource type="Resource" uid="uid://305t0o03tehu" path="res://06_BOOK/Page_ressource/Page_03.tres" id="35_nt660"]
 [ext_resource type="Resource" uid="uid://cx3ih4ggo2j2x" path="res://06_BOOK/Page_ressource/Page_04.tres" id="36_8vke0"]
+[ext_resource type="Material" uid="uid://cvng1dwrp1vmq" path="res://00_SHADER/Light_pass_lit_mat.tres" id="37_lpkoj"]
 [ext_resource type="Script" path="res://05_DESK_MAP/open_book_board.gd" id="37_so0bv"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_psklq"]
@@ -356,6 +358,10 @@ shader_parameter/BaseGradient = ExtResource("30_bev3j")
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_0n5oh"]
 points = PackedVector3Array(0.4163, 0.153594, 0.508411, 0.375846, 0.228587, 0.508411, 0.378173, 0.0867274, 0.51684, 0.4163, 0.0780193, 0.508411, 0.4163, 0.153594, -0.536517, -0.403704, 0.228587, 0.508411, 0.375846, 0.228587, -0.536517, -0.403704, -0.000107635, 0.508411, 0.375846, -0.000107635, 0.508411, 0.4163, 0.0780193, -0.536517, -0.357149, 0.105554, -0.546299, -0.403704, 0.228587, -0.536517, -0.403704, -0.000107635, -0.536517, 0.375846, -0.000107635, -0.536517)
 
+[sub_resource type="SphereMesh" id="SphereMesh_4tdor"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_nmx8d"]
+
 [sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_y363p"]
 source = 5
 
@@ -622,7 +628,7 @@ _debug_test = true
 
 [node name="Dialogue_state" type="Node" parent="."]
 script = ExtResource("2_rfcgn")
-dialogue_start = Array[String](["Hello lost spirit", "i'm the winged inquisitor", "something is happening tonight", "and i need you to check what's happening in my land", "you will be my eyes", "and you will solved many questions", "Select a destination on the map", "To come back here, select the moon"])
+dialogue_start = Array[String](["Hello", "I'm the inquisitor", "my purpose is to investigate the disaster", "when there are...strange", "and you, you will be my eyes tonight", "follow my words", "start with the map"])
 
 [node name="set_Resolution" type="Node" parent="." node_paths=PackedStringArray("viewports")]
 script = ExtResource("2_ul4p6")
@@ -748,9 +754,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.418768, 0.0915974, -0.09994
 [node name="CandlePrefab07" parent="Owl_scene/DESK" instance=ExtResource("2_u2be4")]
 transform = Transform3D(0.840338, 0, 0, 0, 0.840338, 0, 0, 0, 0.840338, 0.34468, 0.0915974, -0.0579189)
 
-[node name="CandlePrefab03" parent="Owl_scene/DESK" instance=ExtResource("3_50p4v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.387105, 0.00277669, 0.119031)
-
 [node name="CandlePrefab08" parent="Owl_scene/DESK" instance=ExtResource("3_50p4v")]
 transform = Transform3D(0.915055, 0, 0, 0, 0.915055, 0, 0, 0, 0.915055, 0.423629, 0.0925553, -0.00606787)
 
@@ -761,7 +764,7 @@ transform = Transform3D(-0.508155, 0, -0.861265, 0, 1, 0, 0.861265, 0, -0.508155
 transform = Transform3D(0.707106, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707106, -0.478078, 0.00217248, -0.0489044)
 
 [node name="CandlePrefab05" parent="Owl_scene/DESK" instance=ExtResource("4_d532e")]
-transform = Transform3D(-0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, -0.5, 0.121302, 0.00217248, -0.0381631)
+transform = Transform3D(-0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, -0.5, 0.25159, 0.00217248, -0.0130512)
 
 [node name="BookPrefab3" parent="Owl_scene/DESK" instance=ExtResource("6_25vcx")]
 transform = Transform3D(-0.035531, 0, -1.13821, 0, 1.13877, 0, 1.13821, 0, -0.035531, -0.116493, 0.18994, -0.105695)
@@ -875,12 +878,12 @@ surface_material_override/0 = SubResource("ShaderMaterial_1ngjl")
 
 [node name="Map" type="Area3D" parent="Owl_scene/Board_scene/Map/Map_texture"]
 transform = Transform3D(1, 3.15544e-30, 0, -3.15544e-30, 1, 0, 0, 0, 1, 0, 0, 0)
-collision_layer = 2
-collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Owl_scene/Board_scene/Map/Map_texture/Map"]
 transform = Transform3D(1, -3.15544e-30, -7.45058e-09, 3.15544e-30, 1, 2.52435e-29, 7.45058e-09, 0, 1, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_cwrlt")
+
+[node name="Open_level" type="Node" parent="Owl_scene/Board_scene/Map/Map_texture/Map"]
 
 [node name="Photo_element_root" parent="Owl_scene/Board_scene/Map" instance=ExtResource("23_fvw15")]
 transform = Transform3D(1.44367, 0, 0.176188, 0, 1.45439, 0, -0.176188, 0, 1.44367, -0.713143, -0.00267564, 0.173645)
@@ -986,33 +989,42 @@ transform = Transform3D(0.337084, 0, -0.337084, 0, 0.476709, 0, 0.337084, 0, 0.3
 [node name="Loupe_deco" parent="Owl_scene/Board_scene/Static" instance=ExtResource("27_npnla")]
 transform = Transform3D(-0.116957, 0, -0.443039, 0, 0.458216, 0, 0.443039, 0, -0.116957, -0.266367, -0.00115648, 0.377815)
 
-[node name="ChavetPrefab" parent="Owl_scene/Board_scene" instance=ExtResource("28_561rh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00346491, 0.00324245, 0.131942)
+[node name="ChavetPrefab_Sinking_boatScene" parent="Owl_scene/Board_scene" instance=ExtResource("28_561rh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0790498, 0.00324245, 0.294049)
+scene_focus_data = ExtResource("27_j2sje")
 
 [node name="ChavetPrefab2" parent="Owl_scene/Board_scene" instance=ExtResource("28_561rh")]
-transform = Transform3D(0.99458, 0, 0.103973, 0, 1, 0, -0.103973, 0, 0.99458, -0.2004, 0.00324244, 0.052742)
+transform = Transform3D(0.99458, 0, 0.103973, 0, 1, 0, -0.103973, 0, 0.99458, -0.220792, 0.00324244, 0.0323956)
+visible = false
 
 [node name="ChavetPrefab3" parent="Owl_scene/Board_scene" instance=ExtResource("28_561rh")]
 transform = Transform3D(0.993371, 0, -0.114954, 0, 1, 0, 0.114954, 0, 0.993371, -0.0880953, 0.00324244, 0.235405)
+visible = false
 
 [node name="ChavetPrefab4" parent="Owl_scene/Board_scene" instance=ExtResource("28_561rh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.213817, 0.00324244, -0.0205161)
+visible = false
 
 [node name="ChavetPrefab5" parent="Owl_scene/Board_scene" instance=ExtResource("28_561rh")]
 transform = Transform3D(0.974185, 0, -0.22575, 0, 1, 0, 0.22575, 0, 0.974185, -0.0946041, 0.00324244, -0.241573)
+visible = false
 
 [node name="ChavetPrefab6" parent="Owl_scene/Board_scene" instance=ExtResource("28_561rh")]
 transform = Transform3D(0.95051, 0, -0.310693, 0, 1, 0, 0.310693, 0, 0.95051, 0.0423065, 0.00324244, 0.035328)
-
-[node name="ChavetPrefab7" parent="Owl_scene/Board_scene" instance=ExtResource("28_561rh")]
-transform = Transform3D(0.979607, 0, -0.200924, 0, 1, 0, 0.200924, 0, 0.979607, 0.186014, 0.00324244, 0.241285)
-
-[node name="BookPrefab12" parent="Owl_scene/Board_scene" instance=ExtResource("6_25vcx")]
-transform = Transform3D(-0.714813, 0, 0.32137, 0, 0.783733, 0, -0.32137, 0, -0.714813, 0.206323, -2.98023e-08, 0.335885)
 visible = false
 
+[node name="ChavetPrefab7" parent="Owl_scene/Board_scene" instance=ExtResource("28_561rh")]
+transform = Transform3D(0.979607, 0, -0.200924, 0, 1, 0, 0.200924, 0, 0.979607, 0.151389, 0.00324244, 0.180927)
+visible = false
+
+[node name="BookPrefab12" parent="Owl_scene/Board_scene" instance=ExtResource("6_25vcx")]
+transform = Transform3D(-0.714813, 0, 0.32137, 0, 0.783733, 0, -0.32137, 0, -0.714813, 0.332526, 0.00256912, 0.346024)
+visible = false
+
+[node name="Book" parent="Owl_scene/Board_scene/BookPrefab12" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
 [node name="Book_01" parent="Owl_scene/Board_scene/BookPrefab12/Book" index="0"]
-transform = Transform3D(0.259243, 0, 0.0364204, 0, 0.261789, 0, -0.0364204, 0, 0.259243, 0, 0, 0)
 surface_material_override/0 = SubResource("ShaderMaterial_jorhr")
 surface_material_override/1 = SubResource("ShaderMaterial_b3fp2")
 
@@ -1035,12 +1047,24 @@ surface_material_override/0 = null
 surface_material_override/1 = null
 
 [node name="BOOK" parent="Owl_scene/Board_scene" instance=ExtResource("31_c4ote")]
-transform = Transform3D(-0.0136706, -0.000429615, -0.0684918, -0.00219385, 0.0698096, -1.37879e-10, 0.068458, 0.00215138, -0.0136773, 0.188323, 0.0115134, 0.361104)
+transform = Transform3D(-0.0136706, -0.000429615, -0.0684918, -0.00219385, 0.0698096, -1.37879e-10, 0.068458, 0.00215138, -0.0136773, 0.325139, 0.0115135, 0.359449)
 visible = false
 list_of_page = Array[ExtResource("32_4qpri")]([ExtResource("33_q4eqc"), ExtResource("34_a20q1"), ExtResource("35_nt660"), ExtResource("36_8vke0")])
 
 [node name="Open_book_board" type="Node" parent="Owl_scene/Board_scene"]
 script = ExtResource("37_so0bv")
+
+[node name="TheGlobe" type="MeshInstance3D" parent="Owl_scene/Board_scene"]
+transform = Transform3D(0.219477, 0, 0, 0, 0.219477, 0, 0, 0, 0.219477, 0.200673, 0.134946, 0.0549203)
+visible = false
+layers = 7
+mesh = SubResource("SphereMesh_4tdor")
+surface_material_override/0 = ExtResource("37_lpkoj")
+
+[node name="Area3D" type="Area3D" parent="Owl_scene/Board_scene/TheGlobe"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Owl_scene/Board_scene/TheGlobe/Area3D"]
+shape = SubResource("SphereShape3D_nmx8d")
 
 [node name="BACKDROP_FOCUS" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_s5pmg")

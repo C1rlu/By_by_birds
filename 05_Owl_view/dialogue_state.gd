@@ -1,8 +1,6 @@
 extends Node
 
 
-@export var game_state : int = 0
-
 @export var dialogue_start : Array[String]
 
 var dialogue_index : int = -1

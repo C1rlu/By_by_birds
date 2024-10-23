@@ -9,7 +9,6 @@ func _ready() -> void:
 	_global_datas.player_owl_moment = _debug_test
 	_global_datas.open_owl_view.emit(_debug_test)	
 
-
 func open(condition:bool):
 	
 	$"../Owl_scene".visible = condition

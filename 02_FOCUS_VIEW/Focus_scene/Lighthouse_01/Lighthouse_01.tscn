@@ -1,4 +1,4 @@
-[gd_scene load_steps=120 format=4 uid="uid://i7vwntowo6jb"]
+[gd_scene load_steps=121 format=4 uid="uid://i7vwntowo6jb"]
 
 [ext_resource type="PackedScene" uid="uid://bphmc606jqkad" path="res://02_FOCUS_VIEW/Focus_scene/Lighthouse_01/Lighthouse_focus.blend" id="1_h1tuh"]
 [ext_resource type="Script" path="res://02_FOCUS_VIEW/Focus_data/set_focus_data.gd" id="1_rpkd4"]
@@ -521,6 +521,8 @@ render_priority = 0
 shader = ExtResource("36_bnagj")
 shader_parameter/Color_yellow = Color(1, 1, 1, 1)
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_jcffs"]
+
 [sub_resource type="SphereMesh" id="SphereMesh_kb6ma"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ef6xb"]
@@ -905,6 +907,7 @@ omni_range = 3.76032
 
 [node name="BirdsView_Prefab_00" parent="VIEW" instance=ExtResource("4_m6m46")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.209, 0.733445, -24.692)
+visible = false
 
 [node name="Start_view" type="Camera3D" parent="VIEW/BirdsView_Prefab_00"]
 transform = Transform3D(-0.573576, -0.239497, -0.783359, 0, 0.956305, -0.292372, 0.819152, -0.167698, -0.548514, 0, 0, 0)
@@ -1609,7 +1612,7 @@ transform = Transform3D(0.986635, 0, -0.162947, 0, 1, 0, 0.162947, 0, 0.986635, 
 
 [node name="Sphere_sky" type="Node3D" parent="."]
 
-[node name="Active_at_ready" type="Node" parent="Sphere_sky" node_paths=PackedStringArray("_active")]
+[node name="active_mask" type="Node" parent="Sphere_sky" node_paths=PackedStringArray("_active")]
 script = ExtResource("6_ukxo0")
 _active = [NodePath("../Sea_foam/Sea_foam_light")]
 
@@ -1629,7 +1632,7 @@ skeleton = NodePath("")
 surface_material_override/0 = SubResource("ShaderMaterial_bdeyd")
 
 [node name="Moon_Set" type="Node3D" parent="Sphere_sky"]
-transform = Transform3D(-2.3156, -0.69763, -2.69754, 5.59057e-08, 3.50749, -0.907103, 2.78628, -0.57978, -2.24184, 588.534, 325.129, 497.699)
+transform = Transform3D(-2.3156, -0.69763, -2.69754, 5.59057e-08, 3.50749, -0.907103, 2.78628, -0.57978, -2.24184, 492.744, 325.129, 687.515)
 
 [node name="SUN" type="MeshInstance3D" parent="Sphere_sky/Moon_Set"]
 transform = Transform3D(58.7841, 0, 0, 0, 58.784, 0, 0, 0, 58.7841, 0, 0, 0)
@@ -1638,8 +1641,15 @@ mesh = SubResource("SphereMesh_sy21u")
 skeleton = NodePath("../../..")
 surface_material_override/0 = SubResource("ShaderMaterial_1eqpj")
 
+[node name="Area3D" type="Area3D" parent="Sphere_sky/Moon_Set/SUN"]
+
+[node name="Moon" type="Node" parent="Sphere_sky/Moon_Set/SUN/Area3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sphere_sky/Moon_Set/SUN/Area3D"]
+shape = SubResource("SphereShape3D_jcffs")
+
 [node name="MOON" type="MeshInstance3D" parent="Sphere_sky/Moon_Set"]
-transform = Transform3D(43.7481, -9.53674e-07, -1.90735e-06, -1.90735e-06, 43.748, 3.33786e-06, 3.8147e-06, 1.43051e-06, 43.7481, 11.7072, -0.784187, 29.5807)
+transform = Transform3D(43.7481, -9.53674e-07, -1.90735e-06, -1.90735e-06, 43.748, 3.33786e-06, 3.8147e-06, 1.43051e-06, 43.7481, 6.122, 1.616, 29.581)
 mesh = SubResource("SphereMesh_kb6ma")
 skeleton = NodePath("../../..")
 surface_material_override/0 = SubResource("ShaderMaterial_ef6xb")

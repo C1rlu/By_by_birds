@@ -6,13 +6,9 @@ var previous_onOver
 
 func _input(event: InputEvent) -> void:
 	
-	
-	if _global_datas.player_on_desk:
+	if _global_datas.player_owl_moment:
 		return
-	
-	if _global_datas.photo_pause:
-		return
-	
+
 	_on_over()
 	
 	
@@ -56,7 +52,14 @@ func _check_raycast():
 		if Destination:
 	
 			Destination._load_destination()
+		
+		var Moon = raycast.collider.get_node_or_null("Moon")
 
+		if Moon:
+			_global_datas.player_owl_moment = true
+			_global_datas.open_owl_view.emit(true)	
+			_global_datas._show_object_legend.emit(false,"null")
+			
 func _on_over():
 
 	var utility = GameUtility.new()

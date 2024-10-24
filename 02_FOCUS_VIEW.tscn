@@ -16,6 +16,9 @@
 [sub_resource type="GDScript" id="GDScript_4sryg"]
 script/source = "extends Node
 
+
+
+
 func _ready() -> void:
 	_global_datas.check_player_result.connect(_check_player)
 
@@ -24,14 +27,16 @@ func _check_player():
 		
 func _check_result():
 	
+
 	var npc_list = _global_datas.active_focus_view.Npc_datas_list	
 	var count_true : int
 	for npc in npc_list:
 		if npc.words == npc.player_choosen_words:
 			print(\"FOUND\", npc.Name)
 			count_true += 1	
-			if count_true == _global_datas.active_focus_view.Npc_datas_list.size()-1:
+			if count_true == _global_datas.active_focus_view.Npc_datas_list.size():
 				print(\"SCENE IS DONE\") # the scene is done here so here we can put end of scene resolved
+				_global_datas._add_journal.emit()
 		else:
 			print(\"false_\", npc.Name)	
 		

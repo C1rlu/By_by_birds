@@ -10,6 +10,7 @@ var t
 
 var zoomed : bool = false
 
+
 func _ready():
 	_global_datas._open_focus_view.connect(_reset)
 
@@ -28,7 +29,7 @@ func _reset(condition):
 		
 func _input(event):
 	
-	if Input.is_action_just_released("right_click"):
+	if Input.is_action_just_released("zoom"):
 		_zoom_out()
 	
 	if _global_datas.photo_pause:
@@ -40,9 +41,9 @@ func _input(event):
 	if _global_datas.in_proposition_mode:
 		return
 	
-	if Input.is_action_pressed("right_click"):
+	if Input.is_action_pressed("zoom"):
 		_zoom_in()
-		
+	
 	
 
 

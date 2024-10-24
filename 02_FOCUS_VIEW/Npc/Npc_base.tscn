@@ -67,7 +67,7 @@ autowrap_mode = 2
 
 [node name="Dialogue" type="Sprite3D" parent="."]
 transform = Transform3D(0.604908, 0, 0, 0, 0.604908, 0, 0, 0, 0.604908, 0, 2.22084, 0)
-layers = 7
+layers = 3
 cast_shadow = 0
 gi_mode = 0
 billboard = 1

@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://dbe84wpfpttsd"]
 
-[ext_resource type="Script" path="res://07_JOURNAL/press_proposition_button.gd" id="1_q2oi2"]
+[ext_resource type="Script" path="res://08_PROPOSITION_SCENE/press_proposition_button.gd" id="1_q2oi2"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ji6o5"]
 

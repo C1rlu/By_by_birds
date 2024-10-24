@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bjrl6srg21sf0"]
+
+[ext_resource type="Script" path="res://07_JOURNAL/add_journal.gd" id="1_recw4"]
+
+[node name="JOURNAL_SCENE" type="Node"]
+
+[node name="add_journal" type="Node" parent="."]
+script = ExtResource("1_recw4")

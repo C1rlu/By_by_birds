@@ -60,8 +60,7 @@ signal _open_proposition(condition : bool)
 
 # Journal
 var in_journal_mode : bool
-signal _open_journal(condition : bool)
-signal _add_journal(condition : bool)
+signal _add_journal
 
 var selected_npc_dialogue : Node 
 

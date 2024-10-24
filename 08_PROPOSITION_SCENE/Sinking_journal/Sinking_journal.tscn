@@ -2,7 +2,7 @@
 
 [ext_resource type="Shader" uid="uid://cvoap2k5dfte8" path="res://07_JOURNAL/Journal_paper_sh.tres" id="2_i5ebw"]
 [ext_resource type="Shader" uid="uid://chrnjykjq63wr" path="res://06_BOOK/Photo_2d_book/Photo_2D.tres" id="3_pt4s5"]
-[ext_resource type="Script" path="res://07_JOURNAL/press_proposition_button.gd" id="3_t0tre"]
+[ext_resource type="Script" path="res://08_PROPOSITION_SCENE/press_proposition_button.gd" id="3_t0tre"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wx2ps"]
 shader = ExtResource("2_i5ebw")

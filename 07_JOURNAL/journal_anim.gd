@@ -1,8 +1,11 @@
 extends Node
 
 func _ready() -> void:
-	pass
-
+	
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)	
+	
+	anim()
+	
 func anim():
 	
 	$"../Journnal_root".rotation_degrees = -1060.0

@@ -7,3 +7,4 @@
 script = ExtResource("1_ohtlb")
 focus_scene = ExtResource("1_1gt1g")
 book_page_index = 0
+scene_clues = Array[String]([])

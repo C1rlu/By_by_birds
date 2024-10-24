@@ -74,8 +74,10 @@ func _on_over():
 	if previous_onOver:
 		Bird_select_effect.visible = false
 		previous_onOver = null
-	
+		_global_datas.in_bird_hover = false
+		
 	if !raycast:
+		_global_datas.in_bird_hover = false
 		return
 	
 	var hit_focus = raycast.collider.get_node_or_null("hit_focus")
@@ -86,5 +88,5 @@ func _on_over():
 		Bird_select_effect.visible = true
 		Bird_select_effect.global_position = hit_focus.get_position()
 		previous_onOver = hit_focus
-		
+		_global_datas.in_bird_hover = true
 		

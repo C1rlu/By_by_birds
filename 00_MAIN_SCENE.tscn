@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://cb8k68mtsigvd"]
+[gd_scene load_steps=14 format=3 uid="uid://cb8k68mtsigvd"]
 
 [ext_resource type="Resource" uid="uid://bmdkj4ktpvfca" path="res://02_FOCUS_VIEW/Focus_data/Lighthouse_01_focus_data.tres" id="1_sgkwb"]
 [ext_resource type="Script" path="res://00_SYSTEMS/Global_datas.gd" id="3_qrxv3"]
 [ext_resource type="Script" path="res://13_TOOLS_UI/Hide_cursor.gd" id="6_q33qh"]
 [ext_resource type="Script" path="res://00_SYSTEMS/KeyOrPad/Controllers_inputs_Type.gd" id="7_1x7hl"]
 [ext_resource type="PackedScene" uid="uid://h2wepwtms1pe" path="res://02_FOCUS_VIEW.tscn" id="7_hlrec"]
+[ext_resource type="PackedScene" uid="uid://betillijib3ln" path="res://08_PHOTO_SYSTEMS/Photo_systems.tscn" id="9_71eh8"]
 [ext_resource type="Script" path="res://100_GAME_MENU/Set_Resolution.gd" id="9_i5bih"]
 [ext_resource type="PackedScene" uid="uid://cdkof1lgl2una" path="res://05_OWL_VIEW.tscn" id="9_s1f7p"]
 [ext_resource type="PackedScene" uid="uid://wgeoup6f2egn" path="res://07_JOURNAL/JOURNAL_SCENE.tscn" id="10_67n65"]
@@ -101,6 +102,8 @@ script = SubResource("GDScript_gl82p")
 [node name="05_OWL_VIEW" parent="." instance=ExtResource("9_s1f7p")]
 
 [node name="JOURNAL_SYSTEM" parent="." instance=ExtResource("10_67n65")]
+
+[node name="PHOTO_SYSTEMS" parent="." instance=ExtResource("9_71eh8")]
 
 [node name="08_GAME_MENU" parent="." instance=ExtResource("16_5y5wa")]
 

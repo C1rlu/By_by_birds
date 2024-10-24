@@ -11,7 +11,6 @@ render_priority = 0
 shader = ExtResource("2_q5m7p")
 shader_parameter/ColorParameter = Color(0.0430392, 0.0430392, 0.0430391, 1)
 shader_parameter/Color = Color(0.716296, 0.716296, 0.716296, 1)
-shader_parameter/Dither_strenght = 0.52
 shader_parameter/Gradient_base = ExtResource("3_wy74d")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3r2m7"]
@@ -20,7 +19,6 @@ render_priority = 0
 shader = ExtResource("2_q5m7p")
 shader_parameter/ColorParameter = Color(0.0430392, 0.0430392, 0.0430391, 1)
 shader_parameter/Color = Color(0.169245, 0.169245, 0.169245, 1)
-shader_parameter/Dither_strenght = 0.6
 shader_parameter/Gradient_base = ExtResource("3_wy74d")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ak6aj"]
@@ -29,7 +27,6 @@ render_priority = 0
 shader = ExtResource("2_q5m7p")
 shader_parameter/ColorParameter = Color(0, 0, 0, 1)
 shader_parameter/Color = Color(0.162066, 0.162066, 0.162066, 1)
-shader_parameter/Dither_strenght = 0.5
 shader_parameter/Gradient_base = ExtResource("3_wy74d")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r3x5o"]

@@ -31,6 +31,8 @@ func _check_raycast():
 		if Open_scene:
 			_global_datas.open_owl_view.emit(false)
 			_global_datas.player_owl_moment = false
+			Open_scene._open_scene()
+			
 			
 		var Moon = raycast.collider.get_node_or_null("Moon")
 

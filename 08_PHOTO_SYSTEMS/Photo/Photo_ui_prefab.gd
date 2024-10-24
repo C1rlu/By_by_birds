@@ -57,5 +57,6 @@ func out_movement():
 	
 func done():
 	_global_datas.photo_pause = false
+	_global_datas._open_journal.emit(true)
 	queue_free()
 	

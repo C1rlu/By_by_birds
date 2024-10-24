@@ -42,10 +42,12 @@ var game_scene_state_index : int = 0
 # FOCUS VIEW  
 
 signal _open_focus_view(condition : bool)
+signal _open_focus_scene(f_data : focus_data)
 var active_focus_view : focus_data
 var head_player_NodePosition : Node3D
 var transition_target : Vector3
 var moving_transition : bool
+var in_bird_hover : bool
 signal _in_transition_start
 signal _end_of_transition
 var current_focus_data : focus_data
@@ -54,7 +56,7 @@ signal set_instant_focus(Camera : Camera3D)
 signal set_new_focus(node : Node3D)
 var look_at_sensivity : float 
 signal hide_all_FocusScene_dialogue
-signal show_all_dialogue
+signal show_all_dialogue(condition:bool)
 
 signal _next_scene_words_state
 
@@ -69,6 +71,7 @@ var in_journal_mode : bool
 signal _open_journal(condition : bool)
 signal _add_journal(condition : bool)
 
+var selected_npc_dialogue : Node 
 
 # dialogue signals
 signal _change_language_state(l_state : int)

@@ -3,10 +3,11 @@ extends Node
 @export var words : Node
 
 func _ready() -> void:
-	
-	_global_datas.open_owl_view.connect(_start)
+	pass
+	#_global_datas.open_owl_view.connect(_start)
+#
+	#$Timer.timeout.connect(_stop)
 
-	$Timer.timeout.connect(_stop)
 	
 func _start(condition :bool):
 	

@@ -4,6 +4,7 @@ extends Node
 
 
 func _open_scene():
-	var get_scene = root.scene_focus_data.focus_scene
-	_global_datas._open_scene.emit(get_scene)
+
+	var get_scene = root.scene_focus_data
+	_global_datas._open_focus_scene.emit(get_scene)
 	

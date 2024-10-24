@@ -1,13 +1,11 @@
 extends Node
 
 
-@export var _debug_test : bool = false
-
 func _ready() -> void:
 	
 	_global_datas.open_owl_view.connect(open)
-	_global_datas.player_owl_moment = _debug_test
-	_global_datas.open_owl_view.emit(_debug_test)	
+	_global_datas.player_owl_moment = true
+	_global_datas.open_owl_view.emit(true)	
 
 func open(condition:bool):
 	

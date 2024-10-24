@@ -20,7 +20,7 @@ hint = 1
 input_name = "color"
 
 [sub_resource type="VisualShaderNodeStep" id="VisualShaderNodeStep_4hqf5"]
-default_input_values = [0, 0.47, 1, 0.0]
+default_input_values = [0, 0.34, 1, 0.0]
 
 [sub_resource type="VisualShaderNodeColorOp" id="VisualShaderNodeColorOp_jti5l"]
 operator = 4
@@ -29,75 +29,14 @@ operator = 4
 code = "shader_type canvas_item;
 render_mode blend_mix;
 
-global uniform sampler2D BlueNoise : filter_nearest_mipmap;
-uniform float FloatParameter : hint_range(0, 1);
 
 
-
-void fragment() {
-// Input:6
-	vec4 n_out6p0 = COLOR;
-
-
-	vec4 n_out3p0;
-// Texture2D:3
-	n_out3p0 = texture(BlueNoise, UV);
-
-
-// Step:7
-	float n_in7p0 = 0.47000;
-	float n_out7p0 = step(n_in7p0, n_out3p0.x);
-
-
-// FloatParameter:5
-	float n_out5p0 = FloatParameter;
-
-
-// Mix:4
-	vec3 n_out4p0 = mix(vec3(n_out6p0.xyz), vec3(n_out7p0), vec3(n_out5p0));
-
-
-	vec3 n_out8p0;
-// ColorOp:8
-	{
-		float base = vec3(n_out6p0.xyz).x;
-		float blend = n_out4p0.x;
-		if (base < 0.5) {
-			n_out8p0.x = 2.0 * base * blend;
-		} else {
-			n_out8p0.x = 1.0 - 2.0 * (1.0 - blend) * (1.0 - base);
-		}
-	}
-	{
-		float base = vec3(n_out6p0.xyz).y;
-		float blend = n_out4p0.y;
-		if (base < 0.5) {
-			n_out8p0.y = 2.0 * base * blend;
-		} else {
-			n_out8p0.y = 1.0 - 2.0 * (1.0 - blend) * (1.0 - base);
-		}
-	}
-	{
-		float base = vec3(n_out6p0.xyz).z;
-		float blend = n_out4p0.z;
-		if (base < 0.5) {
-			n_out8p0.z = 2.0 * base * blend;
-		} else {
-			n_out8p0.z = 1.0 - 2.0 * (1.0 - blend) * (1.0 - base);
-		}
-	}
-
-
-// Output:0
-	COLOR.rgb = n_out8p0;
-
-
-}
 "
+graph_offset = Vector2(-612.398, -367.72)
 mode = 1
 flags/light_only = false
 nodes/fragment/2/node = SubResource("VisualShaderNodeTexture2DParameter_rd3xo")
-nodes/fragment/2/position = Vector2(-920, -260)
+nodes/fragment/2/position = Vector2(-1360, -120)
 nodes/fragment/3/node = SubResource("VisualShaderNodeTexture_rc54r")
 nodes/fragment/3/position = Vector2(-560, -160)
 nodes/fragment/4/node = SubResource("VisualShaderNodeMix_6hr6w")
@@ -110,4 +49,4 @@ nodes/fragment/7/node = SubResource("VisualShaderNodeStep_4hqf5")
 nodes/fragment/7/position = Vector2(-140, -260)
 nodes/fragment/8/node = SubResource("VisualShaderNodeColorOp_jti5l")
 nodes/fragment/8/position = Vector2(405.443, -416.321)
-nodes/fragment/connections = PackedInt32Array(2, 0, 3, 2, 5, 0, 4, 2, 6, 0, 4, 0, 6, 0, 8, 0, 8, 0, 0, 0, 3, 0, 7, 1, 7, 0, 4, 1, 4, 0, 8, 1)
+nodes/fragment/connections = PackedInt32Array(2, 0, 3, 2, 5, 0, 4, 2, 6, 0, 4, 0, 6, 0, 8, 0, 3, 0, 7, 1, 7, 0, 4, 1, 4, 0, 8, 1)

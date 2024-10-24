@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://h2wepwtms1pe"]
+[gd_scene load_steps=42 format=3 uid="uid://h2wepwtms1pe"]
 
 [ext_resource type="Script" path="res://13_TOOLS_UI/set_Resolution_viewports.gd" id="1_3ana1"]
 [ext_resource type="Script" path="res://02_FOCUS_VIEW/Open_FocusView.gd" id="1_ttndn"]
@@ -12,10 +12,9 @@
 [ext_resource type="Script" path="res://02_FOCUS_VIEW/head_position.gd" id="8_xhhco"]
 [ext_resource type="Script" path="res://02_FOCUS_VIEW/update_focus.gd" id="8_yrrej"]
 [ext_resource type="PackedScene" uid="uid://cnimyy5oh85xr" path="res://02_FOCUS_VIEW/VFX/Bird_Noise_Effect.tscn" id="9_88fci"]
-[ext_resource type="Script" path="res://02_FOCUS_VIEW/scene_state_game.gd" id="9_nwnnp"]
 [ext_resource type="Texture2D" uid="uid://dafg2qvpi6wmk" path="res://13_TOOLS_UI/Loader_circle/Loader_circle.png" id="10_s3pi3"]
 [ext_resource type="Shader" uid="uid://clx3d2k1ngnqc" path="res://02_FOCUS_VIEW/Blink_effect_sh.tres" id="11_5x6sk"]
-[ext_resource type="Script" path="res://02_FOCUS_VIEW/words.gd" id="11_wglx5"]
+[ext_resource type="Script" path="res://02_FOCUS_VIEW/open_quest_paper.gd" id="11_xlk5e"]
 [ext_resource type="Shader" uid="uid://cp4mr3xx4kfgi" path="res://00_SHADER/Sonor_view_sh.tres" id="17_wlwsl"]
 
 [sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_mimwe"]
@@ -268,21 +267,8 @@ Camera_root = NodePath("../Viewport/head/CAM")
 Camera_head = NodePath("../Viewport/head")
 Cam_to_follow = [NodePath("../Viewport_light/CAM_light"), NodePath("../Viewport_warm/CAM_light_warm"), NodePath("../Viewport_Dialogue_ui/CAM_dialogue_ui")]
 
-[node name="Scene_state_game" type="Node" parent="." node_paths=PackedStringArray("words")]
-script = ExtResource("9_nwnnp")
-words = NodePath("../Words")
-
-[node name="Timer" type="Timer" parent="Scene_state_game"]
-wait_time = 60.0
-one_shot = true
-
-[node name="Words" type="Node" parent="." node_paths=PackedStringArray("focus_view")]
-script = ExtResource("11_wglx5")
-focus_view = NodePath("../Open_FocusView")
-
-[node name="Timer" type="Timer" parent="Words"]
-wait_time = 3.0
-one_shot = true
+[node name="Open_quest_paper" type="Node" parent="."]
+script = ExtResource("11_xlk5e")
 
 [node name="BACKDROP_FOCUS" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_v0203")

@@ -1,9 +1,10 @@
-[gd_scene load_steps=17 format=4 uid="uid://dm5d272iur25u"]
+[gd_scene load_steps=18 format=4 uid="uid://dm5d272iur25u"]
 
 [ext_resource type="PackedScene" uid="uid://dgvsf84egy43d" path="res://05_DESK_MAP/Chavet/Chavet_part.blend" id="1_sfss7"]
 [ext_resource type="Script" path="res://05_DESK_MAP/Chavet/Board_focus_zone.gd" id="1_wpfir"]
 [ext_resource type="Shader" uid="uid://bii47ft606xyy" path="res://05_DESK_MAP/00_SHADER/Element_base_sh.tres" id="2_hmx5r"]
 [ext_resource type="Shader" uid="uid://ceec4w3amlx7t" path="res://05_DESK_MAP/00_SHADER/photo_area_legend_sh.tres" id="3_0xh52"]
+[ext_resource type="Material" uid="uid://cvng1dwrp1vmq" path="res://00_SHADER/Light_pass_lit_mat.tres" id="4_merr0"]
 [ext_resource type="Material" uid="uid://yjoyk6fvrm6q" path="res://00_SHADER/No_light_surface_mat.tres" id="4_pv43w"]
 [ext_resource type="Script" path="res://05_DESK_MAP/Chavet/show_focus.gd" id="5_13h2f"]
 
@@ -82,10 +83,11 @@ layers = 2
 cast_shadow = 0
 mesh = SubResource("ArrayMesh_amea3")
 skeleton = NodePath("")
-surface_material_override/0 = ExtResource("4_pv43w")
+surface_material_override/0 = ExtResource("4_merr0")
 
 [node name="parts3" type="MeshInstance3D" parent="Chavet_part"]
 transform = Transform3D(0.0283636, 0, 0, 0, 0.0283636, 0, 0, 0, 0.0283636, 0, 0, 0)
+visible = false
 layers = 4
 mesh = SubResource("ArrayMesh_amea3")
 skeleton = NodePath("")
@@ -123,7 +125,7 @@ surface_material_override/0 = SubResource("ShaderMaterial_bek7t")
 
 [node name="Area3D" type="Area3D" parent="."]
 
-[node name="Open_scene" type="Node" parent="Area3D"]
+[node name="Open_level" type="Node" parent="Area3D"]
 script = ExtResource("5_13h2f")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]

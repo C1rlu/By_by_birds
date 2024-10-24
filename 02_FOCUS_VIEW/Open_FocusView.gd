@@ -7,7 +7,7 @@ func _ready():
 
 	_global_datas._open_menu.connect(_open_menu)
 	_global_datas.open_owl_view.connect(_open)
-	
+	_global_datas._open_focus_scene.connect(_open_focus_scene)
 	
 func _open(condition : bool):
 	
@@ -15,9 +15,7 @@ func _open(condition : bool):
 	$"../Render".visible = !condition	
 	
 	_global_datas._show_object_legend.emit(false,"")
-	
-	if !condition:
-		_open_scene()
+
 		
 				
 func _open_menu(condition : bool):
@@ -29,10 +27,19 @@ func _open_scene():
 
 	for e in Loader.get_children():
 		e.queue_free()
-
+	
 	var scene_index = _global_datas.game_scene_state_index
 	var scene = list_of_scene[scene_index].focus_scene
 	var instantiate = scene.instantiate()
 	Loader.add_child(instantiate)	
 	
+	
+func _open_focus_scene(f_data : focus_data):
+
+	for e in Loader.get_children():
+		e.queue_free()
+
+	var scene = f_data.focus_scene
+	var instantiate = scene.instantiate()
+	Loader.add_child(instantiate)	
 	

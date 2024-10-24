@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://dbe84wpfpttsd"]
+
+[ext_resource type="Script" path="res://07_JOURNAL/press_proposition_button.gd" id="1_q2oi2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ji6o5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o5ih2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wfjq6"]
+bg_color = Color(0.26, 0.26, 0.26, 0.219608)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_03w5q"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4ycrq"]
+
+[node name="Label_text" type="Label"]
+custom_minimum_size = Vector2(400, 0)
+text = "\" dialogue test here \""
+autowrap_mode = 3
+script = ExtResource("1_q2oi2")
+
+[node name="Propositions" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+theme_override_styles/focus = SubResource("StyleBoxFlat_ji6o5")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_o5ih2")
+theme_override_styles/hover = SubResource("StyleBoxFlat_wfjq6")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_03w5q")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_4ycrq")
+alignment = 0
+
+[node name="HSeparator" type="HSeparator" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 8.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 0

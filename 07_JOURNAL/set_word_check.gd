@@ -1,14 +1,17 @@
 extends Node
 
 
-@export var words_element_button : Array[Button]
+var words_element_button : Array[Label]
 
 func _ready() -> void:
-	_global_datas._open_journal.connect(_set_journal)
+	_global_datas._open_proposition.connect(_set_proposition)
 	
+	var list = $"../Words/ScrollContainer/GridContainer".get_children()
+			
+	words_element_button.append_array(list)
+
 	
-	
-func _set_journal(condition : bool):
+func _set_proposition(condition : bool):
 	
 	if condition:
 
@@ -16,13 +19,9 @@ func _set_journal(condition : bool):
 		
 		for button in words_element_button:
 			button.visible = false
-			
+			 
 		var list_count = current_scene_list.size()	
 		for i in range(0,list_count):
 			words_element_button[i].visible = true	
 			
-			words_element_button[i]._set_word(current_scene_list[i].words)
-		
-
-	
-	
+			words_element_button[i]._set_word(current_scene_list[i].words)	

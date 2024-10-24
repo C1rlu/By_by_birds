@@ -21,7 +21,7 @@ func _input(event: InputEvent) -> void:
 		return	
 	if _global_datas.player_owl_moment:
 		return	
-	if _global_datas.in_journal_mode:
+	if _global_datas.in_proposition_mode:
 		return
 	
 	if event.is_action_pressed("Click"):

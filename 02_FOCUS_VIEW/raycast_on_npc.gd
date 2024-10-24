@@ -3,12 +3,12 @@ extends Node
 @export var Camera : Camera3D
 @export var Bird_select_effect : Node3D
 var previous_onOver
-
+var npc_onOver
 func _input(event: InputEvent) -> void:
 	
 	if _global_datas.player_owl_moment:
 		return
-	if _global_datas.in_journal_mode:
+	if _global_datas.in_proposition_mode:
 		return
 		
 	_on_over()
@@ -54,18 +54,24 @@ func _on_over():
 		Bird_select_effect.visible = false
 		previous_onOver = null
 		_global_datas.in_bird_hover = false
+	
+	if npc_onOver:
+		npc_onOver._hover_npc(false)
+		npc_onOver = null
 		
 	if !raycast:
 		_global_datas.in_bird_hover = false
 		return
 	
 	var hit_focus = raycast.collider.get_node_or_null("hit_focus")
-	
-	
-		
 	if hit_focus:
 		Bird_select_effect.visible = true
 		Bird_select_effect.global_position = hit_focus.get_position()
 		previous_onOver = hit_focus
 		_global_datas.in_bird_hover = true
 		
+	
+	var hit_focus_npc = raycast.collider.get_node_or_null("npc_revealed")
+	if hit_focus_npc:
+		hit_focus_npc._hover_npc(true)
+		npc_onOver = hit_focus_npc

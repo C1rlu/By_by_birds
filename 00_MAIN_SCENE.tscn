@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://h2wepwtms1pe" path="res://02_FOCUS_VIEW.tscn" id="7_hlrec"]
 [ext_resource type="Script" path="res://100_GAME_MENU/Set_Resolution.gd" id="9_i5bih"]
 [ext_resource type="PackedScene" uid="uid://cdkof1lgl2una" path="res://05_OWL_VIEW.tscn" id="9_s1f7p"]
-[ext_resource type="PackedScene" uid="uid://wgeoup6f2egn" path="res://07_JOURNAL/JOURNAL_SCENE.tscn" id="10_67n65"]
+[ext_resource type="PackedScene" uid="uid://wgeoup6f2egn" path="res://07_JOURNAL/PROPOSITION_SCENE.tscn" id="10_67n65"]
 [ext_resource type="PackedScene" uid="uid://bemddl0bqqfwo" path="res://100_GAME_MENU/08_game_menu.tscn" id="16_5y5wa"]
 
 [sub_resource type="GDScript" id="GDScript_c11gh"]
@@ -100,7 +100,7 @@ script = SubResource("GDScript_gl82p")
 
 [node name="05_OWL_VIEW" parent="." instance=ExtResource("9_s1f7p")]
 
-[node name="JOURNAL_SYSTEM" parent="." instance=ExtResource("10_67n65")]
+[node name="PROPOSITION_SCENE" parent="." instance=ExtResource("10_67n65")]
 
 [node name="08_GAME_MENU" parent="." instance=ExtResource("16_5y5wa")]
 

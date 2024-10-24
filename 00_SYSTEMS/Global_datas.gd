@@ -53,6 +53,11 @@ signal in_photo_mode(condition)
 var photo_pause : bool
 signal _take_photo
 
+# in proposition mode
+var in_proposition_mode : bool
+signal _open_proposition(condition : bool)
+
+
 # Journal
 var in_journal_mode : bool
 signal _open_journal(condition : bool)

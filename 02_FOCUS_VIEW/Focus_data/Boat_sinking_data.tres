@@ -7,4 +7,3 @@
 script = ExtResource("2_c62t1")
 focus_scene = ExtResource("1_k2j4p")
 book_page_index = 2
-scene_clues = Array[String](["A man - bottle - left hand", "", ""])

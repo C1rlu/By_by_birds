@@ -20,4 +20,4 @@ func _npc_revealed():
 		#material_pass.set_shader_parameter("Opacity",1.0)
 		_global_datas._open_journal.emit(true)
 		_global_datas.selected_npc_dialogue = show_FocusScene_dialogue
-	
+		

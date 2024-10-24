@@ -628,7 +628,7 @@ script = ExtResource("1_ksfmy")
 
 [node name="Dialogue_state" type="Node" parent="."]
 script = ExtResource("2_rfcgn")
-dialogue_start = Array[String](["Hello", "I'm the inquisitor", "our mission is to solve the last word of the living", "you will be my ", "start on the map"])
+dialogue_start = Array[String](["Hello", "I'm the inquisitor", "our mission is to solve mystic disaster", "we have the vision of the disaster, the words and the thoughts", "But not from where them are coming from", "You have to attribut them in the vision ", "Check the map to start the first vision"])
 
 [node name="set_Resolution" type="Node" parent="." node_paths=PackedStringArray("viewports")]
 script = ExtResource("2_ul4p6")

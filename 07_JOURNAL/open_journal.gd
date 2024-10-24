@@ -1,7 +1,6 @@
 extends Node
 
-@onready var journal_scene: Control = $"../JournalScene"
-@onready var fade: ColorRect = $"../Fade"
+@onready var words: Control = $"../Words"
 
 
 func _ready() -> void:
@@ -11,9 +10,8 @@ func _ready() -> void:
 	
 func _open_journal(condition : bool):
 	
+	words.visible = condition
 	_global_datas.in_journal_mode = condition
-	journal_scene.visible = condition
-	fade	.visible = condition
 
 	if condition:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)

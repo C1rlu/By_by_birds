@@ -1,9 +1,15 @@
 extends Button
 
 
+
+func _set_word(_text : String):
+	text = _text
+	
+	
+
 func _ready() -> void:
 	
-	pressed.connect(_pressed)
+	button_down.connect(_pressed)
 	
 	visibility_changed.connect(_active_delay)
 
@@ -19,7 +25,7 @@ func enable():
 	disabled = false
 	
 func _pressed():
-	print("pressed")
-
+	
 	_global_datas._open_journal.emit(false)
 	_global_datas.selected_npc_dialogue._set_dialogue(text)
+	_global_datas.check_player_result.emit()

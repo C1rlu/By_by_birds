@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Npc_data" load_steps=2 format=3 uid="uid://dfus831evitwp"]
+
+[ext_resource type="Script" path="res://15_GAME_RESSOURCE/Npc_datas/Npc_datas.gd" id="1_p1he1"]
+
+[resource]
+script = ExtResource("1_p1he1")
+Name = "whale"
+words = "Nice try fools humans"

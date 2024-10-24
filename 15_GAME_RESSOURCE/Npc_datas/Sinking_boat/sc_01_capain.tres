@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Npc_data" load_steps=2 format=3 uid="uid://b1v14yv0q3h5r"]
+
+[ext_resource type="Script" path="res://15_GAME_RESSOURCE/Npc_datas/Npc_datas.gd" id="1_8ocr3"]
+
+[resource]
+script = ExtResource("1_8ocr3")
+Name = "Captain"
+words = "\" F*** the traditions, i will not be the last man on this ship \""

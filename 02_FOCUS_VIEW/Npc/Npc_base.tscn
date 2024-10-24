@@ -1,8 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://dfl8ypxntwour"]
+[gd_scene load_steps=11 format=3 uid="uid://dfl8ypxntwour"]
 
+[ext_resource type="Script" path="res://02_FOCUS_VIEW/Npc/npc_base.gd" id="1_1spea"]
 [ext_resource type="Material" uid="uid://b7msfww1upji" path="res://00_SHADER/Npc_focusview_mat.tres" id="1_jsitv"]
 [ext_resource type="Script" path="res://02_FOCUS_VIEW/Npc/show_dialogue.gd" id="1_y5ntb"]
 [ext_resource type="Script" path="res://02_FOCUS_VIEW/npc_revealed.gd" id="2_ejc7x"]
+[ext_resource type="Resource" uid="uid://bkkmais6w6ibk" path="res://15_GAME_RESSOURCE/Npc_datas/Sinking_boat/sc_01_artilleur.tres" id="2_mq67t"]
 [ext_resource type="Material" uid="uid://yjoyk6fvrm6q" path="res://00_SHADER/No_light_surface_mat.tres" id="3_2rvdd"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_0rwhf"]
@@ -17,6 +19,8 @@ data = PackedVector3Array(0, 1, 0, 0, 1, 0, 0, 0.9924, -0.0868, 0, 1, 0, -0.0085
 viewport_path = NodePath("SubViewport")
 
 [node name="Npc_prefab" type="Node3D"]
+script = ExtResource("1_1spea")
+npc_data = ExtResource("2_mq67t")
 
 [node name="NPC_03" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_0rwhf")

@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Npc_data" load_steps=2 format=3 uid="uid://bqe1765mhance"]
+
+[ext_resource type="Script" path="res://15_GAME_RESSOURCE/Npc_datas/Npc_datas.gd" id="1_4j01v"]
+
+[resource]
+script = ExtResource("1_4j01v")
+Name = "Paysan 02"
+words = "Tu crois petit con ?"

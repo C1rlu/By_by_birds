@@ -5,7 +5,7 @@ func _ready():
 	
 	_global_datas._check_zone_enter.connect(_check_zone_enter)	
 	_global_datas._check_zone_exit.connect(_check_zone_exit)
-	_global_datas._check_player_zone.connect(check_zone)
+
 	_global_datas._close_dialogue.connect(check_zone)
 	_global_datas._open_menu.connect(_condition_check)
 	

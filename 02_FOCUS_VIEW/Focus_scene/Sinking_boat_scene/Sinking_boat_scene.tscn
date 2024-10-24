@@ -1,21 +1,24 @@
-[gd_scene load_steps=70 format=4 uid="uid://3xtpvfoi3xkd"]
+[gd_scene load_steps=73 format=4 uid="uid://3xtpvfoi3xkd"]
 
-[ext_resource type="Script" path="res://02_FOCUS_VIEW/Focus_data/set_focus_data.gd" id="1_n0vt8"]
-[ext_resource type="Script" path="res://00_SYSTEMS/Active_mask_at_ready.tres.gd" id="2_pgtit"]
-[ext_resource type="PackedScene" uid="uid://n7fje3pkvptd" path="res://02_FOCUS_VIEW/Birds_view/Birds_view_Prefab.tscn" id="3_034ql"]
-[ext_resource type="PackedScene" uid="uid://dfl8ypxntwour" path="res://02_FOCUS_VIEW/Npc/Npc_base.tscn" id="4_d8v1b"]
-[ext_resource type="Material" uid="uid://b7msfww1upji" path="res://00_SHADER/Npc_focusview_mat.tres" id="9_db8mh"]
-[ext_resource type="PackedScene" uid="uid://m6voiuw7ip8o" path="res://02_FOCUS_VIEW/Assets/TinyBoat/Tiny_boat_set.tscn" id="11_ysj76"]
-[ext_resource type="Shader" uid="uid://cu2uipuy138c6" path="res://00_SHADER/All_Materials/Main_sceneTest_dither_sh.tres" id="15_rda0y"]
-[ext_resource type="Material" uid="uid://yjoyk6fvrm6q" path="res://00_SHADER/No_light_surface_mat.tres" id="18_js61i"]
-[ext_resource type="PackedScene" uid="uid://bgrasw5i1kjw5" path="res://02_FOCUS_VIEW/Focus_scene/Tiny_boat_scene/BoatMan_asset_01.blend" id="22_rnffa"]
-[ext_resource type="Shader" uid="uid://bad52w03qa3g4" path="res://02_FOCUS_VIEW/Shader/Flare_light_sh.tres" id="23_p681u"]
-[ext_resource type="Material" uid="uid://coou7bpav3hi4" path="res://02_FOCUS_VIEW/focus_sea_mat.tres" id="25_ylpcj"]
-[ext_resource type="Shader" uid="uid://2anxsstngu6f" path="res://02_FOCUS_VIEW/Shader/Moon_shader.tres" id="26_77lho"]
-[ext_resource type="Shader" uid="uid://brd5lwhrgrtsy" path="res://02_FOCUS_VIEW/Moon/moon_sh.tres" id="27_f0aki"]
-[ext_resource type="Shader" uid="uid://ddgu7ccdrwv38" path="res://02_FOCUS_VIEW/02_FOCUS_VIEW_sky.res" id="28_7jsfe"]
-[ext_resource type="PackedScene" uid="uid://bo243u78wdxqv" path="res://02_FOCUS_VIEW/Focus_scene/Big_Boat/Big_Boat_set.tscn" id="32_ohkq6"]
-[ext_resource type="PackedScene" uid="uid://br743xj0dln5y" path="res://04_SCENE_MAIN_MAP/00_PLAYER/Boat/Boat_smoke/VFX_smoke_sphere.tscn" id="33_bb3xa"]
+[ext_resource type="Script" path="res://02_FOCUS_VIEW/Focus_data/set_focus_data.gd" id="1_mjnje"]
+[ext_resource type="Script" path="res://00_SYSTEMS/Active_mask_at_ready.tres.gd" id="2_2g2du"]
+[ext_resource type="Material" uid="uid://coou7bpav3hi4" path="res://02_FOCUS_VIEW/focus_sea_mat.tres" id="3_od3ur"]
+[ext_resource type="Shader" uid="uid://2anxsstngu6f" path="res://02_FOCUS_VIEW/Shader/Moon_shader.tres" id="4_68eqw"]
+[ext_resource type="Shader" uid="uid://brd5lwhrgrtsy" path="res://02_FOCUS_VIEW/Moon/moon_sh.tres" id="5_0at7a"]
+[ext_resource type="Shader" uid="uid://ddgu7ccdrwv38" path="res://02_FOCUS_VIEW/02_FOCUS_VIEW_sky.res" id="6_6wexm"]
+[ext_resource type="PackedScene" uid="uid://n7fje3pkvptd" path="res://02_FOCUS_VIEW/Birds_view/Birds_view_Prefab.tscn" id="7_fs1jc"]
+[ext_resource type="PackedScene" uid="uid://dfl8ypxntwour" path="res://02_FOCUS_VIEW/Npc/Npc_base.tscn" id="8_psgwh"]
+[ext_resource type="Resource" uid="uid://b1v14yv0q3h5r" path="res://15_GAME_RESSOURCE/Npc_datas/Sinking_boat/sc_01_capain.tres" id="9_2nyc7"]
+[ext_resource type="Resource" uid="uid://cuk6aanaf8hxh" path="res://15_GAME_RESSOURCE/Npc_datas/Sinking_boat/sc_01_dog.tres" id="10_2wij3"]
+[ext_resource type="Material" uid="uid://b7msfww1upji" path="res://00_SHADER/Npc_focusview_mat.tres" id="10_grpjp"]
+[ext_resource type="Resource" uid="uid://dfus831evitwp" path="res://15_GAME_RESSOURCE/Npc_datas/Sinking_boat/sc_01_whale.tres" id="11_saung"]
+[ext_resource type="PackedScene" uid="uid://m6voiuw7ip8o" path="res://02_FOCUS_VIEW/Assets/TinyBoat/Tiny_boat_set.tscn" id="12_wsv07"]
+[ext_resource type="PackedScene" uid="uid://bgrasw5i1kjw5" path="res://02_FOCUS_VIEW/Focus_scene/Tiny_boat_scene/BoatMan_asset_01.blend" id="13_1ly8m"]
+[ext_resource type="Shader" uid="uid://cu2uipuy138c6" path="res://00_SHADER/All_Materials/Main_sceneTest_dither_sh.tres" id="14_xkcw5"]
+[ext_resource type="Material" uid="uid://yjoyk6fvrm6q" path="res://00_SHADER/No_light_surface_mat.tres" id="15_03woe"]
+[ext_resource type="Shader" uid="uid://bad52w03qa3g4" path="res://02_FOCUS_VIEW/Shader/Flare_light_sh.tres" id="16_gxupy"]
+[ext_resource type="PackedScene" uid="uid://bo243u78wdxqv" path="res://02_FOCUS_VIEW/Focus_scene/Big_Boat/Big_Boat_set.tscn" id="17_udhw6"]
+[ext_resource type="PackedScene" uid="uid://br743xj0dln5y" path="res://04_SCENE_MAIN_MAP/00_PLAYER/Boat/Boat_smoke/VFX_smoke_sphere.tscn" id="18_xwm0k"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_ikj6y"]
 top_radius = 15.0
@@ -78,7 +81,7 @@ shader_parameter/Alpha = SubResource("GradientTexture2D_avbji")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1eqpj"]
 render_priority = 0
-shader = ExtResource("26_77lho")
+shader = ExtResource("4_68eqw")
 shader_parameter/Color_yellow = Color(1, 1, 1, 1)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_jcffs"]
@@ -87,12 +90,12 @@ shader_parameter/Color_yellow = Color(1, 1, 1, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ef6xb"]
 render_priority = 1
-shader = ExtResource("27_f0aki")
+shader = ExtResource("5_0at7a")
 shader_parameter/ColorParameter = Color(0.0901961, 0.0901961, 0.0901961, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4eja0"]
 render_priority = 1
-shader = ExtResource("27_f0aki")
+shader = ExtResource("5_0at7a")
 shader_parameter/ColorParameter = Color(0, 0, 0, 1)
 
 [sub_resource type="SphereMesh" id="SphereMesh_15s47"]
@@ -108,7 +111,7 @@ fill_to = Vector2(1, 0.380342)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0ingn"]
 render_priority = 0
-shader = ExtResource("28_7jsfe")
+shader = ExtResource("6_6wexm")
 shader_parameter/Gradient = SubResource("GradientTexture2D_52rnr")
 
 [sub_resource type="SphereMesh" id="SphereMesh_u6b0r"]
@@ -352,7 +355,7 @@ fill_to = Vector2(0.0128205, 0.5)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3fi0j"]
 render_priority = 1
-shader = ExtResource("15_rda0y")
+shader = ExtResource("14_xkcw5")
 shader_parameter/ColorParameter = Color(0, 0, 0, 1)
 shader_parameter/Color = Color(0.270222, 0.270222, 0.270222, 1)
 shader_parameter/Gradient_base = SubResource("GradientTexture2D_b7aei")
@@ -403,12 +406,12 @@ fill_from = Vector2(0.5, 0.5)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jl8ab"]
 render_priority = 0
-shader = ExtResource("23_p681u")
+shader = ExtResource("16_gxupy")
 shader_parameter/Light_color = Color(1, 0.721569, 0.372549, 1)
 shader_parameter/Texture = SubResource("GradientTexture2D_pkxy5")
 
 [node name="Sinking_boat_scene" type="Node3D" node_paths=PackedStringArray("_first_view", "_first_node")]
-script = ExtResource("1_n0vt8")
+script = ExtResource("1_mjnje")
 _first_view = NodePath("VIEW/Start_view")
 _first_node = NodePath("VIEW/Start_view/BirdsView_Prefab_00")
 
@@ -432,14 +435,14 @@ omni_range = 2.6799
 [node name="Sphere_sky" type="Node3D" parent="."]
 
 [node name="active_mask" type="Node" parent="Sphere_sky" node_paths=PackedStringArray("_active")]
-script = ExtResource("2_pgtit")
+script = ExtResource("2_2g2du")
 _active = [NodePath("../Sea_foam/Sea_foam_light")]
 
 [node name="Sea_foam" type="MeshInstance3D" parent="Sphere_sky"]
 transform = Transform3D(18.636, 0, 0, 0, 0.701496, 0, 0, 0, 18.636, 0.739, 0, 1.214)
 mesh = SubResource("CylinderMesh_ikj6y")
 skeleton = NodePath("")
-surface_material_override/0 = ExtResource("25_ylpcj")
+surface_material_override/0 = ExtResource("3_od3ur")
 
 [node name="Sea_foam_light" type="MeshInstance3D" parent="Sphere_sky/Sea_foam"]
 visible = false
@@ -496,67 +499,73 @@ surface_material_override/0 = SubResource("ShaderMaterial_e5o8q")
 [node name="VIEW" type="Node3D" parent="."]
 
 [node name="Start_view" type="Camera3D" parent="VIEW"]
-transform = Transform3D(-0.424199, -0.149462, -0.89315, 0, 0.986286, -0.165048, 0.905569, -0.0700131, -0.418382, -25.409, 0.814, -9.192)
+transform = Transform3D(-0.424199, -0.149462, -0.89315, 0, 0.986286, -0.165048, 0.905569, -0.070013, -0.418382, -25.409, 0.814, -9.192)
 fov = 50.0
 
-[node name="BirdsView_Prefab_00" parent="VIEW/Start_view" instance=ExtResource("3_034ql")]
+[node name="BirdsView_Prefab_00" parent="VIEW/Start_view" instance=ExtResource("7_fs1jc")]
 transform = Transform3D(-0.424199, 0, 0.905569, -0.023705, 0.999657, -0.0111042, -0.905259, -0.026177, -0.424054, 0, 0, 0)
 visible = false
 
-[node name="BirdsView_Prefab_02" parent="VIEW" instance=ExtResource("3_034ql")]
+[node name="BirdsView_Prefab_02" parent="VIEW" instance=ExtResource("7_fs1jc")]
 transform = Transform3D(0.438936, -0.507866, -0.74122, 0.288664, 0.860911, -0.418934, 0.850887, -0.0300778, 0.524487, -95.4127, 11.8601, -17.5857)
 
-[node name="BirdsView_Prefab_01" parent="VIEW" instance=ExtResource("3_034ql")]
+[node name="BirdsView_Prefab_01" parent="VIEW" instance=ExtResource("7_fs1jc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.43, 4.628, 15.678)
 
-[node name="BirdsView_Prefab_03" parent="VIEW" instance=ExtResource("3_034ql")]
+[node name="BirdsView_Prefab_03" parent="VIEW" instance=ExtResource("7_fs1jc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.42623, 11.956, 0.733033)
 
-[node name="BirdsView_Prefab_04" parent="VIEW" instance=ExtResource("3_034ql")]
+[node name="BirdsView_Prefab_04" parent="VIEW" instance=ExtResource("7_fs1jc")]
 transform = Transform3D(0.0412091, -0.509058, -0.859746, 0.614815, 0.691202, -0.379793, 0.787594, -0.512933, 0.34146, -8.40077, 3.678, -4.14189)
 
-[node name="BirdsView_Prefab_05" parent="VIEW" instance=ExtResource("3_034ql")]
+[node name="BirdsView_Prefab_05" parent="VIEW" instance=ExtResource("7_fs1jc")]
 transform = Transform3D(0.794239, -0.582448, 0.173027, 0.607559, 0.764829, -0.214266, -0.00753759, 0.275302, 0.961329, -1.34563, 5.14927, 5.39179)
 
-[node name="BirdsView_Prefab_06" parent="VIEW" instance=ExtResource("3_034ql")]
+[node name="BirdsView_Prefab_06" parent="VIEW" instance=ExtResource("7_fs1jc")]
 transform = Transform3D(0.57318, -0.0757507, 0.815921, 0.546223, 0.777554, -0.311531, -0.610823, 0.624238, 0.487055, 8.21448, 3.993, 2.02296)
 
-[node name="BirdsView_Prefab_07" parent="VIEW" instance=ExtResource("3_034ql")]
+[node name="BirdsView_Prefab_07" parent="VIEW" instance=ExtResource("7_fs1jc")]
 transform = Transform3D(0.549975, 0.492003, -0.674878, -0.0272141, 0.81819, 0.574304, 0.834738, -0.297487, 0.463374, -4.88642, 1.90228, 13.4542)
 
 [node name="NPC" type="Node3D" parent="."]
 
-[node name="NPC_04" parent="NPC" instance=ExtResource("4_d8v1b")]
+[node name="NPC_04" parent="NPC" instance=ExtResource("8_psgwh")]
 transform = Transform3D(0.417815, 0, 0, 0, 0.417815, 0, 0, 0, 0.417815, 0.391747, 3.12045, 3.86043)
+npc_data = ExtResource("9_2nyc7")
 
-[node name="NPC_05" parent="NPC" instance=ExtResource("4_d8v1b")]
+[node name="NPC_06" parent="NPC" instance=ExtResource("8_psgwh")]
+transform = Transform3D(0.417815, 0, 0, 0, 0.417815, 0, 0, 0, 0.417815, -0.940771, 3.12045, -2.19237)
+npc_data = ExtResource("10_2wij3")
+
+[node name="NPC_05" parent="NPC" instance=ExtResource("8_psgwh")]
 transform = Transform3D(0.417815, 0, 0, 0, 0.417815, 0, 0, 0, 0.417815, -0.438582, 3.62485, 6.79756)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NPC"]
 transform = Transform3D(0.696862, 0.569502, -1.5588, -1.139, 1.39372, 0, 1.207, 0.986407, 0.899972, -9.48377, 0.248331, 16.5279)
 mesh = SubResource("CapsuleMesh_hofow")
-surface_material_override/0 = ExtResource("9_db8mh")
+surface_material_override/0 = ExtResource("10_grpjp")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="NPC/MeshInstance3D"]
 transform = Transform3D(1, 0, -2.98023e-08, 0, -2.98023e-08, 1, -2.98023e-08, -1, -2.98023e-08, 4.76837e-07, 0.992219, 9.53674e-07)
 mesh = SubResource("CapsuleMesh_hofow")
 skeleton = NodePath("../..")
-surface_material_override/0 = ExtResource("9_db8mh")
+surface_material_override/0 = ExtResource("10_grpjp")
 
-[node name="NPC_06" parent="NPC/MeshInstance3D" instance=ExtResource("4_d8v1b")]
+[node name="NPC_06" parent="NPC/MeshInstance3D" instance=ExtResource("8_psgwh")]
 transform = Transform3D(0.174101, -0.0330061, 1.22009, 0.142282, 1.22459, 0.0128243, -1.21222, 0.138994, 0.176738, -0.239124, 0.539609, 0.0215263)
+npc_data = ExtResource("11_saung")
 
-[node name="Tiny_boat_set" parent="." instance=ExtResource("11_ysj76")]
+[node name="Tiny_boat_set" parent="." instance=ExtResource("12_wsv07")]
 transform = Transform3D(-0.251291, 0, -0.25129, 0, 0.355378, 0, 0.25129, 0, -0.251291, -2.24612, 0.0347184, 8.19473)
 
-[node name="BoatMan_asset_01" parent="." instance=ExtResource("22_rnffa")]
+[node name="BoatMan_asset_01" parent="." instance=ExtResource("13_1ly8m")]
 transform = Transform3D(0.274854, 0, -0.274854, 0, 0.388703, 0, 0.274854, 0, 0.274854, 5.10075, -0.381953, 13.5393)
 
 [node name="All_render" parent="BoatMan_asset_01" index="0"]
 surface_material_override/0 = SubResource("ShaderMaterial_3fi0j")
 
 [node name="Active_at_ready" type="Node" parent="BoatMan_asset_01" node_paths=PackedStringArray("_active")]
-script = ExtResource("2_pgtit")
+script = ExtResource("2_2g2du")
 _active = [NodePath("../All_render_light"), NodePath("../All_render_warm")]
 
 [node name="OmniLight3D5" type="OmniLight3D" parent="BoatMan_asset_01"]
@@ -572,14 +581,14 @@ visible = false
 layers = 2
 mesh = SubResource("ArrayMesh_qp1mh")
 skeleton = NodePath("")
-surface_material_override/0 = ExtResource("18_js61i")
+surface_material_override/0 = ExtResource("15_03woe")
 
 [node name="All_render_warm" type="MeshInstance3D" parent="BoatMan_asset_01"]
 visible = false
 layers = 4
 mesh = SubResource("ArrayMesh_qp1mh")
 skeleton = NodePath("")
-surface_material_override/0 = ExtResource("18_js61i")
+surface_material_override/0 = ExtResource("15_03woe")
 
 [node name="Light_Flare" type="MeshInstance3D" parent="BoatMan_asset_01"]
 transform = Transform3D(10.0836, 0, -10.0836, 0, 14.2603, 0, 10.0836, 0, 10.0836, -1.76212, 3.53978, -0.898926)
@@ -590,25 +599,25 @@ gi_mode = 0
 mesh = SubResource("QuadMesh_edunf")
 surface_material_override/0 = SubResource("ShaderMaterial_jl8ab")
 
-[node name="Big_Boat_set" parent="." instance=ExtResource("32_ohkq6")]
+[node name="Big_Boat_set" parent="." instance=ExtResource("17_udhw6")]
 transform = Transform3D(-3.93662, -1.60356, -0.272456, -1.45931, 3.79709, -1.263, 0.718373, -1.07394, -4.05872, 0, -0.833, 0)
 
 [node name="VFX" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.57092, 5.45984, -6.00248)
 
-[node name="VfxSmokeSphere" parent="VFX" instance=ExtResource("33_bb3xa")]
+[node name="VfxSmokeSphere" parent="VFX" instance=ExtResource("18_xwm0k")]
 transform = Transform3D(0.524613, 0, 0, 0, 0.524613, 0, 0, 0, 0.524613, 0, 0.144897, 0.214203)
 
-[node name="VfxSmokeSphere2" parent="VFX" instance=ExtResource("33_bb3xa")]
+[node name="VfxSmokeSphere2" parent="VFX" instance=ExtResource("18_xwm0k")]
 transform = Transform3D(-0.817256, 0, 0.218983, 0, 0.846086, 0, -0.218983, 0, -0.817256, 0, 1.28511, -0.487429)
 
-[node name="VfxSmokeSphere3" parent="VFX" instance=ExtResource("33_bb3xa")]
+[node name="VfxSmokeSphere3" parent="VFX" instance=ExtResource("18_xwm0k")]
 transform = Transform3D(-1.6533, 0, 0.443001, 0, 1.71162, 0, -0.443001, 0, -1.6533, 0, 3.42508, -2.42828)
 
-[node name="VfxSmokeSphere4" parent="VFX" instance=ExtResource("33_bb3xa")]
+[node name="VfxSmokeSphere4" parent="VFX" instance=ExtResource("18_xwm0k")]
 transform = Transform3D(-2.72114, 0, 0.729129, -0.385321, 2.39162, -1.43804, -0.618996, -1.48877, -2.31012, 0, 7.33027, -2.64802)
 
-[node name="VfxSmokeSphere5" parent="VFX" instance=ExtResource("33_bb3xa")]
+[node name="VfxSmokeSphere5" parent="VFX" instance=ExtResource("18_xwm0k")]
 transform = Transform3D(-3.92884, 5.14546e-08, 1.05273, -1.00441, 1.21809, -3.74852, -0.315265, -3.88076, -1.17658, 0, 14.4037, -7.09756)
 
 [editable path="BoatMan_asset_01"]

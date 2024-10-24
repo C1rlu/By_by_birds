@@ -8,14 +8,11 @@ func _input(event: InputEvent) -> void:
 	
 	if _global_datas.player_owl_moment:
 		return
-
 	if _global_datas.in_journal_mode:
 		return
-
-
+		
 	_on_over()
-	
-	
+
 	if event.is_action_pressed("Click"):
 		_check_raycast()
 		
@@ -30,35 +27,17 @@ func _check_raycast():
 
 		var hit_focus = raycast.collider.get_node_or_null("hit_focus")
 		if hit_focus:
-			
 			_global_datas.transition_target = raycast.position
-			
 			hit_focus._set_focus()
 			if previous_onOver:
 				Bird_select_effect.visible = false
 				previous_onOver = null
-			
-		
+
 		var hit_focus_npc = raycast.collider.get_node_or_null("npc_revealed")
 		if hit_focus_npc:
 			hit_focus_npc._npc_revealed()
-		
-		var Close_focus_view = raycast.collider.get_node_or_null("Close_focus_view")
-		if Close_focus_view:
-			_global_datas._frame_to_close.emit()
-			
-		var To_Find = raycast.collider.get_node_or_null("To_Find")
-		if To_Find:
-			_global_datas._add_journal.emit(true)
-		
-
-		var Destination = raycast.collider.get_node_or_null("Destination")
-		if Destination:
-	
-			Destination._load_destination()
-		
+					
 		var Moon = raycast.collider.get_node_or_null("Moon")
-
 		if Moon:
 			_global_datas.player_owl_moment = true
 			_global_datas.open_owl_view.emit(true)	

@@ -1,7 +1,6 @@
 extends Node
 
 @export var Loader : Node3D
-@export var list_of_scene : Array[focus_data]
 
 func _ready():
 
@@ -23,17 +22,6 @@ func _open_menu(condition : bool):
 	if !condition:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)	
 		
-func _open_scene():
-
-	for e in Loader.get_children():
-		e.queue_free()
-	
-	var scene_index = _global_datas.game_scene_state_index
-	var scene = list_of_scene[scene_index].focus_scene
-	var instantiate = scene.instantiate()
-	Loader.add_child(instantiate)	
-	
-	
 func _open_focus_scene(f_data : focus_data):
 
 	for e in Loader.get_children():
@@ -43,3 +31,4 @@ func _open_focus_scene(f_data : focus_data):
 	var instantiate = scene.instantiate()
 	Loader.add_child(instantiate)	
 	
+	_global_datas.active_focus_view = f_data

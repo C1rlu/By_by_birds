@@ -1,12 +1,9 @@
-[gd_scene load_steps=42 format=3 uid="uid://h2wepwtms1pe"]
+[gd_scene load_steps=39 format=3 uid="uid://h2wepwtms1pe"]
 
 [ext_resource type="Script" path="res://13_TOOLS_UI/set_Resolution_viewports.gd" id="1_3ana1"]
 [ext_resource type="Script" path="res://02_FOCUS_VIEW/Open_FocusView.gd" id="1_ttndn"]
 [ext_resource type="Script" path="res://02_FOCUS_VIEW/Control_view.gd" id="2_hd46p"]
-[ext_resource type="Script" path="res://02_FOCUS_VIEW/Focus_data/Focus_data.gd" id="3_qrbb2"]
-[ext_resource type="Resource" uid="uid://dd2tot3fhgsd6" path="res://02_FOCUS_VIEW/Focus_data/Boat_sinking_data.tres" id="4_04yyb"]
 [ext_resource type="Script" path="res://02_FOCUS_VIEW/look_at.gd" id="5_8dylc"]
-[ext_resource type="Resource" uid="uid://bmdkj4ktpvfca" path="res://02_FOCUS_VIEW/Focus_data/Lighthouse_01_focus_data.tres" id="5_vspia"]
 [ext_resource type="Script" path="res://02_FOCUS_VIEW/rotate_automatique.gd" id="6_l0ewy"]
 [ext_resource type="Script" path="res://02_FOCUS_VIEW/raycast_on_npc.gd" id="7_fr4tu"]
 [ext_resource type="Script" path="res://02_FOCUS_VIEW/head_position.gd" id="8_xhhco"]
@@ -14,8 +11,32 @@
 [ext_resource type="PackedScene" uid="uid://cnimyy5oh85xr" path="res://02_FOCUS_VIEW/VFX/Bird_Noise_Effect.tscn" id="9_88fci"]
 [ext_resource type="Texture2D" uid="uid://dafg2qvpi6wmk" path="res://13_TOOLS_UI/Loader_circle/Loader_circle.png" id="10_s3pi3"]
 [ext_resource type="Shader" uid="uid://clx3d2k1ngnqc" path="res://02_FOCUS_VIEW/Blink_effect_sh.tres" id="11_5x6sk"]
-[ext_resource type="Script" path="res://02_FOCUS_VIEW/open_quest_paper.gd" id="11_xlk5e"]
 [ext_resource type="Shader" uid="uid://cp4mr3xx4kfgi" path="res://00_SHADER/Sonor_view_sh.tres" id="17_wlwsl"]
+
+[sub_resource type="GDScript" id="GDScript_4sryg"]
+script/source = "extends Node
+
+func _ready() -> void:
+	_global_datas.check_player_result.connect(_check_player)
+
+func _check_player():		
+	_check_result()	
+		
+func _check_result():
+	
+	var npc_list = _global_datas.active_focus_view.Npc_datas_list	
+	var count_true : int
+	for npc in npc_list:
+		if npc.words == npc.player_choosen_words:
+			print(\"FOUND\", npc.Name)
+			count_true += 1	
+			if count_true == _global_datas.active_focus_view.Npc_datas_list.size()-1:
+				print(\"SCENE IS DONE\") # the scene is done here so here we can put end of scene resolved
+		else:
+			print(\"false_\", npc.Name)	
+		
+	
+"
 
 [sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_mimwe"]
 source = 5
@@ -227,7 +248,6 @@ shader = SubResource("VisualShader_56eik")
 [node name="Open_FocusView" type="Node" parent="." node_paths=PackedStringArray("Loader")]
 script = ExtResource("1_ttndn")
 Loader = NodePath("../All_root/Loader")
-list_of_scene = Array[ExtResource("3_qrbb2")]([ExtResource("4_04yyb"), ExtResource("5_vspia")])
 
 [node name="set_Resolution" type="Node" parent="." node_paths=PackedStringArray("viewports")]
 script = ExtResource("1_3ana1")
@@ -267,8 +287,8 @@ Camera_root = NodePath("../Viewport/head/CAM")
 Camera_head = NodePath("../Viewport/head")
 Cam_to_follow = [NodePath("../Viewport_light/CAM_light"), NodePath("../Viewport_warm/CAM_light_warm"), NodePath("../Viewport_Dialogue_ui/CAM_dialogue_ui")]
 
-[node name="Open_quest_paper" type="Node" parent="."]
-script = ExtResource("11_xlk5e")
+[node name="Check_player_result" type="Node" parent="."]
+script = SubResource("GDScript_4sryg")
 
 [node name="BACKDROP_FOCUS" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_v0203")

@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Npc_data" load_steps=2 format=3 uid="uid://pn74be5h6pnb"]
+
+[ext_resource type="Script" path="res://15_GAME_RESSOURCE/Npc_datas/Npc_datas.gd" id="1_g16de"]
+
+[resource]
+script = ExtResource("1_g16de")
+Name = "Paysan 03"
+words = "A mort le capital ! "

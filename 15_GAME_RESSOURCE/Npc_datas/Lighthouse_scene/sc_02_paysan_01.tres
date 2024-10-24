@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Npc_data" load_steps=2 format=3 uid="uid://b8n10ekvfnhd0"]
+
+[ext_resource type="Script" path="res://15_GAME_RESSOURCE/Npc_datas/Npc_datas.gd" id="1_hmkba"]
+
+[resource]
+script = ExtResource("1_hmkba")
+Name = "Paysan 01"
+words = "ON va y arriver"

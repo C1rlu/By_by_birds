@@ -1,6 +1,5 @@
 extends Node
 
-
 var player_position : Vector3
 var camera_offset : Vector3
 var bird_raycast_ground_position : Vector3
@@ -9,30 +8,19 @@ var Player_InMenu : bool
 signal _open_menu(condition : bool)
 signal _open_desk(condition : bool)
 
-
 var player_on_desk : bool
 var camera_state_index : int 
 
 # input type
 signal using_pad(condition : bool)
 var player_using_pad : bool = false
-# scene signals
-
-signal _active_sonar(position : Vector3)
-signal _follow_target(position : Vector3)
-signal _roll_bird
-var player_area : Area3D
-signal _check_player_zone
-
-
-
 
 # OWL VIEW
 signal start_prologue
-
 signal open_owl_view(condition : bool)
+
 var player_owl_moment : bool
-var selected_clue_data : clue_data
+
 signal _add_next_clues
 signal _reset_clues
 
@@ -57,8 +45,7 @@ signal set_new_focus(node : Node3D)
 var look_at_sensivity : float 
 signal hide_all_FocusScene_dialogue
 signal show_all_dialogue(condition:bool)
-
-signal _next_scene_words_state
+signal check_player_result
 
 
 # photo mode
@@ -75,25 +62,11 @@ var selected_npc_dialogue : Node
 
 # dialogue signals
 signal _change_language_state(l_state : int)
-
-
-#UI VAR 
 signal set_resolution(resolution : Vector2i)
 signal _show_object_legend(condition : bool,legend : String)
 
-
-
-signal _check_zone_enter(area)
-signal _check_zone_exit(area)
-
-signal _active_this_dive_zone(condition : bool)
-signal _active_this_npc_zone(condition : bool)
-
-signal _in_focus_zone(condition : bool)
-signal _in_desk_zone(condition : bool)
-
-
 #Book globals
+
 signal open_book_board(condition : bool)
 signal focus_on_board_book(condition:bool)
 var all_book_page_data : Array[book_page]

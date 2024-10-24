@@ -1,7 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://wgeoup6f2egn"]
+[gd_scene load_steps=16 format=3 uid="uid://wgeoup6f2egn"]
 
-[ext_resource type="PackedScene" uid="uid://bhpxqx1pmqial" path="res://07_JOURNAL/Sinking_journal/Sinking_journal.tscn" id="1_71ppk"]
 [ext_resource type="Script" path="res://07_JOURNAL/open_journal.gd" id="1_ndq3l"]
+[ext_resource type="Script" path="res://07_JOURNAL/set_word_check.gd" id="2_jk05h"]
+[ext_resource type="Shader" uid="uid://cvoap2k5dfte8" path="res://07_JOURNAL/Journal_paper_sh.tres" id="3_oes76"]
+[ext_resource type="Script" path="res://07_JOURNAL/take_picture_button.gd" id="4_s8ipp"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wx2ps"]
+shader = ExtResource("3_oes76")
 
 [sub_resource type="Gradient" id="Gradient_r7gnx"]
 offsets = PackedFloat32Array(0.484163, 1)
@@ -44,14 +49,48 @@ nodes/fragment/connections = PackedInt32Array(2, 0, 0, 1)
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xqsr3"]
 shader = SubResource("VisualShader_aos2h")
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ji6o5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o5ih2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wfjq6"]
+bg_color = Color(0.26, 0.26, 0.26, 0.219608)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_03w5q"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7wcyq"]
+
 [node name="JOURNAL_SYSTEM" type="Node"]
 
 [node name="Open_journal" type="Node" parent="."]
 script = ExtResource("1_ndq3l")
 
-[node name="Fade" type="ColorRect" parent="."]
+[node name="Set_word_check" type="Node" parent="." node_paths=PackedStringArray("words_element_button")]
+script = ExtResource("2_jk05h")
+words_element_button = [NodePath("../Words/Propositions"), NodePath("../Words/Propositions2"), NodePath("../Words/Propositions3"), NodePath("../Words/Propositions4"), NodePath("../Words/Propositions5"), NodePath("../Words/Propositions6"), NodePath("../Words/Propositions7")]
+
+[node name="Words" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Words"]
+material = SubResource("ShaderMaterial_wx2ps")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.08, 0.08, 0.08, 0.756863)
+
+[node name="Fade" type="ColorRect" parent="Words"]
 visible = false
 material = SubResource("ShaderMaterial_xqsr3")
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -60,4 +99,142 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0.0901961, 0.0901961, 0.0901961, 1)
 
-[node name="JournalScene" parent="." instance=ExtResource("1_71ppk")]
+[node name="Propositions" type="Button" parent="Words"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 125.0
+offset_top = 122.0
+offset_right = -892.0
+offset_bottom = -552.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+theme_override_styles/focus = SubResource("StyleBoxFlat_ji6o5")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_o5ih2")
+theme_override_styles/hover = SubResource("StyleBoxFlat_wfjq6")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_03w5q")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_7wcyq")
+text = "\" I should have listen the captain \""
+script = ExtResource("4_s8ipp")
+
+[node name="Propositions2" type="Button" parent="Words"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 463.0
+offset_top = 205.0
+offset_right = -554.0
+offset_bottom = -469.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+theme_override_styles/focus = SubResource("StyleBoxFlat_ji6o5")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_o5ih2")
+theme_override_styles/hover = SubResource("StyleBoxFlat_wfjq6")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_03w5q")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_7wcyq")
+text = "\" Don't go in that direction \" "
+script = ExtResource("4_s8ipp")
+
+[node name="Propositions3" type="Button" parent="Words"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 722.0
+offset_top = 115.0
+offset_right = -238.0
+offset_bottom = -559.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+theme_override_styles/focus = SubResource("StyleBoxFlat_ji6o5")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_o5ih2")
+theme_override_styles/hover = SubResource("StyleBoxFlat_wfjq6")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_03w5q")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_7wcyq")
+text = "\" Who want to taste the dich of the day \"  "
+script = ExtResource("4_s8ipp")
+
+[node name="Propositions4" type="Button" parent="Words"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 835.0
+offset_top = 286.0
+offset_right = -125.0
+offset_bottom = -388.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+theme_override_styles/focus = SubResource("StyleBoxFlat_ji6o5")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_o5ih2")
+theme_override_styles/hover = SubResource("StyleBoxFlat_wfjq6")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_03w5q")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_7wcyq")
+text = "\" i can't swich \""
+script = ExtResource("4_s8ipp")
+
+[node name="Propositions5" type="Button" parent="Words"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 129.0
+offset_top = 373.0
+offset_right = -831.0
+offset_bottom = -301.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+theme_override_styles/focus = SubResource("StyleBoxFlat_ji6o5")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_o5ih2")
+theme_override_styles/hover = SubResource("StyleBoxFlat_wfjq6")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_03w5q")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_7wcyq")
+text = "\"  woof \""
+script = ExtResource("4_s8ipp")
+
+[node name="Propositions6" type="Button" parent="Words"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 806.0
+offset_top = 424.0
+offset_right = -154.0
+offset_bottom = -250.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+theme_override_styles/focus = SubResource("StyleBoxFlat_ji6o5")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_o5ih2")
+theme_override_styles/hover = SubResource("StyleBoxFlat_wfjq6")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_03w5q")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_7wcyq")
+text = "\" Billy, billy, where is my dog !  \""
+script = ExtResource("4_s8ipp")
+
+[node name="Propositions7" type="Button" parent="Words"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 333.5
+offset_top = 527.0
+offset_right = -621.5
+offset_bottom = -147.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+theme_override_styles/focus = SubResource("StyleBoxFlat_ji6o5")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_o5ih2")
+theme_override_styles/hover = SubResource("StyleBoxFlat_wfjq6")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_03w5q")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_7wcyq")
+text = "\"I didn't fail my shoot, but it was enought\""
+script = ExtResource("4_s8ipp")

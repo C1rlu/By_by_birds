@@ -468,5 +468,5 @@ theme_override_styles/disabled = SubResource("StyleBoxEmpty_o5ih2")
 theme_override_styles/hover = SubResource("StyleBoxFlat_wfjq6")
 theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_03w5q")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_7wcyq")
-text = "\" Abemus sentus vaticanous  \""
+text = "\"I didn't fail my shoot, but it was enought\""
 script = ExtResource("3_t0tre")
